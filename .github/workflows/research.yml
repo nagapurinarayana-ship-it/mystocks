@@ -22,15 +22,16 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run multi-history research
+      - name: Run full-universe multi-history research
         env:
           PYTHONUNBUFFERED: '1'
-        run: python scripts/run_research.py --years ${{ inputs.years || '10' }} --refresh
+        run: python scripts/run_research.py --years ${{ inputs.years || '10' }} --refresh --discover-nse
       - name: Upload complete research outputs
         uses: actions/upload-artifact@v4
         with:
           name: mystocks-research-${{ github.run_number }}
           path: |
+            data/nse_current_universe.csv
             data/research_summary.csv
             data/research_baselines.csv
             data/walk_forward_folds.csv
