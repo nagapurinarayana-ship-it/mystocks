@@ -9,9 +9,10 @@ class StrategyConfig:
     round_trip_cost_pct: float = 0.0010
     min_price: float = 50.0
     min_avg_volume: float = 200_000.0
+    min_history_rows: int = 1260  # approximately 5 trading years
     min_samples: int = 80
-    min_probability: float = 0.55
-    min_expected_value_pct: float = 0.002
+    min_probability_lower95: float = 0.50
+    min_expected_value: float = 0.002
     top_n: int = 3
 
 
