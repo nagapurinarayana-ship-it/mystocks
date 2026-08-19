@@ -1,0 +1,8 @@
+__pycache__/
+.venv/
+.env
+.streamlit/secrets.toml
+data/*.csv
+data/*.parquet
+data/*.json
+!data/.gitkeep
