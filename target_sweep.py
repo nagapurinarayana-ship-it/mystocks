@@ -19,7 +19,6 @@ class TargetStopResult:
 
 
 def evaluate(df: pd.DataFrame, base: StrategyConfig, target: float, stop: float, horizon: int) -> TargetStopResult:
-    # StrategyConfig uses max_hold_days; do not invent a second horizon field.
     cfg = replace(base, target_pct=target, stop_pct=stop, max_hold_days=horizon)
     x = features(df)
     wins = losses = timeouts = 0
@@ -31,12 +30,12 @@ def evaluate(df: pd.DataFrame, base: StrategyConfig, target: float, stop: float,
         elif r == "loss": losses += 1
         elif r == "timeout": timeouts += 1
     n = wins + losses + timeouts
-    resolved = wins + losses
-    p = wins / resolved if resolved else 0.0
-    # Timeouts are conservatively treated as zero return here; the configured
-    # transaction cost is still charged, so the sweep cannot hide inactivity costs.
-    ev = p * target - (1 - p) * stop - base.round_trip_cost_pct if resolved else -base.round_trip_cost_pct
-    return TargetStopResult(target, stop, horizon, n, wins, losses, timeouts, p, ev)
+    p_win = wins / n if n else 0.0
+    p_loss = losses / n if n else 0.0
+    # Every attempted trade pays costs. A timeout contributes zero price return,
+    # so it is neither counted as a win nor silently removed from expectancy.
+    ev = p_win * target - p_loss * stop - base.round_trip_cost_pct if n else -base.round_trip_cost_pct
+    return TargetStopResult(target, stop, horizon, n, wins, losses, timeouts, p_win, ev)
 
 
 def sweep(df: pd.DataFrame, base: StrategyConfig,
