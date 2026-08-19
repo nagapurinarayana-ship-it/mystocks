@@ -1,7 +1,15 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
+
+# GitHub Actions executes this file as scripts/run_research.py. Put the repo root
+# on sys.path so project modules such as config.py are importable.
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 import pandas as pd
 
 from config import StrategyConfig
@@ -34,7 +42,7 @@ def main() -> None:
     reports = []
     for symbol, df in data.items():
         try:
-            x = features(df)
+            features(df)
             r = rolling_report(df, cfg)
             s = summarize(r, cfg)
             years = max(0.0, (df.index.max() - df.index.min()).days / 365.25)
