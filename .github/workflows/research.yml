@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       years:
-        description: 'Years of history'
+        description: 'Maximum years of history to download'
         required: false
         default: '10'
   schedule:
@@ -22,12 +22,18 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run research
+      - name: Run multi-history research
         env:
           PYTHONUNBUFFERED: '1'
         run: python scripts/run_research.py --years ${{ inputs.years || '10' }} --refresh
-      - name: Publish research artifact
+      - name: Upload complete research outputs
         uses: actions/upload-artifact@v4
         with:
-          name: mystocks-research
-          path: data/research_summary.csv
+          name: mystocks-research-${{ github.run_number }}
+          path: |
+            data/research_summary.csv
+            data/research_baselines.csv
+            data/walk_forward_folds.csv
+            data/walk_forward_summary.csv
+            data/less_than_1_year.csv
+          if-no-files-found: error
