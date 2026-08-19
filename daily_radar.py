@@ -43,7 +43,13 @@ def historical_probability(df: pd.DataFrame, cfg: StrategyConfig) -> tuple[float
             wins += r == "win"
     return (wins/resolved if resolved else 0.0, wilson_lower(wins, resolved), resolved, wins)
 
-def rank_daily(universe: dict[str, pd.DataFrame], cfg: StrategyConfig, selection_cfg: SelectionConfig = SelectionConfig()) -> list[Candidate]:
+def rank_daily(universe: dict[str, pd.DataFrame], cfg: StrategyConfig) -> list[Candidate]:
+    selection_cfg = SelectionConfig(
+        max_picks=cfg.top_n,
+        min_samples=cfg.min_samples,
+        min_lower_bound=cfg.min_probability_lower95,
+        min_expected_value=cfg.min_expected_value,
+    )
     candidates: list[Candidate] = []
     for symbol, df in universe.items():
         if len(df) < 252: continue
