@@ -1,6 +1,8 @@
 name: MyStocks Research
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       years:
