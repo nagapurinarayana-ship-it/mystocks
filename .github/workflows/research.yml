@@ -24,6 +24,8 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Validate research pipeline
+        run: pytest -q tests/test_research_pipeline.py
       - name: Run full-universe multi-history research
         env:
           PYTHONUNBUFFERED: '1'
