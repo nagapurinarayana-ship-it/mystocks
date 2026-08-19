@@ -11,7 +11,7 @@ if str(ROOT) not in sys.path:
 import pandas as pd
 
 from config import StrategyConfig
-from data_sources import DataSourceConfig, load_universe
+from research_data import ResearchDataConfig, load_universe
 from universe import validate_universe
 from nse_universe import discover_current_nse_symbols, save_universe, load_saved_universe
 from research_policy import history_tier
@@ -40,13 +40,15 @@ def main() -> None:
 
     if args.discover_nse:
         try:
-            save_universe(discover_current_nse_symbols())
+            discovered = discover_current_nse_symbols()
+            save_universe(discovered)
+            print(f"Discovered {len(discovered)} current NSE symbols")
         except Exception as exc:
             print(f"NSE discovery failed; using saved/starter universe: {exc}")
 
     cfg = StrategyConfig()
     symbols = args.symbols or load_saved_universe() or validate_universe()
-    data = load_universe(symbols, DataSourceConfig(years=max(args.years, 10), refresh=args.refresh))
+    data = load_universe(symbols, ResearchDataConfig(years=max(args.years, 10), refresh=args.refresh, min_rows=20))
 
     baseline_rows = []
     wf_rows = []
@@ -59,10 +61,11 @@ def main() -> None:
             full_years = max(0.0, (df.index.max() - df.index.min()).days / 365.25)
             tier = history_tier(full_years)
 
-            # Produce explicit trailing baselines for 10/5/3/2/1 years.
             for window_years in WINDOW_YEARS:
                 wdf = trailing_window(df, window_years)
                 actual_years = max(0.0, (wdf.index.max() - wdf.index.min()).days / 365.25) if len(wdf) > 1 else 0.0
+                # A one-year cohort needs enough observations for the indicators,
+                # while shorter histories are retained in the exploratory report.
                 if len(wdf) < 252:
                     continue
                 features(wdf)
@@ -77,7 +80,6 @@ def main() -> None:
                 })
                 baseline_rows.append(s)
 
-                # Walk-forward only where enough observations exist for a meaningful train/test cycle.
                 if len(wdf) >= 1008:
                     folds = evaluate_walk_forward(wdf, cfg)
                     if not folds.empty:
@@ -105,14 +107,19 @@ def main() -> None:
         wfs = wfs.sort_values(["baseline_years", "expected_value"], ascending=[False, False])
     wfs.to_csv("data/walk_forward_summary.csv", index=False)
 
-    # Explicit cohort report for stocks with less than one year of direct history.
     short_rows = []
     for symbol, df in data.items():
         if len(df) < 2:
             continue
         years = max(0.0, (df.index.max() - df.index.min()).days / 365.25)
         if years < 1.0:
-            short_rows.append({"symbol": symbol, "available_history_years": round(years, 2), "observations": len(df), "history_tier": "less_than_1_year", "status": "exploratory_only"})
+            short_rows.append({
+                "symbol": symbol,
+                "available_history_years": round(years, 2),
+                "observations": len(df),
+                "history_tier": "less_than_1_year",
+                "status": "exploratory_only",
+            })
     pd.DataFrame(short_rows).to_csv("data/less_than_1_year.csv", index=False)
 
     print("=== BASELINES: 10 / 5 / 3 / 2 / 1 YEARS ===")
