@@ -1,16 +1,45 @@
 # MyStocks — India 2% Stock Research Engine
 
-Private/local-first research application for testing whether Indian equities can be ranked for a realistic ~2% upside target using 5+ years of historical data.
+Private/local-first Indian equity research application for testing whether stocks can be ranked for a realistic ~2% upside target. **No guaranteed returns.**
 
-> **Research only. No guaranteed returns.** The app must never present a 2% gain as certain.
+## Research tracks
 
-## Goals
+- **Established:** 5+ years of direct history.
+- **Mid-history:** 3–5 years, reduced confidence.
+- **Emerging:** 1–3 years, exploratory and supported by peer/sector evidence.
+- **New:** 6–12 months, early-signal research only; under 6 months is normally insufficient.
 
-- Use at least 5 years of daily OHLCV history.
-- Evaluate target-before-stop outcomes rather than simple returns.
-- Avoid look-ahead leakage with time-ordered walk-forward testing.
-- Rank liquid NSE candidates and allow fewer than three picks when evidence is weak.
-- Track every daily paper-trade recommendation so live performance can be audited.
+New listings are not discarded just because they lack five years of data, but short histories can never receive the same statistical confidence as mature histories.
+
+## Core methodology
+
+- Entry: next-session open after the signal.
+- Target: +2.0% from entry.
+- Stop: -1.0% from entry.
+- Maximum holding period: 3 sessions.
+- Same-candle target/stop ambiguity is treated conservatively as stop first.
+- Costs and slippage must be included.
+- Chronological/walk-forward validation only.
+- No future constituent membership or pre-listing prices.
+- Compare against unconditional and buy-and-hold baselines.
+- Up to three picks; **never force three** when evidence is weak.
+
+## Evidence model
+
+Candidate rankings can incorporate:
+
+- direct historical target-before-stop probability
+- lower confidence bound
+- sample size
+- history tier
+- trend/momentum/volume
+- market regime
+- sector relative strength
+- peer similarity
+- liquidity/volatility
+- expected value after costs
+
+Every daily candidate should expose its evidence and invalidation conditions.
 
 ## Local run
 
@@ -19,40 +48,16 @@ python -m venv .venv
 # Windows: .venv\\Scripts\\activate
 # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
+python scripts/run_research.py --years 10 --refresh
 streamlit run app.py
 ```
 
-The first data download can take time. By default the prototype uses Yahoo Finance through `yfinance` for personal/local research. Replace it with a licensed market-data feed before commercial/public use.
+The prototype uses Yahoo Finance through `yfinance` for local/personal research. A licensed/authoritative feed with historical corporate actions and point-in-time universe data is required before commercial/public conclusions.
 
-## Methodology
+## Data integrity
 
-Default setup:
+Historical universe membership, sector membership, corporate actions, listing/delisting status and OHLCV quality must be point-in-time aware. The current starter universe is explicitly **prototype research with survivorship-bias risk** until those datasets are integrated.
 
-- Entry: next session open after the signal.
-- Target: +2.0% from entry.
-- Stop: -1.0% from entry.
-- Holding period: 3 trading sessions.
-- If target and stop are both touched in the same daily candle, the engine assumes **stop first** (conservative because daily OHLC cannot reveal intraday order).
-- Costs/slippage are configurable.
+## Status
 
-The ranking combines historical target-before-stop probability, expected value, sample size, trend/momentum/volume features, and market regime filters.
-
-## Important validation rules
-
-1. Never randomly shuffle time series.
-2. Do not use future information when creating a signal.
-3. Keep an untouched final out-of-sample period.
-4. Include transaction costs and slippage.
-5. Track delisted/survivorship issues before trusting universe-level results.
-6. Paper-trade before considering any real-money use.
-
-## Planned production research layers
-
-1. Licensed NSE/BSE historical and live data.
-2. Corporate-action-aware adjusted data.
-3. Survivorship-bias-free universe.
-4. NIFTY, sector and volatility regime features.
-5. Event/earnings filter.
-6. Multiple strategy families and walk-forward model selection.
-7. Probability calibration and confidence intervals.
-8. Persistent paper-trading ledger and daily performance report.
+The repository contains the research engine, data-source abstraction, quality validation, history tiers, peer/sector primitives, guardrails, baseline tests, paper-trading ledger, daily radar and scheduled research workflow. The next evidence milestone is the broad historical run using authoritative data.
