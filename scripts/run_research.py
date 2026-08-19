@@ -26,7 +26,7 @@ def trailing_window(df: pd.DataFrame, years: int) -> pd.DataFrame:
     if df.empty:
         return df
     end = df.index.max()
-    start = end - pd.Timedelta(days=round(years * 365.25))
+    start = end - pd.DateOffset(years=years)
     return df.loc[df.index >= start].copy()
 
 
@@ -64,8 +64,6 @@ def main() -> None:
             for window_years in WINDOW_YEARS:
                 wdf = trailing_window(df, window_years)
                 actual_years = max(0.0, (wdf.index.max() - wdf.index.min()).days / 365.25) if len(wdf) > 1 else 0.0
-                # A one-year cohort needs enough observations for the indicators,
-                # while shorter histories are retained in the exploratory report.
                 if len(wdf) < 252:
                     continue
                 features(wdf)
