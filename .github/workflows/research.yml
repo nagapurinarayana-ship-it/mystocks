@@ -12,11 +12,17 @@ on:
   schedule:
     - cron: '30 13 * * 1-5'
 
+# Never let a newer research run cancel an in-progress full-universe run.
+concurrency:
+  group: mystocks-research-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
-  research:
+  prepare:
+    name: Prepare NSE universe
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,10 +32,145 @@ jobs:
         run: pip install -r requirements.txt
       - name: Validate research pipeline
         run: pytest -q tests/test_research_pipeline.py
-      - name: Run full-universe multi-history research
+      - name: Discover current NSE universe
         env:
           PYTHONUNBUFFERED: '1'
-        run: python scripts/run_research.py --years ${{ inputs.years || '10' }} --refresh --discover-nse
+        run: |
+          python - <<'PY'
+          from nse_universe import discover_current_nse_symbols, save_universe
+          symbols = discover_current_nse_symbols()
+          save_universe(symbols)
+          print(f'Discovered {len(symbols)} current NSE symbols')
+          PY
+      - name: Upload universe
+        uses: actions/upload-artifact@v4
+        with:
+          name: mystocks-nse-universe-${{ github.run_number }}
+          path: data/nse_current_universe.csv
+          if-no-files-found: error
+
+  research:
+    name: Research shard ${{ matrix.shard }}
+    needs: prepare
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Download NSE universe
+        uses: actions/download-artifact@v5
+        with:
+          name: mystocks-nse-universe-${{ github.run_number }}
+          path: data
+      - name: Select shard symbols
+        env:
+          SHARD: ${{ matrix.shard }}
+          SHARDS: 16
+        run: |
+          python - <<'PY'
+          import os
+          import pandas as pd
+
+          df = pd.read_csv('data/nse_current_universe.csv')
+          column = 'symbol' if 'symbol' in df.columns else df.columns[0]
+          symbols = [str(x).strip() for x in df[column].dropna() if str(x).strip()]
+          shard = int(os.environ['SHARD'])
+          shards = int(os.environ['SHARDS'])
+          selected = symbols[shard::shards]
+          with open('symbols.txt', 'w', encoding='utf-8') as f:
+              f.write('\n'.join(selected))
+          print(f'Shard {shard}: {len(selected)} symbols')
+          PY
+      - name: Run research shard
+        env:
+          PYTHONUNBUFFERED: '1'
+        run: |
+          mapfile -t SYMBOLS < symbols.txt
+          python scripts/run_research.py --years ${{ inputs.years || '10' }} --refresh --symbols "${SYMBOLS[@]}"
+      - name: Upload shard outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: mystocks-research-shard-${{ matrix.shard }}-${{ github.run_number }}
+          path: |
+            data/research_summary.csv
+            data/research_baselines.csv
+            data/walk_forward_folds.csv
+            data/walk_forward_summary.csv
+            data/less_than_1_year.csv
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate research outputs
+    needs: research
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install pandas
+      - name: Download all shard outputs
+        uses: actions/download-artifact@v5
+        with:
+          pattern: mystocks-research-shard-*- ${{ github.run_number }}
+          path: shard_outputs
+          merge-multiple: false
+      - name: Download NSE universe
+        uses: actions/download-artifact@v5
+        with:
+          name: mystocks-nse-universe-${{ github.run_number }}
+          path: data
+      - name: Merge shard outputs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+
+          output_dir = Path('data')
+          output_dir.mkdir(exist_ok=True)
+          names = [
+              'research_summary.csv',
+              'research_baselines.csv',
+              'walk_forward_folds.csv',
+              'walk_forward_summary.csv',
+              'less_than_1_year.csv',
+          ]
+          for name in names:
+              files = sorted(Path('shard_outputs').glob(f'**/{name}'))
+              frames = []
+              for path in files:
+                  try:
+                      frame = pd.read_csv(path)
+                      if not frame.empty:
+                          frames.append(frame)
+                  except Exception as exc:
+                      print(f'Warning: could not read {path}: {exc}')
+              merged = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+              if name in {'research_summary.csv', 'research_baselines.csv'} and not merged.empty:
+                  sort_cols = [c for c in ['baseline_years', 'expected_value', 'win_rate'] if c in merged.columns]
+                  if sort_cols:
+                      ascending = [False, False, False][:len(sort_cols)]
+                      merged = merged.sort_values(sort_cols, ascending=ascending)
+              if name == 'walk_forward_summary.csv' and not merged.empty:
+                  sort_cols = [c for c in ['baseline_years', 'expected_value'] if c in merged.columns]
+                  if sort_cols:
+                      merged = merged.sort_values(sort_cols, ascending=[False, False])
+              merged.to_csv(output_dir / name, index=False)
+              print(f'{name}: {len(merged)} rows from {len(files)} shards')
+          PY
       - name: Upload complete research outputs
         uses: actions/upload-artifact@v4
         with:
