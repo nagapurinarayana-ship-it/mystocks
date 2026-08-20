@@ -12,7 +12,7 @@ on:
   schedule:
     - cron: '30 13 * * 1-5'
 
-# Never let a newer research run cancel an in-progress full-universe run.
+# Keep full-universe research runs from cancelling each other.
 concurrency:
   group: mystocks-research-${{ github.ref }}
   cancel-in-progress: false
@@ -114,7 +114,7 @@ jobs:
     needs: research
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -125,7 +125,7 @@ jobs:
       - name: Download all shard outputs
         uses: actions/download-artifact@v5
         with:
-          pattern: mystocks-research-shard-*- ${{ github.run_number }}
+          pattern: mystocks-research-shard-*-${{ github.run_number }}
           path: shard_outputs
           merge-multiple: false
       - name: Download NSE universe
@@ -162,12 +162,11 @@ jobs:
               if name in {'research_summary.csv', 'research_baselines.csv'} and not merged.empty:
                   sort_cols = [c for c in ['baseline_years', 'expected_value', 'win_rate'] if c in merged.columns]
                   if sort_cols:
-                      ascending = [False, False, False][:len(sort_cols)]
-                      merged = merged.sort_values(sort_cols, ascending=ascending)
+                      merged = merged.sort_values(sort_cols, ascending=[False] * len(sort_cols))
               if name == 'walk_forward_summary.csv' and not merged.empty:
                   sort_cols = [c for c in ['baseline_years', 'expected_value'] if c in merged.columns]
                   if sort_cols:
-                      merged = merged.sort_values(sort_cols, ascending=[False, False])
+                      merged = merged.sort_values(sort_cols, ascending=[False] * len(sort_cols))
               merged.to_csv(output_dir / name, index=False)
               print(f'{name}: {len(merged)} rows from {len(files)} shards')
           PY
