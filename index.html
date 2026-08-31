@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0b1220">
   <title>MyStocks — Long-Term Research Dashboard</title>
-  <meta name="description" content="Filing-first long-term research dashboard for a focused Indian micro-cap watchlist.">
+  <meta name="description" content="Filing-first long-term research dashboard with an automated pre-market Indian stock pick.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,6 +25,19 @@
   </header>
 
   <main>
+    <section class="panel premarket-panel">
+      <div class="panel-head">
+        <div>
+          <div class="eyebrow">PRE-MARKET · 08:00 IST</div>
+          <h2>Today’s Stock Pick</h2>
+        </div>
+        <p>Generated from completed daily candles before NSE opens. A valid result can also be <strong>NO TRADE</strong>.</p>
+      </div>
+      <div id="daily-pick" class="daily-pick" aria-live="polite">
+        <div class="pick-loading">Loading today’s pre-market research signal…</div>
+      </div>
+    </section>
+
     <section class="hero-grid" id="summary-cards" aria-live="polite"></section>
 
     <section class="panel">
@@ -70,12 +83,12 @@
           <h2>How this dashboard updates</h2>
         </div>
       </div>
-      <p class="system-copy">GitHub Actions refreshes the public market-data and news snapshot every day at about 4:15 PM IST, including weekends. On market holidays/weekends the last available traded price remains while news can still refresh. Each refreshed snapshot is committed to main, and Cloudflare Pages redeploys the static dashboard automatically. The Python Streamlit research application remains in the repository for deeper local analysis.</p>
+      <p class="system-copy">A pre-market workflow generates the daily stock pick at about 08:00 IST on NSE trading weekdays using only completed candles. A separate daily workflow refreshes watchlist market data and news after the market close. Cloudflare Pages redeploys automatically whenever generated data changes. The Python Streamlit research application remains in the repository for deeper local analysis.</p>
     </section>
   </main>
 
   <footer>
-    Personal research dashboard · Not investment advice · Micro-cap equities can lose most or all of their value.
+    Personal research dashboard · Not investment advice · Trading and micro-cap equities can lose substantial capital.
   </footer>
 
   <script src="dashboard.js" defer></script>
