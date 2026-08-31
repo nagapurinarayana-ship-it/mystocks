@@ -3,6 +3,13 @@ name: MyStocks Research
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'index.html'
+      - 'styles.css'
+      - 'dashboard.js'
+      - 'dashboard-data.json'
+      - 'scripts/generate_dashboard_data.py'
+      - '.github/workflows/dashboard-refresh.yml'
   workflow_dispatch:
     inputs:
       years:
