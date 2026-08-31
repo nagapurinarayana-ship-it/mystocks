@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">MyStocks India Research Dashboard</title>
+  <desc id="desc">Indian stock research dashboard with long-term watchlist and pre-market research signal.</desc>
+  <rect width="1200" height="630" fill="#07101d"/>
+  <circle cx="1020" cy="90" r="230" fill="#10273d"/>
+  <circle cx="170" cy="620" r="300" fill="#0d2630"/>
+  <text x="90" y="145" fill="#69d4ff" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" letter-spacing="5">MY STOCKS · INDIA</text>
+  <text x="90" y="260" fill="#f4f7fb" font-family="Arial,Helvetica,sans-serif" font-size="72" font-weight="800">Indian Stock Research</text>
+  <text x="90" y="342" fill="#f4f7fb" font-family="Arial,Helvetica,sans-serif" font-size="72" font-weight="800">Dashboard</text>
+  <text x="90" y="410" fill="#9fb0c7" font-family="Arial,Helvetica,sans-serif" font-size="30">Filing-first watchlist · Pre-market signal · Risk guardrails</text>
+  <rect x="90" y="475" width="300" height="72" rx="20" fill="#111f33" stroke="#23344d"/>
+  <text x="125" y="522" fill="#51d88a" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700">SOURCE-FIRST RESEARCH</text>
+</svg>
