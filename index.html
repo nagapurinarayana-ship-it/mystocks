@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>MyStocks — Long-Term Research Dashboard</title>
+  <meta name="description" content="Filing-first long-term research dashboard for a focused Indian micro-cap watchlist.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <div class="eyebrow">MY STOCKS · INDIA</div>
+      <h1>Long-Term Research Dashboard</h1>
+      <p class="subtitle">Track the business thesis, not daily noise. Exchange/company filings remain the source of truth.</p>
+    </div>
+    <div class="status-card">
+      <span id="data-status" class="status-dot"></span>
+      <div>
+        <strong id="updated-label">Loading research snapshot…</strong>
+        <small id="updated-time"></small>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-grid" id="summary-cards" aria-live="polite"></section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <div class="eyebrow">FOCUS</div>
+          <h2>Current watchlist</h2>
+        </div>
+        <p>Research scores are dated manual assessments, not price targets.</p>
+      </div>
+      <div id="watchlist" class="watchlist"></div>
+    </section>
+
+    <section class="panel two-col">
+      <div>
+        <div class="eyebrow">DISCIPLINE</div>
+        <h2>Portfolio guardrails</h2>
+        <ul class="guardrails">
+          <li>Do not sell only because the share price falls.</li>
+          <li>Review immediately for promoter pledge, major promoter exit or unexplained dilution.</li>
+          <li>Review auditor qualifications, going-concern language, defaults and sharp rating downgrades.</li>
+          <li>Watch operating cash flow against reported profit over multiple annual periods.</li>
+          <li>Verify material news in NSE/BSE/company/rating-agency disclosures before acting.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow">DATA QUALITY</div>
+        <h2>Source hierarchy</h2>
+        <ol class="source-order">
+          <li>NSE/BSE regulatory filings and audited statements</li>
+          <li>Company investor-relations disclosures</li>
+          <li>Credit-rating agency rationales</li>
+          <li>Market-data providers for cross-checking</li>
+          <li>News aggregators for discovery only</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <div class="eyebrow">SYSTEM</div>
+          <h2>How this dashboard updates</h2>
+        </div>
+      </div>
+      <p class="system-copy">GitHub Actions refreshes the public market-data/news snapshot on weekdays. Cloudflare Pages then redeploys this static dashboard automatically. The Python Streamlit research application remains in the repository for deeper local analysis.</p>
+    </section>
+  </main>
+
+  <footer>
+    Personal research dashboard · Not investment advice · Micro-cap equities can lose most or all of their value.
+  </footer>
+
+  <script src="dashboard.js" defer></script>
+</body>
+</html>
