@@ -46,6 +46,75 @@ function list(items) {
   return `<ul>${(items || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
 }
 
+function renderDailyPick(data) {
+  const regime = data.market_regime || {};
+  const generated = data.generated_at
+    ? new Date(data.generated_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+    : 'unknown';
+
+  if (data.status !== 'PICK' || !data.pick) {
+    return `
+      <div class="no-trade-card">
+        <div class="pick-status-row">
+          <span class="pick-status no-trade">NO TRADE</span>
+          <span class="pick-date">For ${esc(data.for_date || '')}</span>
+        </div>
+        <h3>No stock is being forced today.</h3>
+        <p>${esc(data.reason || 'No setup passed the research filters.')}</p>
+        <div class="pick-meta">Nifty regime: <strong>${esc(regime.label || 'Unavailable')}</strong> · Generated ${esc(generated)} IST</div>
+      </div>`;
+  }
+
+  const p = data.pick;
+  return `
+    <div class="pick-card">
+      <div class="pick-status-row">
+        <span class="pick-status active">TODAY'S PICK</span>
+        <span class="pick-date">For ${esc(data.for_date || '')}</span>
+      </div>
+      <div class="pick-head">
+        <div>
+          <div class="pick-symbol">${esc(p.display_symbol)}</div>
+          <div class="pick-sub">Nifty regime: ${esc(regime.label || 'Unavailable')} · up to ${esc(data.max_hold_days)} sessions</div>
+        </div>
+        <div class="pick-reference"><span>Reference close</span><strong>${money(p.reference_close)}</strong></div>
+      </div>
+
+      <div class="pick-levels">
+        <div><span>Acceptable open</span><strong>${money(p.acceptable_open_low)} – ${money(p.acceptable_open_high)}</strong></div>
+        <div><span>Reference target</span><strong>${money(p.reference_target)}</strong><small>+${number(Number(data.target_pct) * 100)}%</small></div>
+        <div><span>Reference stop</span><strong>${money(p.reference_stop)}</strong><small>-${number(Number(data.stop_pct) * 100)}%</small></div>
+        <div><span>Historical win rate</span><strong>${number(p.historical_win_rate, 1)}%</strong><small>95% lower bound ${number(p.lower95_win_rate, 1)}%</small></div>
+        <div><span>Samples</span><strong>${number(p.samples, 0)}</strong><small>resolved historical setups</small></div>
+        <div><span>Expected value</span><strong>${number(p.expected_value_pct)}%</strong><small>after configured costs</small></div>
+      </div>
+
+      <div class="pick-rule"><strong>Execution rule:</strong> ${esc(p.execution_rule)}</div>
+      <div class="pick-rule"><strong>After entry:</strong> ${esc(p.target_rule)} · ${esc(p.stop_rule)}</div>
+
+      <div class="pick-reasons">
+        <h4>Why the model selected it</h4>
+        ${list(p.reasons)}
+      </div>
+
+      <div class="pick-stats">RSI ${number(p.rsi14, 1)} · Volume ${number(p.volume_ratio)}× 20D avg · 5D ${number(p.return_5d_pct)}% · 20D ${number(p.return_20d_pct)}%${p.breakout20 ? ' · 20-session breakout' : ''}</div>
+      <div class="pick-meta">Generated ${esc(generated)} IST · ${esc(data.disclaimer || '')}</div>
+    </div>`;
+}
+
+async function loadDailyPick() {
+  const target = document.getElementById('daily-pick');
+  if (!target) return;
+  try {
+    const res = await fetch(`daily-pick.json?v=${Date.now()}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    target.innerHTML = renderDailyPick(data);
+  } catch (err) {
+    target.innerHTML = '<div class="no-trade-card"><span class="pick-status pending">AWAITING FIRST RUN</span><h3>Pre-market pick is not generated yet.</h3><p>The scheduled workflow will populate this section before the next NSE trading session.</p></div>';
+  }
+}
+
 function renderSummary(stock) {
   const m = stock.market || {};
   const change = Number(m.change_pct);
@@ -68,6 +137,9 @@ function renderStock(stock) {
   const flags = (stock.live_flags || []).length
     ? `<div class="flags">${stock.live_flags.map(f => `<div class="flag">⚠ ${esc(f)}</div>`).join('')}</div>`
     : '<div class="no-flags">✓ No mechanical live-feed warning triggered. Filing-based checks still apply.</div>';
+  const quality = m.data_quality_warning
+    ? `<div class="flag">⚠ ${esc(m.data_quality_warning)}</div>`
+    : '';
   const news = (stock.news || []).length
     ? stock.news.map(item => `<div class="news-item"><a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">${esc(item.title)}</a><div class="news-meta">${esc(item.source || '')}${item.published ? ` · ${esc(item.published)}` : ''}</div></div>`).join('')
     : '<div class="stock-sub">No secondary-feed headlines available in this snapshot.</div>';
@@ -100,6 +172,7 @@ function renderStock(stock) {
         <div class="detail-box kill"><h4>Thesis breakers</h4>${list(stock.kill_switches)}</div>
       </div>
 
+      ${quality}
       ${flags}
       <div class="link-row">${links}</div>
 
@@ -111,6 +184,8 @@ function renderStock(stock) {
 }
 
 async function boot() {
+  loadDailyPick();
+
   const dot = document.getElementById('data-status');
   const label = document.getElementById('updated-label');
   const time = document.getElementById('updated-time');
