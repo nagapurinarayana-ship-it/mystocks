@@ -2,6 +2,14 @@ name: Pre-Market Daily Pick
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/generate_daily_pick.py'
+      - 'config.py'
+      - 'engine.py'
+      - 'data.py'
+      - '.github/workflows/premarket-pick.yml'
   schedule:
     # 02:30 UTC = 08:00 IST. Gives buffer before the 09:15 NSE open.
     - cron: '30 2 * * 1-5'
