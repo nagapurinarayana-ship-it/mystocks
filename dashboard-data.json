@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T10:42:28+00:00",
+  "generated_at": "2026-08-31T10:50:13+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -14,8 +14,8 @@
       "review_as_of": "2026-08-31",
       "market": {
         "price": 6.74,
-        "previous_close": 6.79,
-        "change_pct": -0.7363770250368162,
+        "previous_close": 6.89,
+        "change_pct": -2.1770682148040565,
         "market_cap": 2654813184.0,
         "trailing_pe": 10.698412,
         "price_to_book": 1.4171572,
@@ -26,7 +26,9 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-08-31T10:42:29+00:00"
+        "fetched_at": "2026-08-31T10:50:14+00:00",
+        "price_source": "Yahoo Finance adjusted trading history",
+        "data_quality_warning": null
       },
       "price_history": [
         8.29,
@@ -199,20 +201,22 @@
       "research_score": 6.9,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.59,
-        "previous_close": 7.65,
-        "change_pct": -0.7843137254902044,
-        "market_cap": 2529860864.0,
-        "trailing_pe": 22.32353,
-        "price_to_book": 1.7762697,
+        "price": 4.04,
+        "previous_close": 4.01,
+        "change_pct": 0.7481296758104827,
+        "market_cap": null,
+        "trailing_pe": null,
+        "price_to_book": null,
         "return_on_equity": null,
         "debt_to_equity_pct": null,
         "operating_cash_flow": null,
         "free_cash_flow": null,
-        "fifty_two_week_low": 6.64,
-        "fifty_two_week_high": 17.0,
+        "fifty_two_week_low": null,
+        "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-08-31T10:42:30+00:00"
+        "fetched_at": "2026-08-31T10:50:15+00:00",
+        "price_source": "Yahoo Finance adjusted trading history",
+        "data_quality_warning": "Quote metadata differed 88% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
       },
       "price_history": [
         5.03,
@@ -336,7 +340,9 @@
           "https://ashapurigold.com/"
         ]
       ],
-      "live_flags": [],
+      "live_flags": [
+        "Market-data quality: Quote metadata differed 88% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
+      ],
       "news": [
         {
           "title": "Ashapuri Gold Ornament Limited Share Price - Upstox",
@@ -381,8 +387,8 @@
       "review_as_of": "2026-08-31",
       "market": {
         "price": 8.12,
-        "previous_close": 8.21,
-        "change_pct": -1.0962241169305886,
+        "previous_close": 8.12,
+        "change_pct": 0.0,
         "market_cap": null,
         "trailing_pe": 8.458333,
         "price_to_book": 0.9123596,
@@ -393,7 +399,9 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-08-31T10:42:31+00:00"
+        "fetched_at": "2026-08-31T10:50:15+00:00",
+        "price_source": "Yahoo Finance adjusted trading history",
+        "data_quality_warning": null
       },
       "price_history": [
         7.24,
