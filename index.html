@@ -70,7 +70,7 @@
           <h2>How this dashboard updates</h2>
         </div>
       </div>
-      <p class="system-copy">GitHub Actions refreshes the public market-data/news snapshot on weekdays. Cloudflare Pages then redeploys this static dashboard automatically. The Python Streamlit research application remains in the repository for deeper local analysis.</p>
+      <p class="system-copy">GitHub Actions refreshes the public market-data and news snapshot every day at about 4:15 PM IST, including weekends. On market holidays/weekends the last available traded price remains while news can still refresh. Each refreshed snapshot is committed to main, and Cloudflare Pages redeploys the static dashboard automatically. The Python Streamlit research application remains in the repository for deeper local analysis.</p>
     </section>
   </main>
 
