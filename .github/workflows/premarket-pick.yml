@@ -1,0 +1,63 @@
+name: Pre-Market Daily Pick
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 02:30 UTC = 08:00 IST. Gives buffer before the 09:15 NSE open.
+    - cron: '30 2 * * 1-5'
+
+concurrency:
+  group: mystocks-premarket-pick
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pick dependencies
+        run: pip install 'pandas>=2.2,<3' 'numpy>=2.0,<3' 'yfinance>=0.2.54,<1'
+
+      - name: Generate pre-market pick
+        env:
+          PYTHONUNBUFFERED: '1'
+        run: PYTHONPATH=. python scripts/generate_daily_pick.py
+
+      - name: Validate pick JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(Path('daily-pick.json').read_text(encoding='utf-8'))
+          assert payload['status'] in {'PICK', 'NO_TRADE'}
+          if payload['status'] == 'PICK':
+              pick = payload['pick']
+              assert pick['acceptable_open_low'] < pick['acceptable_open_high']
+              assert pick['reference_stop'] < pick['reference_close'] < pick['reference_target']
+              assert pick['samples'] > 0
+          print('Pre-market pick JSON valid')
+          PY
+
+      - name: Commit latest pick
+        run: |
+          if git diff --quiet -- daily-pick.json; then
+            echo 'No pre-market pick changes to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add daily-pick.json
+          git commit -m 'Refresh pre-market daily pick [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
