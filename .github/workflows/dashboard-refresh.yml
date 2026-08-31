@@ -1,0 +1,63 @@
+name: Refresh Cloudflare Dashboard
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'long_term_watchlist.py'
+      - 'scripts/generate_dashboard_data.py'
+      - '.github/workflows/dashboard-refresh.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '45 4 * * 1-5'
+    - cron: '45 10 * * 1-5'
+
+concurrency:
+  group: mystocks-dashboard-refresh
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install lightweight dashboard dependencies
+        run: pip install 'pandas>=2.2,<3' 'yfinance>=0.2.54,<1' 'requests>=2.32,<3'
+
+      - name: Generate latest dashboard snapshot
+        run: python scripts/generate_dashboard_data.py
+
+      - name: Validate JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(Path('dashboard-data.json').read_text(encoding='utf-8'))
+          assert len(payload.get('stocks', [])) == 3
+          assert all('official_links' in s for s in payload['stocks'])
+          print('Dashboard snapshot valid')
+          PY
+
+      - name: Commit refreshed snapshot when changed
+        run: |
+          if git diff --quiet -- dashboard-data.json; then
+            echo 'No dashboard data changes to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dashboard-data.json
+          git commit -m 'Refresh dashboard market snapshot [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
