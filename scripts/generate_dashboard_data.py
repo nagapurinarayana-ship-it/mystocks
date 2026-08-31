@@ -100,9 +100,9 @@ def build_stock(stock) -> dict:
     except Exception as exc:
         print(f"news warning for {stock.name}: {exc}")
 
+    # Keep market-data quality separate from business-risk flags. The frontend
+    # renders data_quality_warning once above the mechanical filing/risk flags.
     flags = live_risk_flags(market)
-    if market.get("data_quality_warning"):
-        flags.insert(0, f"Market-data quality: {market['data_quality_warning']}")
 
     return {
         "key": stock.key,
