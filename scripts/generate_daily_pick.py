@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import replace
-from datetime import datetime
+from datetime import datetime, time, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -12,6 +12,31 @@ from engine import features, rank_universe
 
 OUTPUT = Path("daily-pick.json")
 IST = ZoneInfo("Asia/Kolkata")
+MARKET_OPEN = time(9, 15)
+
+
+def _next_weekday(day):
+    candidate = day
+    while candidate.weekday() >= 5:
+        candidate += timedelta(days=1)
+    return candidate
+
+
+def target_trading_date(now: datetime):
+    """Date this pick is intended for.
+
+    Before 09:15 IST on a weekday, the pick is for the current session. After
+    the market has opened, a regeneration is treated as a preview for the next
+    weekday session. This keeps manual/push-triggered afternoon runs from being
+    mislabeled as a same-day pre-market pick.
+
+    Exchange-specific holidays are not inferred here; the scheduled 08:00 IST
+    run will refresh again on the next weekday.
+    """
+    day = now.date()
+    if day.weekday() < 5 and now.time() < MARKET_OPEN:
+        return day
+    return _next_weekday(day + timedelta(days=1))
 
 
 def nifty_regime() -> dict:
@@ -45,12 +70,13 @@ def nifty_regime() -> dict:
 
 def build_pick() -> dict:
     now = datetime.now(IST)
+    for_date = target_trading_date(now)
     cfg = replace(StrategyConfig(), top_n=1)
     regime = nifty_regime()
 
     base = {
         "generated_at": now.isoformat(timespec="seconds"),
-        "for_date": now.date().isoformat(),
+        "for_date": for_date.isoformat(),
         "market": "NSE India",
         "strategy": "Daily-candle momentum/trend setup; intended holding window up to 3 sessions",
         "target_pct": cfg.target_pct,
@@ -65,7 +91,7 @@ def build_pick() -> dict:
         return {
             **base,
             "status": "NO_TRADE",
-            "reason": "Nifty trend gate is not positive, so the system is not forcing a long trade today.",
+            "reason": "Nifty trend gate is not positive, so the system is not forcing a long trade for this session.",
             "pick": None,
         }
 
@@ -121,7 +147,7 @@ def build_pick() -> dict:
 def main() -> None:
     payload = build_pick()
     OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {OUTPUT}: {payload['status']}")
+    print(f"Wrote {OUTPUT}: {payload['status']} for {payload['for_date']}")
     if payload.get("pick"):
         print(f"Pick: {payload['pick']['display_symbol']}")
 
