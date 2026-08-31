@@ -1,8 +1,37 @@
 # MyStocks — India Research Radar
 
-Full-universe Indian equity research application for testing whether stocks can be ranked for a realistic short-term upside target. **No guaranteed returns.**
+Indian-equity research application with two distinct workspaces:
 
-## Current architecture
+1. **Long-term micro-cap watchlist** — filing-first monitoring for a small set of manually researched companies.
+2. **Short-term NSE research radar** — full-universe statistical research for realistic target/stop setups.
+
+**No guaranteed returns.** Market data and news feeds are research aids; exchange/company filings are the source of truth for material facts.
+
+## Long-term watchlist
+
+The Streamlit dashboard now opens on a long-term research workspace for:
+
+- Nila Infrastructures (`NILAINFRA.NS`)
+- Ashapuri Gold Ornament (`542579.BO`)
+- Madhav Infra Projects (`MADHAVIPL.NS`)
+
+The public repository intentionally stores **watchlist/research metadata only**. It does not store private purchase price, quantity or portfolio value.
+
+For each company the dashboard provides:
+
+- live/delayed price and selected fundamental fields from Yahoo Finance
+- 6-month, 1-year, 5-year and maximum available price history
+- manually reviewed investment thesis and known risks
+- thesis-breaking “kill switches” such as promoter pledge, audit problems, repeated dilution and cash-flow deterioration
+- mechanical live-feed warnings where sufficient data is available
+- direct NSE/BSE/company/rating-agency links for source-of-truth verification
+- latest Google News RSS headlines clearly labelled as a **secondary discovery feed**
+
+Manual research scores are dated snapshots, not analyst targets and not predictions.
+
+## Short-term research architecture
+
+The original research engine remains intact:
 
 - Discovers the current NSE equity universe from the official NSE equity CSV.
 - Retains **every discovered symbol** during data collection, including new listings and very short histories.
@@ -23,7 +52,7 @@ Full-universe Indian equity research application for testing whether stocks can 
 
 Short histories are never treated as equivalent to mature histories.
 
-## Core methodology
+## Short-term methodology
 
 - Entry: next-session open after the signal.
 - Default target: +2.0% from entry.
@@ -35,19 +64,7 @@ Short histories are never treated as equivalent to mature histories.
 - Compare against baseline behaviour rather than assuming the strategy adds value.
 - Up to three picks; **never force picks when evidence is weak**.
 
-## Dashboard
-
-`app.py` is a Streamlit research dashboard designed around the complete NSE universe. It provides:
-
-- full-universe discovery
-- controlled data loading
-- current candidate ranking
-- confidence and expected-value evidence
-- complete universe coverage/status accounting
-- CSV export of universe status
-- explicit methodology and research guardrails
-
-Run locally:
+## Run the dashboard locally
 
 ```bash
 python -m venv .venv
@@ -57,25 +74,33 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Research workflow
+Use the sidebar to switch between **Long-term watchlist** and **Short-term research radar**.
 
-Manual full-universe run:
+## Full-universe research workflow
+
+Manual run:
 
 ```bash
 python scripts/run_research.py --years 10 --refresh --discover-nse
 ```
 
-GitHub Actions runs the same research pipeline on pushes to `main`, on demand, and on the scheduled weekday refresh. The workflow validates the research tests, discovers the NSE universe once, distributes symbols across 16 shards, and aggregates the outputs.
+GitHub Actions runs the same research pipeline on pushes to `main`, on demand, and on the scheduled weekday refresh. Tests run before the expensive full-universe workflow starts. The workflow then discovers the NSE universe once, distributes symbols across 16 shards, and aggregates the outputs.
 
-## Data integrity
+## Data integrity and source hierarchy
 
-The current market-data source is Yahoo Finance through `yfinance`, suitable for local/personal research but not a substitute for a licensed authoritative feed for commercial/public investment conclusions. Historical constituent membership, delistings, sector membership, corporate actions and point-in-time universe data remain important limitations.
+Recommended evidence order for long-term decisions:
 
-The application therefore presents research as evidence, not a prediction or investment guarantee.
+1. NSE/BSE regulatory filings and audited financial statements.
+2. Company investor-relations disclosures.
+3. Credit-rating-agency rationales where relevant.
+4. Market-data providers and reputable financial databases for cross-checking.
+5. News/search aggregators for discovery only.
 
-## Output contract
+Yahoo Finance through `yfinance` is used for convenient market data. It is suitable for local/personal research but is not a licensed authoritative feed for commercial/public investment conclusions. Historical constituent membership, delistings, sector membership, corporate actions and point-in-time universe data remain important limitations.
 
-The research workflow produces:
+## Research output contract
+
+The full-universe workflow produces:
 
 - `nse_current_universe.csv` — discovered current NSE universe
 - `nse_research_universe.csv` — **every discovered symbol with data coverage and research status**
@@ -85,4 +110,4 @@ The research workflow produces:
 - `walk_forward_summary.csv` — aggregated walk-forward results
 - `less_than_1_year.csv` — limited-history exploratory cohort
 
-The key design rule is: **100% universe coverage, 0% fake statistical confidence.**
+The key design rule remains: **100% universe coverage, 0% fake statistical confidence.**

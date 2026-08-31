@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Validate research pipeline
-        run: pytest -q tests/test_research_pipeline.py
+        run: pytest -q
       - name: Discover current NSE universe
         env:
           PYTHONUNBUFFERED: '1'
