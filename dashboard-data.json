@@ -1,55 +1,474 @@
 {
-  "generated_at": "2026-08-31T10:40:00+00:00",
-  "market_data_status": "seed-snapshot",
-  "note": "Seeded from the 2026-08-31 manual research review. Automated GitHub Actions refresh replaces secondary market/news fields on weekdays.",
+  "generated_at": "2026-08-31T10:42:28+00:00",
+  "market_data_status": "live-refresh",
+  "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
     {
       "key": "nila",
       "name": "Nila Infrastructures",
       "exchange": "NSE",
       "exchange_symbol": "NILAINFRA",
+      "yahoo_symbol": "NILAINFRA.NS",
       "research_rank": 1,
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
-      "market": {"price": 6.79, "change_pct": null, "market_cap": null, "trailing_pe": null, "price_to_book": null, "return_on_equity": null, "debt_to_equity_pct": null},
-      "price_history": [],
-      "thesis": ["Established infrastructure/EPC business with a long operating history.", "Promoter ownership has historically been comparatively stable with no pledge in the latest manual review.", "Leverage has reduced materially versus older balance-sheet periods.", "Small market capitalisation leaves room for upside if order execution and cash conversion improve."],
-      "risks": ["Government/project concentration can make revenue and order inflow lumpy.", "Operating cash flow and working-capital conversion need close annual review.", "Project cancellations or execution delays can quickly weaken a micro-cap thesis."],
-      "kill_switches": ["Promoter pledge appears or promoter ownership falls sharply without a clear explanation.", "Auditor issues a qualified/adverse/disclaimer opinion or raises going-concern concerns.", "Operating cash flow stays materially negative while reported profit remains positive for two annual periods.", "Debt rises sharply without corresponding executable order-book growth."],
-      "official_links": [["NSE quote", "https://www.nseindia.com/get-quotes/equity?symbol=NILAINFRA"], ["NSE corporate filings", "https://www.nseindia.com/companies-listing/corporate-filings-announcements"], ["Company investor site", "https://www.nilainfra.com/"], ["CARE Ratings", "https://www.careratings.com/"]],
-      "live_flags": [], "news": []
+      "market": {
+        "price": 6.74,
+        "previous_close": 6.79,
+        "change_pct": -0.7363770250368162,
+        "market_cap": 2654813184.0,
+        "trailing_pe": 10.698412,
+        "price_to_book": 1.4171572,
+        "return_on_equity": null,
+        "debt_to_equity_pct": 12.646,
+        "operating_cash_flow": null,
+        "free_cash_flow": null,
+        "fifty_two_week_low": 5.9,
+        "fifty_two_week_high": 11.55,
+        "currency": "INR",
+        "fetched_at": "2026-08-31T10:42:29+00:00"
+      },
+      "price_history": [
+        8.29,
+        8.27,
+        8.38,
+        8.32,
+        8.32,
+        8.16,
+        8.2,
+        8.13,
+        8.88,
+        9.03,
+        8.84,
+        8.53,
+        8.37,
+        8.3,
+        8.25,
+        7.96,
+        7.88,
+        7.83,
+        8.2,
+        8.08,
+        8.15,
+        8.1,
+        8.1,
+        8.1,
+        8.02,
+        7.9,
+        7.9,
+        7.97,
+        7.91,
+        7.93,
+        7.98,
+        7.99,
+        7.81,
+        7.77,
+        7.85,
+        7.96,
+        7.99,
+        8.08,
+        8.05,
+        7.98,
+        8.07,
+        7.9,
+        7.89,
+        7.68,
+        7.68,
+        7.53,
+        7.36,
+        7.51,
+        7.63,
+        7.79,
+        7.68,
+        7.55,
+        7.24,
+        7.29,
+        7.3,
+        7.27,
+        7.24,
+        7.13,
+        7.25,
+        7.25,
+        7.12,
+        7.28,
+        7.22,
+        7.43,
+        7.32,
+        7.39,
+        7.42,
+        7.39,
+        7.24,
+        7.38,
+        7.66,
+        7.53,
+        7.51,
+        7.63,
+        7.47,
+        7.42,
+        7.37,
+        7.29,
+        7.22,
+        7.14,
+        7.02,
+        7.02,
+        6.96,
+        6.96,
+        6.98,
+        6.94,
+        6.91,
+        6.97,
+        6.89,
+        6.74
+      ],
+      "thesis": [
+        "Established infrastructure/EPC business with a long operating history.",
+        "Promoter ownership has historically been comparatively stable with no pledge in the latest manual review.",
+        "Leverage has reduced materially versus older balance-sheet periods.",
+        "Small market capitalisation leaves room for upside if order execution and cash conversion improve."
+      ],
+      "risks": [
+        "Government/project concentration can make revenue and order inflow lumpy.",
+        "Operating cash flow and working-capital conversion need close annual review.",
+        "Project cancellations or execution delays can quickly weaken a micro-cap thesis."
+      ],
+      "kill_switches": [
+        "Promoter pledge appears or promoter ownership falls sharply without a clear explanation.",
+        "Auditor issues a qualified/adverse/disclaimer opinion or raises going-concern concerns.",
+        "Operating cash flow stays materially negative while reported profit remains positive for two annual periods.",
+        "Debt rises sharply without corresponding executable order-book growth."
+      ],
+      "official_links": [
+        [
+          "NSE quote",
+          "https://www.nseindia.com/get-quotes/equity?symbol=NILAINFRA"
+        ],
+        [
+          "NSE corporate filings",
+          "https://www.nseindia.com/companies-listing/corporate-filings-announcements"
+        ],
+        [
+          "Company investor site",
+          "https://www.nilainfra.com/"
+        ],
+        [
+          "CARE Ratings",
+          "https://www.careratings.com/"
+        ]
+      ],
+      "live_flags": [],
+      "news": [
+        {
+          "title": "Nila Infrastructures Ltd. Peer Comparison – Compare with Others - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxORHRvbzNZSVRhd09HakZYOE5LUUJNNTdlSkpkWkFMODJlWklnNWxPbEZwbVk2WkRlZU5yc2FUSWhTb3V4R2xLYzVoVzFNYmRLSTVtYjM4bHY2d0VlQjltVmJZaUs3d0l3RDBOOEJmQ3MzN2c2aXlwZ3JZNk9ELThESDNDQ2ZldFlLd3lxQ0pMbVdYM0M0?oc=5",
+          "source": "Value Research",
+          "published": "2026-08-26 17:02 UTC"
+        },
+        {
+          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
+          "source": "Univest",
+          "published": "2026-07-01 07:00 UTC"
+        },
+        {
+          "title": "Nila Infrastructures Limited (NILAINFRA.NS): Modest Decline Amid Consolidation - Order Block - vinanet.vn",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOU1RjMUFTcFVhMHN3Y0l3VzZlRHoybUJEcUdGUFh6LW9odzFDclNHcTRfOXp0bG9TTThpczFBbUNGOTlXRThpZmZGeGwyMDkzRjFyTEhCZDVnenA1d1Axd3kxc3IzVnhIWUNnc2VKUmxxVk1LOFAzdHI4QlQzUjBGSmVEamtTQmpLVVJEb09veVZNMHJGdVR5Sl8wUjlKSURPaDVrZUtxT2Z4N2NaX29jSEI1WE0?oc=5",
+          "source": "vinanet.vn",
+          "published": "2026-05-29 07:00 UTC"
+        },
+        {
+          "title": "Nila Infrastructures Limited Reports Promoter Group Share Transfer of 1.36 Crore Equity Shares - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPaHFsb3cxVnNHTVBnQXgxSjZtN05Ha2RHZG41UEszLUQwdjdoWEdJVkxwMWcyQTkyaUx6MWxGUEFnT2hjQno4WnZmdDlQaDBOMDZsWU1HYm83ZEphMEtXdDByRU9sS2tSR1lyY2xJTlZTUVU5ZGJSNnpnVjFOczhCd2Y5dXgxWDV4TlQ3Ym5Rak1LNkY3VmMzdUZLSWxhc0NSSWRRbHVZU3dOS1NHT0JqQ204VGNySU9WZ1hyLUZaOF9EOGJwZ1VnWVl0Y2syMV9NZk1QczJVcDdSRWd5b0czTl91RGxjZw?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-03-30 07:00 UTC"
+        },
+        {
+          "title": "Nila Infrastructures consolidated net profit rises 9.14% in the March 2026 quarter - Business Standard",
+          "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQbjMxMWtLSG1JUnNPSlZVRDlnQzNaT1NZS1NkWFU5bTY0THA2dHRHWUhpTG9kcGJVUTM1MzJKV3R2WXZtWk5TRWF4YkllS3J3RkpCei1rVzRlQ1N5S3ItM2FwRDRPenV5S2wtYnhBOVRZb3EwSXRhV3dwV1JRVENobTl0NEEyUGpLUFFJQzBXNGJha2JPc1JqT2VZR1I1SXFoQjRpalNKX3FkVlNTcGxfMWlhTHYwdFYxc2FyMlFmTjUza3BjZnpnZ0M2Zkp3UjFfWjA5QUd5T0l2TEp4ZU1hN25RVFp5Q1ZlX3g4eUtlY2tGd0ZENXfSAfsBQVVfeXFMUGJ2cDVicmJyVXJTR0tEQnk2MWxQZW9RSjNVc3I0V1BhSl94Y3ZQRU14by1WRXBBUUxycXVmOWU0M1d4SmtFMmNBdTltWEkwQTlreVhweENBNFp6UXotOUYwdmZRYzlwN3Axb3J6M0lwMjVDMi1LeHRyMVBZZW1EakYwWHBrNm5lWlgyd0ZrejJOM3NKbXJDNV9YYnFqQTVTTmFrOFg0RUNkQXoyczNuX0dMajRkVlc4bHVTNFBnbzItWkotZkF4SDk5cHIxSUZJcl92Vy10dnVNc0JvZmpqbUpSUzNLbDI3TmlUVWRWbno4UUhwWWlnM2hLWjA?oc=5",
+          "source": "Business Standard",
+          "published": "2026-05-02 07:00 UTC"
+        }
+      ]
     },
     {
       "key": "ashapuri",
       "name": "Ashapuri Gold Ornament",
       "exchange": "BSE",
       "exchange_symbol": "542579",
+      "yahoo_symbol": "542579.BO",
       "research_rank": 2,
       "research_score": 6.9,
       "review_as_of": "2026-08-31",
-      "market": {"price": 3.98, "change_pct": null, "market_cap": null, "trailing_pe": null, "price_to_book": null, "return_on_equity": null, "debt_to_equity_pct": null},
-      "price_history": [],
-      "thesis": ["B2B gold-jewellery manufacturer with a real operating history and recent earnings momentum.", "Balance sheet was debt-light in the latest manual review.", "Small market capitalisation offers asymmetric upside if margins and cash flow remain durable."],
-      "risks": ["Jewellery manufacturing is inventory- and working-capital-intensive.", "Gold-price moves can distort inventory values and funding requirements.", "Historical equity issuance means future dilution must be watched carefully."],
-      "kill_switches": ["Large new dilution/warrants without a clearly value-accretive use of funds.", "Promoter pledge appears or promoter stake falls materially.", "Inventory/receivables rise much faster than sales for repeated periods.", "Accounting profit grows while operating cash flow remains persistently negative."],
-      "official_links": [["BSE company page", "https://www.bseindia.com/stock-share-price/ashapuri-gold-ornament-ltd/agol/542579/"], ["BSE corporate announcements", "https://www.bseindia.com/corporates/ann.html"], ["Company investor site", "https://ashapurigold.com/"]],
-      "live_flags": [], "news": []
+      "market": {
+        "price": 7.59,
+        "previous_close": 7.65,
+        "change_pct": -0.7843137254902044,
+        "market_cap": 2529860864.0,
+        "trailing_pe": 22.32353,
+        "price_to_book": 1.7762697,
+        "return_on_equity": null,
+        "debt_to_equity_pct": null,
+        "operating_cash_flow": null,
+        "free_cash_flow": null,
+        "fifty_two_week_low": 6.64,
+        "fifty_two_week_high": 17.0,
+        "currency": "INR",
+        "fetched_at": "2026-08-31T10:42:30+00:00"
+      },
+      "price_history": [
+        5.03,
+        4.98,
+        4.98,
+        4.84,
+        4.62,
+        4.59,
+        4.71,
+        4.77,
+        4.7,
+        4.68,
+        4.71,
+        4.51,
+        4.3,
+        4.45,
+        4.47,
+        4.4,
+        4.19,
+        4.21,
+        4.15,
+        4.17,
+        4.24,
+        4.4,
+        4.48,
+        4.39,
+        4.39,
+        4.36,
+        4.21,
+        4.24,
+        4.24,
+        4.17,
+        4.13,
+        4.01,
+        4.08,
+        4.07,
+        4.02,
+        4.07,
+        4.07,
+        4.1,
+        4.08,
+        4.06,
+        4.04,
+        4.12,
+        4.07,
+        4.07,
+        4.08,
+        4.08,
+        4.04,
+        4.09,
+        4.04,
+        4.06,
+        4.03,
+        4.02,
+        4.01,
+        4.0,
+        4.0,
+        4.0,
+        3.99,
+        3.97,
+        3.98,
+        4.02,
+        3.97,
+        3.99,
+        3.94,
+        3.9,
+        3.84,
+        3.84,
+        3.76,
+        3.71,
+        3.78,
+        3.76,
+        3.75,
+        3.92,
+        3.98,
+        3.98,
+        3.99,
+        3.96,
+        4.0,
+        3.95,
+        3.83,
+        3.92,
+        3.99,
+        3.98,
+        3.99,
+        3.92,
+        3.97,
+        3.93,
+        4.02,
+        3.97,
+        4.01,
+        4.04
+      ],
+      "thesis": [
+        "B2B gold-jewellery manufacturer with a real operating history and recent earnings momentum.",
+        "Balance sheet was debt-light in the latest manual review.",
+        "Small market capitalisation offers asymmetric upside if margins and cash flow remain durable."
+      ],
+      "risks": [
+        "Jewellery manufacturing is inventory- and working-capital-intensive.",
+        "Gold-price moves can distort inventory values and funding requirements.",
+        "Historical equity issuance means future dilution must be watched carefully."
+      ],
+      "kill_switches": [
+        "Large new dilution/warrants without a clearly value-accretive use of funds.",
+        "Promoter pledge appears or promoter stake falls materially.",
+        "Inventory/receivables rise much faster than sales for repeated periods.",
+        "Accounting profit grows while operating cash flow remains persistently negative."
+      ],
+      "official_links": [
+        [
+          "BSE company page",
+          "https://www.bseindia.com/stock-share-price/ashapuri-gold-ornament-ltd/agol/542579/"
+        ],
+        [
+          "BSE corporate announcements",
+          "https://www.bseindia.com/corporates/ann.html"
+        ],
+        [
+          "Company investor site",
+          "https://ashapurigold.com/"
+        ]
+      ],
+      "live_flags": [],
+      "news": [
+        {
+          "title": "Ashapuri Gold Ornament Limited Share Price - Upstox",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE84X2lBVk5DSWRHZm1KODZVcFZ1TmxZZEFQcjBjeGVuaXEzVlZkYm9MS3ozYTVlcWpnRjBTWHVrMXBTb3VDZTNXc3F1VUdNU2ZGNVRidkRuMDBLeGRSamNxbW52Zkd6WVdQQjBpRDFIcVF0VERfNlMteA?oc=5",
+          "source": "Upstox",
+          "published": "2026-08-28 07:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament standalone net profit rises 64.35% in the June 2026 quarter - Business Standard",
+          "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxObkVBLW5BQy03VG9pMTZZdWFtWExkSVdvUnpsN3VTRlo1VXAzS1loR0JTWlN6NFZpVjJNYVU0aE51d2U3UWxHekM0QmpuUmFoTHUyNWFram5sMmVVTElKdjFhTjdmUlNsVW5JRlphejZvdldmQm1MNWx4d0N2eW9hS0U5ODhsODRpZi1PaUlZaXNUald1NlVHNVZCMDN4NDY5LXFPaXQ3d2h4OGlXTmNtUnVrLUJrSWlaek5nTFpVMHZVTkFZUnRSYUV2Zl9rdzRCTi1oUDRUNGtYSklaNXZZbTdPZFZ4dnB0SENibmtqVUZ1NG03TnfSAfsBQVVfeXFMTkQ0c3VOSGJuUlFSSWo5TU9idk9wZGpzYTVIMkh1UlM2WjVka3QxUmZJaWFmcERIS2dJa3Y3T1FyR2ZSYmhwQ2ZwWE4zbkp2SDVzMk5xbHdnOTVqSE5EblUzdTZ3VzAtY29RZE1OaTB1YUdqWUtrMllPVjdab0RhcFFnT0xFMjdYQnFBTDlOelJ6cVhMZnllTUdlMFA3bFdXcFpONk1oMzExM3Y4ZDhYVGJydXhEMlV1dFZVa2cyUjl6eWdXaHl3XzduNllYS21oT2NtRExUdVlLd0VBYmVSSHNFeGkxREs1YnJmNnUtMWt1YzhURDRZQ3BXUm8?oc=5",
+          "source": "Business Standard",
+          "published": "2026-08-15 07:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Wins ₹29 Crore Orders from Major Retail Chains at IIJS 2026 - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPbVh4cWktMmNwR0dVekc3bXhOT04xUEY5MWEwNzQ2MHNCOFBkMlhqbzNRdkJMTDRHYTg5VmFxR2hIanAyam9veHNDeHZmWS1ZcjNkU05vUElTbG5OTnYxSjZpakZPVzhDbWwxQTdBT0VRZkwzU0lrNkxQT2tKQTRVZmsyY3pDWnhoSG1mYklGX0JjMnpUOU8xYU42TkFfSDg4bUxVWkRMa2Vka2cxR0dudnFySWVEdmhJbDBld0haLVFJUDBYSWxKb3dCOUtyX0tRa20zTFhDcnFuY3M?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-01-19 08:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Limited Files Annual Promoter Disclosure Under SEBI Takeover Regulations - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOb2NiMWtLbXMwMFd2SlhWRnk5bngxc09BbE5WQWVwVHAwaUxnaXFyMmk0RTlQS3pNWWNGNG9ETk1ZQTRZY3ZJS2l4czNKLUd5ZnA5RkNnQmI1WEVvUjFzN3NZczVLNE1sRnZpaDN3Z2ZiaUhzQTVvNllJU2w1ZHJrTV9UM2ZIRS1kbUFScDFLMkZUZ0VWaU81dlhsZWpLWXFzTkZ3MnlTR2lMOUNra3V4R0NxVUZMOXFUaV83Y2VjMUtjMHRxZ3VVODNaWEZZeUlWMElYUWpXdVFESmg3bmFteXBIYUVjOVk?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-04-03 07:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Ltd's Rs 48.75 crores rights opens on May 8 - The Times of India",
+          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPWlJ2VE9BSE5vNUsyNkRFanBEVEhVcHBwX0FFMWRkRWRpMm8xcTFQSFJXUjZkNGdSU1ZaNGNjRXNoaEIzTnY1a3V4bEVIYVpNcUphMjBVMHJ4TUJVTTVFR1J5TnpneFZpOXhCRFdhcGpEZmNWRFpQdWpaeVhBbjFXWXZyZDQyXzJSSnpMT01ham5zMG5ieTE3dnlSajRLbGl5WTMybjgwWV9oejdabFdLZWhKeWx4MXJFWVRONHlDaEhBRHV0Z1l6ZThIY0J6QU5JYkljaWtGWFZreWVSdFd0cWc2ZC1nQdIB6wFBVV95cUxQMjM4cmY2Uzh0R01rTzFTLWNIM0RRWXBTSmI2Q0Nndlh1UGdMdmMxZ3NiajVURFZ1U09qTG9UdEgwZlduR081Rkg5NS10RmJkVGVCZWhzc0FuLWdHR01RR3FlVDBiOXVMYUh2Rm9kTXNuOXV1WUdOdnB1NmhXRl9lcmhneUNMT2hMMlRPWXdjdllaQWpQcFJLRWFsUzNXUEFleF8zZ0RYdDZ1T3FwSHpIVXF4ZGxSOFhVXy14RF9ETU16enFWQ1lVVnI5SmVvM1ZqcGtEWVNjTHcwdk9BWFFlWnhjd0VxZVB6VUd3?oc=5",
+          "source": "The Times of India",
+          "published": "2024-05-07 07:00 UTC"
+        }
+      ]
     },
     {
       "key": "madhav",
       "name": "Madhav Infra Projects",
       "exchange": "NSE",
       "exchange_symbol": "MADHAVIPL",
+      "yahoo_symbol": "MADHAVIPL.NS",
       "research_rank": 3,
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
-      "market": {"price": 8.49, "change_pct": null, "market_cap": null, "trailing_pe": null, "price_to_book": null, "return_on_equity": null, "debt_to_equity_pct": null},
-      "price_history": [],
-      "thesis": ["Infrastructure business with renewable/solar exposure.", "Promoter ownership has historically been high and stable in the latest manual review.", "A successful mix of EPC execution and contracted renewable assets can improve long-run earnings quality."],
-      "risks": ["More leverage and contingent-liability complexity than the other two watchlist names.", "Construction cash flows are lumpy and sensitive to collections and project execution.", "Accounting disclosures around deferred tax and group entities require continued attention."],
-      "kill_switches": ["Material credit-rating downgrade, default or sharp deterioration in debt coverage.", "Contingent liabilities crystallise into a material cash obligation.", "Auditor qualification or unresolved accounting issue becomes material.", "Promoter pledge appears or promoter ownership deteriorates sharply."],
-      "official_links": [["NSE quote", "https://www.nseindia.com/get-quotes/equity?symbol=MADHAVIPL"], ["NSE corporate filings", "https://www.nseindia.com/companies-listing/corporate-filings-announcements"], ["CARE Ratings", "https://www.careratings.com/"]],
-      "live_flags": [], "news": []
+      "market": {
+        "price": 8.12,
+        "previous_close": 8.21,
+        "change_pct": -1.0962241169305886,
+        "market_cap": null,
+        "trailing_pe": 8.458333,
+        "price_to_book": 0.9123596,
+        "return_on_equity": null,
+        "debt_to_equity_pct": 68.69,
+        "operating_cash_flow": null,
+        "free_cash_flow": null,
+        "fifty_two_week_low": 6.95,
+        "fifty_two_week_high": 8.47,
+        "currency": "INR",
+        "fetched_at": "2026-08-31T10:42:31+00:00"
+      },
+      "price_history": [
+        7.24,
+        7.02,
+        7.24,
+        7.31,
+        7.22,
+        7.23,
+        8.03,
+        8.12,
+        8.12
+      ],
+      "thesis": [
+        "Infrastructure business with renewable/solar exposure.",
+        "Promoter ownership has historically been high and stable in the latest manual review.",
+        "A successful mix of EPC execution and contracted renewable assets can improve long-run earnings quality."
+      ],
+      "risks": [
+        "More leverage and contingent-liability complexity than the other two watchlist names.",
+        "Construction cash flows are lumpy and sensitive to collections and project execution.",
+        "Accounting disclosures around deferred tax and group entities require continued attention."
+      ],
+      "kill_switches": [
+        "Material credit-rating downgrade, default or sharp deterioration in debt coverage.",
+        "Contingent liabilities crystallise into a material cash obligation.",
+        "Auditor qualification or unresolved accounting issue becomes material.",
+        "Promoter pledge appears or promoter ownership deteriorates sharply."
+      ],
+      "official_links": [
+        [
+          "NSE quote",
+          "https://www.nseindia.com/get-quotes/equity?symbol=MADHAVIPL"
+        ],
+        [
+          "NSE corporate filings",
+          "https://www.nseindia.com/companies-listing/corporate-filings-announcements"
+        ],
+        [
+          "CARE Ratings",
+          "https://www.careratings.com/"
+        ]
+      ],
+      "live_flags": [],
+      "news": [
+        {
+          "title": "MADHAVIPL Stock Price and Chart — NSE:MADHAVIPL - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBQeUdXMnJ3dUxtNFhxc0FDWEZrRTV1eXVzajZMTmFKMzIzOFdMRnp4TV9pQkZDd1dkSGs5dy1TTmFfbWRDSEc0ODhvb1FweWdyT1NrRE92cjhuZTc0S1Rn?oc=5",
+          "source": "TradingView",
+          "published": "2026-04-20 05:28 UTC"
+        },
+        {
+          "title": "Madhav Infra Projects standalone PAT falls 35% YoY in Q1FY26 - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNNEpqcGVTNXB1aXdINWIwb19qU3lTMFc3c2lMNjBMVnZQenc3UEFVdC02Mkhzcnh3OWI3OXMwdE5LTXdZR1YyRG40blBqUjQxMmE3V1dMM0V3d01FTkJjZThTeW8wdTdSb2o3clk2MHpzblpNT0ZoeUhrUnFiSUF5dVdrNUlMRXVZZ0IwOE55UmVndG1HbzhhZXBNVDdOZ2Y2U1BMLWtlc2ZWV25zOVFrZTB5bGtXNDV5ci1MNDJ0eC1henJFTVRxOWZTbk0?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-07-30 17:03 UTC"
+        },
+        {
+          "title": "Madhav Infra Projects Share Price Falls 2.49% After Q1 Results - Univest",
+          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQb0dQc1ZpV1ZFcHNpVUJDU1lXSGp5b2NZMkNPTEcxbGI2dnhCbUtNVVhBY29zUTlNeE9qMWhCeUhOLXZub3hTWnhFQnFqT3ZHQ1UzZ1BGSGtaRjF3OUdhN2Z1OUExQm02blVzblhuNklfd19YTmFTVEUyMm96N1l2Q3FMWWgyeTg?oc=5",
+          "source": "Univest",
+          "published": "2026-07-31 07:00 UTC"
+        },
+        {
+          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
+          "source": "CNBC TV18",
+          "published": "2026-01-03 15:50 UTC"
+        },
+        {
+          "title": "MADHAVIPL Mar 2026 Earnings: Madhav Infra Projects Reports Q4 EPS of ₹0.39; Revenue Holds at ₹208 Crore - Share Dilution Risk - vinanet.vn",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNT3FtbS03NW1sRUtLZjQzWkJSMWJ4c1JkQlR1WmhmVDVVNVBrSW9pMlQ0M2JodGxqUzBnbmpCSmd2N1g3YmhZWHo4YmNzV1E0NU1QTVVPdzA1N2JPSkwtVzZiUFVfU19KSkhXMXJHVnFSVloyUVg3UzVFNHEyNERhNG92SjVKLVZpVGpnUEp2akMxY1hMbldwQXJDcXR5M0tiN3VVNk0tZzRzelZNcnVtS19hdzl1c3hjLXVLX0t5S2pIUVYxemNpV0JCUUlUM1VXN3ozM0dKMA?oc=5",
+          "source": "vinanet.vn",
+          "published": "2026-07-03 07:00 UTC"
+        }
+      ]
     }
   ]
 }
