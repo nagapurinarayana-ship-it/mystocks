@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T10:57:10+00:00",
+  "generated_at": "2026-08-31T11:10:38+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -26,7 +26,7 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-08-31T10:57:11+00:00",
+        "fetched_at": "2026-08-31T11:10:41+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-08-31T10:57:12+00:00",
+        "fetched_at": "2026-08-31T11:10:42+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": "Quote metadata differed 89% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
       },
@@ -399,7 +399,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-08-31T10:57:13+00:00",
+        "fetched_at": "2026-08-31T11:10:42+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
