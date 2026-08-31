@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T10:50:13+00:00",
+  "generated_at": "2026-08-31T10:57:10+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -14,8 +14,8 @@
       "review_as_of": "2026-08-31",
       "market": {
         "price": 6.74,
-        "previous_close": 6.89,
-        "change_pct": -2.1770682148040565,
+        "previous_close": 6.79,
+        "change_pct": -0.7363770250368162,
         "market_cap": 2654813184.0,
         "trailing_pe": 10.698412,
         "price_to_book": 1.4171572,
@@ -26,12 +26,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-08-31T10:50:14+00:00",
+        "fetched_at": "2026-08-31T10:57:11+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        8.29,
         8.27,
         8.38,
         8.32,
@@ -120,6 +119,7 @@
         6.91,
         6.97,
         6.89,
+        6.79,
         6.74
       ],
       "thesis": [
@@ -201,9 +201,9 @@
       "research_score": 6.9,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 4.04,
-        "previous_close": 4.01,
-        "change_pct": 0.7481296758104827,
+        "price": 4.01,
+        "previous_close": 4.04,
+        "change_pct": -0.7425742574257432,
         "market_cap": null,
         "trailing_pe": null,
         "price_to_book": null,
@@ -214,12 +214,11 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-08-31T10:50:15+00:00",
+        "fetched_at": "2026-08-31T10:57:12+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
-        "data_quality_warning": "Quote metadata differed 88% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
+        "data_quality_warning": "Quote metadata differed 89% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
       },
       "price_history": [
-        5.03,
         4.98,
         4.98,
         4.84,
@@ -308,7 +307,8 @@
         4.02,
         3.97,
         4.01,
-        4.04
+        4.04,
+        4.01
       ],
       "thesis": [
         "B2B gold-jewellery manufacturer with a real operating history and recent earnings momentum.",
@@ -341,7 +341,7 @@
         ]
       ],
       "live_flags": [
-        "Market-data quality: Quote metadata differed 88% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
+        "Market-data quality: Quote metadata differed 89% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
       ],
       "news": [
         {
@@ -387,10 +387,10 @@
       "review_as_of": "2026-08-31",
       "market": {
         "price": 8.12,
-        "previous_close": 8.12,
-        "change_pct": 0.0,
+        "previous_close": 8.21,
+        "change_pct": -1.0962241169305886,
         "market_cap": null,
-        "trailing_pe": 8.458333,
+        "trailing_pe": 8.371134,
         "price_to_book": 0.9123596,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
@@ -399,7 +399,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-08-31T10:50:15+00:00",
+        "fetched_at": "2026-08-31T10:57:13+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -412,6 +412,7 @@
         7.23,
         8.03,
         8.12,
+        8.21,
         8.12
       ],
       "thesis": [
@@ -459,16 +460,16 @@
           "published": "2026-07-30 17:03 UTC"
         },
         {
-          "title": "Madhav Infra Projects Share Price Falls 2.49% After Q1 Results - Univest",
-          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQb0dQc1ZpV1ZFcHNpVUJDU1lXSGp5b2NZMkNPTEcxbGI2dnhCbUtNVVhBY29zUTlNeE9qMWhCeUhOLXZub3hTWnhFQnFqT3ZHQ1UzZ1BGSGtaRjF3OUdhN2Z1OUExQm02blVzblhuNklfd19YTmFTVEUyMm96N1l2Q3FMWWgyeTg?oc=5",
-          "source": "Univest",
-          "published": "2026-07-31 07:00 UTC"
-        },
-        {
           "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
           "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
           "source": "CNBC TV18",
           "published": "2026-01-03 15:50 UTC"
+        },
+        {
+          "title": "Madhav Infra promoters consolidate stake via gift deed transfer - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQdDNzNThRaWZlNFg5MTZfZDRUcUtNRFZ2Y1BzUlRBM284SFljV29JVFRoLXRtNnhRLUtMM0VMMUtzRkhZLXJ4WnNaYlZFUTJNV290XzJ3N0RiNUI5TjFsWk1vZ3N0R2pnQjdmbm5rQkdCRl9hOEVqNm5Kd0llRmJBcHI0ZXdrZUswR29DcklsZVRyTU53OUtUTkg5Mjh2Q3dJdFJuY0xzcUFQdXpuemZkNWxFVQ?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-08-05 07:00 UTC"
         },
         {
           "title": "MADHAVIPL Mar 2026 Earnings: Madhav Infra Projects Reports Q4 EPS of ₹0.39; Revenue Holds at ₹208 Crore - Share Dilution Risk - vinanet.vn",
