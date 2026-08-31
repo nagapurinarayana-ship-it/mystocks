@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mystocks-49k.pages.dev/sitemap.xml
