@@ -59,7 +59,7 @@ jobs:
 
       - name: Commit latest pick
         run: |
-          if git diff --quiet -- daily-pick.json; then
+          if [ -z "$(git status --porcelain -- daily-pick.json)" ]; then
             echo 'No pre-market pick changes to commit.'
             exit 0
           fi
