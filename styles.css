@@ -94,6 +94,35 @@ h3 { margin: 0; font-size: 1.15rem; }
 .stock-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; margin-bottom: 18px; }
 .stock-sub { color: var(--muted); margin-top: 5px; font-size: .88rem; }
 
+.premarket-panel { border-color: rgba(81,216,138,.38); background: linear-gradient(160deg, rgba(14,37,39,.98), rgba(10,20,34,.98)); }
+.daily-pick { min-height: 100px; }
+.pick-loading { color: var(--muted); padding: 14px 0; }
+.pick-card, .no-trade-card { border: 1px solid rgba(159,176,199,.18); border-radius: 16px; padding: 20px; background: rgba(255,255,255,.025); }
+.pick-card { border-color: rgba(81,216,138,.28); }
+.pick-status-row { display: flex; justify-content: space-between; gap: 14px; align-items: center; margin-bottom: 16px; }
+.pick-status { display: inline-flex; border-radius: 999px; padding: 7px 10px; font-size: .72rem; font-weight: 900; letter-spacing: .08em; }
+.pick-status.active { color: #bfffd7; background: rgba(81,216,138,.12); border: 1px solid rgba(81,216,138,.35); }
+.pick-status.no-trade { color: #ffe5a9; background: rgba(255,202,104,.10); border: 1px solid rgba(255,202,104,.32); }
+.pick-status.pending { color: #d9efff; background: rgba(105,212,255,.08); border: 1px solid rgba(105,212,255,.25); }
+.pick-date, .pick-meta, .pick-sub, .pick-stats { color: var(--muted); font-size: .8rem; }
+.pick-head { display: flex; justify-content: space-between; gap: 22px; align-items: flex-start; margin-bottom: 18px; }
+.pick-symbol { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; letter-spacing: -.04em; }
+.pick-reference { text-align: right; }
+.pick-reference span { display: block; color: var(--muted); font-size: .72rem; }
+.pick-reference strong { display: block; margin-top: 5px; font-size: 1.7rem; }
+.pick-levels { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin: 16px 0; }
+.pick-levels > div { padding: 12px; border-radius: 13px; border: 1px solid rgba(159,176,199,.15); background: rgba(255,255,255,.025); min-width: 0; }
+.pick-levels span, .pick-levels small { display: block; color: var(--muted); font-size: .7rem; }
+.pick-levels strong { display: block; margin: 5px 0 3px; font-size: .95rem; overflow-wrap: anywhere; }
+.pick-rule { margin-top: 9px; padding: 10px 12px; border-radius: 11px; background: rgba(105,212,255,.055); border: 1px solid rgba(105,212,255,.16); color: #dcecff; font-size: .84rem; line-height: 1.5; }
+.pick-reasons { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 14px; }
+.pick-reasons h4 { margin: 0 0 8px; font-size: .82rem; color: var(--good); text-transform: uppercase; letter-spacing: .06em; }
+.pick-reasons ul { margin-bottom: 8px; }
+.pick-stats { margin-top: 12px; }
+.pick-meta { margin-top: 12px; line-height: 1.5; }
+.no-trade-card h3 { margin: 5px 0 8px; }
+.no-trade-card p { margin: 0 0 12px; color: #d9e2ee; line-height: 1.55; }
+
 .metrics { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin: 16px 0 18px; }
 .metric { padding: 12px; border-radius: 13px; background: rgba(255,255,255,.025); border: 1px solid rgba(159,176,199,.15); min-width: 0; }
 .metric span { display: block; color: var(--muted); font-size: .72rem; margin-bottom: 5px; }
@@ -135,6 +164,7 @@ footer { color: var(--muted); text-align: center; padding: 24px 0 48px; font-siz
   .status-card { min-width: 0; }
   .hero-grid { grid-template-columns: 1fr; }
   .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pick-levels { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .detail-grid, .two-col { grid-template-columns: 1fr; }
   .panel-head { align-items: flex-start; flex-direction: column; }
 }
@@ -143,7 +173,10 @@ footer { color: var(--muted); text-align: center; padding: 24px 0 48px; font-siz
   .site-header, main, footer { width: min(100% - 20px, 1220px); }
   .site-header { padding-top: 30px; }
   .panel, .stock-card { padding: 17px; border-radius: 16px; }
-  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metrics, .pick-levels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pick-head { flex-direction: column; }
+  .pick-reference { text-align: left; }
+  .pick-status-row { align-items: flex-start; flex-direction: column; }
   .news-item { grid-template-columns: 1fr; gap: 4px; }
   .news-meta { white-space: normal; }
 }
