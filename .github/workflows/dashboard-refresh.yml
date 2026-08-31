@@ -9,8 +9,8 @@ on:
       - '.github/workflows/dashboard-refresh.yml'
   workflow_dispatch:
   schedule:
-    - cron: '45 4 * * 1-5'
-    - cron: '45 10 * * 1-5'
+    # 10:45 UTC = 16:15 IST. Runs every day, including weekends, so news stays fresh.
+    - cron: '45 10 * * *'
 
 concurrency:
   group: mystocks-dashboard-refresh
