@@ -13,6 +13,7 @@ from long_term_watchlist import (
 )
 
 OUTPUT = Path("dashboard-data.json")
+QUOTE_MISMATCH_THRESHOLD = 0.12
 
 
 def compact_history(symbol: str) -> list[float]:
@@ -30,6 +31,59 @@ def compact_history(symbol: str) -> list[float]:
         return []
 
 
+def reconcile_market_with_history(market: dict, history: list[float]) -> dict:
+    """Prefer actual adjusted trading history over potentially stale quote metadata.
+
+    Some thinly traded Indian micro-caps can have stale/corporate-action-inconsistent
+    values in Yahoo's quote-info endpoint. The adjusted daily history is used for
+    displayed price/change. If quote metadata disagrees materially, price-derived
+    fundamentals are suppressed rather than showing a confidently wrong number.
+    """
+    reconciled = dict(market or {})
+    if not history:
+        reconciled.setdefault("price_source", "Yahoo Finance quote metadata")
+        return reconciled
+
+    history_price = float(history[-1])
+    history_previous = float(history[-2]) if len(history) >= 2 else None
+    info_price = reconciled.get("price")
+
+    mismatch = None
+    try:
+        info_price_num = float(info_price) if info_price is not None else None
+        if info_price_num and history_price:
+            mismatch = abs(info_price_num / history_price - 1.0)
+    except (TypeError, ValueError, ZeroDivisionError):
+        info_price_num = None
+
+    reconciled["price"] = history_price
+    reconciled["previous_close"] = history_previous
+    reconciled["price_source"] = "Yahoo Finance adjusted trading history"
+
+    if history_previous not in (None, 0):
+        reconciled["change_pct"] = (history_price / history_previous - 1.0) * 100.0
+    else:
+        reconciled["change_pct"] = None
+
+    if mismatch is not None and mismatch > QUOTE_MISMATCH_THRESHOLD:
+        reconciled["data_quality_warning"] = (
+            f"Quote metadata differed {mismatch:.0%} from adjusted trading history. "
+            "The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
+        )
+        for field in (
+            "market_cap",
+            "trailing_pe",
+            "price_to_book",
+            "fifty_two_week_low",
+            "fifty_two_week_high",
+        ):
+            reconciled[field] = None
+    else:
+        reconciled["data_quality_warning"] = None
+
+    return reconciled
+
+
 def build_stock(stock) -> dict:
     market = {}
     try:
@@ -37,11 +91,18 @@ def build_stock(stock) -> dict:
     except Exception as exc:
         print(f"market warning for {stock.yahoo_symbol}: {exc}")
 
+    history = compact_history(stock.yahoo_symbol)
+    market = reconcile_market_with_history(market, history)
+
     news = []
     try:
         news = fetch_latest_news(stock.name, limit=5)
     except Exception as exc:
         print(f"news warning for {stock.name}: {exc}")
+
+    flags = live_risk_flags(market)
+    if market.get("data_quality_warning"):
+        flags.insert(0, f"Market-data quality: {market['data_quality_warning']}")
 
     return {
         "key": stock.key,
@@ -53,12 +114,12 @@ def build_stock(stock) -> dict:
         "research_score": stock.research_score,
         "review_as_of": stock.review_as_of,
         "market": market,
-        "price_history": compact_history(stock.yahoo_symbol),
+        "price_history": history,
         "thesis": list(stock.thesis),
         "risks": list(stock.risks),
         "kill_switches": list(stock.kill_switches),
         "official_links": [list(x) for x in stock.official_links],
-        "live_flags": live_risk_flags(market),
+        "live_flags": flags,
         "news": news,
     }
 
