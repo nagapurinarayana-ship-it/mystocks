@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-08-31T16:36:27+05:30",
+  "for_date": "2026-08-31",
+  "market": "NSE India",
+  "strategy": "Daily-candle momentum/trend setup; intended holding window up to 3 sessions",
+  "target_pct": 0.02,
+  "stop_pct": 0.01,
+  "max_hold_days": 3,
+  "universe_size": 25,
+  "market_regime": {
+    "available": true,
+    "positive": false,
+    "close": 24080.4,
+    "sma20": 24340.62,
+    "sma50": 24209.54,
+    "label": "Cautious"
+  },
+  "disclaimer": "Research signal only, not a guaranteed return. Skip the trade when opening conditions invalidate the setup.",
+  "status": "NO_TRADE",
+  "reason": "Nifty trend gate is not positive, so the system is not forcing a long trade today.",
+  "pick": null
+}
