@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T11:17:10+00:00",
+  "generated_at": "2026-09-01T15:11:35+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,12 +13,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.74,
-        "previous_close": 6.89,
-        "change_pct": -2.1770682148040565,
-        "market_cap": 2654813184.0,
-        "trailing_pe": 10.698412,
-        "price_to_book": 1.4171572,
+        "price": 6.76,
+        "previous_close": 6.74,
+        "change_pct": 0.29673590504450953,
+        "market_cap": 2662691072.0,
+        "trailing_pe": 10.730159,
+        "price_to_book": 1.4213625,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
@@ -26,13 +26,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-08-31T11:17:13+00:00",
+        "fetched_at": "2026-09-01T15:11:38+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        8.29,
-        8.27,
         8.38,
         8.32,
         8.32,
@@ -120,7 +118,9 @@
         6.91,
         6.97,
         6.89,
-        6.74
+        6.79,
+        6.74,
+        6.76
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -201,9 +201,9 @@
       "research_score": 6.9,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 4.04,
+        "price": 3.93,
         "previous_close": 4.01,
-        "change_pct": 0.7481296758104827,
+        "change_pct": -1.995012468827917,
         "market_cap": null,
         "trailing_pe": null,
         "price_to_book": null,
@@ -214,13 +214,11 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-08-31T11:17:14+00:00",
+        "fetched_at": "2026-09-01T15:11:39+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
-        "data_quality_warning": "Quote metadata differed 88% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
+        "data_quality_warning": "Quote metadata differed 93% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
       },
       "price_history": [
-        5.03,
-        4.98,
         4.98,
         4.84,
         4.62,
@@ -308,7 +306,9 @@
         4.02,
         3.97,
         4.01,
-        4.04
+        4.04,
+        4.01,
+        3.93
       ],
       "thesis": [
         "B2B gold-jewellery manufacturer with a real operating history and recent earnings momentum.",
@@ -343,12 +343,6 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Ashapuri Gold Ornament Limited Share Price - Upstox",
-          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE84X2lBVk5DSWRHZm1KODZVcFZ1TmxZZEFQcjBjeGVuaXEzVlZkYm9MS3ozYTVlcWpnRjBTWHVrMXBTb3VDZTNXc3F1VUdNU2ZGNVRidkRuMDBLeGRSamNxbW52Zkd6WVdQQjBpRDFIcVF0VERfNlMteA?oc=5",
-          "source": "Upstox",
-          "published": "2026-08-28 07:00 UTC"
-        },
-        {
           "title": "Ashapuri Gold Ornament standalone net profit rises 64.35% in the June 2026 quarter - Business Standard",
           "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxObkVBLW5BQy03VG9pMTZZdWFtWExkSVdvUnpsN3VTRlo1VXAzS1loR0JTWlN6NFZpVjJNYVU0aE51d2U3UWxHekM0QmpuUmFoTHUyNWFram5sMmVVTElKdjFhTjdmUlNsVW5JRlphejZvdldmQm1MNWx4d0N2eW9hS0U5ODhsODRpZi1PaUlZaXNUald1NlVHNVZCMDN4NDY5LXFPaXQ3d2h4OGlXTmNtUnVrLUJrSWlaek5nTFpVMHZVTkFZUnRSYUV2Zl9rdzRCTi1oUDRUNGtYSklaNXZZbTdPZFZ4dnB0SENibmtqVUZ1NG03TnfSAfsBQVVfeXFMTkQ0c3VOSGJuUlFSSWo5TU9idk9wZGpzYTVIMkh1UlM2WjVka3QxUmZJaWFmcERIS2dJa3Y3T1FyR2ZSYmhwQ2ZwWE4zbkp2SDVzMk5xbHdnOTVqSE5EblUzdTZ3VzAtY29RZE1OaTB1YUdqWUtrMllPVjdab0RhcFFnT0xFMjdYQnFBTDlOelJ6cVhMZnllTUdlMFA3bFdXcFpONk1oMzExM3Y4ZDhYVGJydXhEMlV1dFZVa2cyUjl6eWdXaHl3XzduNllYS21oT2NtRExUdVlLd0VBYmVSSHNFeGkxREs1YnJmNnUtMWt1YzhURDRZQ3BXUm8?oc=5",
           "source": "Business Standard",
@@ -371,6 +365,12 @@
           "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPWlJ2VE9BSE5vNUsyNkRFanBEVEhVcHBwX0FFMWRkRWRpMm8xcTFQSFJXUjZkNGdSU1ZaNGNjRXNoaEIzTnY1a3V4bEVIYVpNcUphMjBVMHJ4TUJVTTVFR1J5TnpneFZpOXhCRFdhcGpEZmNWRFpQdWpaeVhBbjFXWXZyZDQyXzJSSnpMT01ham5zMG5ieTE3dnlSajRLbGl5WTMybjgwWV9oejdabFdLZWhKeWx4MXJFWVRONHlDaEhBRHV0Z1l6ZThIY0J6QU5JYkljaWtGWFZreWVSdFd0cWc2ZC1nQdIB6wFBVV95cUxQMjM4cmY2Uzh0R01rTzFTLWNIM0RRWXBTSmI2Q0Nndlh1UGdMdmMxZ3NiajVURFZ1U09qTG9UdEgwZlduR081Rkg5NS10RmJkVGVCZWhzc0FuLWdHR01RR3FlVDBiOXVMYUh2Rm9kTXNuOXV1WUdOdnB1NmhXRl9lcmhneUNMT2hMMlRPWXdjdllaQWpQcFJLRWFsUzNXUEFleF8zZ0RYdDZ1T3FwSHpIVXF4ZGxSOFhVXy14RF9ETU16enFWQ1lVVnI5SmVvM1ZqcGtEWVNjTHcwdk9BWFFlWnhjd0VxZVB6VUd3?oc=5",
           "source": "The Times of India",
           "published": "2024-05-07 07:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Ltd. Share Price Today | Ashapuri Gold Live NSE/BSE - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPZ05OYm9IOFVINVg2WFNOckFTVmdKYkdhb2Zxemw0aVpMb1I1aHNqc2VPVXNuZkpSOE11QUF0ck0tTHFzdWJ4Umo4TE9HSng4Vy14dUZ2RExVc0VrN2xCQ1BWV2xSS2tBa2M1NGlrVzZRR3FsbmdsY1ZYOVlZdDJOTEd3OA?oc=5",
+          "source": "Value Research",
+          "published": "2022-03-25 09:03 UTC"
         }
       ]
     },
@@ -384,12 +384,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 8.12,
+        "price": 8.04,
         "previous_close": 8.12,
-        "change_pct": 0.0,
+        "change_pct": -0.9852216748768461,
         "market_cap": null,
-        "trailing_pe": 8.458333,
-        "price_to_book": 0.9123596,
+        "trailing_pe": 8.288659,
+        "price_to_book": 0.9033708,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -397,7 +397,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-08-31T11:17:15+00:00",
+        "fetched_at": "2026-09-01T15:11:40+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -410,7 +410,9 @@
         7.23,
         8.03,
         8.12,
-        8.12
+        8.21,
+        8.12,
+        8.04
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -451,10 +453,10 @@
           "published": "2026-04-20 05:28 UTC"
         },
         {
-          "title": "Madhav Infra Projects standalone PAT falls 35% YoY in Q1FY26 - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNNEpqcGVTNXB1aXdINWIwb19qU3lTMFc3c2lMNjBMVnZQenc3UEFVdC02Mkhzcnh3OWI3OXMwdE5LTXdZR1YyRG40blBqUjQxMmE3V1dMM0V3d01FTkJjZThTeW8wdTdSb2o3clk2MHpzblpNT0ZoeUhrUnFiSUF5dVdrNUlMRXVZZ0IwOE55UmVndG1HbzhhZXBNVDdOZ2Y2U1BMLWtlc2ZWV25zOVFrZTB5bGtXNDV5ci1MNDJ0eC1henJFTVRxOWZTbk0?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-07-30 17:03 UTC"
+          "title": "Madhav Infra Projects Share Price Falls 2.49% After Q1 Results - Univest",
+          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQb0dQc1ZpV1ZFcHNpVUJDU1lXSGp5b2NZMkNPTEcxbGI2dnhCbUtNVVhBY29zUTlNeE9qMWhCeUhOLXZub3hTWnhFQnFqT3ZHQ1UzZ1BGSGtaRjF3OUdhN2Z1OUExQm02blVzblhuNklfd19YTmFTVEUyMm96N1l2Q3FMWWgyeTg?oc=5",
+          "source": "Univest",
+          "published": "2026-07-31 07:00 UTC"
         },
         {
           "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
@@ -463,10 +465,10 @@
           "published": "2026-01-03 15:50 UTC"
         },
         {
-          "title": "Madhav Infra promoters consolidate stake via gift deed transfer - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQdDNzNThRaWZlNFg5MTZfZDRUcUtNRFZ2Y1BzUlRBM284SFljV29JVFRoLXRtNnhRLUtMM0VMMUtzRkhZLXJ4WnNaYlZFUTJNV290XzJ3N0RiNUI5TjFsWk1vZ3N0R2pnQjdmbm5rQkdCRl9hOEVqNm5Kd0llRmJBcHI0ZXdrZUswR29DcklsZVRyTU53OUtUTkg5Mjh2Q3dJdFJuY0xzcUFQdXpuemZkNWxFVQ?oc=5",
+          "title": "Madhav Infra Projects Secures ₹342 Crore Solar Power Contract from M.P. Urja Vikas Nigam Limited - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOVTF4ZW5MY0FvRjNyQlVpN2t5Q2c2Qk9NbldUWEF5TlFWRkx2ZFdONzA2X0l1SnE3R2hSdjJmb3ZXcktJakhkUnZhN253eEJteTA2T1FFNnpPYWR2Q3VERmVSY3J5NzEwY3lrRlNPR1d5Si14NDFOalViSkhWWTljRGhqN3NabUtyMVA4TnpFdFlUbWlPMEd6dk5RVnZxUG1sTHdLTjIyTUtnNFJTT1pvRmRQZFNhenQxV29JUEY2eElSa2JINHEyV2V4RkFoOHF4aTVEeg?oc=5",
           "source": "scanx.trade",
-          "published": "2026-08-05 07:00 UTC"
+          "published": "2025-12-28 08:00 UTC"
         },
         {
           "title": "MADHAVIPL Mar 2026 Earnings: Madhav Infra Projects Reports Q4 EPS of ₹0.39; Revenue Holds at ₹208 Crore - Share Dilution Risk - vinanet.vn",
