@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T14:43:49+00:00",
+  "generated_at": "2026-09-04T14:32:40+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,12 +13,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.7,
-        "previous_close": 6.71,
-        "change_pct": -0.14903129657227732,
-        "market_cap": 2639057664.0,
-        "trailing_pe": 10.63492,
-        "price_to_book": 1.4087468,
+        "price": 6.67,
+        "previous_close": 6.7,
+        "change_pct": -0.4477611940298498,
+        "market_cap": 2627241216.0,
+        "trailing_pe": 10.587302,
+        "price_to_book": 1.402439,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
@@ -26,12 +26,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-09-03T14:43:50+00:00",
+        "fetched_at": "2026-09-04T14:32:41+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        8.32,
         8.16,
         8.2,
         8.13,
@@ -120,7 +119,8 @@
         6.74,
         6.76,
         6.71,
-        6.7
+        6.7,
+        6.67
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -158,7 +158,38 @@
         ]
       ],
       "live_flags": [],
-      "news": []
+      "news": [
+        {
+          "title": "Nila Infrastructures consolidated net profit rises 25.78% in the June 2026 quarter - Business Standard",
+          "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNU2FQeG0xQndZMHQ0ckpvdVItWGxHUnlzc2pjR0hHcFgwcVRiUUp1dGlITkJXWW5BamthbGNEQWVoY0owb0Fjdlc3d0lyTm1UU2N0cms2VEk5TnBiY3gyRG1wN0RlbVYzMHR4b3QyR21ZV3NRZXJWblNrSjRmenpWV0JaRS1INlBOeFA3MDQyZ1B0MVF2ZUk4SjlhbWxydFpaTmQxWWREb1ZwNzFFaXlCbm5RWEFKT3ZkZTd3ZjlmOFRDU0FIaW1CVWZHdEhub2FabzhQXzk0TE0zSkt0YUkzWWF3YzVMQV9VS0FiczF0Ty1ySTQwc0HSAfsBQVVfeXFMTktjY2dOYnZPYjNEdmZVTnQ3Nk9uZWdpQ1c1T3RJZVVubWcyb1NfVVBoOTBZaWkybFFSaExCS3lTc1lEVER6RzFqRVVYbVFMVjdWcEtnTnpEMkE1QlplSjRsR3lGQXJBbGZwQTB5QzdJeC1OSEVUU1FhdkFmblN6VGdPTm5UdGpLWDVLOWFnaktuVWVCVlpna2ZyU01mNUVvRm0zN1RZcVRBUE5zOHlZT0dKUG12dlE1VUxhejNaV2hqbnl6TkR0cVFFaE1rS2o3cGFsbV9iNzhkWWJaSi1qNGRxSEkxTklERy1HRnl5RVhsa3F2YTY3SFNValk?oc=5",
+          "source": "Business Standard",
+          "published": "2026-07-25 07:00 UTC"
+        },
+        {
+          "title": "Nila Infrastructures Share Price Gains on Q1 Results - Univest",
+          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE8ycVl3cjBfZEQyQkY4R1NGYmVqZXVHVnJrYU5GOEpEcm5NRG9wXzVqV2diVi11Yk9jYVZva01iQzZYaEg0aTFETXVnRWRrRDhoQnVLOGNYakFUVi1HNk1PSnJtR3Q1ZzVHbkVlLWVjX2llMkxIVFNldndUZTJSaTQ?oc=5",
+          "source": "Univest",
+          "published": "2026-07-27 07:00 UTC"
+        },
+        {
+          "title": "Nila Infrastructures Limited (NILAINFRA.NS): Modest Decline Amid Consolidation - Order Block - vinanet.vn",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOU1RjMUFTcFVhMHN3Y0l3VzZlRHoybUJEcUdGUFh6LW9odzFDclNHcTRfOXp0bG9TTThpczFBbUNGOTlXRThpZmZGeGwyMDkzRjFyTEhCZDVnenA1d1Axd3kxc3IzVnhIWUNnc2VKUmxxVk1LOFAzdHI4QlQzUjBGSmVEamtTQmpLVVJEb09veVZNMHJGdVR5Sl8wUjlKSURPaDVrZUtxT2Z4N2NaX29jSEI1WE0?oc=5",
+          "source": "vinanet.vn",
+          "published": "2026-05-29 07:00 UTC"
+        },
+        {
+          "title": "Stocks to Watch Today: DOMS Industries, Krishna Institute of Medical Sciences, Prime Focus, Utkal... - Moneycontrol.com",
+          "url": "https://news.google.com/rss/articles/CBMiuAJBVV95cUxPWnBDM1V5ajEwMS1OaGVYZVVUekdiVmc1V1FScTdxNlZWSjJFVWFReEN6cE1sNEJ5alQxVE8tNjlEdzBrenlVVGQ1RzFCSnBuVHF6cGR6Ym1DUlY0UXdoNGtCRzhXN1Rnbjdoam9JWm1XY0dzbHJ2LTR1WER3LUNQNXdULUtjLU8wLWRuNHRSNTM5UHpYanV0SV82dWlpWlJsVU5qa0FURWh6STFrTEpCMU1VOGItcUowYnMtbG1HdDIxdXEyU3IwSlZILUR3Z2lkZC13WXJRQzNLN3ZEeUNCWWlQS3BTZWlXakQtbVEwRHFPbkNudklfVV9UQVdZRV9yZlNtUmZrbWhLVEcxX19jX002bHQ2bFFxM3A4N1VjbExvcUctMnlaZm5LQ1RWdTNacmFINnpvWkXSAb4CQVVfeXFMT192dG13WVZVUnNJcV9QeGZyc3NnM2luUGRZRGpPRVBXTWpSRU43OW1Pcll2OTJubVZGajNDOVFiWlNPLXRxM2JyNENZbWYtMU1zanllaWRHSG9EdmhXM2l1MUFMSmpva1FSRXcwYnJlUnVaSjM4UlJsTG1HUFBIMGVKcUdPR0hqUjIwWG1paUQzSUxxZFhUNWFGaVJGSFFiNlpMY2dJVkdVOE1RSUZHYzVsVng3R1p4TnJ0bHNIcFVQemZoNGwzeWo4T0t6VzJ2MEp0a3dRSDR3dy1Bc2lTSG12M2l0ZndCZTZ1ZkVEb2h6UW1za2hVcEJUc21LR2pUcGVkZUl0UDJ5Sk9HX2R6VkgyT19kTE43NlJObVBzS05Lem1LMUY1VWE4cmZta0JsUkYyalVKbkNUdHRnd3hB?oc=5",
+          "source": "Moneycontrol.com",
+          "published": "2026-06-17 07:00 UTC"
+        },
+        {
+          "title": "Q1 results 2026: AU Small Finance Bank, IDFC First Bank, Zen Technologies, among companies to announce earnings today - livemint.com",
+          "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxQSmttMzhFaHdha2JsU1pWQTVuMWxXMnRjWTd6dExxSGNZSTZoTFFBTy1OS3haWDIzNThISi1USjhuRUlpVGN3YzB4N3RxdHhxOHVEemswb2pMSmhxNVUtNlBfYTk1b3ZFUmtqaUNmSEZUN2N3elVVRkhYQXJ1VVRJRWNhMkpHa0RfalNaQ1pqZ05HMjI2aFd5bXFfT3FQQThEemZOYWFnZFRXdjBwMVlDa0VTbXFRbzZUcnNrM0Q3S3Q0NUpEUTR1X2tkWXNGRV8weEVUZndnXzFsMUR1TUJJQlB4Qm5nNE5JSzM3Tm1CWmxYbUVINF8xZnFmeXpHVFRQSlZCdEZpTW8wLUJBUmFCYtIBlgJBVV95cUxPRDZseG5aZllaUTlWdndRLURzNENyekp6bHYyT041OXpxNUNfam42YWtjX3ZSZmhDZEdMU2NYUlFmZEdwNURZeTZLMXExMGtNTnRIWFNrNVBHQTJKN3BRTkdyZ1ZPS3BkYjhYSHhYZi0zam53MTRlbnA4Yk1KZU1DRHFqQl83cERranVveU9YanhlY2I1aUpUYnBfX3A1bW9VMVotSEs1b2dJOFhDZURMampYWVpvdk43Q0FzSE95Z3pkY09vdGpNMDFZdkVOV0F2YTVwSjg2ZDZBQW5DT1FzaWFaV0hkYzRLcUo4dUhiOWNlblNHYV84MWFLVklxN3Z2YmlNdHdUS0tSWVB1NHplc2lCR1FkZw?oc=5",
+          "source": "livemint.com",
+          "published": "2026-07-25 07:00 UTC"
+        }
+      ]
     },
     {
       "key": "ashapuri",
@@ -170,9 +201,9 @@
       "research_score": 6.9,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 3.98,
+        "price": 3.95,
         "previous_close": 3.98,
-        "change_pct": 0.0,
+        "change_pct": -0.7537688442211032,
         "market_cap": null,
         "trailing_pe": null,
         "price_to_book": null,
@@ -183,12 +214,11 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-09-03T14:43:51+00:00",
+        "fetched_at": "2026-09-04T14:32:41+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
-        "data_quality_warning": "Quote metadata differed 91% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
+        "data_quality_warning": "Quote metadata differed 92% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
       },
       "price_history": [
-        4.62,
         4.59,
         4.71,
         4.77,
@@ -277,7 +307,8 @@
         4.01,
         3.93,
         3.98,
-        3.98
+        3.98,
+        3.95
       ],
       "thesis": [
         "B2B gold-jewellery manufacturer with a real operating history and recent earnings momentum.",
@@ -312,15 +343,21 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Ashapuri Gold FY26 net profit rises 54% to ₹1,856.40 lakh - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOR3JZS2JvbnlWVmFCSkpNVXFUZ2pGZEZHQ29TMk1JbHpMQXhKSmFSQ2tDbGh4Yy1JbEN3eDgxcFFNM3h6a1lDTms5Y0lua1NZbzJ4QzNhV2trMENZVVhROExMZlRrNXhDNVpoUmNUR0ZMZ0p1X2FfbnNHNUJDS0l3NzNLNGJIaTlFWUtKUFg0WUNGMGY4ZjczVVNvY3MxRjBXdW5uUGNrUzZtN0M4eEtoamVB?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-05-30 07:00 UTC"
+          "title": "Top 39 Gold Stocks To Buy In India September 2026 - Samco",
+          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
+          "source": "Samco",
+          "published": "2026-09-01 06:51 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament standalone net profit rises 68.75% in the March 2026 quarter - business-standard.com",
+          "title": "Ashapuri Gold Ornament Ltd. Share Price Today - Ashapuri Gold Ornament Ltd. Stock Price Live NSE/BSE - CNBC TV18",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUFc1VWdEMFc2N0xzU1VUUHpKeDZPQlVyNDBpeTMxcjBrSDNhV3ZwZkJOSEtldG8zME1mTEZZX01mSXVTTzZkNnNoOFZVQ0hxaUZCOFJzR1hoUzJsSmxyQWRkc1JNUV9GT2J4MnV2VlRSY2lhVVpGSUx3MWtVX0FneF9lV19lN2hMSVFaa29B?oc=5",
+          "source": "CNBC TV18",
+          "published": "2026-01-18 12:32 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament standalone net profit rises 68.75% in the March 2026 quarter - Business Standard",
           "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPWmxGNnVuV0tDelBsb2lVaWNfTk94X3RZV0RnY040RS1TS3VDZTNOb2pSaXNsQ3dkNllYREthMlBWUWgzdGsxRTJuT0x1dzEzQ3hvay1oY0dMUUtqUU5OZkpzbjJ5WUpwdGNfT1VlQnFtOE45R3dDRXpKU2V0ZVE1YURqMGdFM3ZYU1Bva1BnVVNLM1NFZlZyV2JlckJlRGFpQmRXbTFTZ3ZuVFEteWQ1a1p0dU9oSjZCVk44emdLZDdveHVRQlIycGlWSVZqcVdZeUFBMHN5SE91TzdCMUw2UHROMzZEVVdKdmN5UzEtMXRyVWRhcmNR0gH8AUFVX3lxTE54NENZSlZyZ3BmSGZsVFZ4enBWRWd2YW5CMXJZUmhEZEFBWDVSWFViMG9QMG8wa0cyMVRXOVdjdW5sMmt5WkN4UjgxX2J3MWxla2hkOHp5OG1oRm1lY1ZpRGQxOVBlQWpKN2sxMllOWVJLMVIzOHZpSzllbUUzTzdiUzJUb1RQOS1VODloWEk5cUY1aGQ4dmk3T1ZMU3RGTFJrQkdJTW8yZm5LcERsRmVmRnZCaDcxZGY5MjlrcnVjNE8yVmZDdzl0alVGcFl1V1JCa1lkN0Q2YVc0ZHFhX3Q0eGNNb0hhaUhJTFA3QkswdGtaZ1o5UGFRZ1lGaQ?oc=5",
-          "source": "business-standard.com",
+          "source": "Business Standard",
           "published": "2026-05-30 07:00 UTC"
         },
         {
@@ -328,12 +365,6 @@
           "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPbVh4cWktMmNwR0dVekc3bXhOT04xUEY5MWEwNzQ2MHNCOFBkMlhqbzNRdkJMTDRHYTg5VmFxR2hIanAyam9veHNDeHZmWS1ZcjNkU05vUElTbG5OTnYxSjZpakZPVzhDbWwxQTdBT0VRZkwzU0lrNkxQT2tKQTRVZmsyY3pDWnhoSG1mYklGX0JjMnpUOU8xYU42TkFfSDg4bUxVWkRMa2Vka2cxR0dudnFySWVEdmhJbDBld0haLVFJUDBYSWxKb3dCOUtyX0tRa20zTFhDcnFuY3M?oc=5",
           "source": "scanx.trade",
           "published": "2026-01-19 08:00 UTC"
-        },
-        {
-          "title": "Fundamentally Strong Penny Stocks Under 10 Rs for 2026 - Univest",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1jdnpPQmQwNzBSTnowOF9ESzJqTWdJM3AzU2FfNkFaMG55Y3JkeTgzekRVeG1hUmxQV2tBS3BneWJ5Z3ZGWmlaalVsUW9XY1dVTmJpV1p5ZVF6dEwySm1Pem45Wm5JQl96dHJ2d1I3Y1I1azZlZzdKN0V3?oc=5",
-          "source": "Univest",
-          "published": "2026-02-17 08:00 UTC"
         },
         {
           "title": "Ashapuri Gold Ornament Limited Files Annual Promoter Disclosure Under SEBI Takeover Regulations - scanx.trade",
@@ -353,12 +384,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.92,
-        "previous_close": 7.97,
-        "change_pct": -0.6273525721455453,
+        "price": 7.98,
+        "previous_close": 7.92,
+        "change_pct": 0.7575757575757569,
         "market_cap": null,
-        "trailing_pe": 8.25,
-        "price_to_book": 0.8898877,
+        "trailing_pe": 8.226804,
+        "price_to_book": 0.8966293,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -366,7 +397,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-09-03T14:43:51+00:00",
+        "fetched_at": "2026-09-04T14:32:42+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -383,7 +414,8 @@
         8.12,
         8.04,
         7.97,
-        7.92
+        7.92,
+        7.98
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -416,7 +448,38 @@
         ]
       ],
       "live_flags": [],
-      "news": []
+      "news": [
+        {
+          "title": "Madhav Infra Projects publishes audited Q4FY26 results - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOR0JuWnV2R3NaTXJWaWFYckVNTnVsaWpOQWR5T0VMLURkb1VWVGJ5dEFRbFN3d3pOc2t1X2R3Z096TFQ1RHZIVVNkSzQwNjBUalFpYUx4X1hnOFpsX3g0TjRuWEc5SU1EVmQyNXZXTC1NTHFjcUc1Q0ozNnZFRFdjQnRYelE3UVJVd2k1a2sxdkh1NFBOMTI0UGFQZXJac1dxTmFMSnNFSGhveDFoYjZfamhKR1B3c1dlZFJwQ3Nn?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-09-01 00:59 UTC"
+        },
+        {
+          "title": "MADHAVIPL Stock Price and Chart — NSE:MADHAVIPL - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBQeUdXMnJ3dUxtNFhxc0FDWEZrRTV1eXVzajZMTmFKMzIzOFdMRnp4TV9pQkZDd1dkSGs5dy1TTmFfbWRDSEc0ODhvb1FweWdyT1NrRE92cjhuZTc0S1Rn?oc=5",
+          "source": "TradingView",
+          "published": "2026-04-20 05:28 UTC"
+        },
+        {
+          "title": "Madhav Infra Pr Consolidated June 2026 Net Sales at Rs 88.37 crore, up 0.94% Y-o-Y - Moneycontrol.com",
+          "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNX0tMWm11dnlvS1FHOTlJZVZ2c2VheDFWV0JVWWVNSndRVG5RblNFenB2NE5zOTNsWHdUaDQ0MVROWGdjM3VsbUdjbEcwS1J2Z1Y0RXF0U1JUc2F3TEZ0clhXNUJVRUxiU092TG1TbkRqTXdhczczSU0tR0YwOVJWeTBLd0RZNUdqYXpXRnVxZEZndzlkU2N3OExtSXdmSjFBbmF1dUR5SzJoeHEzUXdwUjZ1bjRNdVJ2TVBYOHNrYlVvdy1qVWliUmRBel9CZDltWkRpNlNqMV9XOFBGaFJn0gHkAUFVX3lxTE50dVJFckp5WERUVUJaV09CNlVBX09NRnktYzhPa3pjU0xBUF9QdDFobDVpcGtlUGpULWplZ2J3UlRqREdRbDFEZ2V6bktPeEhzVGJMQjNsV1VmbWpDdmF2cFJlYW1uSDdzRTY1cG4tNGJqeUVLWVdYTDdXdGRFUkVTc3RaSlBzWXh6NDY0eTRlYlBYRTY0UWtHR1BOc1hLWXF1alZrOFlnRVVlTl9DNEtXaDQ0VTJfdmhuVkpmcDRfV2xBdEhZUUZZZDVscU9wRDVTdXFod3NKNVdwdFhLLWxocUpZcQ?oc=5",
+          "source": "Moneycontrol.com",
+          "published": "2026-08-07 07:00 UTC"
+        },
+        {
+          "title": "Madhav Infra Projects consolidated net profit declines 16.31% in the June 2026 quarter - Business Standard",
+          "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNZ3pkY2hxWU90MmJ0RHljMGlSX3h2RmFMNFdzSERtT0RqRmlyOVpNM1FGaG54ckQ0XzNSTFAtOUpxcm1OVHc3RHhlWGJ1ZUxxZWtPNEU1MHhocUdsWnk2TXlPX2tLcjJzRlR2WUt0a0FIR2RFYkpVN1RoOEhTaHhXTVZ6U0s3dzhHM0h2UWQydFdqcjhfcm9LUmlaM2lXbEtPb0s0YTBOczJWTjR0TE5FNFpEZFpSNVhIVG0yMHdtQzlPUThOcEdyR2x0VXh2UWZaUDNQRGo3NXBSS0FtUmx2TlMyV1ZkRWlJdFk0b3l1X3p6RFQ3NTZWdVA4c9IBgAJBVV95cUxNNXJ5UzVxam1TZTY4cjdLTFRqcndGT2FWSllKVkpiWDN0VUJOYkVIeHdKODBUWkRpdzZacmIzZ1VMSVJCUFhyX1pScEIwR3VIdHRFcXZkdVhUS2tucUxMcENDQUNYQ0NOaDVvZ2ltSUtteW5ySVU3R2RGS2JCaGNwb0tZRXNzRWRWdzlqVzN1MGxVVWotUGpPTEVOc1JPZEViM0NSU2c0LUFIVWZYemtTODZ1QnB6OXVOUjhna3hsdDFIdl92QTd5RW1RN0VnWkdGb0Zramp6MmtIOXVBNXQ5TDctLVJKd2ZNTkdFVC16WUhXSGJ4cGU4cHlMMGRHUk9V?oc=5",
+          "source": "Business Standard",
+          "published": "2026-07-31 07:00 UTC"
+        },
+        {
+          "title": "Madhav Infra Projects Q1 FY27 Results Preview - Univest",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1XQnNRckt0QldLbGZoaEVQRkRLS0o1ay1QR3pTakFFVFhtMXpyZkpLMWhZMEZJTjJSR2MtMTgxSGI3TVRPYTVnOHZyTEpLbWFRMzFUTXZjY0tmX2l3Y3JQMHRsRFl3OURxZVVuX0NtOTFEczUzTFF3U1ln?oc=5",
+          "source": "Univest",
+          "published": "2026-07-10 07:00 UTC"
+        }
+      ]
     }
   ]
 }
