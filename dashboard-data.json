@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T13:44:18+00:00",
+  "generated_at": "2026-09-13T14:40:42+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -26,7 +26,7 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-09-12T13:44:20+00:00",
+        "fetched_at": "2026-09-13T14:40:43+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -160,6 +160,12 @@
       "live_flags": [],
       "news": [
         {
+          "title": "Nila Infrastructures Ltd. Peer Comparison – Compare with Others - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxORHRvbzNZSVRhd09HakZYOE5LUUJNNTdlSkpkWkFMODJlWklnNWxPbEZwbVk2WkRlZU5yc2FUSWhTb3V4R2xLYzVoVzFNYmRLSTVtYjM4bHY2d0VlQjltVmJZaUs3d0l3RDBOOEJmQ3MzN2c2aXlwZ3JZNk9ELThESDNDQ2ZldFlLd3lxQ0pMbVdYM0M0?oc=5",
+          "source": "Value Research",
+          "published": "2026-08-26 17:02 UTC"
+        },
+        {
           "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
           "source": "Univest",
@@ -170,12 +176,6 @@
           "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPaHFsb3cxVnNHTVBnQXgxSjZtN05Ha2RHZG41UEszLUQwdjdoWEdJVkxwMWcyQTkyaUx6MWxGUEFnT2hjQno4WnZmdDlQaDBOMDZsWU1HYm83ZEphMEtXdDByRU9sS2tSR1lyY2xJTlZTUVU5ZGJSNnpnVjFOczhCd2Y5dXgxWDV4TlQ3Ym5Rak1LNkY3VmMzdUZLSWxhc0NSSWRRbHVZU3dOS1NHT0JqQ204VGNySU9WZ1hyLUZaOF9EOGJwZ1VnWVl0Y2syMV9NZk1QczJVcDdSRWd5b0czTl91RGxjZw?oc=5",
           "source": "scanx.trade",
           "published": "2026-03-30 07:00 UTC"
-        },
-        {
-          "title": "Nila Infrastructures consolidated net profit rises 9.14% in the March 2026 quarter - business-standard.com",
-          "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQbjMxMWtLSG1JUnNPSlZVRDlnQzNaT1NZS1NkWFU5bTY0THA2dHRHWUhpTG9kcGJVUTM1MzJKV3R2WXZtWk5TRWF4YkllS3J3RkpCei1rVzRlQ1N5S3ItM2FwRDRPenV5S2wtYnhBOVRZb3EwSXRhV3dwV1JRVENobTl0NEEyUGpLUFFJQzBXNGJha2JPc1JqT2VZR1I1SXFoQjRpalNKX3FkVlNTcGxfMWlhTHYwdFYxc2FyMlFmTjUza3BjZnpnZ0M2Zkp3UjFfWjA5QUd5T0l2TEp4ZU1hN25RVFp5Q1ZlX3g4eUtlY2tGd0ZENXfSAfsBQVVfeXFMUGJ2cDVicmJyVXJTR0tEQnk2MWxQZW9RSjNVc3I0V1BhSl94Y3ZQRU14by1WRXBBUUxycXVmOWU0M1d4SmtFMmNBdTltWEkwQTlreVhweENBNFp6UXotOUYwdmZRYzlwN3Axb3J6M0lwMjVDMi1LeHRyMVBZZW1EakYwWHBrNm5lWlgyd0ZrejJOM3NKbXJDNV9YYnFqQTVTTmFrOFg0RUNkQXoyczNuX0dMajRkVlc4bHVTNFBnbzItWkotZkF4SDk5cHIxSUZJcl92Vy10dnVNc0JvZmpqbUpSUzNLbDI3TmlUVWRWbno4UUhwWWlnM2hLWjA?oc=5",
-          "source": "business-standard.com",
-          "published": "2026-05-02 07:00 UTC"
         },
         {
           "title": "Why Is Nila Infrastructures Share Price Falling Key Reasons 2026 - Univest",
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-09-12T13:44:20+00:00",
+        "fetched_at": "2026-09-13T14:40:44+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": "Quote metadata differed 68% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
       },
@@ -361,16 +361,16 @@
           "published": "2026-05-30 07:00 UTC"
         },
         {
-          "title": "Top 39 Gold Stocks To Buy In India September 2026 - Samco",
-          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
-          "source": "Samco",
-          "published": "2026-09-05 06:51 UTC"
-        },
-        {
           "title": "Ashapuri Gold Ornament Q4 FY26 Results: PAT Rs 18.56 Crore - Univest",
           "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQMi04Y1FwLVFFTjFyMFBETVNuaWVuT2FzMk9fN3VxZU40LXlfa1RKWkotVl8tXzFDV2VvcElIZnVZZ3M2bXI2VkNfYl9qQTAtXzJCRTBYN29LM3lJRTRONVM1MDhuamJVb2lvc3U3SUFpdHhXQkk5Nkczajc2aUdMVlFkME5tdXhKUS00YWQ3VQ?oc=5",
           "source": "Univest",
           "published": "2026-06-01 07:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Wins ₹29 Crore Orders from Major Retail Chains at IIJS 2026 - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPbVh4cWktMmNwR0dVekc3bXhOT04xUEY5MWEwNzQ2MHNCOFBkMlhqbzNRdkJMTDRHYTg5VmFxR2hIanAyam9veHNDeHZmWS1ZcjNkU05vUElTbG5OTnYxSjZpakZPVzhDbWwxQTdBT0VRZkwzU0lrNkxQT2tKQTRVZmsyY3pDWnhoSG1mYklGX0JjMnpUOU8xYU42TkFfSDg4bUxVWkRMa2Vka2cxR0dudnFySWVEdmhJbDBld0haLVFJUDBYSWxKb3dCOUtyX0tRa20zTFhDcnFuY3M?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-01-19 08:00 UTC"
         }
       ]
     },
@@ -388,7 +388,7 @@
         "previous_close": 7.92,
         "change_pct": 0.5050505050504972,
         "market_cap": 2145869312.0,
-        "trailing_pe": 8.206185,
+        "trailing_pe": 8.291667,
         "price_to_book": 0.89438206,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
@@ -397,7 +397,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-09-12T13:44:21+00:00",
+        "fetched_at": "2026-09-13T14:40:45+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -461,10 +461,10 @@
           "published": "2026-04-20 05:28 UTC"
         },
         {
-          "title": "MADHAVIPL Share Price Today - Madhav Infra Projects Stock Analysis - Equitypandit",
-          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5MZFltS0ZLSi15cTg2elBDNzhMdGRWNkkwaVlkVGRfd1B2UGhNZDgtWEdrQXZNVTNCZjVsUVVyNm4xYU9JcDc2bV9wSUFTVDlmaDgzUjlOdzRXZk12TG1r?oc=5",
-          "source": "Equitypandit",
-          "published": "2026-04-21 00:12 UTC"
+          "title": "Madhav Infra Signs 73 MW PPAs; Shares Largely Steady - hdfcsky.com",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPOVc0MFVWcjgwc3JpenNZNVhWYmg2dFRqeDFpaUpjVmFfSjdpWDNjQzA5Zlc2cmpzaVRSb3JPNlYyM3ZiYTVyOHNVMUhTc2tWRmtrSFJYNEFOMkxPZ2E1TXp5bzluTjJHTWhkUFpUeExqUkd0Mm5fYncxbGhwZW1KQW1mZV9DRzBJeUFVRDEzLUQzQWdwaE9n?oc=5",
+          "source": "hdfcsky.com",
+          "published": "2026-04-23 07:00 UTC"
         },
         {
           "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
@@ -479,10 +479,10 @@
           "published": "2025-11-10 08:00 UTC"
         },
         {
-          "title": "MADHAVIPL Mar 2026 Earnings: Madhav Infra Projects Reports Q4 EPS of ₹0.39; Revenue Holds at ₹208 Crore - Share Dilution Risk - vinanet.vn",
-          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNT3FtbS03NW1sRUtLZjQzWkJSMWJ4c1JkQlR1WmhmVDVVNVBrSW9pMlQ0M2JodGxqUzBnbmpCSmd2N1g3YmhZWHo4YmNzV1E0NU1QTVVPdzA1N2JPSkwtVzZiUFVfU19KSkhXMXJHVnFSVloyUVg3UzVFNHEyNERhNG92SjVKLVZpVGpnUEp2akMxY1hMbldwQXJDcXR5M0tiN3VVNk0tZzRzelZNcnVtS19hdzl1c3hjLXVLX0t5S2pIUVYxemNpV0JCUUlUM1VXN3ozM0dKMA?oc=5",
+          "title": "Madhav Infra Projects (MADHAVIPL.NS) Falls 5%: Support Levels Hold the Key - Volatility Breakout Picks - vinanet.vn",
+          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOSzNIeXhoMTNHemVuREJjWFZSeUcyZVplY1FvSjRyMHZ2RzB1VDFGTnNsb0pZa2JFNHpZWkZwZVd3NHdlbjJHT1ZQZTVhcVhMcUxtMzZRaXdmOW5NVmQ3TTVpWWdpUm9rVUplZGYtMXFLRmtkRUV5NXNlVEd4NDBRcEhKazRKbWp2QXZLelJJcHdGMk03d0gzbG9tU09hQ0VwYXd5TnUtek05LUZP?oc=5",
           "source": "vinanet.vn",
-          "published": "2026-07-03 07:00 UTC"
+          "published": "2026-06-16 07:00 UTC"
         }
       ]
     }
