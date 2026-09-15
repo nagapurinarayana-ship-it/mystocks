@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T16:33:41+00:00",
+  "generated_at": "2026-09-15T15:16:11+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,12 +13,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.64,
-        "previous_close": 6.73,
-        "change_pct": -1.3372956909361133,
-        "market_cap": 2611485440.0,
-        "trailing_pe": 10.523809,
-        "price_to_book": 1.3940287,
+        "price": 6.57,
+        "previous_close": 6.64,
+        "change_pct": -1.0542168674698704,
+        "market_cap": 2587852288.0,
+        "trailing_pe": 10.428572,
+        "price_to_book": 1.381413,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
@@ -26,12 +26,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-09-14T16:33:42+00:00",
+        "fetched_at": "2026-09-15T15:16:12+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        9.03,
         8.84,
         8.53,
         8.37,
@@ -120,7 +119,8 @@
         6.62,
         6.8,
         6.73,
-        6.64
+        6.64,
+        6.57
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-09-14T16:33:43+00:00",
+        "fetched_at": "2026-09-15T15:16:13+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": "Quote metadata differed 68% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
       },
@@ -349,10 +349,10 @@
           "published": "2026-09-11 06:59 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament (AGOL) Share: A Small Jewellery Wholesaler Explained - Kalkine India",
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQWjR0MFRReGhYdUlhbmpmdTJLLUlvNENTRUVvMG9XSm9PU0NTWnJFYXN0cXV2MkZXZkVpNTAxMGlNWXlmQnkyTWJIUVF6aHRGWWhTNXpobS1jMWRsbUV2eHBKWGpLb1NOZmxId2FSQklvcC0wZE42V0tqT2lMY282QTZsd0RMY2pDWHVzWXRXdzJ4T0hTRlUwUlpnUEsyVTdNNU1ZX2RTM1d3a0RTdG9GSkhPay1LSzFFUXlJ?oc=5",
-          "source": "Kalkine India",
-          "published": "2026-09-10 07:11 UTC"
+          "title": "Ashapuri Gold FY26 net profit rises 54% to ₹1,856.40 lakh - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOR3JZS2JvbnlWVmFCSkpNVXFUZ2pGZEZHQ29TMk1JbHpMQXhKSmFSQ2tDbGh4Yy1JbEN3eDgxcFFNM3h6a1lDTms5Y0lua1NZbzJ4QzNhV2trMENZVVhROExMZlRrNXhDNVpoUmNUR0ZMZ0p1X2FfbnNHNUJDS0l3NzNLNGJIaTlFWUtKUFg0WUNGMGY4ZjczVVNvY3MxRjBXdW5uUGNrUzZtN0M4eEtoamVB?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-05-30 07:00 UTC"
         },
         {
           "title": "Ashapuri Gold Ornament Wins ₹29 Crore Orders from Major Retail Chains at IIJS 2026 - scanx.trade",
@@ -361,16 +361,16 @@
           "published": "2026-01-19 08:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Q4 FY26 Results: PAT Rs 18.56 Crore - Univest",
-          "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQMi04Y1FwLVFFTjFyMFBETVNuaWVuT2FzMk9fN3VxZU40LXlfa1RKWkotVl8tXzFDV2VvcElIZnVZZ3M2bXI2VkNfYl9qQTAtXzJCRTBYN29LM3lJRTRONVM1MDhuamJVb2lvc3U3SUFpdHhXQkk5Nkczajc2aUdMVlFkME5tdXhKUS00YWQ3VQ?oc=5",
-          "source": "Univest",
-          "published": "2026-06-01 07:00 UTC"
+          "title": "Ashapuri Gold Ornament Ltd's Rs 48.75 crores rights opens on May 8 - The Times of India",
+          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPWlJ2VE9BSE5vNUsyNkRFanBEVEhVcHBwX0FFMWRkRWRpMm8xcTFQSFJXUjZkNGdSU1ZaNGNjRXNoaEIzTnY1a3V4bEVIYVpNcUphMjBVMHJ4TUJVTTVFR1J5TnpneFZpOXhCRFdhcGpEZmNWRFpQdWpaeVhBbjFXWXZyZDQyXzJSSnpMT01ham5zMG5ieTE3dnlSajRLbGl5WTMybjgwWV9oejdabFdLZWhKeWx4MXJFWVRONHlDaEhBRHV0Z1l6ZThIY0J6QU5JYkljaWtGWFZreWVSdFd0cWc2ZC1nQdIB6wFBVV95cUxQMjM4cmY2Uzh0R01rTzFTLWNIM0RRWXBTSmI2Q0Nndlh1UGdMdmMxZ3NiajVURFZ1U09qTG9UdEgwZlduR081Rkg5NS10RmJkVGVCZWhzc0FuLWdHR01RR3FlVDBiOXVMYUh2Rm9kTXNuOXV1WUdOdnB1NmhXRl9lcmhneUNMT2hMMlRPWXdjdllaQWpQcFJLRWFsUzNXUEFleF8zZ0RYdDZ1T3FwSHpIVXF4ZGxSOFhVXy14RF9ETU16enFWQ1lVVnI5SmVvM1ZqcGtEWVNjTHcwdk9BWFFlWnhjd0VxZVB6VUd3?oc=5",
+          "source": "The Times of India",
+          "published": "2024-05-07 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Limited Files Annual Promoter Disclosure Under SEBI Takeover Regulations - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOb2NiMWtLbXMwMFd2SlhWRnk5bngxc09BbE5WQWVwVHAwaUxnaXFyMmk0RTlQS3pNWWNGNG9ETk1ZQTRZY3ZJS2l4czNKLUd5ZnA5RkNnQmI1WEVvUjFzN3NZczVLNE1sRnZpaDN3Z2ZiaUhzQTVvNllJU2w1ZHJrTV9UM2ZIRS1kbUFScDFLMkZUZ0VWaU81dlhsZWpLWXFzTkZ3MnlTR2lMOUNra3V4R0NxVUZMOXFUaV83Y2VjMUtjMHRxZ3VVODNaWEZZeUlWMElYUWpXdVFESmg3bmFteXBIYUVjOVk?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-04-03 07:00 UTC"
+          "title": "Ashapuri Gold Ornament Ltd. Share Price Today | Ashapuri Gold Live NSE/BSE - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPZ05OYm9IOFVINVg2WFNOckFTVmdKYkdhb2Zxemw0aVpMb1I1aHNqc2VPVXNuZkpSOE11QUF0ck0tTHFzdWJ4Umo4TE9HSng4Vy14dUZ2RExVc0VrN2xCQ1BWV2xSS2tBa2M1NGlrVzZRR3FsbmdsY1ZYOVlZdDJOTEd3OA?oc=5",
+          "source": "Value Research",
+          "published": "2022-03-25 09:03 UTC"
         }
       ]
     },
@@ -384,12 +384,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.96,
-        "previous_close": 7.92,
-        "change_pct": 0.5050505050504972,
-        "market_cap": 2156652544.0,
-        "trailing_pe": 8.333334,
-        "price_to_book": 0.8988764,
+        "price": 7.82,
+        "previous_close": 7.96,
+        "change_pct": -1.7587939698492372,
+        "market_cap": 2108127872.0,
+        "trailing_pe": 8.145834,
+        "price_to_book": 0.87865174,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -397,7 +397,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-09-14T16:33:45+00:00",
+        "fetched_at": "2026-09-15T15:16:14+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -420,7 +420,8 @@
         8.03,
         7.96,
         7.92,
-        7.96
+        7.96,
+        7.82
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -479,10 +480,10 @@
           "published": "2026-06-03 07:00 UTC"
         },
         {
-          "title": "Madhav Infra Projects Reports Q2 FY26 Results: Net Profit Rises to ₹5.78 Crore - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPZ000M1R4N0tPVlVBdUxuQWhTemNnRFFzRHE2X3NkY0JaWmtzaktzU2M1Wk1teUlSNzdoWXhPVnJrZEpwSExOVGc0Mmhrc013R0JJWHNuZVpZZWtmWTRfZDNzbHByWG0zUU0wbFJhZFRmdnFQOFZfaDhUY2xSdXowVDZJVHJmeGdJZDl2UDRXajIwazlvVFVYNzloSUIyS3pObXFRS0ZQU0h3aFVWbUVvS0ZELUtmUzYtZm50OXRLN1U2N3B0eWdaOGJJNDQ?oc=5",
+          "title": "Madhav Infra Projects Secures ₹342 Crore Solar Power Contract from M.P. Urja Vikas Nigam Limited - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOVTF4ZW5MY0FvRjNyQlVpN2t5Q2c2Qk9NbldUWEF5TlFWRkx2ZFdONzA2X0l1SnE3R2hSdjJmb3ZXcktJakhkUnZhN253eEJteTA2T1FFNnpPYWR2Q3VERmVSY3J5NzEwY3lrRlNPR1d5Si14NDFOalViSkhWWTljRGhqN3NabUtyMVA4TnpFdFlUbWlPMEd6dk5RVnZxUG1sTHdLTjIyTUtnNFJTT1pvRmRQZFNhenQxV29JUEY2eElSa2JINHEyV2V4RkFoOHF4aTVEeg?oc=5",
           "source": "scanx.trade",
-          "published": "2025-11-10 08:00 UTC"
+          "published": "2025-12-29 08:00 UTC"
         }
       ]
     }
