@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T15:09:37+00:00",
+  "generated_at": "2026-09-17T15:18:21+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,12 +13,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.57,
+        "price": 6.56,
         "previous_close": 6.57,
-        "change_pct": 0.0,
-        "market_cap": 2587852288.0,
-        "trailing_pe": 10.428572,
-        "price_to_book": 1.381413,
+        "change_pct": -0.15220700152207556,
+        "market_cap": 2583913216.0,
+        "trailing_pe": 10.412699,
+        "price_to_book": 1.3793104,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
@@ -26,12 +26,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-09-16T15:09:38+00:00",
+        "fetched_at": "2026-09-17T15:18:22+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        8.53,
         8.37,
         8.3,
         8.25,
@@ -120,7 +119,8 @@
         6.73,
         6.64,
         6.57,
-        6.57
+        6.57,
+        6.56
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -201,9 +201,9 @@
       "research_score": 6.9,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 4.7,
-        "previous_close": 4.53,
-        "change_pct": 3.7527593818984517,
+        "price": 4.56,
+        "previous_close": 4.7,
+        "change_pct": -2.9787234042553346,
         "market_cap": null,
         "trailing_pe": null,
         "price_to_book": null,
@@ -214,12 +214,11 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-09-16T15:09:39+00:00",
+        "fetched_at": "2026-09-17T15:18:23+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
-        "data_quality_warning": "Quote metadata differed 61% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
+        "data_quality_warning": "Quote metadata differed 66% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
       },
       "price_history": [
-        4.51,
         4.3,
         4.45,
         4.47,
@@ -308,7 +307,8 @@
         3.96,
         4.28,
         4.53,
-        4.7
+        4.7,
+        4.56
       ],
       "thesis": [
         "B2B gold-jewellery manufacturer with a real operating history and recent earnings momentum.",
@@ -349,28 +349,28 @@
           "published": "2026-09-11 06:59 UTC"
         },
         {
+          "title": "Top 39 Gold Stocks To Buy In India September 2026 - Samco",
+          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
+          "source": "Samco",
+          "published": "2026-09-16 06:51 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament seeks two-month AGM extension for FY26 - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUmNRc3poNnoteGI3U29MejNZVlpJVHhBQ1Z4U0c5RFIzbDlMS2poMWhmai04X2xnYTdmOUl3d1ZHUW1uRFRtSEdtWXJRWGloMFVGRlRrVVZMQkZPZEhzMlpkX0ZIaVcwMk1JMU5YeXE4Um5yaTlhR29oQzNrYVdTQ25HcXQ1WVR4bXl2cFRiNXNzYndKRFdyNnpqa3VSZEp4dHphZlg0YlVQZVBSZ245VEpRdjg?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-09-05 11:41 UTC"
+        },
+        {
           "title": "Ashapuri Gold Ornament Wins ₹29 Crore Orders from Major Retail Chains at IIJS 2026 - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPbVh4cWktMmNwR0dVekc3bXhOT04xUEY5MWEwNzQ2MHNCOFBkMlhqbzNRdkJMTDRHYTg5VmFxR2hIanAyam9veHNDeHZmWS1ZcjNkU05vUElTbG5OTnYxSjZpakZPVzhDbWwxQTdBT0VRZkwzU0lrNkxQT2tKQTRVZmsyY3pDWnhoSG1mYklGX0JjMnpUOU8xYU42TkFfSDg4bUxVWkRMa2Vka2cxR0dudnFySWVEdmhJbDBld0haLVFJUDBYSWxKb3dCOUtyX0tRa20zTFhDcnFuY3M?oc=5",
           "source": "scanx.trade",
           "published": "2026-01-19 08:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Limited Files Annual Promoter Disclosure Under SEBI Takeover Regulations - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOb2NiMWtLbXMwMFd2SlhWRnk5bngxc09BbE5WQWVwVHAwaUxnaXFyMmk0RTlQS3pNWWNGNG9ETk1ZQTRZY3ZJS2l4czNKLUd5ZnA5RkNnQmI1WEVvUjFzN3NZczVLNE1sRnZpaDN3Z2ZiaUhzQTVvNllJU2w1ZHJrTV9UM2ZIRS1kbUFScDFLMkZUZ0VWaU81dlhsZWpLWXFzTkZ3MnlTR2lMOUNra3V4R0NxVUZMOXFUaV83Y2VjMUtjMHRxZ3VVODNaWEZZeUlWMElYUWpXdVFESmg3bmFteXBIYUVjOVk?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-04-03 07:00 UTC"
-        },
-        {
           "title": "Ashapuri Gold Ornament Ltd's Rs 48.75 crores rights opens on May 8 - The Times of India",
           "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPWlJ2VE9BSE5vNUsyNkRFanBEVEhVcHBwX0FFMWRkRWRpMm8xcTFQSFJXUjZkNGdSU1ZaNGNjRXNoaEIzTnY1a3V4bEVIYVpNcUphMjBVMHJ4TUJVTTVFR1J5TnpneFZpOXhCRFdhcGpEZmNWRFpQdWpaeVhBbjFXWXZyZDQyXzJSSnpMT01ham5zMG5ieTE3dnlSajRLbGl5WTMybjgwWV9oejdabFdLZWhKeWx4MXJFWVRONHlDaEhBRHV0Z1l6ZThIY0J6QU5JYkljaWtGWFZreWVSdFd0cWc2ZC1nQdIB6wFBVV95cUxQMjM4cmY2Uzh0R01rTzFTLWNIM0RRWXBTSmI2Q0Nndlh1UGdMdmMxZ3NiajVURFZ1U09qTG9UdEgwZlduR081Rkg5NS10RmJkVGVCZWhzc0FuLWdHR01RR3FlVDBiOXVMYUh2Rm9kTXNuOXV1WUdOdnB1NmhXRl9lcmhneUNMT2hMMlRPWXdjdllaQWpQcFJLRWFsUzNXUEFleF8zZ0RYdDZ1T3FwSHpIVXF4ZGxSOFhVXy14RF9ETU16enFWQ1lVVnI5SmVvM1ZqcGtEWVNjTHcwdk9BWFFlWnhjd0VxZVB6VUd3?oc=5",
           "source": "The Times of India",
           "published": "2024-05-07 07:00 UTC"
-        },
-        {
-          "title": "Ashapuri Gold Ornament Ltd. Share Price Today | Ashapuri Gold Live NSE/BSE - Value Research",
-          "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPZ05OYm9IOFVINVg2WFNOckFTVmdKYkdhb2Zxemw0aVpMb1I1aHNqc2VPVXNuZkpSOE11QUF0ck0tTHFzdWJ4Umo4TE9HSng4Vy14dUZ2RExVc0VrN2xCQ1BWV2xSS2tBa2M1NGlrVzZRR3FsbmdsY1ZYOVlZdDJOTEd3OA?oc=5",
-          "source": "Value Research",
-          "published": "2022-03-25 09:03 UTC"
         }
       ]
     },
@@ -384,12 +384,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.69,
-        "previous_close": 7.82,
-        "change_pct": -1.662404092071612,
-        "market_cap": 2073082240.0,
-        "trailing_pe": 7.8469386,
-        "price_to_book": 0.86404496,
+        "price": 7.59,
+        "previous_close": 7.69,
+        "change_pct": -1.3003901170351218,
+        "market_cap": 2046124160.0,
+        "trailing_pe": 7.9062505,
+        "price_to_book": 0.8528091,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -397,7 +397,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-09-16T15:09:40+00:00",
+        "fetched_at": "2026-09-17T15:18:23+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -422,7 +422,8 @@
         7.92,
         7.96,
         7.82,
-        7.69
+        7.69,
+        7.59
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -469,22 +470,22 @@
           "published": "2026-04-23 07:00 UTC"
         },
         {
-          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - cnbctv18.com",
+          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
           "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
-          "source": "cnbctv18.com",
+          "source": "CNBC TV18",
           "published": "2026-01-03 15:50 UTC"
-        },
-        {
-          "title": "Madhav Infra Pr Consolidated March 2026 Net Sales at Rs 254.06 crore, down 17.6% Y-o-Y - Moneycontrol.com",
-          "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNN3BMWTJJZUd5RXBIMHVES3dRR0cyR2tJRXdSTUIxX09vUTdjbHZnZ01Ld1RIUC1zcFlOXzdLY2dXanFtM2d1TUl4TGQwR0dhcmhYSlR3WnlQMFdKM2VIQ0I2TzdzZ0F3enZIcGYtdmJzTE50SEpRR1NRQ2xuaWVSOTkzQVBQY2Vqb1I5VVVWTU5wVXFMdlMwTDEyRGZVTkJRclFJcUJHNU9aVzhyZGxtRlFaM1RzbDRSMFd1N1NRN2dPVDEwMFhuVktWcnlrOWNYVm1YaTFqeExhWHJhZEZSXzNBaEjSAeoBQVVfeXFMUFF5bmJDWXhZbW93SGZ3aUs2bEFBd2xUdkFyaGtVcFd4ZXNBcWpGckFuQWJ5S3hTT3hueWFuNVIwQnFuTGM3XzJwS3IzVUItdFNYNXRZUnRPdEVkZW15THg0QVk5WElSREJHdk9BZGxKTlFfVDh4NlpPZHl5WXdLalB5WVNXQ1YweDBrV3oxcm1QelFDN2tDTG9XYlVFZ0g3UF9ja2FkR3o1MUlxUi1oY2Joby1jTEF0VS0zT2RzX01ySElUYUNzZUQ2TWpvaXpTcFJoYkJYcUk2U2RWZy1vbGxGLUNhUjU2VXF3?oc=5",
-          "source": "Moneycontrol.com",
-          "published": "2026-06-03 07:00 UTC"
         },
         {
           "title": "Madhav Infra Projects Secures ₹342 Crore Solar Power Contract from M.P. Urja Vikas Nigam Limited - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOVTF4ZW5MY0FvRjNyQlVpN2t5Q2c2Qk9NbldUWEF5TlFWRkx2ZFdONzA2X0l1SnE3R2hSdjJmb3ZXcktJakhkUnZhN253eEJteTA2T1FFNnpPYWR2Q3VERmVSY3J5NzEwY3lrRlNPR1d5Si14NDFOalViSkhWWTljRGhqN3NabUtyMVA4TnpFdFlUbWlPMEd6dk5RVnZxUG1sTHdLTjIyTUtnNFJTT1pvRmRQZFNhenQxV29JUEY2eElSa2JINHEyV2V4RkFoOHF4aTVEeg?oc=5",
           "source": "scanx.trade",
           "published": "2025-12-28 08:00 UTC"
+        },
+        {
+          "title": "Madhav Infra Projects Reports Q2 FY26 Results: Net Profit Rises to ₹5.78 Crore - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPZ000M1R4N0tPVlVBdUxuQWhTemNnRFFzRHE2X3NkY0JaWmtzaktzU2M1Wk1teUlSNzdoWXhPVnJrZEpwSExOVGc0Mmhrc013R0JJWHNuZVpZZWtmWTRfZDNzbHByWG0zUU0wbFJhZFRmdnFQOFZfaDhUY2xSdXowVDZJVHJmeGdJZDl2UDRXajIwazlvVFVYNzloSUIyS3pObXFRS0ZQU0h3aFVWbUVvS0ZELUtmUzYtZm50OXRLN1U2N3B0eWdaOGJJNDQ?oc=5",
+          "source": "scanx.trade",
+          "published": "2025-11-10 08:00 UTC"
         }
       ]
     }
