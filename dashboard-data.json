@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T14:38:55+00:00",
+  "generated_at": "2026-09-19T13:59:38+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -26,12 +26,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-09-18T14:38:58+00:00",
+        "fetched_at": "2026-09-19T13:59:40+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        8.3,
         8.25,
         7.96,
         7.88,
@@ -118,6 +117,7 @@
         6.8,
         6.73,
         6.64,
+        6.64,
         6.57,
         6.57,
         6.63
@@ -166,9 +166,9 @@
           "published": "2026-09-04 07:00 UTC"
         },
         {
-          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
+          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - univest.in",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
-          "source": "Univest",
+          "source": "univest.in",
           "published": "2026-07-01 07:00 UTC"
         },
         {
@@ -184,9 +184,9 @@
           "published": "2026-06-17 07:00 UTC"
         },
         {
-          "title": "Why Is Nila Infrastructures Share Price Falling Key Reasons 2026 - Univest",
+          "title": "Why Is Nila Infrastructures Share Price Falling Key Reasons 2026 - univest.in",
           "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA0S0R5TWVFU1FTTGtOaWlkY1dlRGFVcTN6TjlPellRMUo4MjZ3a3JvdXNEd2dBeHYwYUREVTFSZ0JoX1FqMHlHMlNieEVuLVpLOGFWVU9NNUtnem51UXBQRy0tdy04dlMtNXkxSzNmd3Q5eVp1RHpGbWxQWUM?oc=5",
-          "source": "Univest",
+          "source": "univest.in",
           "published": "2026-06-17 07:00 UTC"
         }
       ]
@@ -201,115 +201,23 @@
       "research_score": 6.9,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 4.56,
-        "previous_close": 4.7,
-        "change_pct": -2.9787234042553346,
-        "market_cap": null,
-        "trailing_pe": null,
-        "price_to_book": null,
+        "price": 7.59,
+        "previous_close": 7.65,
+        "change_pct": -0.7843137254902044,
+        "market_cap": 2529860864.0,
+        "trailing_pe": 22.32353,
+        "price_to_book": 1.7762697,
         "return_on_equity": null,
         "debt_to_equity_pct": null,
         "operating_cash_flow": null,
         "free_cash_flow": null,
-        "fifty_two_week_low": null,
-        "fifty_two_week_high": null,
+        "fifty_two_week_low": 6.64,
+        "fifty_two_week_high": 17.0,
         "currency": "INR",
-        "fetched_at": "2026-09-18T14:38:58+00:00",
-        "price_source": "Yahoo Finance adjusted trading history",
-        "data_quality_warning": "Quote metadata differed 66% from adjusted trading history. The dashboard uses trading-history price/change and suppresses affected price-derived ratios."
+        "fetched_at": "2026-09-19T13:59:41+00:00",
+        "price_source": "Yahoo Finance quote metadata"
       },
-      "price_history": [
-        4.45,
-        4.47,
-        4.4,
-        4.19,
-        4.21,
-        4.15,
-        4.17,
-        4.24,
-        4.4,
-        4.48,
-        4.39,
-        4.39,
-        4.36,
-        4.21,
-        4.24,
-        4.24,
-        4.17,
-        4.13,
-        4.01,
-        4.08,
-        4.07,
-        4.02,
-        4.07,
-        4.07,
-        4.1,
-        4.08,
-        4.06,
-        4.04,
-        4.12,
-        4.07,
-        4.07,
-        4.08,
-        4.08,
-        4.04,
-        4.09,
-        4.04,
-        4.06,
-        4.03,
-        4.02,
-        4.01,
-        4.0,
-        4.0,
-        4.0,
-        3.99,
-        3.97,
-        3.98,
-        4.02,
-        3.97,
-        3.99,
-        3.94,
-        3.9,
-        3.84,
-        3.84,
-        3.76,
-        3.71,
-        3.78,
-        3.76,
-        3.75,
-        3.92,
-        3.98,
-        3.98,
-        3.99,
-        3.96,
-        4.0,
-        3.95,
-        3.83,
-        3.92,
-        3.99,
-        3.98,
-        3.99,
-        3.92,
-        3.97,
-        3.93,
-        4.02,
-        3.97,
-        4.01,
-        4.04,
-        4.01,
-        3.93,
-        3.98,
-        3.98,
-        3.95,
-        3.99,
-        4.0,
-        4.0,
-        3.96,
-        4.28,
-        4.53,
-        4.7,
-        4.56
-      ],
+      "price_history": [],
       "thesis": [
         "B2B gold-jewellery manufacturer with a real operating history and recent earnings momentum.",
         "Balance sheet was debt-light in the latest manual review.",
@@ -343,34 +251,34 @@
       "live_flags": [],
       "news": [
         {
-          "title": "AGOL Share Price rises as fundamentals and sector align - Univest",
+          "title": "AGOL Share Price rises as fundamentals and sector align - univest.in",
           "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
-          "source": "Univest",
+          "source": "univest.in",
           "published": "2026-09-11 06:59 UTC"
         },
         {
-          "title": "Top 39 Gold Stocks To Buy In India September 2026 - Samco",
-          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
-          "source": "Samco",
-          "published": "2026-09-16 06:51 UTC"
+          "title": "Ashapuri Gold Ornament (AGOL) Share: A Small Jewellery Wholesaler Explained - kalkine.co.in",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQWjR0MFRReGhYdUlhbmpmdTJLLUlvNENTRUVvMG9XSm9PU0NTWnJFYXN0cXV2MkZXZkVpNTAxMGlNWXlmQnkyTWJIUVF6aHRGWWhTNXpobS1jMWRsbUV2eHBKWGpLb1NOZmxId2FSQklvcC0wZE42V0tqT2lMY282QTZsd0RMY2pDWHVzWXRXdzJ4T0hTRlUwUlpnUEsyVTdNNU1ZX2RTM1d3a0RTdG9GSkhPay1LSzFFUXlJ?oc=5",
+          "source": "kalkine.co.in",
+          "published": "2026-09-10 07:11 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament seeks two-month AGM extension for FY26 - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUmNRc3poNnoteGI3U29MejNZVlpJVHhBQ1Z4U0c5RFIzbDlMS2poMWhmai04X2xnYTdmOUl3d1ZHUW1uRFRtSEdtWXJRWGloMFVGRlRrVVZMQkZPZEhzMlpkX0ZIaVcwMk1JMU5YeXE4Um5yaTlhR29oQzNrYVdTQ25HcXQ1WVR4bXl2cFRiNXNzYndKRFdyNnpqa3VSZEp4dHphZlg0YlVQZVBSZ245VEpRdjg?oc=5",
+          "title": "Ashapuri Gold FY26 net profit rises 54% to ₹1,856.40 lakh - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOR3JZS2JvbnlWVmFCSkpNVXFUZ2pGZEZHQ29TMk1JbHpMQXhKSmFSQ2tDbGh4Yy1JbEN3eDgxcFFNM3h6a1lDTms5Y0lua1NZbzJ4QzNhV2trMENZVVhROExMZlRrNXhDNVpoUmNUR0ZMZ0p1X2FfbnNHNUJDS0l3NzNLNGJIaTlFWUtKUFg0WUNGMGY4ZjczVVNvY3MxRjBXdW5uUGNrUzZtN0M4eEtoamVB?oc=5",
           "source": "scanx.trade",
-          "published": "2026-09-05 11:41 UTC"
+          "published": "2026-05-30 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Limited Files Annual Promoter Disclosure Under SEBI Takeover Regulations - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOb2NiMWtLbXMwMFd2SlhWRnk5bngxc09BbE5WQWVwVHAwaUxnaXFyMmk0RTlQS3pNWWNGNG9ETk1ZQTRZY3ZJS2l4czNKLUd5ZnA5RkNnQmI1WEVvUjFzN3NZczVLNE1sRnZpaDN3Z2ZiaUhzQTVvNllJU2w1ZHJrTV9UM2ZIRS1kbUFScDFLMkZUZ0VWaU81dlhsZWpLWXFzTkZ3MnlTR2lMOUNra3V4R0NxVUZMOXFUaV83Y2VjMUtjMHRxZ3VVODNaWEZZeUlWMElYUWpXdVFESmg3bmFteXBIYUVjOVk?oc=5",
+          "title": "Ashapuri Gold Ornament Q4 FY26 Results: PAT Rs 18.56 Crore - univest.in",
+          "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQMi04Y1FwLVFFTjFyMFBETVNuaWVuT2FzMk9fN3VxZU40LXlfa1RKWkotVl8tXzFDV2VvcElIZnVZZ3M2bXI2VkNfYl9qQTAtXzJCRTBYN29LM3lJRTRONVM1MDhuamJVb2lvc3U3SUFpdHhXQkk5Nkczajc2aUdMVlFkME5tdXhKUS00YWQ3VQ?oc=5",
+          "source": "univest.in",
+          "published": "2026-06-01 07:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Wins ₹29 Crore Orders from Major Retail Chains at IIJS 2026 - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPbVh4cWktMmNwR0dVekc3bXhOT04xUEY5MWEwNzQ2MHNCOFBkMlhqbzNRdkJMTDRHYTg5VmFxR2hIanAyam9veHNDeHZmWS1ZcjNkU05vUElTbG5OTnYxSjZpakZPVzhDbWwxQTdBT0VRZkwzU0lrNkxQT2tKQTRVZmsyY3pDWnhoSG1mYklGX0JjMnpUOU8xYU42TkFfSDg4bUxVWkRMa2Vka2cxR0dudnFySWVEdmhJbDBld0haLVFJUDBYSWxKb3dCOUtyX0tRa20zTFhDcnFuY3M?oc=5",
           "source": "scanx.trade",
-          "published": "2026-04-03 07:00 UTC"
-        },
-        {
-          "title": "Ashapuri Gold Ornament Ltd's Rs 48.75 crores rights opens on May 8 - The Times of India",
-          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPWlJ2VE9BSE5vNUsyNkRFanBEVEhVcHBwX0FFMWRkRWRpMm8xcTFQSFJXUjZkNGdSU1ZaNGNjRXNoaEIzTnY1a3V4bEVIYVpNcUphMjBVMHJ4TUJVTTVFR1J5TnpneFZpOXhCRFdhcGpEZmNWRFpQdWpaeVhBbjFXWXZyZDQyXzJSSnpMT01ham5zMG5ieTE3dnlSajRLbGl5WTMybjgwWV9oejdabFdLZWhKeWx4MXJFWVRONHlDaEhBRHV0Z1l6ZThIY0J6QU5JYkljaWtGWFZreWVSdFd0cWc2ZC1nQdIB6wFBVV95cUxQMjM4cmY2Uzh0R01rTzFTLWNIM0RRWXBTSmI2Q0Nndlh1UGdMdmMxZ3NiajVURFZ1U09qTG9UdEgwZlduR081Rkg5NS10RmJkVGVCZWhzc0FuLWdHR01RR3FlVDBiOXVMYUh2Rm9kTXNuOXV1WUdOdnB1NmhXRl9lcmhneUNMT2hMMlRPWXdjdllaQWpQcFJLRWFsUzNXUEFleF8zZ0RYdDZ1T3FwSHpIVXF4ZGxSOFhVXy14RF9ETU16enFWQ1lVVnI5SmVvM1ZqcGtEWVNjTHcwdk9BWFFlWnhjd0VxZVB6VUd3?oc=5",
-          "source": "The Times of India",
-          "published": "2024-05-07 07:00 UTC"
+          "published": "2026-01-19 08:00 UTC"
         }
       ]
     },
@@ -397,7 +305,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-09-18T14:39:00+00:00",
+        "fetched_at": "2026-09-19T13:59:41+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -477,10 +385,10 @@
           "published": "2026-01-03 15:50 UTC"
         },
         {
-          "title": "Madhav Infra Pr Consolidated June 2026 Net Sales at Rs 88.37 crore, up 0.94% Y-o-Y - Moneycontrol.com",
-          "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQX2hsdXBmaWxXVXljRFB1RFRTU09GUFQ3ZTVpTEFhVEo4bkdvcW13R1F2T3NjVklydzNoaURCaG50LWxJcjYzbWpoTG1IX3JBXzVGOEpQbGNtTDBCOVc0YVZDMWw3NVgwZWpncC1uWVV4RUdmNlg4YllQTHdsUTY0NVEtc0xVTXpUTDJxV3hFd0JBSnEyb0VIbXRkZzFfZ2hycXJoNm1BZzc5RzRGZHFOTFc3YVhMb2ZjdmRrbkd0QkozdGJsdXJsVkNJSDdZRklXakxEUjYtTGx4a3BvcnNZ0gHkAUFVX3lxTE9GSW56dklJa1FvOXpfVUQ4eUNjeVd5VENtd2Z6Q1R0SFlaSmRqQmxhSS03SkpsbG1GbGZRWnBtTUJEUVh0LUc3TENNbVJnd2E1MW9xWHI2eDF5c0F4b0F1SFE4bS1Sbm1MYkJmSnNOaUV0NFNXTThZeXBWaDlDV2pBcTFCdmZ2MjBOR3JjZ0J1TWRHLVYzTEJUVmhqRXFkVEh5aVJGVXpzeW9xdGVwcUNFOWpVNkpwbjU2ck9ONm9DOF9CVmtmZk5Md09TZUd2eWhpZWpZNFE0WXBYTGtMSXAtOGlBWA?oc=5",
+          "title": "Madhav Infra Pr Consolidated March 2026 Net Sales at Rs 254.06 crore, down 17.6% Y-o-Y - Moneycontrol.com",
+          "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNN3BMWTJJZUd5RXBIMHVES3dRR0cyR2tJRXdSTUIxX09vUTdjbHZnZ01Ld1RIUC1zcFlOXzdLY2dXanFtM2d1TUl4TGQwR0dhcmhYSlR3WnlQMFdKM2VIQ0I2TzdzZ0F3enZIcGYtdmJzTE50SEpRR1NRQ2xuaWVSOTkzQVBQY2Vqb1I5VVVWTU5wVXFMdlMwTDEyRGZVTkJRclFJcUJHNU9aVzhyZGxtRlFaM1RzbDRSMFd1N1NRN2dPVDEwMFhuVktWcnlrOWNYVm1YaTFqeExhWHJhZEZSXzNBaEjSAeoBQVVfeXFMUFF5bmJDWXhZbW93SGZ3aUs2bEFBd2xUdkFyaGtVcFd4ZXNBcWpGckFuQWJ5S3hTT3hueWFuNVIwQnFuTGM3XzJwS3IzVUItdFNYNXRZUnRPdEVkZW15THg0QVk5WElSREJHdk9BZGxKTlFfVDh4NlpPZHl5WXdLalB5WVNXQ1YweDBrV3oxcm1QelFDN2tDTG9XYlVFZ0g3UF9ja2FkR3o1MUlxUi1oY2Joby1jTEF0VS0zT2RzX01ySElUYUNzZUQ2TWpvaXpTcFJoYkJYcUk2U2RWZy1vbGxGLUNhUjU2VXF3?oc=5",
           "source": "Moneycontrol.com",
-          "published": "2026-08-07 07:00 UTC"
+          "published": "2026-06-03 07:00 UTC"
         },
         {
           "title": "Madhav Infra Projects Secures ₹342 Crore Solar Power Contract from M.P. Urja Vikas Nigam Limited - scanx.trade",
