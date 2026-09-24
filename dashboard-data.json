@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T15:11:26+00:00",
+  "generated_at": "2026-09-24T15:30:07+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,12 +13,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.82,
-        "previous_close": 6.66,
-        "change_pct": 2.402402402402415,
-        "market_cap": 2686324480.0,
-        "trailing_pe": 10.8253975,
-        "price_to_book": 1.4339782,
+        "price": 7.06,
+        "previous_close": 6.82,
+        "change_pct": 3.5190615835777095,
+        "market_cap": 2780857856.0,
+        "trailing_pe": 11.206349,
+        "price_to_book": 1.4844407,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
@@ -26,12 +26,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-09-23T15:11:28+00:00",
+        "fetched_at": "2026-09-24T15:30:08+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        8.2,
         8.08,
         8.15,
         8.1,
@@ -120,7 +119,8 @@
         6.63,
         6.62,
         6.66,
-        6.82
+        6.82,
+        7.06
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -160,6 +160,12 @@
       "live_flags": [],
       "news": [
         {
+          "title": "Nila Infrastructures Ltd. Peer Comparison – Compare with Others - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxORHRvbzNZSVRhd09HakZYOE5LUUJNNTdlSkpkWkFMODJlWklnNWxPbEZwbVk2WkRlZU5yc2FUSWhTb3V4R2xLYzVoVzFNYmRLSTVtYjM4bHY2d0VlQjltVmJZaUs3d0l3RDBOOEJmQ3MzN2c2aXlwZ3JZNk9ELThESDNDQ2ZldFlLd3lxQ0pMbVdYM0M0?oc=5",
+          "source": "Value Research",
+          "published": "2026-09-04 07:00 UTC"
+        },
+        {
           "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
           "source": "Univest",
@@ -182,12 +188,6 @@
           "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA0S0R5TWVFU1FTTGtOaWlkY1dlRGFVcTN6TjlPellRMUo4MjZ3a3JvdXNEd2dBeHYwYUREVTFSZ0JoX1FqMHlHMlNieEVuLVpLOGFWVU9NNUtnem51UXBQRy0tdy04dlMtNXkxSzNmd3Q5eVp1RHpGbWxQWUM?oc=5",
           "source": "Univest",
           "published": "2026-06-17 07:00 UTC"
-        },
-        {
-          "title": "Nila Infrastructures Jumps 9.18% on ₹105 Cr Slum Redevelopment Deal - HDFC Sky",
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNcjJXcjFKdnEzMEQyNEd5RklBaDhpeEVoQW9oYy1Gb185TW00alVsNDNOTWg2bkQ4MW5rcWRrMDNjZTFzX0I1aXQ0cGxvVW9FWGxoYTloZnpmQXBEc0NRcldhZmtKVzU5Z2E2OUdQSFVoZUVRb0ZEdHpicWZIbFRDRzRMOG9aTG5vWTNFVllUY2lLeDAxUkYwTkFVMVAzVzFSSWc?oc=5",
-          "source": "HDFC Sky",
-          "published": "2025-10-08 07:00 UTC"
         }
       ]
     },
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-09-23T15:11:29+00:00",
+        "fetched_at": "2026-09-24T15:30:10+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -251,16 +251,22 @@
       "live_flags": [],
       "news": [
         {
+          "title": "Ashapuri Gold Ornament Ltd. Shareholding Pattern – Promoters, FIIs & DIIs - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQUE0xSGM1QmRkOVlfOEpmYV9EZjZJRXNEOW1TZGQ2NTBPaWFObTg1MUxPX292b0owTEhTajdRZkk1alk3RjNWZHhGWkpYR29VTzBnU1FGWW1SZGF1UFdiY3JsY05OcUtZZ19QYU92bXJKR3Y1cThHSEktQUJzcXVlV19Zc0VLWFpnUnlSXzBYbkhmMFVy?oc=5",
+          "source": "Value Research",
+          "published": "2026-09-04 11:29 UTC"
+        },
+        {
           "title": "AGOL Share Price rises as fundamentals and sector align - Univest",
           "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
           "source": "Univest",
           "published": "2026-09-11 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament rises on securing order for supply of gold jewellery - Investment Guru India",
-          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPOXBXRjVSZUFjeTBQWFFaQ3B2cmJSY3R6eEtXcU05WXdwQmdaWHZoNlEyMEtZMDR0Z3F4bzhrZGQ2YkRiZ2RIT0xsbEs0UkJucWlSaHI3Wm1qaWdlZ2hsVnQzQmNmSjlrSTRndWhfbXdsMzVHUlc4dlE2c2hWR3R0VVVGOHpTWktWckFwZzNYZzdpaG5nYzBZNi1NbzNLazljOTQ3UlZ0dzdxUHVYRzhXbk1qZmVtS1Q2bU5Zb1hoUkVWdw?oc=5",
-          "source": "Investment Guru India",
-          "published": "2026-09-15 10:12 UTC"
+          "title": "Top 39 Gold Stocks To Buy In India September 2026 - Samco",
+          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
+          "source": "Samco",
+          "published": "2026-09-16 06:51 UTC"
         },
         {
           "title": "Ashapuri Gold Ornament seeks two-month AGM extension for FY26 - scanx.trade",
@@ -269,16 +275,10 @@
           "published": "2026-09-05 11:41 UTC"
         },
         {
-          "title": "Top 39 Gold Stocks To Buy In India September 2026 - samco.in",
-          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
-          "source": "samco.in",
-          "published": "2026-09-16 06:51 UTC"
-        },
-        {
-          "title": "Ashapuri Gold Ornament Q4 FY26 Results: PAT Rs 18.56 Crore - Univest",
-          "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQMi04Y1FwLVFFTjFyMFBETVNuaWVuT2FzMk9fN3VxZU40LXlfa1RKWkotVl8tXzFDV2VvcElIZnVZZ3M2bXI2VkNfYl9qQTAtXzJCRTBYN29LM3lJRTRONVM1MDhuamJVb2lvc3U3SUFpdHhXQkk5Nkczajc2aUdMVlFkME5tdXhKUS00YWQ3VQ?oc=5",
-          "source": "Univest",
-          "published": "2026-06-01 07:00 UTC"
+          "title": "Ashapuri Gold Ornament Ltd. Peer Comparison – Compare with Others - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNMjc1RWJSYXJVMVpONUVFYXZjZENrUU1XaUh6M1NmdzdtSkhVTjdEWGlZZC16LTFUOVpPdW5rU0JobVRvWGM4c1NlSzdtajhkQnktVWttalhURmhmTmdaaEluVlo3ZE5rZkZZRXY2NXRsMGQ1c1JpekpBV084ME5nNXdVYXZfZmVNUkZxYWpXcjcwdTdrdF9GcA?oc=5",
+          "source": "Value Research",
+          "published": "2026-08-28 07:00 UTC"
         }
       ]
     },
@@ -292,12 +292,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.67,
-        "previous_close": 7.39,
-        "change_pct": 3.7889039242219313,
-        "market_cap": 2067690624.0,
-        "trailing_pe": 7.9895835,
-        "price_to_book": 0.8617978,
+        "price": 7.59,
+        "previous_close": 7.67,
+        "change_pct": -1.04302477183833,
+        "market_cap": 2046124160.0,
+        "trailing_pe": 7.9062505,
+        "price_to_book": 0.8528091,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-09-23T15:11:30+00:00",
+        "fetched_at": "2026-09-24T15:30:12+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -335,7 +335,8 @@
         7.8,
         7.74,
         7.39,
-        7.67
+        7.67,
+        7.59
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
