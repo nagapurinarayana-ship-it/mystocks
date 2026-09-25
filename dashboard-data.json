@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T15:30:07+00:00",
+  "generated_at": "2026-09-25T15:33:53+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,12 +13,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.06,
-        "previous_close": 6.82,
-        "change_pct": 3.5190615835777095,
-        "market_cap": 2780857856.0,
-        "trailing_pe": 11.206349,
-        "price_to_book": 1.4844407,
+        "price": 6.87,
+        "previous_close": 7.06,
+        "change_pct": -2.6912181303116123,
+        "market_cap": 2706018816.0,
+        "trailing_pe": 10.569231,
+        "price_to_book": 1.4444911,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
@@ -26,12 +26,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-09-24T15:30:08+00:00",
+        "fetched_at": "2026-09-25T15:33:55+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        8.08,
         8.15,
         8.1,
         8.1,
@@ -120,7 +119,8 @@
         6.62,
         6.66,
         6.82,
-        7.06
+        7.06,
+        6.87
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -166,6 +166,12 @@
           "published": "2026-09-04 07:00 UTC"
         },
         {
+          "title": "Nila Infrastructures Ltd Share Price Today NSE/BSE Charts - Alice Blue",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBlU3FJX0NaNWtibzh5X2FpeVNaMHUxTG1OLWJEZVZSejdHREZobm90QzczcUhlMjJTSDBFMFl3YzQwUklnVExMRjN2N3N3Vnp3RFJUQlViOEU0Z2VzOW05RVlZYXVDcm5tRjJ3MlAzSjBSVjg4N1NUbHZ3?oc=5",
+          "source": "Alice Blue",
+          "published": "2026-09-07 23:02 UTC"
+        },
+        {
           "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
           "source": "Univest",
@@ -181,12 +187,6 @@
           "title": "Stocks to Watch Today: DOMS Industries, Krishna Institute of Medical Sciences, Prime Focus, Utkal... - Moneycontrol.com",
           "url": "https://news.google.com/rss/articles/CBMiuAJBVV95cUxPWnBDM1V5ajEwMS1OaGVYZVVUekdiVmc1V1FScTdxNlZWSjJFVWFReEN6cE1sNEJ5alQxVE8tNjlEdzBrenlVVGQ1RzFCSnBuVHF6cGR6Ym1DUlY0UXdoNGtCRzhXN1Rnbjdoam9JWm1XY0dzbHJ2LTR1WER3LUNQNXdULUtjLU8wLWRuNHRSNTM5UHpYanV0SV82dWlpWlJsVU5qa0FURWh6STFrTEpCMU1VOGItcUowYnMtbG1HdDIxdXEyU3IwSlZILUR3Z2lkZC13WXJRQzNLN3ZEeUNCWWlQS3BTZWlXakQtbVEwRHFPbkNudklfVV9UQVdZRV9yZlNtUmZrbWhLVEcxX19jX002bHQ2bFFxM3A4N1VjbExvcUctMnlaZm5LQ1RWdTNacmFINnpvWkXSAb4CQVVfeXFMT192dG13WVZVUnNJcV9QeGZyc3NnM2luUGRZRGpPRVBXTWpSRU43OW1Pcll2OTJubVZGajNDOVFiWlNPLXRxM2JyNENZbWYtMU1zanllaWRHSG9EdmhXM2l1MUFMSmpva1FSRXcwYnJlUnVaSjM4UlJsTG1HUFBIMGVKcUdPR0hqUjIwWG1paUQzSUxxZFhUNWFGaVJGSFFiNlpMY2dJVkdVOE1RSUZHYzVsVng3R1p4TnJ0bHNIcFVQemZoNGwzeWo4T0t6VzJ2MEp0a3dRSDR3dy1Bc2lTSG12M2l0ZndCZTZ1ZkVEb2h6UW1za2hVcEJUc21LR2pUcGVkZUl0UDJ5Sk9HX2R6VkgyT19kTE43NlJObVBzS05Lem1LMUY1VWE4cmZta0JsUkYyalVKbkNUdHRnd3hB?oc=5",
           "source": "Moneycontrol.com",
-          "published": "2026-06-17 07:00 UTC"
-        },
-        {
-          "title": "Why Is Nila Infrastructures Share Price Falling Key Reasons 2026 - Univest",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA0S0R5TWVFU1FTTGtOaWlkY1dlRGFVcTN6TjlPellRMUo4MjZ3a3JvdXNEd2dBeHYwYUREVTFSZ0JoX1FqMHlHMlNieEVuLVpLOGFWVU9NNUtnem51UXBQRy0tdy04dlMtNXkxSzNmd3Q5eVp1RHpGbWxQWUM?oc=5",
-          "source": "Univest",
           "published": "2026-06-17 07:00 UTC"
         }
       ]
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-09-24T15:30:10+00:00",
+        "fetched_at": "2026-09-25T15:33:56+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -275,10 +275,10 @@
           "published": "2026-09-05 11:41 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Ltd. Peer Comparison – Compare with Others - Value Research",
-          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNMjc1RWJSYXJVMVpONUVFYXZjZENrUU1XaUh6M1NmdzdtSkhVTjdEWGlZZC16LTFUOVpPdW5rU0JobVRvWGM4c1NlSzdtajhkQnktVWttalhURmhmTmdaaEluVlo3ZE5rZkZZRXY2NXRsMGQ1c1JpekpBV084ME5nNXdVYXZfZmVNUkZxYWpXcjcwdTdrdF9GcA?oc=5",
-          "source": "Value Research",
-          "published": "2026-08-28 07:00 UTC"
+          "title": "Ashapuri Gold Ornament Wins ₹29 Crore Orders from Major Retail Chains at IIJS 2026 - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPbVh4cWktMmNwR0dVekc3bXhOT04xUEY5MWEwNzQ2MHNCOFBkMlhqbzNRdkJMTDRHYTg5VmFxR2hIanAyam9veHNDeHZmWS1ZcjNkU05vUElTbG5OTnYxSjZpakZPVzhDbWwxQTdBT0VRZkwzU0lrNkxQT2tKQTRVZmsyY3pDWnhoSG1mYklGX0JjMnpUOU8xYU42TkFfSDg4bUxVWkRMa2Vka2cxR0dudnFySWVEdmhJbDBld0haLVFJUDBYSWxKb3dCOUtyX0tRa20zTFhDcnFuY3M?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-01-19 08:00 UTC"
         }
       ]
     },
@@ -292,12 +292,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.59,
-        "previous_close": 7.67,
-        "change_pct": -1.04302477183833,
-        "market_cap": 2046124160.0,
-        "trailing_pe": 7.9062505,
-        "price_to_book": 0.8528091,
+        "price": 7.52,
+        "previous_close": 7.59,
+        "change_pct": -0.9222661396574461,
+        "market_cap": 2027253376.0,
+        "trailing_pe": 7.8333335,
+        "price_to_book": 0.8449439,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-09-24T15:30:12+00:00",
+        "fetched_at": "2026-09-25T15:33:57+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -336,7 +336,8 @@
         7.74,
         7.39,
         7.67,
-        7.59
+        7.59,
+        7.52
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
