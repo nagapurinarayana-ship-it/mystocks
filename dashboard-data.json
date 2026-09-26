@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T15:33:53+00:00",
+  "generated_at": "2026-09-26T14:43:59+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -17,7 +17,7 @@
         "previous_close": 7.06,
         "change_pct": -2.6912181303116123,
         "market_cap": 2706018816.0,
-        "trailing_pe": 10.569231,
+        "trailing_pe": 10.904762,
         "price_to_book": 1.4444911,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
@@ -26,7 +26,7 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-09-25T15:33:55+00:00",
+        "fetched_at": "2026-09-26T14:44:00+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -172,9 +172,9 @@
           "published": "2026-09-07 23:02 UTC"
         },
         {
-          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
+          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - univest.in",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
-          "source": "Univest",
+          "source": "univest.in",
           "published": "2026-07-01 07:00 UTC"
         },
         {
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-09-25T15:33:56+00:00",
+        "fetched_at": "2026-09-26T14:44:01+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -251,34 +251,34 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Ashapuri Gold Ornament Ltd. Shareholding Pattern – Promoters, FIIs & DIIs - Value Research",
-          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQUE0xSGM1QmRkOVlfOEpmYV9EZjZJRXNEOW1TZGQ2NTBPaWFObTg1MUxPX292b0owTEhTajdRZkk1alk3RjNWZHhGWkpYR29VTzBnU1FGWW1SZGF1UFdiY3JsY05OcUtZZ19QYU92bXJKR3Y1cThHSEktQUJzcXVlV19Zc0VLWFpnUnlSXzBYbkhmMFVy?oc=5",
-          "source": "Value Research",
-          "published": "2026-09-04 11:29 UTC"
-        },
-        {
-          "title": "AGOL Share Price rises as fundamentals and sector align - Univest",
-          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
-          "source": "Univest",
-          "published": "2026-09-11 07:00 UTC"
-        },
-        {
           "title": "Top 39 Gold Stocks To Buy In India September 2026 - Samco",
           "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
           "source": "Samco",
-          "published": "2026-09-16 06:51 UTC"
+          "published": "2026-09-25 06:51 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament seeks two-month AGM extension for FY26 - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUmNRc3poNnoteGI3U29MejNZVlpJVHhBQ1Z4U0c5RFIzbDlMS2poMWhmai04X2xnYTdmOUl3d1ZHUW1uRFRtSEdtWXJRWGloMFVGRlRrVVZMQkZPZEhzMlpkX0ZIaVcwMk1JMU5YeXE4Um5yaTlhR29oQzNrYVdTQ25HcXQ1WVR4bXl2cFRiNXNzYndKRFdyNnpqa3VSZEp4dHphZlg0YlVQZVBSZ245VEpRdjg?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-09-05 11:41 UTC"
+          "title": "AGOL Share Price rises as fundamentals and sector align - univest.in",
+          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
+          "source": "univest.in",
+          "published": "2026-09-11 07:00 UTC"
         },
         {
           "title": "Ashapuri Gold Ornament Wins ₹29 Crore Orders from Major Retail Chains at IIJS 2026 - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPbVh4cWktMmNwR0dVekc3bXhOT04xUEY5MWEwNzQ2MHNCOFBkMlhqbzNRdkJMTDRHYTg5VmFxR2hIanAyam9veHNDeHZmWS1ZcjNkU05vUElTbG5OTnYxSjZpakZPVzhDbWwxQTdBT0VRZkwzU0lrNkxQT2tKQTRVZmsyY3pDWnhoSG1mYklGX0JjMnpUOU8xYU42TkFfSDg4bUxVWkRMa2Vka2cxR0dudnFySWVEdmhJbDBld0haLVFJUDBYSWxKb3dCOUtyX0tRa20zTFhDcnFuY3M?oc=5",
           "source": "scanx.trade",
           "published": "2026-01-19 08:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Ltd's Rs 48.75 crores rights opens on May 8 - The Times of India",
+          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPWlJ2VE9BSE5vNUsyNkRFanBEVEhVcHBwX0FFMWRkRWRpMm8xcTFQSFJXUjZkNGdSU1ZaNGNjRXNoaEIzTnY1a3V4bEVIYVpNcUphMjBVMHJ4TUJVTTVFR1J5TnpneFZpOXhCRFdhcGpEZmNWRFpQdWpaeVhBbjFXWXZyZDQyXzJSSnpMT01ham5zMG5ieTE3dnlSajRLbGl5WTMybjgwWV9oejdabFdLZWhKeWx4MXJFWVRONHlDaEhBRHV0Z1l6ZThIY0J6QU5JYkljaWtGWFZreWVSdFd0cWc2ZC1nQdIB6wFBVV95cUxQMjM4cmY2Uzh0R01rTzFTLWNIM0RRWXBTSmI2Q0Nndlh1UGdMdmMxZ3NiajVURFZ1U09qTG9UdEgwZlduR081Rkg5NS10RmJkVGVCZWhzc0FuLWdHR01RR3FlVDBiOXVMYUh2Rm9kTXNuOXV1WUdOdnB1NmhXRl9lcmhneUNMT2hMMlRPWXdjdllaQWpQcFJLRWFsUzNXUEFleF8zZ0RYdDZ1T3FwSHpIVXF4ZGxSOFhVXy14RF9ETU16enFWQ1lVVnI5SmVvM1ZqcGtEWVNjTHcwdk9BWFFlWnhjd0VxZVB6VUd3?oc=5",
+          "source": "The Times of India",
+          "published": "2024-05-07 07:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Ltd Share Price Today – Live NSE/BSE - INDmoney",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5CQ2RsMnpFM192VG0zS3d5NlpJbm9GSFFlVkZaZlBFRFV6LUJGYkprTURZUFhEemVwbUwxTzdjNjl1ZnMxT3dpUFAyRnVUdTlrRkxCMkQxM2VYbEw0dUp2UnFVcklZUUFEX05WVDZZbU5oTUMxUjFwdWJn?oc=5",
+          "source": "INDmoney",
+          "published": "2023-02-24 00:40 UTC"
         }
       ]
     },
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-09-25T15:33:57+00:00",
+        "fetched_at": "2026-09-26T14:44:02+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
