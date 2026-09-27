@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T14:43:59+00:00",
+  "generated_at": "2026-09-27T15:18:01+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -26,7 +26,7 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-09-26T14:44:00+00:00",
+        "fetched_at": "2026-09-27T15:18:02+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -172,9 +172,9 @@
           "published": "2026-09-07 23:02 UTC"
         },
         {
-          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - univest.in",
+          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
-          "source": "univest.in",
+          "source": "Univest",
           "published": "2026-07-01 07:00 UTC"
         },
         {
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-09-26T14:44:01+00:00",
+        "fetched_at": "2026-09-27T15:18:03+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -251,15 +251,21 @@
       "live_flags": [],
       "news": [
         {
+          "title": "Ashapuri Gold Ornament Limited Share Price - Live AGOL Stock Price & Chart - Upstox",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE84X2lBVk5DSWRHZm1KODZVcFZ1TmxZZEFQcjBjeGVuaXEzVlZkYm9MS3ozYTVlcWpnRjBTWHVrMXBTb3VDZTNXc3F1VUdNU2ZGNVRidkRuMDBLeGRSamNxbW52Zkd6WVdQQjBpRDFIcVF0VERfNlMteA?oc=5",
+          "source": "Upstox",
+          "published": "2026-09-25 07:00 UTC"
+        },
+        {
           "title": "Top 39 Gold Stocks To Buy In India September 2026 - Samco",
           "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
           "source": "Samco",
           "published": "2026-09-25 06:51 UTC"
         },
         {
-          "title": "AGOL Share Price rises as fundamentals and sector align - univest.in",
+          "title": "AGOL Share Price rises as fundamentals and sector align - Univest",
           "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
-          "source": "univest.in",
+          "source": "Univest",
           "published": "2026-09-11 07:00 UTC"
         },
         {
@@ -269,16 +275,10 @@
           "published": "2026-01-19 08:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Ltd's Rs 48.75 crores rights opens on May 8 - The Times of India",
+          "title": "Ashapuri Gold Ornament Ltd's Rs 48.75 crores rights opens on May 8 - timesofindia.indiatimes.com",
           "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPWlJ2VE9BSE5vNUsyNkRFanBEVEhVcHBwX0FFMWRkRWRpMm8xcTFQSFJXUjZkNGdSU1ZaNGNjRXNoaEIzTnY1a3V4bEVIYVpNcUphMjBVMHJ4TUJVTTVFR1J5TnpneFZpOXhCRFdhcGpEZmNWRFpQdWpaeVhBbjFXWXZyZDQyXzJSSnpMT01ham5zMG5ieTE3dnlSajRLbGl5WTMybjgwWV9oejdabFdLZWhKeWx4MXJFWVRONHlDaEhBRHV0Z1l6ZThIY0J6QU5JYkljaWtGWFZreWVSdFd0cWc2ZC1nQdIB6wFBVV95cUxQMjM4cmY2Uzh0R01rTzFTLWNIM0RRWXBTSmI2Q0Nndlh1UGdMdmMxZ3NiajVURFZ1U09qTG9UdEgwZlduR081Rkg5NS10RmJkVGVCZWhzc0FuLWdHR01RR3FlVDBiOXVMYUh2Rm9kTXNuOXV1WUdOdnB1NmhXRl9lcmhneUNMT2hMMlRPWXdjdllaQWpQcFJLRWFsUzNXUEFleF8zZ0RYdDZ1T3FwSHpIVXF4ZGxSOFhVXy14RF9ETU16enFWQ1lVVnI5SmVvM1ZqcGtEWVNjTHcwdk9BWFFlWnhjd0VxZVB6VUd3?oc=5",
-          "source": "The Times of India",
+          "source": "timesofindia.indiatimes.com",
           "published": "2024-05-07 07:00 UTC"
-        },
-        {
-          "title": "Ashapuri Gold Ornament Ltd Share Price Today – Live NSE/BSE - INDmoney",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5CQ2RsMnpFM192VG0zS3d5NlpJbm9GSFFlVkZaZlBFRFV6LUJGYkprTURZUFhEemVwbUwxTzdjNjl1ZnMxT3dpUFAyRnVUdTlrRkxCMkQxM2VYbEw0dUp2UnFVcklZUUFEX05WVDZZbU5oTUMxUjFwdWJn?oc=5",
-          "source": "INDmoney",
-          "published": "2023-02-24 00:40 UTC"
         }
       ]
     },
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-09-26T14:44:02+00:00",
+        "fetched_at": "2026-09-27T15:18:04+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -384,10 +384,10 @@
           "published": "2026-01-03 15:50 UTC"
         },
         {
-          "title": "Madhav Infra Projects Secures ₹342 Crore Solar Power Contract from M.P. Urja Vikas Nigam Limited - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOVTF4ZW5MY0FvRjNyQlVpN2t5Q2c2Qk9NbldUWEF5TlFWRkx2ZFdONzA2X0l1SnE3R2hSdjJmb3ZXcktJakhkUnZhN253eEJteTA2T1FFNnpPYWR2Q3VERmVSY3J5NzEwY3lrRlNPR1d5Si14NDFOalViSkhWWTljRGhqN3NabUtyMVA4TnpFdFlUbWlPMEd6dk5RVnZxUG1sTHdLTjIyTUtnNFJTT1pvRmRQZFNhenQxV29JUEY2eElSa2JINHEyV2V4RkFoOHF4aTVEeg?oc=5",
-          "source": "scanx.trade",
-          "published": "2025-12-28 08:00 UTC"
+          "title": "Madhav Infra Projects jumps on bagging Rs 342-crore solar order from MPUVNL - Business Standard",
+          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPcF9PU2dFZEx1OWFoVm12eDlhc0hXX0ZXNHRDNld4UkFDY21MOFFSZzNHX2FxZ0lpUnJsOXpTVUJTMGZ5SkdHWkpzQlhlWkItenVJNExVY1dxUkJmbjJ6SnpzNlUzWGxCTDdLTVpqY1Y1UHl2VXl0WS0tbVYxa21MU1c3ei12LWg5amRCMWFHbmFsbTlOSkV5VEoxby1WRGRJT29WRVNyaGUtUmlTS1NDNFU1N1Y0UEdOd0pxQjRoS1VvWG5KMjFlV3VScFJ1Y0pTQ21yUEN6UEE1SzlvM0xkWVpuQmVFallHSEJHcG9R0gHzAUFVX3lxTE9WY1VXajhOT3k2MHczN001Qzd0Sy01aHZmdksyTnhWNm9QRzRtQ3pJY1dnV1pXSFY4WXBaYVpWTVFfT1lDS2l6aG9LeHF5SlRnUDN1QnNJNFhCMzNsbzk1Z3ZEcDg2VkFFYzhmYzBVYXJTVnpzclBaU2F4cnlOc1lJMElNZjQ2X1N4WlRJZEJ4eDl6NVhDTHgxMnN6eUQ1VmtWMy12UFRlaE9VVFR0RHhaZVY4Vy15XzVNMDRieGNxVlFyYVRSc3FpUlNJc1RJNEtKUmlWYzB2RkZzeGtDa0ZOeTRJOXFvbDB3N2N3WUcxdVI3OA?oc=5",
+          "source": "Business Standard",
+          "published": "2025-12-29 08:00 UTC"
         },
         {
           "title": "Madhav Infra Projects Ltd Share Price Today – Live NSE/BSE - INDmoney",
