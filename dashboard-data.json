@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T15:18:01+00:00",
+  "generated_at": "2026-09-28T18:15:33+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,12 +13,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.87,
-        "previous_close": 7.06,
-        "change_pct": -2.6912181303116123,
-        "market_cap": 2706018816.0,
-        "trailing_pe": 10.904762,
-        "price_to_book": 1.4444911,
+        "price": 6.83,
+        "previous_close": 6.87,
+        "change_pct": -0.5822416302765698,
+        "market_cap": 2690263296.0,
+        "trailing_pe": 10.8412695,
+        "price_to_book": 1.4360807,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
@@ -26,12 +26,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.55,
         "currency": "INR",
-        "fetched_at": "2026-09-27T15:18:02+00:00",
+        "fetched_at": "2026-09-28T18:15:34+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        8.15,
         8.1,
         8.1,
         8.1,
@@ -120,7 +119,8 @@
         6.66,
         6.82,
         7.06,
-        6.87
+        6.87,
+        6.83
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -166,28 +166,28 @@
           "published": "2026-09-04 07:00 UTC"
         },
         {
-          "title": "Nila Infrastructures Ltd Share Price Today NSE/BSE Charts - Alice Blue",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBlU3FJX0NaNWtibzh5X2FpeVNaMHUxTG1OLWJEZVZSejdHREZobm90QzczcUhlMjJTSDBFMFl3YzQwUklnVExMRjN2N3N3Vnp3RFJUQlViOEU0Z2VzOW05RVlZYXVDcm5tRjJ3MlAzSjBSVjg4N1NUbHZ3?oc=5",
-          "source": "Alice Blue",
-          "published": "2026-09-07 23:02 UTC"
-        },
-        {
           "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
           "source": "Univest",
           "published": "2026-07-01 07:00 UTC"
         },
         {
-          "title": "Nila Infrastructures Ltd. Share Price Today - Nila Infrastructures Ltd. Stock Price Live NSE/BSE - CNBC TV18",
-          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNSmVoM1cxbEtkY0djWUxKUDZOOEVENUZpZExlZ2FCblFsMWt3WUdfR0w4cFZ6UnpVYmE0SEdZSjVnenBJdUI4eUUtcW12UGJiYnVzM1k0R0ZaZVBYNGtPcE9xOWtmeFNzZGl0UnMtaXhfRGpKWE1YcGc1WEtwVkFPYVhjUGJIN2M?oc=5",
-          "source": "CNBC TV18",
-          "published": "2026-01-03 14:40 UTC"
-        },
-        {
           "title": "Stocks to Watch Today: DOMS Industries, Krishna Institute of Medical Sciences, Prime Focus, Utkal... - Moneycontrol.com",
           "url": "https://news.google.com/rss/articles/CBMiuAJBVV95cUxPWnBDM1V5ajEwMS1OaGVYZVVUekdiVmc1V1FScTdxNlZWSjJFVWFReEN6cE1sNEJ5alQxVE8tNjlEdzBrenlVVGQ1RzFCSnBuVHF6cGR6Ym1DUlY0UXdoNGtCRzhXN1Rnbjdoam9JWm1XY0dzbHJ2LTR1WER3LUNQNXdULUtjLU8wLWRuNHRSNTM5UHpYanV0SV82dWlpWlJsVU5qa0FURWh6STFrTEpCMU1VOGItcUowYnMtbG1HdDIxdXEyU3IwSlZILUR3Z2lkZC13WXJRQzNLN3ZEeUNCWWlQS3BTZWlXakQtbVEwRHFPbkNudklfVV9UQVdZRV9yZlNtUmZrbWhLVEcxX19jX002bHQ2bFFxM3A4N1VjbExvcUctMnlaZm5LQ1RWdTNacmFINnpvWkXSAb4CQVVfeXFMT192dG13WVZVUnNJcV9QeGZyc3NnM2luUGRZRGpPRVBXTWpSRU43OW1Pcll2OTJubVZGajNDOVFiWlNPLXRxM2JyNENZbWYtMU1zanllaWRHSG9EdmhXM2l1MUFMSmpva1FSRXcwYnJlUnVaSjM4UlJsTG1HUFBIMGVKcUdPR0hqUjIwWG1paUQzSUxxZFhUNWFGaVJGSFFiNlpMY2dJVkdVOE1RSUZHYzVsVng3R1p4TnJ0bHNIcFVQemZoNGwzeWo4T0t6VzJ2MEp0a3dRSDR3dy1Bc2lTSG12M2l0ZndCZTZ1ZkVEb2h6UW1za2hVcEJUc21LR2pUcGVkZUl0UDJ5Sk9HX2R6VkgyT19kTE43NlJObVBzS05Lem1LMUY1VWE4cmZta0JsUkYyalVKbkNUdHRnd3hB?oc=5",
           "source": "Moneycontrol.com",
           "published": "2026-06-17 07:00 UTC"
+        },
+        {
+          "title": "Why Is Nila Infrastructures Share Price Falling Key Reasons 2026 - Univest",
+          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA0S0R5TWVFU1FTTGtOaWlkY1dlRGFVcTN6TjlPellRMUo4MjZ3a3JvdXNEd2dBeHYwYUREVTFSZ0JoX1FqMHlHMlNieEVuLVpLOGFWVU9NNUtnem51UXBQRy0tdy04dlMtNXkxSzNmd3Q5eVp1RHpGbWxQWUM?oc=5",
+          "source": "Univest",
+          "published": "2026-06-17 07:00 UTC"
+        },
+        {
+          "title": "GTV Stock Price and Chart — BSE:GTV - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE51TUtSR0Frb3pqU2p0alZLWnhXQWNKY3RJQUVpSHZyci01d0FjcEtNb00xUDJueXZVaklOZkhWZmNCR0xGYm44T05TT0ZJcE1kWmJadHQzaw?oc=5",
+          "source": "TradingView",
+          "published": "2026-04-28 07:00 UTC"
         }
       ]
     },
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-09-27T15:18:03+00:00",
+        "fetched_at": "2026-09-28T18:15:35+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -269,16 +269,16 @@
           "published": "2026-09-11 07:00 UTC"
         },
         {
+          "title": "Ashapuri Gold Ornament Ltd. Peer Comparison – Compare with Others - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNMjc1RWJSYXJVMVpONUVFYXZjZENrUU1XaUh6M1NmdzdtSkhVTjdEWGlZZC16LTFUOVpPdW5rU0JobVRvWGM4c1NlSzdtajhkQnktVWttalhURmhmTmdaaEluVlo3ZE5rZkZZRXY2NXRsMGQ1c1JpekpBV084ME5nNXdVYXZfZmVNUkZxYWpXcjcwdTdrdF9GcA?oc=5",
+          "source": "Value Research",
+          "published": "2026-09-04 13:25 UTC"
+        },
+        {
           "title": "Ashapuri Gold Ornament Wins ₹29 Crore Orders from Major Retail Chains at IIJS 2026 - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPbVh4cWktMmNwR0dVekc3bXhOT04xUEY5MWEwNzQ2MHNCOFBkMlhqbzNRdkJMTDRHYTg5VmFxR2hIanAyam9veHNDeHZmWS1ZcjNkU05vUElTbG5OTnYxSjZpakZPVzhDbWwxQTdBT0VRZkwzU0lrNkxQT2tKQTRVZmsyY3pDWnhoSG1mYklGX0JjMnpUOU8xYU42TkFfSDg4bUxVWkRMa2Vka2cxR0dudnFySWVEdmhJbDBld0haLVFJUDBYSWxKb3dCOUtyX0tRa20zTFhDcnFuY3M?oc=5",
           "source": "scanx.trade",
           "published": "2026-01-19 08:00 UTC"
-        },
-        {
-          "title": "Ashapuri Gold Ornament Ltd's Rs 48.75 crores rights opens on May 8 - timesofindia.indiatimes.com",
-          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPWlJ2VE9BSE5vNUsyNkRFanBEVEhVcHBwX0FFMWRkRWRpMm8xcTFQSFJXUjZkNGdSU1ZaNGNjRXNoaEIzTnY1a3V4bEVIYVpNcUphMjBVMHJ4TUJVTTVFR1J5TnpneFZpOXhCRFdhcGpEZmNWRFpQdWpaeVhBbjFXWXZyZDQyXzJSSnpMT01ham5zMG5ieTE3dnlSajRLbGl5WTMybjgwWV9oejdabFdLZWhKeWx4MXJFWVRONHlDaEhBRHV0Z1l6ZThIY0J6QU5JYkljaWtGWFZreWVSdFd0cWc2ZC1nQdIB6wFBVV95cUxQMjM4cmY2Uzh0R01rTzFTLWNIM0RRWXBTSmI2Q0Nndlh1UGdMdmMxZ3NiajVURFZ1U09qTG9UdEgwZlduR081Rkg5NS10RmJkVGVCZWhzc0FuLWdHR01RR3FlVDBiOXVMYUh2Rm9kTXNuOXV1WUdOdnB1NmhXRl9lcmhneUNMT2hMMlRPWXdjdllaQWpQcFJLRWFsUzNXUEFleF8zZ0RYdDZ1T3FwSHpIVXF4ZGxSOFhVXy14RF9ETU16enFWQ1lVVnI5SmVvM1ZqcGtEWVNjTHcwdk9BWFFlWnhjd0VxZVB6VUd3?oc=5",
-          "source": "timesofindia.indiatimes.com",
-          "published": "2024-05-07 07:00 UTC"
         }
       ]
     },
@@ -292,12 +292,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.52,
-        "previous_close": 7.59,
-        "change_pct": -0.9222661396574461,
-        "market_cap": 2027253376.0,
-        "trailing_pe": 7.8333335,
-        "price_to_book": 0.8449439,
+        "price": 7.39,
+        "previous_close": 7.52,
+        "change_pct": -1.7287234042553168,
+        "market_cap": 1992207744.0,
+        "trailing_pe": 7.6979165,
+        "price_to_book": 0.8303371,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-09-27T15:18:04+00:00",
+        "fetched_at": "2026-09-28T18:15:36+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -337,7 +337,8 @@
         7.39,
         7.67,
         7.59,
-        7.52
+        7.52,
+        7.39
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -378,28 +379,28 @@
           "published": "2026-04-20 05:28 UTC"
         },
         {
+          "title": "Madhav Infra Projects Ltd Share Price Today NSE/BSE Charts - Alice Blue",
+          "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE91QnozWHFiT0tHZERaS1U5ZzZRd2RaRjhGVVR6TWg0UTZTZDA3TTBDeEk5dnFHNUlGZ1F4WWVYeEQ4QTRFb0tYX3V0Q2NXQ2ZsRkNWa1ZCcjlvRTczNVhZckVqWXJucm9zQ2k5QVUyR3Q3RXg5T2lRMnJsUQ?oc=5",
+          "source": "Alice Blue",
+          "published": "2026-09-05 04:14 UTC"
+        },
+        {
           "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
           "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
           "source": "CNBC TV18",
           "published": "2026-01-03 15:50 UTC"
         },
         {
-          "title": "Madhav Infra Projects jumps on bagging Rs 342-crore solar order from MPUVNL - Business Standard",
+          "title": "Madhav Infra Projects jumps on bagging Rs 342-crore solar order from MPUVNL - business-standard.com",
           "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPcF9PU2dFZEx1OWFoVm12eDlhc0hXX0ZXNHRDNld4UkFDY21MOFFSZzNHX2FxZ0lpUnJsOXpTVUJTMGZ5SkdHWkpzQlhlWkItenVJNExVY1dxUkJmbjJ6SnpzNlUzWGxCTDdLTVpqY1Y1UHl2VXl0WS0tbVYxa21MU1c3ei12LWg5amRCMWFHbmFsbTlOSkV5VEoxby1WRGRJT29WRVNyaGUtUmlTS1NDNFU1N1Y0UEdOd0pxQjRoS1VvWG5KMjFlV3VScFJ1Y0pTQ21yUEN6UEE1SzlvM0xkWVpuQmVFallHSEJHcG9R0gHzAUFVX3lxTE9WY1VXajhOT3k2MHczN001Qzd0Sy01aHZmdksyTnhWNm9QRzRtQ3pJY1dnV1pXSFY4WXBaYVpWTVFfT1lDS2l6aG9LeHF5SlRnUDN1QnNJNFhCMzNsbzk1Z3ZEcDg2VkFFYzhmYzBVYXJTVnpzclBaU2F4cnlOc1lJMElNZjQ2X1N4WlRJZEJ4eDl6NVhDTHgxMnN6eUQ1VmtWMy12UFRlaE9VVFR0RHhaZVY4Vy15XzVNMDRieGNxVlFyYVRSc3FpUlNJc1RJNEtKUmlWYzB2RkZzeGtDa0ZOeTRJOXFvbDB3N2N3WUcxdVI3OA?oc=5",
-          "source": "Business Standard",
+          "source": "business-standard.com",
           "published": "2025-12-29 08:00 UTC"
         },
         {
-          "title": "Madhav Infra Projects Ltd Share Price Today – Live NSE/BSE - INDmoney",
+          "title": "Madhav Infra Projects Ltd Share Price Today – Live NSE/BSE - indmoney.com",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5ESW0tZ016N25sTXgwN3FrbnFfSkRRaW5XZVdXdFJfamxhMXFCS3pEdWtyczR3MWNLbUtVTVlXUlJLYVR4eENxZTRwT1FvVnJEWkM5V2xkTTZ4OEZSWllCUWJ0OXZrNlJxMDZVLUNCUFpOeFBBSE52Tg?oc=5",
-          "source": "INDmoney",
+          "source": "indmoney.com",
           "published": "2023-02-24 00:06 UTC"
-        },
-        {
-          "title": "Madhav Infra Projects Ltd. Share Price Today | Madhav Infra Live NSE/BSE - Value Research",
-          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNRHVEQUVWVG9zWmNjWUJUdjJldTNhazFNemJkdW84ZkIxQkstMmxKT2QyTFRaZWtHbl9WZUo4WW5LZG5wQ2QtX0p2amhMVUVCRU12TVVaQXRPVWhlcEFtNjBiXy1VaVlZUnFHWVhXWG03MGtRd1ktSkhJY0dVYS1YRXpn?oc=5",
-          "source": "Value Research",
-          "published": "2022-03-25 08:42 UTC"
         }
       ]
     }
