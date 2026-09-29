@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T18:15:33+00:00",
+  "generated_at": "2026-09-29T16:38:05+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,25 +13,24 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.83,
-        "previous_close": 6.87,
-        "change_pct": -0.5822416302765698,
-        "market_cap": 2690263296.0,
-        "trailing_pe": 10.8412695,
-        "price_to_book": 1.4360807,
+        "price": 6.71,
+        "previous_close": 6.83,
+        "change_pct": -1.7569546120058566,
+        "market_cap": 2642996736.0,
+        "trailing_pe": 10.650794,
+        "price_to_book": 1.4108495,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
         "free_cash_flow": null,
         "fifty_two_week_low": 5.9,
-        "fifty_two_week_high": 11.55,
+        "fifty_two_week_high": 11.2,
         "currency": "INR",
-        "fetched_at": "2026-09-28T18:15:34+00:00",
+        "fetched_at": "2026-09-29T16:38:05+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        8.1,
         8.1,
         8.1,
         8.02,
@@ -120,7 +119,8 @@
         6.82,
         7.06,
         6.87,
-        6.83
+        6.83,
+        6.71
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-09-28T18:15:35+00:00",
+        "fetched_at": "2026-09-29T16:38:06+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -251,12 +251,6 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Ashapuri Gold Ornament Limited Share Price - Live AGOL Stock Price & Chart - Upstox",
-          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE84X2lBVk5DSWRHZm1KODZVcFZ1TmxZZEFQcjBjeGVuaXEzVlZkYm9MS3ozYTVlcWpnRjBTWHVrMXBTb3VDZTNXc3F1VUdNU2ZGNVRidkRuMDBLeGRSamNxbW52Zkd6WVdQQjBpRDFIcVF0VERfNlMteA?oc=5",
-          "source": "Upstox",
-          "published": "2026-09-25 07:00 UTC"
-        },
-        {
           "title": "Top 39 Gold Stocks To Buy In India September 2026 - Samco",
           "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
           "source": "Samco",
@@ -279,6 +273,12 @@
           "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPbVh4cWktMmNwR0dVekc3bXhOT04xUEY5MWEwNzQ2MHNCOFBkMlhqbzNRdkJMTDRHYTg5VmFxR2hIanAyam9veHNDeHZmWS1ZcjNkU05vUElTbG5OTnYxSjZpakZPVzhDbWwxQTdBT0VRZkwzU0lrNkxQT2tKQTRVZmsyY3pDWnhoSG1mYklGX0JjMnpUOU8xYU42TkFfSDg4bUxVWkRMa2Vka2cxR0dudnFySWVEdmhJbDBld0haLVFJUDBYSWxKb3dCOUtyX0tRa20zTFhDcnFuY3M?oc=5",
           "source": "scanx.trade",
           "published": "2026-01-19 08:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Ltd. Key Financial Ratios – Valuation, Profitability & More - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNRl9acVk4RW4tRHZtN3FBV0dQSkx2OE1DUmM3dGVxb1l1SC1lRVVIUGRwMGg5UzZIS1ZYN0lGTHVvbWhORUI2alhqRGRyWkpnekZiSHpUMTBrUk80cXRFVTV5dlBmQWppekRZSFM3YXJFZTNkemsteDM3aDJGbTczeGhPMXhCczV4UW9aOTRiWG16QQ?oc=5",
+          "source": "Value Research",
+          "published": "2026-09-04 04:28 UTC"
         }
       ]
     },
@@ -292,12 +292,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.39,
-        "previous_close": 7.52,
-        "change_pct": -1.7287234042553168,
-        "market_cap": 1992207744.0,
-        "trailing_pe": 7.6979165,
-        "price_to_book": 0.8303371,
+        "price": 7.41,
+        "previous_close": 7.39,
+        "change_pct": 0.27063599458727605,
+        "market_cap": 1997599360.0,
+        "trailing_pe": 7.71875,
+        "price_to_book": 0.83258426,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.95,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-09-28T18:15:36+00:00",
+        "fetched_at": "2026-09-29T16:38:06+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -338,7 +338,8 @@
         7.67,
         7.59,
         7.52,
-        7.39
+        7.39,
+        7.41
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -391,16 +392,16 @@
           "published": "2026-01-03 15:50 UTC"
         },
         {
-          "title": "Madhav Infra Projects jumps on bagging Rs 342-crore solar order from MPUVNL - business-standard.com",
+          "title": "Madhav Infra Projects jumps on bagging Rs 342-crore solar order from MPUVNL - Business Standard",
           "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPcF9PU2dFZEx1OWFoVm12eDlhc0hXX0ZXNHRDNld4UkFDY21MOFFSZzNHX2FxZ0lpUnJsOXpTVUJTMGZ5SkdHWkpzQlhlWkItenVJNExVY1dxUkJmbjJ6SnpzNlUzWGxCTDdLTVpqY1Y1UHl2VXl0WS0tbVYxa21MU1c3ei12LWg5amRCMWFHbmFsbTlOSkV5VEoxby1WRGRJT29WRVNyaGUtUmlTS1NDNFU1N1Y0UEdOd0pxQjRoS1VvWG5KMjFlV3VScFJ1Y0pTQ21yUEN6UEE1SzlvM0xkWVpuQmVFallHSEJHcG9R0gHzAUFVX3lxTE9WY1VXajhOT3k2MHczN001Qzd0Sy01aHZmdksyTnhWNm9QRzRtQ3pJY1dnV1pXSFY4WXBaYVpWTVFfT1lDS2l6aG9LeHF5SlRnUDN1QnNJNFhCMzNsbzk1Z3ZEcDg2VkFFYzhmYzBVYXJTVnpzclBaU2F4cnlOc1lJMElNZjQ2X1N4WlRJZEJ4eDl6NVhDTHgxMnN6eUQ1VmtWMy12UFRlaE9VVFR0RHhaZVY4Vy15XzVNMDRieGNxVlFyYVRSc3FpUlNJc1RJNEtKUmlWYzB2RkZzeGtDa0ZOeTRJOXFvbDB3N2N3WUcxdVI3OA?oc=5",
-          "source": "business-standard.com",
+          "source": "Business Standard",
           "published": "2025-12-29 08:00 UTC"
         },
         {
-          "title": "Madhav Infra Projects Ltd Share Price Today – Live NSE/BSE - indmoney.com",
-          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5ESW0tZ016N25sTXgwN3FrbnFfSkRRaW5XZVdXdFJfamxhMXFCS3pEdWtyczR3MWNLbUtVTVlXUlJLYVR4eENxZTRwT1FvVnJEWkM5V2xkTTZ4OEZSWllCUWJ0OXZrNlJxMDZVLUNCUFpOeFBBSE52Tg?oc=5",
-          "source": "indmoney.com",
-          "published": "2023-02-24 00:06 UTC"
+          "title": "Madhav Infra Projects Ltd. Share Price Today | Madhav Infra Live NSE/BSE - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNRHVEQUVWVG9zWmNjWUJUdjJldTNhazFNemJkdW84ZkIxQkstMmxKT2QyTFRaZWtHbl9WZUo4WW5LZG5wQ2QtX0p2amhMVUVCRU12TVVaQXRPVWhlcEFtNjBiXy1VaVlZUnFHWVhXWG03MGtRd1ktSkhJY0dVYS1YRXpn?oc=5",
+          "source": "Value Research",
+          "published": "2022-03-25 08:42 UTC"
         }
       ]
     }
