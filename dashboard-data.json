@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-03T14:55:01+00:00",
+  "generated_at": "2026-10-04T15:29:51+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -26,7 +26,7 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.2,
         "currency": "INR",
-        "fetched_at": "2026-10-03T14:55:02+00:00",
+        "fetched_at": "2026-10-04T15:29:52+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-03T14:55:03+00:00",
+        "fetched_at": "2026-10-04T15:29:53+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -251,22 +251,22 @@
       "live_flags": [],
       "news": [
         {
+          "title": "Ashapuri Gold Ornament Limited Share Price - Live AGOL Stock Price & Chart - Upstox",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE84X2lBVk5DSWRHZm1KODZVcFZ1TmxZZEFQcjBjeGVuaXEzVlZkYm9MS3ozYTVlcWpnRjBTWHVrMXBTb3VDZTNXc3F1VUdNU2ZGNVRidkRuMDBLeGRSamNxbW52Zkd6WVdQQjBpRDFIcVF0VERfNlMteA?oc=5",
+          "source": "Upstox",
+          "published": "2026-10-01 07:00 UTC"
+        },
+        {
+          "title": "Top 39 Gold Stocks To Buy In India October 2026 - Samco",
+          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
+          "source": "Samco",
+          "published": "2026-10-03 06:51 UTC"
+        },
+        {
           "title": "AGOL Share Price rises as fundamentals and sector align - Univest",
           "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
           "source": "Univest",
           "published": "2026-09-11 07:00 UTC"
-        },
-        {
-          "title": "Ashapuri Gold Ornament (AGOL) Share: A Small Jewellery Wholesaler Explained - kalkine.co.in",
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQWjR0MFRReGhYdUlhbmpmdTJLLUlvNENTRUVvMG9XSm9PU0NTWnJFYXN0cXV2MkZXZkVpNTAxMGlNWXlmQnkyTWJIUVF6aHRGWWhTNXpobS1jMWRsbUV2eHBKWGpLb1NOZmxId2FSQklvcC0wZE42V0tqT2lMY282QTZsd0RMY2pDWHVzWXRXdzJ4T0hTRlUwUlpnUEsyVTdNNU1ZX2RTM1d3a0RTdG9GSkhPay1LSzFFUXlJ?oc=5",
-          "source": "kalkine.co.in",
-          "published": "2026-09-10 07:00 UTC"
-        },
-        {
-          "title": "Top 39 Gold Stocks To Buy In India September 2026 - Samco",
-          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
-          "source": "Samco",
-          "published": "2026-09-25 06:51 UTC"
         },
         {
           "title": "Ashapuri Gold board to meet on May 29 for FY26 results - scanx.trade",
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.93,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-03T14:55:04+00:00",
+        "fetched_at": "2026-10-04T15:29:54+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -382,16 +382,10 @@
           "published": "2026-04-20 05:28 UTC"
         },
         {
-          "title": "Compare with VINDHYA TELELINKS - Equitymaster",
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOUWZ2dW1KSzNfcWs1Y2lISzFNS290T25xcklIQl9kcEViQ2xhMnc3MGpyaTdDSmxTSDhuYm4wVzZHMXpyRkswZS1nNUxBTWs0eTRQR1RZS3JhUmdRVXU0RTJ4Y1lCZ0E2Y0lIUUJUV2N4VFBwNldiLVVsUnE4a3Q5T2pDTFVMRGxoLVhaT0RjdGpCd0dqQjNKMW4yZXFuZFNYdksyUm5fQUNjcndUb3c?oc=5",
-          "source": "Equitymaster",
-          "published": "2026-09-26 10:20 UTC"
-        },
-        {
-          "title": "Madhav Infra Projects Ltd Share Price Today NSE/BSE Charts - Alice Blue",
-          "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE91QnozWHFiT0tHZERaS1U5ZzZRd2RaRjhGVVR6TWg0UTZTZDA3TTBDeEk5dnFHNUlGZ1F4WWVYeEQ4QTRFb0tYX3V0Q2NXQ2ZsRkNWa1ZCcjlvRTczNVhZckVqWXJucm9zQ2k5QVUyR3Q3RXg5T2lRMnJsUQ?oc=5",
-          "source": "Alice Blue",
-          "published": "2026-09-05 04:14 UTC"
+          "title": "Madhav Infra Projects promoters execute inter-se share gift - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOekhkSlpydmZyU0ZqRTdBektHRWNHbkFPMXVYT2ZLQlR3T1JKQXJmSGhHZ2ZLVkpKV080X2R5UDh2eDZmT2tEb2FQVXJXTUo2N3hqS29ZU0N3alhqZ0ViSXo5TGstaXNPTENNRjRZcXM2RTE5M0JTQUlqR3IycUJsaHBteXlxOVpzRWpYbXR5UFFMeUcxZmt2aS1nYWpxTXUyVkZBYV9CZ1V2UV9vVzNMZmxFemgzejg?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-08-05 11:43 UTC"
         },
         {
           "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
@@ -404,6 +398,12 @@
           "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNN3BMWTJJZUd5RXBIMHVES3dRR0cyR2tJRXdSTUIxX09vUTdjbHZnZ01Ld1RIUC1zcFlOXzdLY2dXanFtM2d1TUl4TGQwR0dhcmhYSlR3WnlQMFdKM2VIQ0I2TzdzZ0F3enZIcGYtdmJzTE50SEpRR1NRQ2xuaWVSOTkzQVBQY2Vqb1I5VVVWTU5wVXFMdlMwTDEyRGZVTkJRclFJcUJHNU9aVzhyZGxtRlFaM1RzbDRSMFd1N1NRN2dPVDEwMFhuVktWcnlrOWNYVm1YaTFqeExhWHJhZEZSXzNBaEjSAeoBQVVfeXFMUFF5bmJDWXhZbW93SGZ3aUs2bEFBd2xUdkFyaGtVcFd4ZXNBcWpGckFuQWJ5S3hTT3hueWFuNVIwQnFuTGM3XzJwS3IzVUItdFNYNXRZUnRPdEVkZW15THg0QVk5WElSREJHdk9BZGxKTlFfVDh4NlpPZHl5WXdLalB5WVNXQ1YweDBrV3oxcm1QelFDN2tDTG9XYlVFZ0g3UF9ja2FkR3o1MUlxUi1oY2Joby1jTEF0VS0zT2RzX01ySElUYUNzZUQ2TWpvaXpTcFJoYkJYcUk2U2RWZy1vbGxGLUNhUjU2VXF3?oc=5",
           "source": "Moneycontrol.com",
           "published": "2026-06-03 07:00 UTC"
+        },
+        {
+          "title": "Compare with - Equitymaster",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdjJfRnNhOV81VURDR2tHTnI0dUV4V21ZUk85NmRMUlBXdDVXc1MxVTN3ZGF2N2pIUmFkbWxTSGRwOEM1NmQ4YkRSd1ExMngtSDZZeTA4OGFGTGtwMk5WbEhwdlNvTUNsclZQSmVWRnRfTkJjV21GYUZwU1BlZlFBWk9OeTBWeFRpRmNXWl9idzFtWjRQemF3TEkwck8xVm0ycGVjRWhwY1pmMGtCTm9RS2tXNnZlNVZzV0xF?oc=5",
+          "source": "Equitymaster",
+          "published": "2026-03-25 06:37 UTC"
         }
       ]
     }
