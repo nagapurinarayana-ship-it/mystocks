@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-05T14:57:55+05:30",
-  "for_date": "2026-10-06",
+  "generated_at": "2026-10-06T14:43:08+05:30",
+  "for_date": "2026-10-07",
   "market": "NSE India",
   "strategy": "Daily-candle momentum/trend setup; intended holding window up to 3 sessions",
   "target_pct": 0.02,
@@ -10,9 +10,9 @@
   "market_regime": {
     "available": true,
     "positive": false,
-    "close": 22539.05,
-    "sma20": 23202.21,
-    "sma50": 23843.49,
+    "close": 22703.15,
+    "sma20": 23143.31,
+    "sma50": 23822.53,
     "label": "Cautious"
   },
   "disclaimer": "Research signal only, not a guaranteed return. Skip the trade when opening conditions invalidate the setup.",
