@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T19:23:24+00:00",
+  "generated_at": "2026-10-06T16:55:55+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,12 +13,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.57,
+        "price": 6.7,
         "previous_close": 6.71,
-        "change_pct": -2.0864381520119157,
-        "market_cap": 2642996736.0,
-        "trailing_pe": 10.650794,
-        "price_to_book": 1.4108495,
+        "change_pct": -0.14903129657227732,
+        "market_cap": 2639057664.0,
+        "trailing_pe": 10.63492,
+        "price_to_book": 1.4087468,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
@@ -26,13 +26,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.2,
         "currency": "INR",
-        "fetched_at": "2026-10-05T19:23:25+00:00",
+        "fetched_at": "2026-10-06T16:55:56+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        8.02,
-        7.9,
         7.9,
         7.97,
         7.91,
@@ -120,7 +118,9 @@
         6.83,
         6.71,
         6.71,
-        6.57
+        6.57,
+        6.71,
+        6.7
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-05T19:23:26+00:00",
+        "fetched_at": "2026-10-06T16:55:57+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -251,12 +251,6 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Ashapuri Gold Ornament Limited Share Price - Live AGOL Stock Price & Chart - Upstox",
-          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE84X2lBVk5DSWRHZm1KODZVcFZ1TmxZZEFQcjBjeGVuaXEzVlZkYm9MS3ozYTVlcWpnRjBTWHVrMXBTb3VDZTNXc3F1VUdNU2ZGNVRidkRuMDBLeGRSamNxbW52Zkd6WVdQQjBpRDFIcVF0VERfNlMteA?oc=5",
-          "source": "Upstox",
-          "published": "2026-10-01 07:00 UTC"
-        },
-        {
           "title": "Ashapuri Gold Ornament seeks two-month AGM extension for FY26 - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUmNRc3poNnoteGI3U29MejNZVlpJVHhBQ1Z4U0c5RFIzbDlMS2poMWhmai04X2xnYTdmOUl3d1ZHUW1uRFRtSEdtWXJRWGloMFVGRlRrVVZMQkZPZEhzMlpkX0ZIaVcwMk1JMU5YeXE4Um5yaTlhR29oQzNrYVdTQ25HcXQ1WVR4bXl2cFRiNXNzYndKRFdyNnpqa3VSZEp4dHphZlg0YlVQZVBSZ245VEpRdjg?oc=5",
           "source": "scanx.trade",
@@ -279,6 +273,12 @@
           "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQWjR0MFRReGhYdUlhbmpmdTJLLUlvNENTRUVvMG9XSm9PU0NTWnJFYXN0cXV2MkZXZkVpNTAxMGlNWXlmQnkyTWJIUVF6aHRGWWhTNXpobS1jMWRsbUV2eHBKWGpLb1NOZmxId2FSQklvcC0wZE42V0tqT2lMY282QTZsd0RMY2pDWHVzWXRXdzJ4T0hTRlUwUlpnUEsyVTdNNU1ZX2RTM1d3a0RTdG9GSkhPay1LSzFFUXlJ?oc=5",
           "source": "Kalkine India",
           "published": "2026-09-10 07:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold FY26 net profit rises 54% to ₹1,856.40 lakh - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOR3JZS2JvbnlWVmFCSkpNVXFUZ2pGZEZHQ29TMk1JbHpMQXhKSmFSQ2tDbGh4Yy1JbEN3eDgxcFFNM3h6a1lDTms5Y0lua1NZbzJ4QzNhV2trMENZVVhROExMZlRrNXhDNVpoUmNUR0ZMZ0p1X2FfbnNHNUJDS0l3NzNLNGJIaTlFWUtKUFg0WUNGMGY4ZjczVVNvY3MxRjBXdW5uUGNrUzZtN0M4eEtoamVB?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-05-30 07:00 UTC"
         }
       ]
     },
@@ -292,12 +292,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.31,
-        "previous_close": 7.31,
-        "change_pct": 0.0,
-        "market_cap": 1957162240.0,
-        "trailing_pe": 7.5625005,
-        "price_to_book": 0.8157304,
+        "price": 7.35,
+        "previous_close": 7.26,
+        "change_pct": 1.2396694214876103,
+        "market_cap": 1981424512.0,
+        "trailing_pe": 7.65625,
+        "price_to_book": 0.82584274,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.93,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-05T19:23:27+00:00",
+        "fetched_at": "2026-10-06T16:55:57+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -341,7 +341,10 @@
         7.39,
         7.41,
         7.31,
-        7.31
+        7.31,
+        7.31,
+        7.26,
+        7.35
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -388,12 +391,6 @@
           "published": "2026-04-20 05:28 UTC"
         },
         {
-          "title": "Madhav Infra Projects Share Price Falls 2.49% After Q1 Results - Univest",
-          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQb0dQc1ZpV1ZFcHNpVUJDU1lXSGp5b2NZMkNPTEcxbGI2dnhCbUtNVVhBY29zUTlNeE9qMWhCeUhOLXZub3hTWnhFQnFqT3ZHQ1UzZ1BGSGtaRjF3OUdhN2Z1OUExQm02blVzblhuNklfd19YTmFTVEUyMm96N1l2Q3FMWWgyeTg?oc=5",
-          "source": "Univest",
-          "published": "2026-07-31 07:00 UTC"
-        },
-        {
           "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
           "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
           "source": "CNBC TV18",
@@ -404,6 +401,12 @@
           "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNN3BMWTJJZUd5RXBIMHVES3dRR0cyR2tJRXdSTUIxX09vUTdjbHZnZ01Ld1RIUC1zcFlOXzdLY2dXanFtM2d1TUl4TGQwR0dhcmhYSlR3WnlQMFdKM2VIQ0I2TzdzZ0F3enZIcGYtdmJzTE50SEpRR1NRQ2xuaWVSOTkzQVBQY2Vqb1I5VVVWTU5wVXFMdlMwTDEyRGZVTkJRclFJcUJHNU9aVzhyZGxtRlFaM1RzbDRSMFd1N1NRN2dPVDEwMFhuVktWcnlrOWNYVm1YaTFqeExhWHJhZEZSXzNBaEjSAeoBQVVfeXFMUFF5bmJDWXhZbW93SGZ3aUs2bEFBd2xUdkFyaGtVcFd4ZXNBcWpGckFuQWJ5S3hTT3hueWFuNVIwQnFuTGM3XzJwS3IzVUItdFNYNXRZUnRPdEVkZW15THg0QVk5WElSREJHdk9BZGxKTlFfVDh4NlpPZHl5WXdLalB5WVNXQ1YweDBrV3oxcm1QelFDN2tDTG9XYlVFZ0g3UF9ja2FkR3o1MUlxUi1oY2Joby1jTEF0VS0zT2RzX01ySElUYUNzZUQ2TWpvaXpTcFJoYkJYcUk2U2RWZy1vbGxGLUNhUjU2VXF3?oc=5",
           "source": "Moneycontrol.com",
           "published": "2026-06-03 07:00 UTC"
+        },
+        {
+          "title": "Compare with - Equitymaster",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdjJfRnNhOV81VURDR2tHTnI0dUV4V21ZUk85NmRMUlBXdDVXc1MxVTN3ZGF2N2pIUmFkbWxTSGRwOEM1NmQ4YkRSd1ExMngtSDZZeTA4OGFGTGtwMk5WbEhwdlNvTUNsclZQSmVWRnRfTkJjV21GYUZwU1BlZlFBWk9OeTBWeFRpRmNXWl9idzFtWjRQemF3TEkwck8xVm0ycGVjRWhwY1pmMGtCTm9RS2tXNnZlNVZzV0xF?oc=5",
+          "source": "Equitymaster",
+          "published": "2026-03-25 06:37 UTC"
         }
       ]
     }
