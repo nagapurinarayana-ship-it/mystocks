@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T16:55:55+00:00",
+  "generated_at": "2026-10-07T17:32:31+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,12 +13,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.7,
-        "previous_close": 6.71,
-        "change_pct": -0.14903129657227732,
-        "market_cap": 2639057664.0,
-        "trailing_pe": 10.63492,
-        "price_to_book": 1.4087468,
+        "price": 6.63,
+        "previous_close": 6.7,
+        "change_pct": -1.0447761194029903,
+        "market_cap": 2611485440.0,
+        "trailing_pe": 10.523809,
+        "price_to_book": 1.3940287,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
@@ -26,12 +26,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 11.2,
         "currency": "INR",
-        "fetched_at": "2026-10-06T16:55:56+00:00",
+        "fetched_at": "2026-10-07T17:32:32+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.9,
         7.97,
         7.91,
         7.93,
@@ -120,7 +119,8 @@
         6.71,
         6.57,
         6.71,
-        6.7
+        6.7,
+        6.63
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -160,16 +160,16 @@
       "live_flags": [],
       "news": [
         {
+          "title": "Is Nila Infrastructures the Best Stock in Its Sector? A Look at the Numbers - Univest",
+          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBTOUFaUXFNVkJxZFZXaTAtZGlnY1hleHJGMHpVV2tVQ1VDLXdtQ1BYZkNFek5MRldveGpHTWN5a2Iwa21jMlktd19MV3Nqb0hTNi1FX0ZfNmhicjBNOEY4bmdRZWQwREN1OGtR?oc=5",
+          "source": "Univest",
+          "published": "2026-10-05 07:00 UTC"
+        },
+        {
           "title": "Nila Infrastructures Ltd. Peer Comparison – Compare with Others - Value Research",
           "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxORHRvbzNZSVRhd09HakZYOE5LUUJNNTdlSkpkWkFMODJlWklnNWxPbEZwbVk2WkRlZU5yc2FUSWhTb3V4R2xLYzVoVzFNYmRLSTVtYjM4bHY2d0VlQjltVmJZaUs3d0l3RDBOOEJmQ3MzN2c2aXlwZ3JZNk9ELThESDNDQ2ZldFlLd3lxQ0pMbVdYM0M0?oc=5",
           "source": "Value Research",
           "published": "2026-08-26 17:02 UTC"
-        },
-        {
-          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
-          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
-          "source": "Univest",
-          "published": "2026-07-01 07:00 UTC"
         },
         {
           "title": "Nila Infrastructures consolidated profit rises 26% in Q1FY26 - scanx.trade",
@@ -178,15 +178,15 @@
           "published": "2026-07-27 07:00 UTC"
         },
         {
+          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
+          "source": "Univest",
+          "published": "2026-07-01 07:00 UTC"
+        },
+        {
           "title": "Stocks to Watch Today: DOMS Industries, Krishna Institute of Medical Sciences, Prime Focus, Utkal... - Moneycontrol.com",
           "url": "https://news.google.com/rss/articles/CBMiuAJBVV95cUxPWnBDM1V5ajEwMS1OaGVYZVVUekdiVmc1V1FScTdxNlZWSjJFVWFReEN6cE1sNEJ5alQxVE8tNjlEdzBrenlVVGQ1RzFCSnBuVHF6cGR6Ym1DUlY0UXdoNGtCRzhXN1Rnbjdoam9JWm1XY0dzbHJ2LTR1WER3LUNQNXdULUtjLU8wLWRuNHRSNTM5UHpYanV0SV82dWlpWlJsVU5qa0FURWh6STFrTEpCMU1VOGItcUowYnMtbG1HdDIxdXEyU3IwSlZILUR3Z2lkZC13WXJRQzNLN3ZEeUNCWWlQS3BTZWlXakQtbVEwRHFPbkNudklfVV9UQVdZRV9yZlNtUmZrbWhLVEcxX19jX002bHQ2bFFxM3A4N1VjbExvcUctMnlaZm5LQ1RWdTNacmFINnpvWkXSAb4CQVVfeXFMT192dG13WVZVUnNJcV9QeGZyc3NnM2luUGRZRGpPRVBXTWpSRU43OW1Pcll2OTJubVZGajNDOVFiWlNPLXRxM2JyNENZbWYtMU1zanllaWRHSG9EdmhXM2l1MUFMSmpva1FSRXcwYnJlUnVaSjM4UlJsTG1HUFBIMGVKcUdPR0hqUjIwWG1paUQzSUxxZFhUNWFGaVJGSFFiNlpMY2dJVkdVOE1RSUZHYzVsVng3R1p4TnJ0bHNIcFVQemZoNGwzeWo4T0t6VzJ2MEp0a3dRSDR3dy1Bc2lTSG12M2l0ZndCZTZ1ZkVEb2h6UW1za2hVcEJUc21LR2pUcGVkZUl0UDJ5Sk9HX2R6VkgyT19kTE43NlJObVBzS05Lem1LMUY1VWE4cmZta0JsUkYyalVKbkNUdHRnd3hB?oc=5",
           "source": "Moneycontrol.com",
-          "published": "2026-06-17 07:00 UTC"
-        },
-        {
-          "title": "Why Is Nila Infrastructures Share Price Falling Key Reasons 2026 - Univest",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA0S0R5TWVFU1FTTGtOaWlkY1dlRGFVcTN6TjlPellRMUo4MjZ3a3JvdXNEd2dBeHYwYUREVTFSZ0JoX1FqMHlHMlNieEVuLVpLOGFWVU9NNUtnem51UXBQRy0tdy04dlMtNXkxSzNmd3Q5eVp1RHpGbWxQWUM?oc=5",
-          "source": "Univest",
           "published": "2026-06-17 07:00 UTC"
         }
       ]
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-06T16:55:57+00:00",
+        "fetched_at": "2026-10-07T17:32:33+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -275,10 +275,10 @@
           "published": "2026-09-10 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold FY26 net profit rises 54% to ₹1,856.40 lakh - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOR3JZS2JvbnlWVmFCSkpNVXFUZ2pGZEZHQ29TMk1JbHpMQXhKSmFSQ2tDbGh4Yy1JbEN3eDgxcFFNM3h6a1lDTms5Y0lua1NZbzJ4QzNhV2trMENZVVhROExMZlRrNXhDNVpoUmNUR0ZMZ0p1X2FfbnNHNUJDS0l3NzNLNGJIaTlFWUtKUFg0WUNGMGY4ZjczVVNvY3MxRjBXdW5uUGNrUzZtN0M4eEtoamVB?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-05-30 07:00 UTC"
+          "title": "Yaashvi Jewellers (BSE:544770) - Stock Analysis - Simply Wall Street",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNbVRVRXJhS1ZlNWlWcE82YWN1YUQ5VGJIdkZRbWtjZk8xVC1wTUUwZ0Q4Ukpad1VsSjVnTWNsNl83UXlkRU9ZMl9WOFRsZFQxczkzUDg4VGdzRUt4SHVRQm1aekdfUWpIVnJ1Q1Fpc0NMNThXWWVlYWhhTk10WGRWZTJOdUpyRXl1ZGdLVy13?oc=5",
+          "source": "Simply Wall Street",
+          "published": "2026-06-02 22:47 UTC"
         }
       ]
     },
@@ -292,12 +292,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.35,
-        "previous_close": 7.26,
-        "change_pct": 1.2396694214876103,
-        "market_cap": 1981424512.0,
-        "trailing_pe": 7.65625,
-        "price_to_book": 0.82584274,
+        "price": 7.39,
+        "previous_close": 7.35,
+        "change_pct": 0.5442176870748217,
+        "market_cap": 1992207744.0,
+        "trailing_pe": 7.6979165,
+        "price_to_book": 0.8303371,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.93,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-06T16:55:57+00:00",
+        "fetched_at": "2026-10-07T17:32:34+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -344,7 +344,8 @@
         7.31,
         7.31,
         7.26,
-        7.35
+        7.35,
+        7.39
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -397,16 +398,16 @@
           "published": "2026-01-03 15:50 UTC"
         },
         {
-          "title": "Madhav Infra Pr Consolidated March 2026 Net Sales at Rs 254.06 crore, down 17.6% Y-o-Y - Moneycontrol.com",
-          "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNN3BMWTJJZUd5RXBIMHVES3dRR0cyR2tJRXdSTUIxX09vUTdjbHZnZ01Ld1RIUC1zcFlOXzdLY2dXanFtM2d1TUl4TGQwR0dhcmhYSlR3WnlQMFdKM2VIQ0I2TzdzZ0F3enZIcGYtdmJzTE50SEpRR1NRQ2xuaWVSOTkzQVBQY2Vqb1I5VVVWTU5wVXFMdlMwTDEyRGZVTkJRclFJcUJHNU9aVzhyZGxtRlFaM1RzbDRSMFd1N1NRN2dPVDEwMFhuVktWcnlrOWNYVm1YaTFqeExhWHJhZEZSXzNBaEjSAeoBQVVfeXFMUFF5bmJDWXhZbW93SGZ3aUs2bEFBd2xUdkFyaGtVcFd4ZXNBcWpGckFuQWJ5S3hTT3hueWFuNVIwQnFuTGM3XzJwS3IzVUItdFNYNXRZUnRPdEVkZW15THg0QVk5WElSREJHdk9BZGxKTlFfVDh4NlpPZHl5WXdLalB5WVNXQ1YweDBrV3oxcm1QelFDN2tDTG9XYlVFZ0g3UF9ja2FkR3o1MUlxUi1oY2Joby1jTEF0VS0zT2RzX01ySElUYUNzZUQ2TWpvaXpTcFJoYkJYcUk2U2RWZy1vbGxGLUNhUjU2VXF3?oc=5",
-          "source": "Moneycontrol.com",
-          "published": "2026-06-03 07:00 UTC"
-        },
-        {
           "title": "Compare with - Equitymaster",
           "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdjJfRnNhOV81VURDR2tHTnI0dUV4V21ZUk85NmRMUlBXdDVXc1MxVTN3ZGF2N2pIUmFkbWxTSGRwOEM1NmQ4YkRSd1ExMngtSDZZeTA4OGFGTGtwMk5WbEhwdlNvTUNsclZQSmVWRnRfTkJjV21GYUZwU1BlZlFBWk9OeTBWeFRpRmNXWl9idzFtWjRQemF3TEkwck8xVm0ycGVjRWhwY1pmMGtCTm9RS2tXNnZlNVZzV0xF?oc=5",
           "source": "Equitymaster",
           "published": "2026-03-25 06:37 UTC"
+        },
+        {
+          "title": "Madhav Infra Projects promoters execute inter-se share gift - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOekhkSlpydmZyU0ZqRTdBektHRWNHbkFPMXVYT2ZLQlR3T1JKQXJmSGhHZ2ZLVkpKV080X2R5UDh2eDZmT2tEb2FQVXJXTUo2N3hqS29ZU0N3alhqZ0ViSXo5TGstaXNPTENNRjRZcXM2RTE5M0JTQUlqR3IycUJsaHBteXlxOVpzRWpYbXR5UFFMeUcxZmt2aS1nYWpxTXUyVkZBYV9CZ1V2UV9vVzNMZmxFemgzejg?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-08-05 07:00 UTC"
         }
       ]
     }
