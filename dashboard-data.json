@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07T17:32:31+00:00",
+  "generated_at": "2026-10-08T17:35:47+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,26 +13,24 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.63,
-        "previous_close": 6.7,
-        "change_pct": -1.0447761194029903,
-        "market_cap": 2611485440.0,
-        "trailing_pe": 10.523809,
-        "price_to_book": 1.3940287,
+        "price": 6.47,
+        "previous_close": 6.63,
+        "change_pct": -2.413273001508298,
+        "market_cap": 2548463104.0,
+        "trailing_pe": 10.269841,
+        "price_to_book": 1.3603868,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
         "free_cash_flow": null,
         "fifty_two_week_low": 5.9,
-        "fifty_two_week_high": 11.2,
+        "fifty_two_week_high": 11.18,
         "currency": "INR",
-        "fetched_at": "2026-10-07T17:32:32+00:00",
+        "fetched_at": "2026-10-08T17:35:48+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.97,
-        7.91,
         7.93,
         7.98,
         7.99,
@@ -118,9 +116,11 @@
         6.71,
         6.71,
         6.57,
+        6.57,
         6.71,
         6.7,
-        6.63
+        6.63,
+        6.47
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-07T17:32:33+00:00",
+        "fetched_at": "2026-10-08T17:35:50+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -251,10 +251,16 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Ashapuri Gold Ornament seeks two-month AGM extension for FY26 - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUmNRc3poNnoteGI3U29MejNZVlpJVHhBQ1Z4U0c5RFIzbDlMS2poMWhmai04X2xnYTdmOUl3d1ZHUW1uRFRtSEdtWXJRWGloMFVGRlRrVVZMQkZPZEhzMlpkX0ZIaVcwMk1JMU5YeXE4Um5yaTlhR29oQzNrYVdTQ25HcXQ1WVR4bXl2cFRiNXNzYndKRFdyNnpqa3VSZEp4dHphZlg0YlVQZVBSZ245VEpRdjg?oc=5",
+          "title": "NSE to list shares of Ashapuri Gold Ornament, Belding India and Triveni Power Transmission from October 12 - Traders Union",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZ2QtTFAzU2hBY2hQX1JNM2dsSnhrbVZwakFNdEtSRThFeU10dDljQ0tSRzZmZlFhR2hnMWRUaTF4RFlRcEg4bUxPSUhLT3NkeVRYeEFiQzRaUk5zcUlUYjgwQ0x6em9fSE9POEVzMHEtSGpiZXI5OGgyUC12QUQ0ME8zWk80TXdmTFRlem13N3NmZmRqNXFoTXFodHNIRkNibEE?oc=5",
+          "source": "Traders Union",
+          "published": "2026-10-08 14:30 UTC"
+        },
+        {
+          "title": "Ashapuri Gold fixes Oct 24-30 book closure for AGM voting - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNOHZwLXRldElmTzhWc0swYzlTMTNJcE5oOVRMSDNsNm1tY1pFcFVPRzhLUTE3VGVTN25kb00xaW4wWV83TEZ0aENjV190cEt2MVFYbjJCZk15QXR5TGdoSU4yUVVBdTlPUHYzaWVfTm1aSk16VmFpZTNBS0d4S0JZd3JaRjlhSTZmYnVQZmtraVpEWEJBZVZQd05VVnppY2ZnU3lMR0N6cXVsRWxMUk01bHZvVUFPaWd4?oc=5",
           "source": "scanx.trade",
-          "published": "2026-10-02 20:36 UTC"
+          "published": "2026-10-07 12:06 UTC"
         },
         {
           "title": "Top 39 Gold Stocks To Buy In India October 2026 - Samco",
@@ -273,12 +279,6 @@
           "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQWjR0MFRReGhYdUlhbmpmdTJLLUlvNENTRUVvMG9XSm9PU0NTWnJFYXN0cXV2MkZXZkVpNTAxMGlNWXlmQnkyTWJIUVF6aHRGWWhTNXpobS1jMWRsbUV2eHBKWGpLb1NOZmxId2FSQklvcC0wZE42V0tqT2lMY282QTZsd0RMY2pDWHVzWXRXdzJ4T0hTRlUwUlpnUEsyVTdNNU1ZX2RTM1d3a0RTdG9GSkhPay1LSzFFUXlJ?oc=5",
           "source": "Kalkine India",
           "published": "2026-09-10 07:00 UTC"
-        },
-        {
-          "title": "Yaashvi Jewellers (BSE:544770) - Stock Analysis - Simply Wall Street",
-          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNbVRVRXJhS1ZlNWlWcE82YWN1YUQ5VGJIdkZRbWtjZk8xVC1wTUUwZ0Q4Ukpad1VsSjVnTWNsNl83UXlkRU9ZMl9WOFRsZFQxczkzUDg4VGdzRUt4SHVRQm1aekdfUWpIVnJ1Q1Fpc0NMNThXWWVlYWhhTk10WGRWZTJOdUpyRXl1ZGdLVy13?oc=5",
-          "source": "Simply Wall Street",
-          "published": "2026-06-02 22:47 UTC"
         }
       ]
     },
@@ -292,12 +292,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.39,
-        "previous_close": 7.35,
-        "change_pct": 0.5442176870748217,
-        "market_cap": 1992207744.0,
-        "trailing_pe": 7.6979165,
-        "price_to_book": 0.8303371,
+        "price": 7.21,
+        "previous_close": 7.39,
+        "change_pct": -2.4357239512855178,
+        "market_cap": 1943683072.0,
+        "trailing_pe": 7.510417,
+        "price_to_book": 0.8101124,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.93,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-07T17:32:34+00:00",
+        "fetched_at": "2026-10-08T17:35:52+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -345,7 +345,8 @@
         7.31,
         7.26,
         7.35,
-        7.39
+        7.39,
+        7.21
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -404,10 +405,10 @@
           "published": "2026-03-25 06:37 UTC"
         },
         {
-          "title": "Madhav Infra Projects promoters execute inter-se share gift - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOekhkSlpydmZyU0ZqRTdBektHRWNHbkFPMXVYT2ZLQlR3T1JKQXJmSGhHZ2ZLVkpKV080X2R5UDh2eDZmT2tEb2FQVXJXTUo2N3hqS29ZU0N3alhqZ0ViSXo5TGstaXNPTENNRjRZcXM2RTE5M0JTQUlqR3IycUJsaHBteXlxOVpzRWpYbXR5UFFMeUcxZmt2aS1nYWpxTXUyVkZBYV9CZ1V2UV9vVzNMZmxFemgzejg?oc=5",
+          "title": "Madhav Infra Projects standalone PAT falls 35% YoY in Q1FY26 - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNNEpqcGVTNXB1aXdINWIwb19qU3lTMFc3c2lMNjBMVnZQenc3UEFVdC02Mkhzcnh3OWI3OXMwdE5LTXdZR1YyRG40blBqUjQxMmE3V1dMM0V3d01FTkJjZThTeW8wdTdSb2o3clk2MHpzblpNT0ZoeUhrUnFiSUF5dVdrNUlMRXVZZ0IwOE55UmVndG1HbzhhZXBNVDdOZ2Y2U1BMLWtlc2ZWV25zOVFrZTB5bGtXNDV5ci1MNDJ0eC1henJFTVRxOWZTbk0?oc=5",
           "source": "scanx.trade",
-          "published": "2026-08-05 07:00 UTC"
+          "published": "2026-07-30 17:03 UTC"
         }
       ]
     }
