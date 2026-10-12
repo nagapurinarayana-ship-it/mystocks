@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T16:25:14+00:00",
+  "generated_at": "2026-10-12T19:59:47+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -16,9 +16,9 @@
         "price": 6.59,
         "previous_close": 6.47,
         "change_pct": 1.8547140649149974,
-        "market_cap": 2595729920.0,
-        "trailing_pe": 10.629032,
-        "price_to_book": 1.3856182,
+        "market_cap": 2690263296.0,
+        "trailing_pe": 10.8412695,
+        "price_to_book": 1.4360807,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
@@ -26,7 +26,7 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 10.58,
         "currency": "INR",
-        "fetched_at": "2026-10-11T16:25:14+00:00",
+        "fetched_at": "2026-10-12T19:59:48+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -166,18 +166,6 @@
           "published": "2026-10-05 07:00 UTC"
         },
         {
-          "title": "Nila Infrastructures Ltd. Peer Comparison – Compare with Others - Value Research",
-          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxORHRvbzNZSVRhd09HakZYOE5LUUJNNTdlSkpkWkFMODJlWklnNWxPbEZwbVk2WkRlZU5yc2FUSWhTb3V4R2xLYzVoVzFNYmRLSTVtYjM4bHY2d0VlQjltVmJZaUs3d0l3RDBOOEJmQ3MzN2c2aXlwZ3JZNk9ELThESDNDQ2ZldFlLd3lxQ0pMbVdYM0M0?oc=5",
-          "source": "Value Research",
-          "published": "2026-08-26 17:02 UTC"
-        },
-        {
-          "title": "Nila Infrastructures consolidated profit rises 26% in Q1FY26 - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQZkRmTF9Wd09KSDRiTFVmTHpIcGh3VWpIUjBSMFU4Zm9JSVBvZnBHcHUxTWVhdHBFSkVrUnFCWGpRYWF3cnFScWwyQ0ZMdUg2ZGtQa2ZySmNjaU1Dai1uaGVVQlFtMEF4U1k4ZkZZRmhHNkZ1Q1pKN1Z5Snpva1UwMWR6VU90V0dRb01fMzJxMFVmZFBSNmRFRDdMSW5pM2R4MVI0eGNrRFUxSGpBZURGcFlmNURoM3oxSjBVYWpn?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-07-27 07:00 UTC"
-        },
-        {
           "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
           "source": "Univest",
@@ -188,6 +176,18 @@
           "url": "https://news.google.com/rss/articles/CBMiuAJBVV95cUxPWnBDM1V5ajEwMS1OaGVYZVVUekdiVmc1V1FScTdxNlZWSjJFVWFReEN6cE1sNEJ5alQxVE8tNjlEdzBrenlVVGQ1RzFCSnBuVHF6cGR6Ym1DUlY0UXdoNGtCRzhXN1Rnbjdoam9JWm1XY0dzbHJ2LTR1WER3LUNQNXdULUtjLU8wLWRuNHRSNTM5UHpYanV0SV82dWlpWlJsVU5qa0FURWh6STFrTEpCMU1VOGItcUowYnMtbG1HdDIxdXEyU3IwSlZILUR3Z2lkZC13WXJRQzNLN3ZEeUNCWWlQS3BTZWlXakQtbVEwRHFPbkNudklfVV9UQVdZRV9yZlNtUmZrbWhLVEcxX19jX002bHQ2bFFxM3A4N1VjbExvcUctMnlaZm5LQ1RWdTNacmFINnpvWkXSAb4CQVVfeXFMT192dG13WVZVUnNJcV9QeGZyc3NnM2luUGRZRGpPRVBXTWpSRU43OW1Pcll2OTJubVZGajNDOVFiWlNPLXRxM2JyNENZbWYtMU1zanllaWRHSG9EdmhXM2l1MUFMSmpva1FSRXcwYnJlUnVaSjM4UlJsTG1HUFBIMGVKcUdPR0hqUjIwWG1paUQzSUxxZFhUNWFGaVJGSFFiNlpMY2dJVkdVOE1RSUZHYzVsVng3R1p4TnJ0bHNIcFVQemZoNGwzeWo4T0t6VzJ2MEp0a3dRSDR3dy1Bc2lTSG12M2l0ZndCZTZ1ZkVEb2h6UW1za2hVcEJUc21LR2pUcGVkZUl0UDJ5Sk9HX2R6VkgyT19kTE43NlJObVBzS05Lem1LMUY1VWE4cmZta0JsUkYyalVKbkNUdHRnd3hB?oc=5",
           "source": "Moneycontrol.com",
           "published": "2026-06-17 07:00 UTC"
+        },
+        {
+          "title": "GTV Stock Price and Chart — BSE:GTV - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE51TUtSR0Frb3pqU2p0alZLWnhXQWNKY3RJQUVpSHZyci01d0FjcEtNb00xUDJueXZVaklOZkhWZmNCR0xGYm44T05TT0ZJcE1kWmJadHQzaw?oc=5",
+          "source": "TradingView",
+          "published": "2026-04-28 07:00 UTC"
+        },
+        {
+          "title": "Q1 results 2026: AU Small Finance Bank, IDFC First Bank, Zen Technologies, among companies to announce earnings today - Livemint",
+          "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxQSmttMzhFaHdha2JsU1pWQTVuMWxXMnRjWTd6dExxSGNZSTZoTFFBTy1OS3haWDIzNThISi1USjhuRUlpVGN3YzB4N3RxdHhxOHVEemswb2pMSmhxNVUtNlBfYTk1b3ZFUmtqaUNmSEZUN2N3elVVRkhYQXJ1VVRJRWNhMkpHa0RfalNaQ1pqZ05HMjI2aFd5bXFfT3FQQThEemZOYWFnZFRXdjBwMVlDa0VTbXFRbzZUcnNrM0Q3S3Q0NUpEUTR1X2tkWXNGRV8weEVUZndnXzFsMUR1TUJJQlB4Qm5nNE5JSzM3Tm1CWmxYbUVINF8xZnFmeXpHVFRQSlZCdEZpTW8wLUJBUmFCYtIBlgJBVV95cUxPRDZseG5aZllaUTlWdndRLURzNENyekp6bHYyT041OXpxNUNfam42YWtjX3ZSZmhDZEdMU2NYUlFmZEdwNURZeTZLMXExMGtNTnRIWFNrNVBHQTJKN3BRTkdyZ1ZPS3BkYjhYSHhYZi0zam53MTRlbnA4Yk1KZU1DRHFqQl83cERranVveU9YanhlY2I1aUpUYnBfX3A1bW9VMVotSEs1b2dJOFhDZURMampYWVpvdk43Q0FzSE95Z3pkY09vdGpNMDFZdkVOV0F2YTVwSjg2ZDZBQW5DT1FzaWFaV0hkYzRLcUo4dUhiOWNlblNHYV84MWFLVklxN3Z2YmlNdHdUS0tSWVB1NHplc2lCR1FkZw?oc=5",
+          "source": "Livemint",
+          "published": "2026-07-25 07:00 UTC"
         }
       ]
     },
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-11T16:25:15+00:00",
+        "fetched_at": "2026-10-12T19:59:50+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -251,6 +251,12 @@
       "live_flags": [],
       "news": [
         {
+          "title": "AGOL Stock Price and Chart — NSE:AGOL - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9DMEVYcTVNeWtIQV9uenpETnB5TkVhMzFZTGhTWDRyMDlobnd5RXpTb2VOQUtNVXR5OHdWeThwVlQyVGY1X1ZnWlBfLTR5cG1tTC11THJNeUY?oc=5",
+          "source": "TradingView",
+          "published": "2026-10-12 13:39 UTC"
+        },
+        {
           "title": "Ashapuri Gold Ornament gets NSE listing approval for Oct 12 trading - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
           "source": "scanx.trade",
@@ -273,12 +279,6 @@
           "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
           "source": "Univest",
           "published": "2026-09-11 07:00 UTC"
-        },
-        {
-          "title": "Top 39 Gold Stocks To Buy In India October 2026 - Samco",
-          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
-          "source": "Samco",
-          "published": "2026-10-03 06:51 UTC"
         }
       ]
     },
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.93,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-11T16:25:16+00:00",
+        "fetched_at": "2026-10-12T19:59:51+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -387,6 +387,12 @@
           "published": "2026-10-07 07:00 UTC"
         },
         {
+          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
+          "source": "CNBC TV18",
+          "published": "2026-10-09 10:01 UTC"
+        },
+        {
           "title": "Madhav Infra board to consider preferential issue and share conversion - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNeFNPRWZnRW5CYm5nbnNNc1NJbkQ3WDdMMGJSZ2pyRXhWbXRtZ2ExcXh0eE1tY3JCbTRqN2w0RlRsVm96bmNyYmxvNzg1Ukx5TkIzOHN4V1J3ZExuZmszdnM0X3dLSnJnNXAtOEIwcXlDRF92TjhYQW43NVl6Uk5DbzNpbXdhTWxLdXlLS1NOR1Aza3JxXzNBamRfeVMxaHBCS1Vod0VJOEJ2Y3NSSndHZlZ4LTNEZEZrUnRoZg?oc=5",
           "source": "scanx.trade",
@@ -399,16 +405,10 @@
           "published": "2026-04-20 05:28 UTC"
         },
         {
-          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
-          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
-          "source": "CNBC TV18",
-          "published": "2026-01-03 15:50 UTC"
-        },
-        {
-          "title": "Madhav Infra Projects passes all nine resolutions at 33rd AGM - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPb19MR0FUZnJBTlViZ3Y4VWV6NkxwMFFsUWd0OUJmRTZYRW1VV3BVTm1uX3Iyb3hnU21vZkhfUmdZNUdSUXFTOUhJSC1MQTZvY0tQcWJNb0h0MmR5M3V4NmtJdkpJbVJBMHUtT1l0Y2VBUjhTMEVtZEZnSDZFX1JWTU9mb0VmcmktZk1jbHY4RVhURGk3b2VyVFJHcklqcnUzN0w5bWxwc2ZhazZJZVplRzUtQkwxUQ?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-10-02 14:58 UTC"
+          "title": "Madhav Infra Projects jumps on bagging Rs 342-crore solar order from MPUVNL - Business Standard",
+          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPcF9PU2dFZEx1OWFoVm12eDlhc0hXX0ZXNHRDNld4UkFDY21MOFFSZzNHX2FxZ0lpUnJsOXpTVUJTMGZ5SkdHWkpzQlhlWkItenVJNExVY1dxUkJmbjJ6SnpzNlUzWGxCTDdLTVpqY1Y1UHl2VXl0WS0tbVYxa21MU1c3ei12LWg5amRCMWFHbmFsbTlOSkV5VEoxby1WRGRJT29WRVNyaGUtUmlTS1NDNFU1N1Y0UEdOd0pxQjRoS1VvWG5KMjFlV3VScFJ1Y0pTQ21yUEN6UEE1SzlvM0xkWVpuQmVFallHSEJHcG9R0gHzAUFVX3lxTE9WY1VXajhOT3k2MHczN001Qzd0Sy01aHZmdksyTnhWNm9QRzRtQ3pJY1dnV1pXSFY4WXBaYVpWTVFfT1lDS2l6aG9LeHF5SlRnUDN1QnNJNFhCMzNsbzk1Z3ZEcDg2VkFFYzhmYzBVYXJTVnpzclBaU2F4cnlOc1lJMElNZjQ2X1N4WlRJZEJ4eDl6NVhDTHgxMnN6eUQ1VmtWMy12UFRlaE9VVFR0RHhaZVY4Vy15XzVNMDRieGNxVlFyYVRSc3FpUlNJc1RJNEtKUmlWYzB2RkZzeGtDa0ZOeTRJOXFvbDB3N2N3WUcxdVI3OA?oc=5",
+          "source": "Business Standard",
+          "published": "2025-12-29 08:00 UTC"
         }
       ]
     }
