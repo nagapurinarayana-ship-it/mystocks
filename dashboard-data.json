@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T19:59:47+00:00",
+  "generated_at": "2026-10-13T17:47:44+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,25 +13,24 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.59,
-        "previous_close": 6.47,
-        "change_pct": 1.8547140649149974,
-        "market_cap": 2690263296.0,
-        "trailing_pe": 10.8412695,
-        "price_to_book": 1.4360807,
+        "price": 6.87,
+        "previous_close": 6.59,
+        "change_pct": 4.248861911987856,
+        "market_cap": 2706018816.0,
+        "trailing_pe": 10.904762,
+        "price_to_book": 1.4444911,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
         "free_cash_flow": null,
         "fifty_two_week_low": 5.9,
-        "fifty_two_week_high": 10.58,
+        "fifty_two_week_high": 10.4,
         "currency": "INR",
-        "fetched_at": "2026-10-12T19:59:48+00:00",
+        "fetched_at": "2026-10-13T17:47:45+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.97,
         7.91,
         7.93,
         7.98,
@@ -120,7 +119,8 @@
         6.7,
         6.63,
         6.47,
-        6.59
+        6.59,
+        6.87
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -166,6 +166,12 @@
           "published": "2026-10-05 07:00 UTC"
         },
         {
+          "title": "Nila Infrastructures Ltd Share Price Today NSE/BSE Charts - Alice Blue",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBlU3FJX0NaNWtibzh5X2FpeVNaMHUxTG1OLWJEZVZSejdHREZobm90QzczcUhlMjJTSDBFMFl3YzQwUklnVExMRjN2N3N3Vnp3RFJUQlViOEU0Z2VzOW05RVlZYXVDcm5tRjJ3MlAzSjBSVjg4N1NUbHZ3?oc=5",
+          "source": "Alice Blue",
+          "published": "2026-09-07 23:02 UTC"
+        },
+        {
           "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
           "source": "Univest",
@@ -182,12 +188,6 @@
           "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE51TUtSR0Frb3pqU2p0alZLWnhXQWNKY3RJQUVpSHZyci01d0FjcEtNb00xUDJueXZVaklOZkhWZmNCR0xGYm44T05TT0ZJcE1kWmJadHQzaw?oc=5",
           "source": "TradingView",
           "published": "2026-04-28 07:00 UTC"
-        },
-        {
-          "title": "Q1 results 2026: AU Small Finance Bank, IDFC First Bank, Zen Technologies, among companies to announce earnings today - Livemint",
-          "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxQSmttMzhFaHdha2JsU1pWQTVuMWxXMnRjWTd6dExxSGNZSTZoTFFBTy1OS3haWDIzNThISi1USjhuRUlpVGN3YzB4N3RxdHhxOHVEemswb2pMSmhxNVUtNlBfYTk1b3ZFUmtqaUNmSEZUN2N3elVVRkhYQXJ1VVRJRWNhMkpHa0RfalNaQ1pqZ05HMjI2aFd5bXFfT3FQQThEemZOYWFnZFRXdjBwMVlDa0VTbXFRbzZUcnNrM0Q3S3Q0NUpEUTR1X2tkWXNGRV8weEVUZndnXzFsMUR1TUJJQlB4Qm5nNE5JSzM3Tm1CWmxYbUVINF8xZnFmeXpHVFRQSlZCdEZpTW8wLUJBUmFCYtIBlgJBVV95cUxPRDZseG5aZllaUTlWdndRLURzNENyekp6bHYyT041OXpxNUNfam42YWtjX3ZSZmhDZEdMU2NYUlFmZEdwNURZeTZLMXExMGtNTnRIWFNrNVBHQTJKN3BRTkdyZ1ZPS3BkYjhYSHhYZi0zam53MTRlbnA4Yk1KZU1DRHFqQl83cERranVveU9YanhlY2I1aUpUYnBfX3A1bW9VMVotSEs1b2dJOFhDZURMampYWVpvdk43Q0FzSE95Z3pkY09vdGpNMDFZdkVOV0F2YTVwSjg2ZDZBQW5DT1FzaWFaV0hkYzRLcUo4dUhiOWNlblNHYV84MWFLVklxN3Z2YmlNdHdUS0tSWVB1NHplc2lCR1FkZw?oc=5",
-          "source": "Livemint",
-          "published": "2026-07-25 07:00 UTC"
         }
       ]
     },
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-12T19:59:50+00:00",
+        "fetched_at": "2026-10-13T17:47:46+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -251,12 +251,6 @@
       "live_flags": [],
       "news": [
         {
-          "title": "AGOL Stock Price and Chart — NSE:AGOL - TradingView",
-          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9DMEVYcTVNeWtIQV9uenpETnB5TkVhMzFZTGhTWDRyMDlobnd5RXpTb2VOQUtNVXR5OHdWeThwVlQyVGY1X1ZnWlBfLTR5cG1tTC11THJNeUY?oc=5",
-          "source": "TradingView",
-          "published": "2026-10-12 13:39 UTC"
-        },
-        {
           "title": "Ashapuri Gold Ornament gets NSE listing approval for Oct 12 trading - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
           "source": "scanx.trade",
@@ -275,10 +269,16 @@
           "published": "2026-09-04 13:25 UTC"
         },
         {
-          "title": "AGOL Share Price rises as fundamentals and sector align - Univest",
-          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
-          "source": "Univest",
-          "published": "2026-09-11 07:00 UTC"
+          "title": "Ashapuri Gold Ornament (AGOL) Share: A Small Jewellery Wholesaler Explained - Kalkine India",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQWjR0MFRReGhYdUlhbmpmdTJLLUlvNENTRUVvMG9XSm9PU0NTWnJFYXN0cXV2MkZXZkVpNTAxMGlNWXlmQnkyTWJIUVF6aHRGWWhTNXpobS1jMWRsbUV2eHBKWGpLb1NOZmxId2FSQklvcC0wZE42V0tqT2lMY282QTZsd0RMY2pDWHVzWXRXdzJ4T0hTRlUwUlpnUEsyVTdNNU1ZX2RTM1d3a0RTdG9GSkhPay1LSzFFUXlJ?oc=5",
+          "source": "Kalkine India",
+          "published": "2026-09-10 07:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold FY26 net profit rises 54% to ₹1,856.40 lakh - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOR3JZS2JvbnlWVmFCSkpNVXFUZ2pGZEZHQ29TMk1JbHpMQXhKSmFSQ2tDbGh4Yy1JbEN3eDgxcFFNM3h6a1lDTms5Y0lua1NZbzJ4QzNhV2trMENZVVhROExMZlRrNXhDNVpoUmNUR0ZMZ0p1X2FfbnNHNUJDS0l3NzNLNGJIaTlFWUtKUFg0WUNGMGY4ZjczVVNvY3MxRjBXdW5uUGNrUzZtN0M4eEtoamVB?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-05-30 07:00 UTC"
         }
       ]
     },
@@ -292,12 +292,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.18,
-        "previous_close": 7.21,
-        "change_pct": -0.4160887656033285,
-        "market_cap": 1935595648.0,
-        "trailing_pe": 7.4791665,
-        "price_to_book": 0.8067416,
+        "price": 7.24,
+        "previous_close": 7.18,
+        "change_pct": 0.8356545961002881,
+        "market_cap": 1951770496.0,
+        "trailing_pe": 7.5416665,
+        "price_to_book": 0.8134832,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.93,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-12T19:59:51+00:00",
+        "fetched_at": "2026-10-13T17:47:47+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -346,7 +346,8 @@
         7.35,
         7.39,
         7.21,
-        7.18
+        7.18,
+        7.24
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -381,22 +382,10 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Madhav Infra Projects (BSE:539894) - Stock Analysis - Simply Wall Street",
-          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPWjJ3R29qbHdQa0prWXpDczBFUXlfNXF6U1FRVVdYRVhYNXAxUU1sdjlzN3N1RTh1WGdvZ0ZqdFJrUEl3UUx2VllmT21FVjJFMXJ6QkFaajBrV2VDTklnX2ZtdFJXYU5DUDU3ckhpSkpGZjVKc3lfU1p2VnFxbHFtOE1PM0d0ckZMUFFOZ1Jn?oc=5",
-          "source": "Simply Wall Street",
-          "published": "2026-10-07 07:00 UTC"
-        },
-        {
           "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
           "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
           "source": "CNBC TV18",
           "published": "2026-10-09 10:01 UTC"
-        },
-        {
-          "title": "Madhav Infra board to consider preferential issue and share conversion - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNeFNPRWZnRW5CYm5nbnNNc1NJbkQ3WDdMMGJSZ2pyRXhWbXRtZ2ExcXh0eE1tY3JCbTRqN2w0RlRsVm96bmNyYmxvNzg1Ukx5TkIzOHN4V1J3ZExuZmszdnM0X3dLSnJnNXAtOEIwcXlDRF92TjhYQW43NVl6Uk5DbzNpbXdhTWxLdXlLS1NOR1Aza3JxXzNBamRfeVMxaHBCS1Vod0VJOEJ2Y3NSSndHZlZ4LTNEZEZrUnRoZg?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-10-08 14:48 UTC"
         },
         {
           "title": "MADHAVIPL Stock Price and Chart — NSE:MADHAVIPL - TradingView",
@@ -405,10 +394,22 @@
           "published": "2026-04-20 05:28 UTC"
         },
         {
+          "title": "Madhav Infra Projects passes all nine resolutions at 33rd AGM - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPb19MR0FUZnJBTlViZ3Y4VWV6NkxwMFFsUWd0OUJmRTZYRW1VV3BVTm1uX3Iyb3hnU21vZkhfUmdZNUdSUXFTOUhJSC1MQTZvY0tQcWJNb0h0MmR5M3V4NmtJdkpJbVJBMHUtT1l0Y2VBUjhTMEVtZEZnSDZFX1JWTU9mb0VmcmktZk1jbHY4RVhURGk3b2VyVFJHcklqcnUzN0w5bWxwc2ZhazZJZVplRzUtQkwxUQ?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-10-02 14:58 UTC"
+        },
+        {
           "title": "Madhav Infra Projects jumps on bagging Rs 342-crore solar order from MPUVNL - Business Standard",
           "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPcF9PU2dFZEx1OWFoVm12eDlhc0hXX0ZXNHRDNld4UkFDY21MOFFSZzNHX2FxZ0lpUnJsOXpTVUJTMGZ5SkdHWkpzQlhlWkItenVJNExVY1dxUkJmbjJ6SnpzNlUzWGxCTDdLTVpqY1Y1UHl2VXl0WS0tbVYxa21MU1c3ei12LWg5amRCMWFHbmFsbTlOSkV5VEoxby1WRGRJT29WRVNyaGUtUmlTS1NDNFU1N1Y0UEdOd0pxQjRoS1VvWG5KMjFlV3VScFJ1Y0pTQ21yUEN6UEE1SzlvM0xkWVpuQmVFallHSEJHcG9R0gHzAUFVX3lxTE9WY1VXajhOT3k2MHczN001Qzd0Sy01aHZmdksyTnhWNm9QRzRtQ3pJY1dnV1pXSFY4WXBaYVpWTVFfT1lDS2l6aG9LeHF5SlRnUDN1QnNJNFhCMzNsbzk1Z3ZEcDg2VkFFYzhmYzBVYXJTVnpzclBaU2F4cnlOc1lJMElNZjQ2X1N4WlRJZEJ4eDl6NVhDTHgxMnN6eUQ1VmtWMy12UFRlaE9VVFR0RHhaZVY4Vy15XzVNMDRieGNxVlFyYVRSc3FpUlNJc1RJNEtKUmlWYzB2RkZzeGtDa0ZOeTRJOXFvbDB3N2N3WUcxdVI3OA?oc=5",
           "source": "Business Standard",
           "published": "2025-12-29 08:00 UTC"
+        },
+        {
+          "title": "Compare with - Equitymaster",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdjJfRnNhOV81VURDR2tHTnI0dUV4V21ZUk85NmRMUlBXdDVXc1MxVTN3ZGF2N2pIUmFkbWxTSGRwOEM1NmQ4YkRSd1ExMngtSDZZeTA4OGFGTGtwMk5WbEhwdlNvTUNsclZQSmVWRnRfTkJjV21GYUZwU1BlZlFBWk9OeTBWeFRpRmNXWl9idzFtWjRQemF3TEkwck8xVm0ycGVjRWhwY1pmMGtCTm9RS2tXNnZlNVZzV0xF?oc=5",
+          "source": "Equitymaster",
+          "published": "2026-03-25 06:37 UTC"
         }
       ]
     }
