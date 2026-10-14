@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T17:47:44+00:00",
+  "generated_at": "2026-10-14T15:28:47+00:00",
   "market_data_status": "live-refresh",
   "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
   "stocks": [
@@ -13,26 +13,24 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.87,
-        "previous_close": 6.59,
-        "change_pct": 4.248861911987856,
-        "market_cap": 2706018816.0,
-        "trailing_pe": 10.904762,
-        "price_to_book": 1.4444911,
+        "price": 7.01,
+        "previous_close": 6.87,
+        "change_pct": 2.0378457059679667,
+        "market_cap": 2761163520.0,
+        "trailing_pe": 11.126985,
+        "price_to_book": 1.4739277,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
         "free_cash_flow": null,
         "fifty_two_week_low": 5.9,
-        "fifty_two_week_high": 10.4,
+        "fifty_two_week_high": 10.39,
         "currency": "INR",
-        "fetched_at": "2026-10-13T17:47:45+00:00",
+        "fetched_at": "2026-10-14T15:28:48+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.91,
-        7.93,
         7.98,
         7.99,
         7.81,
@@ -120,7 +118,9 @@
         6.63,
         6.47,
         6.59,
-        6.87
+        6.83,
+        6.87,
+        7.01
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -160,6 +160,12 @@
       "live_flags": [],
       "news": [
         {
+          "title": "Nila Infrastructures consolidated profit rises 26% in Q1FY26 - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQZkRmTF9Wd09KSDRiTFVmTHpIcGh3VWpIUjBSMFU4Zm9JSVBvZnBHcHUxTWVhdHBFSkVrUnFCWGpRYWF3cnFScWwyQ0ZMdUg2ZGtQa2ZySmNjaU1Dai1uaGVVQlFtMEF4U1k4ZkZZRmhHNkZ1Q1pKN1Z5Snpva1UwMWR6VU90V0dRb01fMzJxMFVmZFBSNmRFRDdMSW5pM2R4MVI0eGNrRFUxSGpBZURGcFlmNURoM3oxSjBVYWpn?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-10-11 21:45 UTC"
+        },
+        {
           "title": "Is Nila Infrastructures the Best Stock in Its Sector? A Look at the Numbers - Univest",
           "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBTOUFaUXFNVkJxZFZXaTAtZGlnY1hleHJGMHpVV2tVQ1VDLXdtQ1BYZkNFek5MRldveGpHTWN5a2Iwa21jMlktd19MV3Nqb0hTNi1FX0ZfNmhicjBNOEY4bmdRZWQwREN1OGtR?oc=5",
           "source": "Univest",
@@ -178,16 +184,10 @@
           "published": "2026-07-01 07:00 UTC"
         },
         {
-          "title": "Stocks to Watch Today: DOMS Industries, Krishna Institute of Medical Sciences, Prime Focus, Utkal... - Moneycontrol.com",
-          "url": "https://news.google.com/rss/articles/CBMiuAJBVV95cUxPWnBDM1V5ajEwMS1OaGVYZVVUekdiVmc1V1FScTdxNlZWSjJFVWFReEN6cE1sNEJ5alQxVE8tNjlEdzBrenlVVGQ1RzFCSnBuVHF6cGR6Ym1DUlY0UXdoNGtCRzhXN1Rnbjdoam9JWm1XY0dzbHJ2LTR1WER3LUNQNXdULUtjLU8wLWRuNHRSNTM5UHpYanV0SV82dWlpWlJsVU5qa0FURWh6STFrTEpCMU1VOGItcUowYnMtbG1HdDIxdXEyU3IwSlZILUR3Z2lkZC13WXJRQzNLN3ZEeUNCWWlQS3BTZWlXakQtbVEwRHFPbkNudklfVV9UQVdZRV9yZlNtUmZrbWhLVEcxX19jX002bHQ2bFFxM3A4N1VjbExvcUctMnlaZm5LQ1RWdTNacmFINnpvWkXSAb4CQVVfeXFMT192dG13WVZVUnNJcV9QeGZyc3NnM2luUGRZRGpPRVBXTWpSRU43OW1Pcll2OTJubVZGajNDOVFiWlNPLXRxM2JyNENZbWYtMU1zanllaWRHSG9EdmhXM2l1MUFMSmpva1FSRXcwYnJlUnVaSjM4UlJsTG1HUFBIMGVKcUdPR0hqUjIwWG1paUQzSUxxZFhUNWFGaVJGSFFiNlpMY2dJVkdVOE1RSUZHYzVsVng3R1p4TnJ0bHNIcFVQemZoNGwzeWo4T0t6VzJ2MEp0a3dRSDR3dy1Bc2lTSG12M2l0ZndCZTZ1ZkVEb2h6UW1za2hVcEJUc21LR2pUcGVkZUl0UDJ5Sk9HX2R6VkgyT19kTE43NlJObVBzS05Lem1LMUY1VWE4cmZta0JsUkYyalVKbkNUdHRnd3hB?oc=5",
-          "source": "Moneycontrol.com",
-          "published": "2026-06-17 07:00 UTC"
-        },
-        {
-          "title": "GTV Stock Price and Chart — BSE:GTV - TradingView",
-          "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE51TUtSR0Frb3pqU2p0alZLWnhXQWNKY3RJQUVpSHZyci01d0FjcEtNb00xUDJueXZVaklOZkhWZmNCR0xGYm44T05TT0ZJcE1kWmJadHQzaw?oc=5",
-          "source": "TradingView",
-          "published": "2026-04-28 07:00 UTC"
+          "title": "Nila Infrastructures Reports FY26 Audited Results; Profit Rises to ₹2,699.11 Lakh - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPVTBfY3Fld1lheTF5dm5UN1dWVmJ3QWVrNDV5VlFyUW0ybnE0ZnpudG9oT0owNmNtZ0xkZlVPQklGS3AzSVNXXzlQSUVuTFJIZHpTMWlMQ2w4UlNlUEljNVlpcXcwU05kM2loM0ZhS0JQQXRSTjJDbmRQZG5CTDVjQVhaSkRFd0N2TTBzYzlHenJYTWRZUTFxX2pEX2ZmNVVfRGRDQ3NqYllBMFVZSmc2WWdKU3gwOWdwTjRpT09OQk1xeTNHbk5HN2QzRU5OUU5WMkZzLVRKRGFienBsMGlfc003ODhQRGpoNnozeQ?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-05-04 07:00 UTC"
         }
       ]
     },
@@ -214,7 +214,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-13T17:47:46+00:00",
+        "fetched_at": "2026-10-14T15:28:49+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -292,12 +292,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.24,
-        "previous_close": 7.18,
-        "change_pct": 0.8356545961002881,
-        "market_cap": 1951770496.0,
-        "trailing_pe": 7.5416665,
-        "price_to_book": 0.8134832,
+        "price": 7.27,
+        "previous_close": 7.24,
+        "change_pct": 0.4143646408839796,
+        "market_cap": 1959858048.0,
+        "trailing_pe": 7.572917,
+        "price_to_book": 0.81685394,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -305,7 +305,7 @@
         "fifty_two_week_low": 6.93,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-13T17:47:47+00:00",
+        "fetched_at": "2026-10-14T15:28:50+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -347,7 +347,9 @@
         7.39,
         7.21,
         7.18,
-        7.24
+        7.18,
+        7.24,
+        7.27
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
