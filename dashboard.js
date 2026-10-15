@@ -226,17 +226,27 @@ async function boot() {
     watchlist.innerHTML = stocks.map(renderStock).join('');
     const ageHours = snapshotAgeHours(data.generated_at);
     const stale = ageHours === null || ageHours > 18;
-    dot.classList.toggle('ok', !stale);
-    dot.classList.toggle('error', stale);
+    const quoteCount = stocks.filter(stock => {
+      const price = stock && stock.market ? stock.market.price : null;
+      return price !== null && price !== undefined && Number.isFinite(Number(price)) && Number(price) > 0;
+    }).length;
+    const incomplete = quoteCount < stocks.length;
+    dot.classList.toggle('ok', !stale && !incomplete);
+    dot.classList.toggle('error', stale || incomplete);
     label.textContent = stale
       ? 'Market snapshot may be stale'
-      : (data.market_data_status === 'live-refresh' ? 'Research snapshot loaded' : 'Dashboard loaded');
+      : (quoteCount === 0
+        ? 'Market quotes unavailable'
+        : (incomplete
+          ? 'Partial market data'
+          : (data.market_data_status === 'live-refresh' ? 'Research snapshot loaded' : 'Dashboard loaded')));
     const updatedAt = data.generated_at
-      ? `Updated ${new Date(data.generated_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST`
+      ? 'Updated ' + new Date(data.generated_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST'
       : 'Refresh timestamp unavailable';
-    time.textContent = stale
-      ? `${updatedAt} · Refresh delayed; verify live quotes and exchange filings.`
-      : updatedAt;
+    const warningNotes = [];
+    if (stale) warningNotes.push('Refresh delayed; verify live quotes and exchange filings.');
+    if (incomplete) warningNotes.push(quoteCount + ' of ' + stocks.length + ' watchlist quotes available. Verify current exchange data for missing quotes.');
+    time.textContent = [updatedAt].concat(warningNotes).join(' · ');
   } catch (err) {
     dot.classList.add('error');
     label.textContent = 'Dashboard data unavailable';
