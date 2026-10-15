@@ -3,6 +3,10 @@ import { readFile } from 'node:fs/promises';
 const dashboard = await readFile('dashboard.js', 'utf8');
 const required = [
   ['stale review helper', 'function staleReviewWarning(reviewDate)'],
+  ['snapshot staleness helper', 'function snapshotAgeHours(generatedAt)'],
+  ['18-hour snapshot freshness threshold', 'ageHours > 18'],
+  ['visible stale snapshot warning', 'Market snapshot may be stale'],
+  ['stale snapshot verification guidance', 'Refresh delayed; verify live quotes and exchange filings.'],
   ['30-day review threshold', 'ageDays > 30'],
   ['filing verification warning', 'Re-check the latest NSE/company filings before relying on this thesis.'],
   ['missing review-date warning', 'Manual research review date unavailable'],

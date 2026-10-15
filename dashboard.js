@@ -19,6 +19,12 @@ const pct = (value, fraction = false) => {
   return `${n.toFixed(2)}%`;
 };
 
+function snapshotAgeHours(generatedAt) {
+  const parsed = Date.parse(String(generatedAt || ''));
+  if (!Number.isFinite(parsed) || parsed > Date.now() + 5 * 60 * 1000) return null;
+  return Math.max(0, Math.floor((Date.now() - parsed) / 3600000));
+}
+
 function staleReviewWarning(reviewDate) {
   const value = String(reviewDate || '');
   const parsed = /^\\d{4}-\\d{2}-\\d{2}$/.test(value)
@@ -218,9 +224,19 @@ async function boot() {
 
     summary.innerHTML = stocks.map(renderSummary).join('');
     watchlist.innerHTML = stocks.map(renderStock).join('');
-    dot.classList.add('ok');
-    label.textContent = data.market_data_status === 'live-refresh' ? 'Research snapshot loaded' : 'Dashboard loaded';
-    time.textContent = data.generated_at ? `Updated ${new Date(data.generated_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST` : 'Refresh timestamp unavailable';
+    const ageHours = snapshotAgeHours(data.generated_at);
+    const stale = ageHours === null || ageHours > 18;
+    dot.classList.toggle('ok', !stale);
+    dot.classList.toggle('error', stale);
+    label.textContent = stale
+      ? 'Market snapshot may be stale'
+      : (data.market_data_status === 'live-refresh' ? 'Research snapshot loaded' : 'Dashboard loaded');
+    const updatedAt = data.generated_at
+      ? `Updated ${new Date(data.generated_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST`
+      : 'Refresh timestamp unavailable';
+    time.textContent = stale
+      ? `${updatedAt} · Refresh delayed; verify live quotes and exchange filings.`
+      : updatedAt;
   } catch (err) {
     dot.classList.add('error');
     label.textContent = 'Dashboard data unavailable';
