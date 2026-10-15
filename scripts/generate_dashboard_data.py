@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -124,15 +125,40 @@ def build_stock(stock) -> dict:
     }
 
 
+def classify_market_data_status(stocks: list[dict]) -> tuple[str, int]:
+    """Report quote coverage honestly instead of marking incomplete data as live."""
+    available = 0
+    for stock in stocks:
+        market = stock.get("market") if isinstance(stock, dict) else None
+        price = market.get("price") if isinstance(market, dict) else None
+        try:
+            value = float(price)
+        except (TypeError, ValueError):
+            continue
+        if math.isfinite(value) and value > 0:
+            available += 1
+
+    total = len(stocks)
+    if total > 0 and available == total:
+        return "live-refresh", available
+    if available > 0:
+        return "partial-refresh", available
+    return "unavailable", 0
+
+
 def main() -> None:
+    stocks = [build_stock(stock) for stock in WATCHLIST]
+    status, available_quotes = classify_market_data_status(stocks)
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "market_data_status": "live-refresh",
-        "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
-        "stocks": [build_stock(stock) for stock in WATCHLIST],
+        "market_data_status": status,
+        "available_quote_count": available_quotes,
+        "watchlist_size": len(stocks),
+        "note": "Market status reflects price-quote coverage. Secondary market/news fields are automatically refreshed; material facts must still be verified in official filings.",
+        "stocks": stocks,
     }
     OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {OUTPUT} with {len(payload['stocks'])} stocks")
+    print(f"Wrote {OUTPUT} with {len(stocks)} stocks; {available_quotes}/{len(stocks)} quotes available; status={status}")
 
 
 if __name__ == "__main__":
