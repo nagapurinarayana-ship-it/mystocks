@@ -1,7 +1,9 @@
 {
-  "generated_at": "2026-10-14T15:28:47+00:00",
-  "market_data_status": "live-refresh",
-  "note": "Secondary market/news fields are automatically refreshed. Material facts must still be verified in official filings.",
+  "generated_at": "2026-10-15T11:28:45+00:00",
+  "market_data_status": "partial-refresh",
+  "available_quote_count": 2,
+  "watchlist_size": 3,
+  "note": "Market status reflects price-quote coverage. Secondary market/news fields are automatically refreshed; material facts must still be verified in official filings.",
   "stocks": [
     {
       "key": "nila",
@@ -13,12 +15,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.01,
-        "previous_close": 6.87,
-        "change_pct": 2.0378457059679667,
-        "market_cap": 2761163520.0,
-        "trailing_pe": 11.126985,
-        "price_to_book": 1.4739277,
+        "price": 6.78,
+        "previous_close": 7.01,
+        "change_pct": -3.2810271041369354,
+        "market_cap": 2670568960.0,
+        "trailing_pe": 10.761905,
+        "price_to_book": 1.4255677,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
@@ -26,12 +28,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 10.39,
         "currency": "INR",
-        "fetched_at": "2026-10-14T15:28:48+00:00",
+        "fetched_at": "2026-10-15T11:28:44+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.98,
         7.99,
         7.81,
         7.77,
@@ -120,7 +121,8 @@
         6.59,
         6.83,
         6.87,
-        7.01
+        7.01,
+        6.78
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -214,7 +216,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-14T15:28:49+00:00",
+        "fetched_at": "2026-10-15T11:28:44+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -292,12 +294,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.27,
-        "previous_close": 7.24,
-        "change_pct": 0.4143646408839796,
-        "market_cap": 1959858048.0,
-        "trailing_pe": 7.572917,
-        "price_to_book": 0.81685394,
+        "price": 7.19,
+        "previous_close": 7.27,
+        "change_pct": -1.1004126547455195,
+        "market_cap": 1938291456.0,
+        "trailing_pe": 7.4895835,
+        "price_to_book": 0.8078652,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -305,7 +307,7 @@
         "fifty_two_week_low": 6.93,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-14T15:28:50+00:00",
+        "fetched_at": "2026-10-15T11:28:45+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -349,7 +351,8 @@
         7.18,
         7.18,
         7.24,
-        7.27
+        7.27,
+        7.19
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -384,12 +387,6 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
-          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
-          "source": "CNBC TV18",
-          "published": "2026-10-09 10:01 UTC"
-        },
-        {
           "title": "MADHAVIPL Stock Price and Chart — NSE:MADHAVIPL - TradingView",
           "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBQeUdXMnJ3dUxtNFhxc0FDWEZrRTV1eXVzajZMTmFKMzIzOFdMRnp4TV9pQkZDd1dkSGs5dy1TTmFfbWRDSEc0ODhvb1FweWdyT1NrRE92cjhuZTc0S1Rn?oc=5",
           "source": "TradingView",
@@ -402,16 +399,22 @@
           "published": "2026-10-02 14:58 UTC"
         },
         {
+          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
+          "source": "CNBC TV18",
+          "published": "2026-01-03 15:50 UTC"
+        },
+        {
           "title": "Madhav Infra Projects jumps on bagging Rs 342-crore solar order from MPUVNL - Business Standard",
           "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPcF9PU2dFZEx1OWFoVm12eDlhc0hXX0ZXNHRDNld4UkFDY21MOFFSZzNHX2FxZ0lpUnJsOXpTVUJTMGZ5SkdHWkpzQlhlWkItenVJNExVY1dxUkJmbjJ6SnpzNlUzWGxCTDdLTVpqY1Y1UHl2VXl0WS0tbVYxa21MU1c3ei12LWg5amRCMWFHbmFsbTlOSkV5VEoxby1WRGRJT29WRVNyaGUtUmlTS1NDNFU1N1Y0UEdOd0pxQjRoS1VvWG5KMjFlV3VScFJ1Y0pTQ21yUEN6UEE1SzlvM0xkWVpuQmVFallHSEJHcG9R0gHzAUFVX3lxTE9WY1VXajhOT3k2MHczN001Qzd0Sy01aHZmdksyTnhWNm9QRzRtQ3pJY1dnV1pXSFY4WXBaYVpWTVFfT1lDS2l6aG9LeHF5SlRnUDN1QnNJNFhCMzNsbzk1Z3ZEcDg2VkFFYzhmYzBVYXJTVnpzclBaU2F4cnlOc1lJMElNZjQ2X1N4WlRJZEJ4eDl6NVhDTHgxMnN6eUQ1VmtWMy12UFRlaE9VVFR0RHhaZVY4Vy15XzVNMDRieGNxVlFyYVRSc3FpUlNJc1RJNEtKUmlWYzB2RkZzeGtDa0ZOeTRJOXFvbDB3N2N3WUcxdVI3OA?oc=5",
           "source": "Business Standard",
           "published": "2025-12-29 08:00 UTC"
         },
         {
-          "title": "Compare with - Equitymaster",
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdjJfRnNhOV81VURDR2tHTnI0dUV4V21ZUk85NmRMUlBXdDVXc1MxVTN3ZGF2N2pIUmFkbWxTSGRwOEM1NmQ4YkRSd1ExMngtSDZZeTA4OGFGTGtwMk5WbEhwdlNvTUNsclZQSmVWRnRfTkJjV21GYUZwU1BlZlFBWk9OeTBWeFRpRmNXWl9idzFtWjRQemF3TEkwck8xVm0ycGVjRWhwY1pmMGtCTm9RS2tXNnZlNVZzV0xF?oc=5",
-          "source": "Equitymaster",
-          "published": "2026-03-25 06:37 UTC"
+          "title": "Madhav Infra Projects standalone PAT falls 35% YoY in Q1FY26 - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNNEpqcGVTNXB1aXdINWIwb19qU3lTMFc3c2lMNjBMVnZQenc3UEFVdC02Mkhzcnh3OWI3OXMwdE5LTXdZR1YyRG40blBqUjQxMmE3V1dMM0V3d01FTkJjZThTeW8wdTdSb2o3clk2MHpzblpNT0ZoeUhrUnFiSUF5dVdrNUlMRXVZZ0IwOE55UmVndG1HbzhhZXBNVDdOZ2Y2U1BMLWtlc2ZWV25zOVFrZTB5bGtXNDV5ci1MNDJ0eC1henJFTVRxOWZTbk0?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-07-30 17:03 UTC"
         }
       ]
     }
