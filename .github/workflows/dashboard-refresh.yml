@@ -44,9 +44,22 @@ jobs:
           import json
           from pathlib import Path
           payload = json.loads(Path('dashboard-data.json').read_text(encoding='utf-8'))
-          assert len(payload.get('stocks', [])) == 3
-          assert all('official_links' in s for s in payload['stocks'])
-          print('Dashboard snapshot valid')
+          stocks = payload.get('stocks', [])
+          assert len(stocks) == 3
+          assert all('official_links' in s for s in stocks)
+          import math
+          quote_count = sum(
+              isinstance(stock.get('market'), dict)
+              and stock['market'].get('price') is not None
+              and math.isfinite(float(stock['market']['price']))
+              and float(stock['market']['price']) > 0
+              for stock in stocks
+          )
+          expected_status = 'live-refresh' if quote_count == len(stocks) else ('partial-refresh' if quote_count else 'unavailable')
+          assert payload.get('market_data_status') == expected_status, f"Expected {expected_status}, got {payload.get('market_data_status')}"
+          assert payload.get('available_quote_count') == quote_count
+          assert payload.get('watchlist_size') == len(stocks)
+          print(f'Dashboard snapshot valid: {quote_count}/{len(stocks)} quotes available ({expected_status})')
           PY
 
       - name: Commit refreshed snapshot when changed
