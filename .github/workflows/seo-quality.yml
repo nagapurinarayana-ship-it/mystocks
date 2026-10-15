@@ -22,3 +22,5 @@ jobs:
           node-version: '22'
       - name: Audit public search pages
         run: node scripts/seo-audit.mjs
+      - name: Verify dashboard research freshness safeguards
+        run: node scripts/validate-dashboard-safety.mjs
