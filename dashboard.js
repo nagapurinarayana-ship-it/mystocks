@@ -19,6 +19,21 @@ const pct = (value, fraction = false) => {
   return `${n.toFixed(2)}%`;
 };
 
+function staleReviewWarning(reviewDate) {
+  const value = String(reviewDate || '');
+  const parsed = /^\\d{4}-\\d{2}-\\d{2}$/.test(value)
+    ? Date.parse(`${value}T00:00:00Z`)
+    : NaN;
+  if (!Number.isFinite(parsed)) {
+    return '<div class="flag">⚠ Manual research review date unavailable. Verify official filings before relying on this thesis.</div>';
+  }
+  const ageDays = Math.max(0, Math.floor((Date.now() - parsed) / 86400000));
+  if (ageDays > 30) {
+    return `<div class="flag">⚠ Manual research review is ${ageDays} days old. Re-check the latest NSE/company filings before relying on this thesis.</div>`;
+  }
+  return '';
+}
+
 const esc = (value) => String(value ?? '')
   .replaceAll('&', '&amp;')
   .replaceAll('<', '&lt;')
@@ -140,6 +155,7 @@ function renderStock(stock) {
   const quality = m.data_quality_warning
     ? `<div class="flag">⚠ ${esc(m.data_quality_warning)}</div>`
     : '';
+  const reviewWarning = staleReviewWarning(stock.review_as_of);
   const news = (stock.news || []).length
     ? stock.news.map(item => `<div class="news-item"><a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">${esc(item.title)}</a><div class="news-meta">${esc(item.source || '')}${item.published ? ` · ${esc(item.published)}` : ''}</div></div>`).join('')
     : '<div class="stock-sub">No secondary-feed headlines available in this snapshot.</div>';
@@ -173,6 +189,7 @@ function renderStock(stock) {
       </div>
 
       ${quality}
+      ${reviewWarning}
       ${flags}
       <div class="link-row">${links}</div>
 
