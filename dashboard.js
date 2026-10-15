@@ -232,10 +232,10 @@ async function boot() {
       ? 'Market snapshot may be stale'
       : (data.market_data_status === 'live-refresh' ? 'Research snapshot loaded' : 'Dashboard loaded');
     const updatedAt = data.generated_at
-      ? \`Updated \${new Date(data.generated_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST\`
+      ? `Updated ${new Date(data.generated_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST`
       : 'Refresh timestamp unavailable';
     time.textContent = stale
-      ? \`\${updatedAt} · Refresh delayed; verify live quotes and exchange filings.\`
+      ? `${updatedAt} · Refresh delayed; verify live quotes and exchange filings.`
       : updatedAt;
   } catch (err) {
     dot.classList.add('error');
