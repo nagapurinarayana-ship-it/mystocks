@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T15:19:42+00:00",
+  "generated_at": "2026-10-16T15:00:07+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -16,8 +16,8 @@
       "review_as_of": "2026-08-31",
       "market": {
         "price": 6.78,
-        "previous_close": 7.01,
-        "change_pct": -3.2810271041369354,
+        "previous_close": 6.78,
+        "change_pct": 0.0,
         "market_cap": 2670568960.0,
         "trailing_pe": 10.761905,
         "price_to_book": 1.4255677,
@@ -28,12 +28,11 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 10.39,
         "currency": "INR",
-        "fetched_at": "2026-10-15T15:19:40+00:00",
+        "fetched_at": "2026-10-16T15:00:04+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.99,
         7.81,
         7.77,
         7.85,
@@ -122,6 +121,7 @@
         6.83,
         6.87,
         7.01,
+        6.78,
         6.78
       ],
       "thesis": [
@@ -162,12 +162,6 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Nila Infrastructures consolidated profit rises 26% in Q1FY26 - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQZkRmTF9Wd09KSDRiTFVmTHpIcGh3VWpIUjBSMFU4Zm9JSVBvZnBHcHUxTWVhdHBFSkVrUnFCWGpRYWF3cnFScWwyQ0ZMdUg2ZGtQa2ZySmNjaU1Dai1uaGVVQlFtMEF4U1k4ZkZZRmhHNkZ1Q1pKN1Z5Snpva1UwMWR6VU90V0dRb01fMzJxMFVmZFBSNmRFRDdMSW5pM2R4MVI0eGNrRFUxSGpBZURGcFlmNURoM3oxSjBVYWpn?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-10-11 21:45 UTC"
-        },
-        {
           "title": "Is Nila Infrastructures the Best Stock in Its Sector? A Look at the Numbers - Univest",
           "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBTOUFaUXFNVkJxZFZXaTAtZGlnY1hleHJGMHpVV2tVQ1VDLXdtQ1BYZkNFek5MRldveGpHTWN5a2Iwa21jMlktd19MV3Nqb0hTNi1FX0ZfNmhicjBNOEY4bmdRZWQwREN1OGtR?oc=5",
           "source": "Univest",
@@ -178,6 +172,12 @@
           "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBlU3FJX0NaNWtibzh5X2FpeVNaMHUxTG1OLWJEZVZSejdHREZobm90QzczcUhlMjJTSDBFMFl3YzQwUklnVExMRjN2N3N3Vnp3RFJUQlViOEU0Z2VzOW05RVlZYXVDcm5tRjJ3MlAzSjBSVjg4N1NUbHZ3?oc=5",
           "source": "Alice Blue",
           "published": "2026-09-07 23:02 UTC"
+        },
+        {
+          "title": "Nila Infrastructures consolidated profit rises 26% in Q1FY26 - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQZkRmTF9Wd09KSDRiTFVmTHpIcGh3VWpIUjBSMFU4Zm9JSVBvZnBHcHUxTWVhdHBFSkVrUnFCWGpRYWF3cnFScWwyQ0ZMdUg2ZGtQa2ZySmNjaU1Dai1uaGVVQlFtMEF4U1k4ZkZZRmhHNkZ1Q1pKN1Z5Snpva1UwMWR6VU90V0dRb01fMzJxMFVmZFBSNmRFRDdMSW5pM2R4MVI0eGNrRFUxSGpBZURGcFlmNURoM3oxSjBVYWpn?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-07-27 07:00 UTC"
         },
         {
           "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
@@ -216,7 +216,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-15T15:19:40+00:00",
+        "fetched_at": "2026-10-16T15:00:05+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -253,10 +253,10 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Ashapuri Gold Ornament gets NSE listing approval for Oct 12 trading - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-10-09 06:28 UTC"
+          "title": "Ashapuri Gold Ornament Ltd Financial Statements – NSE:AGOL - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB6V1BlY3RxVXBYU3dxdUl0YXBkdm55a2kxeXdvZHJJSWJkTmUxYl84a0VhZGVtZ09oMjZQZW5WMXBwanV3cmdMUmd6VkVEdlNsRFV0NWwzbFU0N3JWR2ZRQlZsdjI5MVhEcTN4dlk2aVJOcUE?oc=5",
+          "source": "TradingView",
+          "published": "2026-10-12 14:16 UTC"
         },
         {
           "title": "NSE to list shares of Ashapuri Gold Ornament, Belding India and Triveni Power Transmission from October 12 - Traders Union",
@@ -265,22 +265,22 @@
           "published": "2026-10-08 14:30 UTC"
         },
         {
+          "title": "Debt to equity ratio of Ashapuri Gold Ornament Ltd – NSE:AGOL - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNOEQtOUZiaWF3NzRDX09zd3dIWGZTWHJTYjlIeVlxQTBBa0xQNUx4TWt3VDZtTmdjSy1SamY0QVVka3J6SnR1V1Fmc3p2ekNQUFRHME5GUEdnSGFMOWwtQjZCei1BdXFWc2VIZmdMejNSQk1VSm5XdlRXQWxCTlBSOFNhSklhSnJKTVk2WU5FbkpQeXN5Y3lkdA?oc=5",
+          "source": "TradingView",
+          "published": "2026-10-12 14:48 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament gets NSE listing approval for Oct 12 trading - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-10-09 06:28 UTC"
+        },
+        {
           "title": "Ashapuri Gold Ornament Ltd. Peer Comparison – Compare with Others - Value Research",
           "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNMjc1RWJSYXJVMVpONUVFYXZjZENrUU1XaUh6M1NmdzdtSkhVTjdEWGlZZC16LTFUOVpPdW5rU0JobVRvWGM4c1NlSzdtajhkQnktVWttalhURmhmTmdaaEluVlo3ZE5rZkZZRXY2NXRsMGQ1c1JpekpBV084ME5nNXdVYXZfZmVNUkZxYWpXcjcwdTdrdF9GcA?oc=5",
           "source": "Value Research",
           "published": "2026-09-04 13:25 UTC"
-        },
-        {
-          "title": "Ashapuri Gold Ornament (AGOL) Share: A Small Jewellery Wholesaler Explained - Kalkine India",
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQWjR0MFRReGhYdUlhbmpmdTJLLUlvNENTRUVvMG9XSm9PU0NTWnJFYXN0cXV2MkZXZkVpNTAxMGlNWXlmQnkyTWJIUVF6aHRGWWhTNXpobS1jMWRsbUV2eHBKWGpLb1NOZmxId2FSQklvcC0wZE42V0tqT2lMY282QTZsd0RMY2pDWHVzWXRXdzJ4T0hTRlUwUlpnUEsyVTdNNU1ZX2RTM1d3a0RTdG9GSkhPay1LSzFFUXlJ?oc=5",
-          "source": "Kalkine India",
-          "published": "2026-09-10 07:00 UTC"
-        },
-        {
-          "title": "Ashapuri Gold FY26 net profit rises 54% to ₹1,856.40 lakh - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOR3JZS2JvbnlWVmFCSkpNVXFUZ2pGZEZHQ29TMk1JbHpMQXhKSmFSQ2tDbGh4Yy1JbEN3eDgxcFFNM3h6a1lDTms5Y0lua1NZbzJ4QzNhV2trMENZVVhROExMZlRrNXhDNVpoUmNUR0ZMZ0p1X2FfbnNHNUJDS0l3NzNLNGJIaTlFWUtKUFg0WUNGMGY4ZjczVVNvY3MxRjBXdW5uUGNrUzZtN0M4eEtoamVB?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-05-30 07:00 UTC"
         }
       ]
     },
@@ -294,12 +294,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.19,
-        "previous_close": 7.27,
-        "change_pct": -1.1004126547455195,
-        "market_cap": 1938291456.0,
-        "trailing_pe": 7.4895835,
-        "price_to_book": 0.8078652,
+        "price": 7.11,
+        "previous_close": 7.19,
+        "change_pct": -1.1126564673157202,
+        "market_cap": 1916724992.0,
+        "trailing_pe": 7.4062505,
+        "price_to_book": 0.79887646,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -307,7 +307,7 @@
         "fifty_two_week_low": 6.93,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-15T15:19:41+00:00",
+        "fetched_at": "2026-10-16T15:00:06+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -352,7 +352,8 @@
         7.18,
         7.24,
         7.27,
-        7.19
+        7.19,
+        7.11
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -411,10 +412,10 @@
           "published": "2025-12-29 08:00 UTC"
         },
         {
-          "title": "Madhav Infra promoters consolidate stake via gift deed transfer - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQdDNzNThRaWZlNFg5MTZfZDRUcUtNRFZ2Y1BzUlRBM284SFljV29JVFRoLXRtNnhRLUtMM0VMMUtzRkhZLXJ4WnNaYlZFUTJNV290XzJ3N0RiNUI5TjFsWk1vZ3N0R2pnQjdmbm5rQkdCRl9hOEVqNm5Kd0llRmJBcHI0ZXdrZUswR29DcklsZVRyTU53OUtUTkg5Mjh2Q3dJdFJuY0xzcUFQdXpuemZkNWxFVQ?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-08-05 07:00 UTC"
+          "title": "Madhav Infra Projects Ltd. Share Price Today | Madhav Infra Live NSE/BSE - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNRHVEQUVWVG9zWmNjWUJUdjJldTNhazFNemJkdW84ZkIxQkstMmxKT2QyTFRaZWtHbl9WZUo4WW5LZG5wQ2QtX0p2amhMVUVCRU12TVVaQXRPVWhlcEFtNjBiXy1VaVlZUnFHWVhXWG03MGtRd1ktSkhJY0dVYS1YRXpn?oc=5",
+          "source": "Value Research",
+          "published": "2022-03-25 08:42 UTC"
         }
       ]
     }
