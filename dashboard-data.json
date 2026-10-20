@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T17:09:59+00:00",
+  "generated_at": "2026-10-20T15:22:06+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.9,
         "fifty_two_week_high": 10.39,
         "currency": "INR",
-        "fetched_at": "2026-10-19T17:09:56+00:00",
+        "fetched_at": "2026-10-20T15:22:04+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -162,10 +162,10 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Nila Infrastructures Ltd Share Price Today NSE/BSE Charts - Alice Blue",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBlU3FJX0NaNWtibzh5X2FpeVNaMHUxTG1OLWJEZVZSejdHREZobm90QzczcUhlMjJTSDBFMFl3YzQwUklnVExMRjN2N3N3Vnp3RFJUQlViOEU0Z2VzOW05RVlZYXVDcm5tRjJ3MlAzSjBSVjg4N1NUbHZ3?oc=5",
-          "source": "Alice Blue",
-          "published": "2026-09-07 23:02 UTC"
+          "title": "Nila Infrastructures Reports FY26 Audited Results; Profit Rises to ₹2,699.11 Lakh - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPVTBfY3Fld1lheTF5dm5UN1dWVmJ3QWVrNDV5VlFyUW0ybnE0ZnpudG9oT0owNmNtZ0xkZlVPQklGS3AzSVNXXzlQSUVuTFJIZHpTMWlMQ2w4UlNlUEljNVlpcXcwU05kM2loM0ZhS0JQQXRSTjJDbmRQZG5CTDVjQVhaSkRFd0N2TTBzYzlHenJYTWRZUTFxX2pEX2ZmNVVfRGRDQ3NqYllBMFVZSmc2WWdKU3gwOWdwTjRpT09OQk1xeTNHbk5HN2QzRU5OUU5WMkZzLVRKRGFienBsMGlfc003ODhQRGpoNnozeQ?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-10-18 10:59 UTC"
         },
         {
           "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
@@ -180,16 +180,16 @@
           "published": "2026-02-03 08:00 UTC"
         },
         {
+          "title": "Nila Infrastructures Reports Q1 FY27 Consolidated Results: Net Profit Rises 25.8% YoY to ₹8.44 Crore - EquityBulls",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOUUpMUzZ2UjB1ZjJqanhBRmZ1MjZCbTMxTFBwRFJMalBGUEFmbzY4VG9IblYzeGI3Nlk1WEVYSG04ZnBJUGZzZWV2M0JpWDJNWlNObFFOLUFEaUJxZ01Eb1duQmVMN1hfcWE5VEVPcTcydGk1RWFmSkhNbG9EVV90OG55ZExxSTFIWjk3M09hQ1Y1ZURkSnk0amNxVjJZSXlOQl9BY0I4Q0JnQzRQalF3b3dBT2hkVjZBSXlJ?oc=5",
+          "source": "EquityBulls",
+          "published": "2026-07-25 07:00 UTC"
+        },
+        {
           "title": "Nila Infrastructures consolidated profit rises 26% in Q1FY26 - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQZkRmTF9Wd09KSDRiTFVmTHpIcGh3VWpIUjBSMFU4Zm9JSVBvZnBHcHUxTWVhdHBFSkVrUnFCWGpRYWF3cnFScWwyQ0ZMdUg2ZGtQa2ZySmNjaU1Dai1uaGVVQlFtMEF4U1k4ZkZZRmhHNkZ1Q1pKN1Z5Snpva1UwMWR6VU90V0dRb01fMzJxMFVmZFBSNmRFRDdMSW5pM2R4MVI0eGNrRFUxSGpBZURGcFlmNURoM3oxSjBVYWpn?oc=5",
           "source": "scanx.trade",
           "published": "2026-07-27 07:00 UTC"
-        },
-        {
-          "title": "Why Is Nila Infrastructures Share Price Falling Key Reasons 2026 - Univest",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA0S0R5TWVFU1FTTGtOaWlkY1dlRGFVcTN6TjlPellRMUo4MjZ3a3JvdXNEd2dBeHYwYUREVTFSZ0JoX1FqMHlHMlNieEVuLVpLOGFWVU9NNUtnem51UXBQRy0tdy04dlMtNXkxSzNmd3Q5eVp1RHpGbWxQWUM?oc=5",
-          "source": "Univest",
-          "published": "2026-06-17 07:00 UTC"
         }
       ]
     },
@@ -216,7 +216,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-19T17:09:57+00:00",
+        "fetched_at": "2026-10-20T15:22:05+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -259,12 +259,6 @@
           "published": "2026-10-16 09:59 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Ltd Financial Statements – NSE:AGOL - TradingView",
-          "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB6V1BlY3RxVXBYU3dxdUl0YXBkdm55a2kxeXdvZHJJSWJkTmUxYl84a0VhZGVtZ09oMjZQZW5WMXBwanV3cmdMUmd6VkVEdlNsRFV0NWwzbFU0N3JWR2ZRQlZsdjI5MVhEcTN4dlk2aVJOcUE?oc=5",
-          "source": "TradingView",
-          "published": "2026-10-12 14:16 UTC"
-        },
-        {
           "title": "NSE to list shares of Ashapuri Gold Ornament, Belding India and Triveni Power Transmission from October 12 - Traders Union",
           "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZ2QtTFAzU2hBY2hQX1JNM2dsSnhrbVZwakFNdEtSRThFeU10dDljQ0tSRzZmZlFhR2hnMWRUaTF4RFlRcEg4bUxPSUhLT3NkeVRYeEFiQzRaUk5zcUlUYjgwQ0x6em9fSE9POEVzMHEtSGpiZXI5OGgyUC12QUQ0ME8zWk80TXdmTFRlem13N3NmZmRqNXFoTXFodHNIRkNibEE?oc=5",
           "source": "Traders Union",
@@ -281,6 +275,12 @@
           "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQWjR0MFRReGhYdUlhbmpmdTJLLUlvNENTRUVvMG9XSm9PU0NTWnJFYXN0cXV2MkZXZkVpNTAxMGlNWXlmQnkyTWJIUVF6aHRGWWhTNXpobS1jMWRsbUV2eHBKWGpLb1NOZmxId2FSQklvcC0wZE42V0tqT2lMY282QTZsd0RMY2pDWHVzWXRXdzJ4T0hTRlUwUlpnUEsyVTdNNU1ZX2RTM1d3a0RTdG9GSkhPay1LSzFFUXlJ?oc=5",
           "source": "Kalkine India",
           "published": "2026-09-10 07:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Ltd receives ₹29 Cr Orders at IIJS Bharat Signature 2026 - EquityBulls",
+          "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQSFBRSlc3RVA2a21tNEVzMXFpc3V2UzNNTnhGNWRMbml0V2ZZZ1NxWTB3LXU1aVFILXRlUGlQNnF0Yl9WOTVlNVlfNXVBcDBWMWJhVEd1V09Jb3VfelV4SlJINE5JeVlncmpOUUg4Z2tjZnYyTnZvdGM5WVB5dk9yeHp0c19jcVg5RlI2Z0xCeUZZREVWWnVqVnlMcU1FSkNNLWdCcXRuYXBIUVd6QjhwZ2pXRGpVWVB6RlE?oc=5",
+          "source": "EquityBulls",
+          "published": "2026-01-20 08:00 UTC"
         }
       ]
     },
@@ -307,7 +307,7 @@
         "fifty_two_week_low": 6.93,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-19T17:09:58+00:00",
+        "fetched_at": "2026-10-20T15:22:06+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
