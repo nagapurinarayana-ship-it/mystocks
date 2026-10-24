@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T15:27:57+00:00",
+  "generated_at": "2026-10-24T14:07:12+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.39,
         "currency": "INR",
-        "fetched_at": "2026-10-23T15:27:54+00:00",
+        "fetched_at": "2026-10-24T14:07:09+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -216,7 +216,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-23T15:27:56+00:00",
+        "fetched_at": "2026-10-24T14:07:10+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -253,6 +253,12 @@
       "live_flags": [],
       "news": [
         {
+          "title": "Top 39 Gold Stocks To Buy In India October 2026 - Samco",
+          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
+          "source": "Samco",
+          "published": "2026-10-23 06:51 UTC"
+        },
+        {
           "title": "Ashapuri Gold Ornament Share Price Rise in Jewellery Sector - Univest",
           "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
           "source": "Univest",
@@ -275,12 +281,6 @@
           "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
           "source": "scanx.trade",
           "published": "2026-10-08 07:00 UTC"
-        },
-        {
-          "title": "Top Gold Stocks to Invest in India in 2026 - Samco",
-          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
-          "source": "Samco",
-          "published": "2026-10-11 06:51 UTC"
         }
       ]
     },
@@ -307,7 +307,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-23T15:27:57+00:00",
+        "fetched_at": "2026-10-24T14:07:11+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -404,10 +404,10 @@
           "published": "2026-01-03 15:50 UTC"
         },
         {
-          "title": "Madhav Infra Projects standalone PAT falls 35% YoY in Q1FY26 - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNNEpqcGVTNXB1aXdINWIwb19qU3lTMFc3c2lMNjBMVnZQenc3UEFVdC02Mkhzcnh3OWI3OXMwdE5LTXdZR1YyRG40blBqUjQxMmE3V1dMM0V3d01FTkJjZThTeW8wdTdSb2o3clk2MHpzblpNT0ZoeUhrUnFiSUF5dVdrNUlMRXVZZ0IwOE55UmVndG1HbzhhZXBNVDdOZ2Y2U1BMLWtlc2ZWV25zOVFrZTB5bGtXNDV5ci1MNDJ0eC1henJFTVRxOWZTbk0?oc=5",
+          "title": "Madhav Infra Projects promoters execute inter-se share gift - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOekhkSlpydmZyU0ZqRTdBektHRWNHbkFPMXVYT2ZLQlR3T1JKQXJmSGhHZ2ZLVkpKV080X2R5UDh2eDZmT2tEb2FQVXJXTUo2N3hqS29ZU0N3alhqZ0ViSXo5TGstaXNPTENNRjRZcXM2RTE5M0JTQUlqR3IycUJsaHBteXlxOVpzRWpYbXR5UFFMeUcxZmt2aS1nYWpxTXUyVkZBYV9CZ1V2UV9vVzNMZmxFemgzejg?oc=5",
           "source": "scanx.trade",
-          "published": "2026-07-30 17:03 UTC"
+          "published": "2026-08-05 07:00 UTC"
         },
         {
           "title": "Madhav Infra Projects Ltd. Share Price Today | Madhav Infra Live NSE/BSE - Value Research",
