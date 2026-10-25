@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T14:07:12+00:00",
+  "generated_at": "2026-10-25T14:34:11+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.39,
         "currency": "INR",
-        "fetched_at": "2026-10-24T14:07:09+00:00",
+        "fetched_at": "2026-10-25T14:34:09+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -162,22 +162,10 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Nila Infrastructures Reports FY26 Audited Results; Profit Rises to ₹2,699.11 Lakh - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPVTBfY3Fld1lheTF5dm5UN1dWVmJ3QWVrNDV5VlFyUW0ybnE0ZnpudG9oT0owNmNtZ0xkZlVPQklGS3AzSVNXXzlQSUVuTFJIZHpTMWlMQ2w4UlNlUEljNVlpcXcwU05kM2loM0ZhS0JQQXRSTjJDbmRQZG5CTDVjQVhaSkRFd0N2TTBzYzlHenJYTWRZUTFxX2pEX2ZmNVVfRGRDQ3NqYllBMFVZSmc2WWdKU3gwOWdwTjRpT09OQk1xeTNHbk5HN2QzRU5OUU5WMkZzLVRKRGFienBsMGlfc003ODhQRGpoNnozeQ?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-10-18 10:59 UTC"
-        },
-        {
-          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
-          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
-          "source": "Univest",
-          "published": "2026-07-01 07:00 UTC"
-        },
-        {
-          "title": "Nila Infrastructures Secures Expanded Work Order from Ahmedabad Municipal Corporation for Gulbai Tekra Slum Rehabilitation Project - EquityBulls",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOYTJZVHhqRjhEVU1SQUJYc2FOSDZuYWM0X2hvSlhqUXJBS2otdXVQSmIyZVJURzNFMzI5TzlCTEE3cEtjVXQzbjJjRXNIWDZLYjhZNjRfQndWU1FZUFAxMVhSdk1SSXJGVG5sbTZCRDdkR1VIS1FzR3k0azczM1E3NmFUcld1M3dPSUVXMjRnSThMdHk1d2NCbW5kUUd2TGV3emZJb1diLUQ3WHV3N1g4Z1dXd3hHSWU3ZU1qaw?oc=5",
-          "source": "EquityBulls",
-          "published": "2026-10-02 07:00 UTC"
+          "title": "Nila Infrastructures (NILAINFRA.NS) Steadies Near ₹6.70 as ₹6.37 Support Comes Into Focus - Counter Trend Trade - https://www.siam.in/",
+          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOc29QUmx2VkhvanpjVVRVaTNlX2xROWVwMjNzNU83cDRTQmF2NExwdDF6RHpwcmhiSHRGVThldVJ1eW9XTTgyM0lOVUkzN3h5NlZ1MVpMZXdJWUFSWTZkS0NUakx0MDYxN0tRNWt0UkVQOERpR19rT01Ia3M0T0otZ3FiczRjLTJsSkFTTGxxNUdIdVZnTXZuT0ZqZTRpNWt3QXR1VGlyZS1xcjY2blV5REItNDlvZXBqOHhUMDlqQzI0dGs?oc=5",
+          "source": "https://www.siam.in/",
+          "published": "2026-10-06 07:00 UTC"
         },
         {
           "title": "Why Is Nila Infrastructures Share Price Falling Key Reasons 2026 - Univest",
@@ -186,10 +174,22 @@
           "published": "2026-06-17 07:00 UTC"
         },
         {
-          "title": "Nila Infrastructures Ltd. Share Price Today | Nila Infras Live NSE/BSE - Value Research",
-          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1lMjlWRTJyUWhVa0Q5akVmRXAwZVFhbzg2Qkxncm9USWhwLUlJZVlKMlI0NHNyTzVWaUVlZFprdENDMUxEcmVnWmxILUNsQ01zVDFxTFVPa1dYUHVhdV9oS0RWTERISUp6dXQ1THZ0SXJvSFhBQmFEZGlIMm41VzQ?oc=5",
-          "source": "Value Research",
-          "published": "2022-03-25 09:18 UTC"
+          "title": "Nila Infrastructures Secures Expanded Work Order from Ahmedabad Municipal Corporation for Gulbai Tekra Slum Rehabilitation Project - EquityBulls",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOYTJZVHhqRjhEVU1SQUJYc2FOSDZuYWM0X2hvSlhqUXJBS2otdXVQSmIyZVJURzNFMzI5TzlCTEE3cEtjVXQzbjJjRXNIWDZLYjhZNjRfQndWU1FZUFAxMVhSdk1SSXJGVG5sbTZCRDdkR1VIS1FzR3k0azczM1E3NmFUcld1M3dPSUVXMjRnSThMdHk1d2NCbW5kUUd2TGV3emZJb1diLUQ3WHV3N1g4Z1dXd3hHSWU3ZU1qaw?oc=5",
+          "source": "EquityBulls",
+          "published": "2026-10-02 07:00 UTC"
+        },
+        {
+          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
+          "source": "Univest",
+          "published": "2026-07-01 07:00 UTC"
+        },
+        {
+          "title": "Nila Infrastructures Ltd Share Price Today,, NILAINFRA Share Price NSE, BSE - Business Today",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQMjJaU2djZXNVdWxxYkdPUW56WDhhdHZ5N3FhckVIcE5WNC0tWExTcUgzbEhvSUN0RmJOeFowMkVTZ3VLNWdsZjExSlE0QjlDdVVKcHlSWHVIdHV4OUJtZms3Mm5jVWVKLS01bmRfakdYR2tVX3k3dF82ZGd0bWRsa3pMLVlJYlJiOGlfVUJMUk5IWU0?oc=5",
+          "source": "Business Today",
+          "published": "2023-01-31 09:45 UTC"
         }
       ]
     },
@@ -216,7 +216,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-24T14:07:10+00:00",
+        "fetched_at": "2026-10-25T14:34:09+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -307,7 +307,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-24T14:07:11+00:00",
+        "fetched_at": "2026-10-25T14:34:10+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -398,6 +398,12 @@
           "published": "2026-10-14 07:00 UTC"
         },
         {
+          "title": "Madhav Infra Projects Ltd Share Price Today NSE/BSE Charts - Alice Blue",
+          "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE91QnozWHFiT0tHZERaS1U5ZzZRd2RaRjhGVVR6TWg0UTZTZDA3TTBDeEk5dnFHNUlGZ1F4WWVYeEQ4QTRFb0tYX3V0Q2NXQ2ZsRkNWa1ZCcjlvRTczNVhZckVqWXJucm9zQ2k5QVUyR3Q3RXg5T2lRMnJsUQ?oc=5",
+          "source": "Alice Blue",
+          "published": "2026-09-05 04:14 UTC"
+        },
+        {
           "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
           "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
           "source": "CNBC TV18",
@@ -414,12 +420,6 @@
           "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNRHVEQUVWVG9zWmNjWUJUdjJldTNhazFNemJkdW84ZkIxQkstMmxKT2QyTFRaZWtHbl9WZUo4WW5LZG5wQ2QtX0p2amhMVUVCRU12TVVaQXRPVWhlcEFtNjBiXy1VaVlZUnFHWVhXWG03MGtRd1ktSkhJY0dVYS1YRXpn?oc=5",
           "source": "Value Research",
           "published": "2022-03-25 08:42 UTC"
-        },
-        {
-          "title": "Madhav Infra Projects acquires 100% stake in MSK Projects (I) - Business Standard",
-          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOczFBU2FZUERJWHVSbFFSZ0cyV0toQlQwLTV3b1ZuZU5JYXltN2pwSVBUN1pDc2dWZG5PdEZWLU5ndFZjMDRSeTBBY1pLeW9MeUtTRkRaUzdoa2YzV1F3VlFxYVRaTjdFUTFMd1JzWHpCYlZnV2ZxZVRCT2lKWWRPMjdmSHNGOVBIRXdNc1hsWDVxYlJ2RFY4U0hjQXEzQ1JNYmFzOGdiMUxVeFMtUkE2Z0Zqb2FKNWtIczNBNFZVcjVPVExzVTVJUGFJR19rNHdqSFVqOHRlRdIB3AFBVV95cUxPWWFfVURPN2FRaEl4elA0MVN3MGlBajhkUTlBWTZaWl9zWDV6dTNoTHlDdUdQeXpQRVl4V1BfVDVzUE02U0RZM3pYcjkzU0dyekJIakN5YXlONktFRmljenhoYloybmNjNFZEYnJVT3oxUXFIZkQzVmdJQ2UxQU1BMEI4blJxMmM0UE1NYUxkRU5tTG5TazBuYno3aHBGaHJHdWVOeV9MUktoRzNiNEdlTF9ib0cxd3lMM2tBdzB3X29nZTFqdEo0UFV1NzdUMUNmSkd0ekJXSW1FRXhx?oc=5",
-          "source": "Business Standard",
-          "published": "2025-04-10 07:00 UTC"
         }
       ]
     }
