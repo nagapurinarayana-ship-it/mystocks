@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T16:59:28+00:00",
+  "generated_at": "2026-10-27T16:01:07+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -15,12 +15,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.08,
-        "previous_close": 6.0,
-        "change_pct": 1.333333333333342,
-        "market_cap": 2394846464.0,
-        "trailing_pe": 9.650794,
-        "price_to_book": 1.2783852,
+        "price": 6.11,
+        "previous_close": 6.08,
+        "change_pct": 0.49342105263159297,
+        "market_cap": 2406663168.0,
+        "trailing_pe": 9.854839,
+        "price_to_book": 1.284693,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
@@ -28,12 +28,11 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.39,
         "currency": "INR",
-        "fetched_at": "2026-10-26T16:59:24+00:00",
+        "fetched_at": "2026-10-27T16:01:04+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        8.08,
         8.05,
         7.98,
         8.07,
@@ -122,7 +121,8 @@
         6.26,
         6.13,
         6.0,
-        6.08
+        6.08,
+        6.11
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -216,7 +216,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-26T16:59:26+00:00",
+        "fetched_at": "2026-10-27T16:01:05+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -259,10 +259,10 @@
           "published": "2026-10-23 10:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Lower Circuit Today: Price, Data and Peers - Univest",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9qVkxWSFlEM25NS1hlYVpnd0pHVkd2THVXTmp4R05GY2lYU3pUQkE0UGVjRXJlWFBiSTdVaWpqbzA1azBpbW5IbUlpMFY4cnBUU05qMXJmSm1tVlBNXzFQR2NnNGE5Y1lOMThHaks1MFdNZUxPUmg5ekZR?oc=5",
+          "title": "Ashapuri Gold Ornament Lower Circuit Streak: Day 2 Price and Data - Univest",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBTX3dCSml1dEl4M2YyXzhnZzlaUFh0TGlDLU15aW9rU21FaU5rRTJLZ0hLXzVTZDQtMDlySXZfMEd5QjdjVTA3Vzdxc3RObmRPRUdCYnpXc2phcU5LcGZuc0F0ZHhNdUt3SXdjbXI4ZWdxSVJlOHdoamZB?oc=5",
           "source": "Univest",
-          "published": "2026-10-26 06:21 UTC"
+          "published": "2026-10-27 04:34 UTC"
         },
         {
           "title": "Top 39 Gold Stocks To Buy In India October 2026 - Samco",
@@ -277,10 +277,10 @@
           "published": "2026-10-08 14:30 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Ltd Share Price Today NSE/BSE Charts - Alice Blue",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9YRlZEYnkxRG00TXY0aWg4V3ZPZVh3Tzl6X08xX2IyeGpyMnVKdTcwNlhxRHlDelNDTldaa01rUW5uMnFqcnppWlNJZGRSd210QzVRaDJtM1pveWJXaWgyM2xBOGVHU0NxMzlsdW5Nd3U4d3ROYkZZUHF3dWw?oc=5",
-          "source": "Alice Blue",
-          "published": "2026-10-21 04:19 UTC"
+          "title": "Ashapuri Gold Ornament gets NSE listing approval for Oct 12 trading - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-10-08 07:00 UTC"
         }
       ]
     },
@@ -294,12 +294,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.06,
-        "previous_close": 7.0,
-        "change_pct": 0.8571428571428452,
-        "market_cap": 1903245824.0,
-        "trailing_pe": 7.354167,
-        "price_to_book": 0.7932584,
+        "price": 7.07,
+        "previous_close": 7.06,
+        "change_pct": 0.14164305949009304,
+        "market_cap": 1905941760.0,
+        "trailing_pe": 7.3645835,
+        "price_to_book": 0.7943821,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -307,7 +307,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-26T16:59:27+00:00",
+        "fetched_at": "2026-10-27T16:01:06+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -358,7 +358,8 @@
         7.02,
         7.01,
         7.0,
-        7.06
+        7.06,
+        7.07
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -417,10 +418,10 @@
           "published": "2026-01-03 15:50 UTC"
         },
         {
-          "title": "Madhav Infra Projects promoters execute inter-se share gift - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOekhkSlpydmZyU0ZqRTdBektHRWNHbkFPMXVYT2ZLQlR3T1JKQXJmSGhHZ2ZLVkpKV080X2R5UDh2eDZmT2tEb2FQVXJXTUo2N3hqS29ZU0N3alhqZ0ViSXo5TGstaXNPTENNRjRZcXM2RTE5M0JTQUlqR3IycUJsaHBteXlxOVpzRWpYbXR5UFFMeUcxZmt2aS1nYWpxTXUyVkZBYV9CZ1V2UV9vVzNMZmxFemgzejg?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-08-05 07:00 UTC"
+          "title": "Madhav Infra Projects acquires 100% stake in MSK Projects (I) - Business Standard",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOczFBU2FZUERJWHVSbFFSZ0cyV0toQlQwLTV3b1ZuZU5JYXltN2pwSVBUN1pDc2dWZG5PdEZWLU5ndFZjMDRSeTBBY1pLeW9MeUtTRkRaUzdoa2YzV1F3VlFxYVRaTjdFUTFMd1JzWHpCYlZnV2ZxZVRCT2lKWWRPMjdmSHNGOVBIRXdNc1hsWDVxYlJ2RFY4U0hjQXEzQ1JNYmFzOGdiMUxVeFMtUkE2Z0Zqb2FKNWtIczNBNFZVcjVPVExzVTVJUGFJR19rNHdqSFVqOHRlRdIB3AFBVV95cUxPWWFfVURPN2FRaEl4elA0MVN3MGlBajhkUTlBWTZaWl9zWDV6dTNoTHlDdUdQeXpQRVl4V1BfVDVzUE02U0RZM3pYcjkzU0dyekJIakN5YXlONktFRmljenhoYloybmNjNFZEYnJVT3oxUXFIZkQzVmdJQ2UxQU1BMEI4blJxMmM0UE1NYUxkRU5tTG5TazBuYno3aHBGaHJHdWVOeV9MUktoRzNiNEdlTF9ib0cxd3lMM2tBdzB3X29nZTFqdEo0UFV1NzdUMUNmSkd0ekJXSW1FRXhx?oc=5",
+          "source": "Business Standard",
+          "published": "2025-04-10 07:00 UTC"
         }
       ]
     }
