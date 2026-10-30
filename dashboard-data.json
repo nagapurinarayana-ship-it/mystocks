@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T17:04:44+00:00",
+  "generated_at": "2026-10-30T16:49:32+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -15,25 +15,24 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.29,
-        "previous_close": 6.26,
-        "change_pct": 0.4792332268370725,
-        "market_cap": 2477563136.0,
-        "trailing_pe": 9.984127,
-        "price_to_book": 1.3225399,
+        "price": 6.28,
+        "previous_close": 6.29,
+        "change_pct": -0.15898251192368873,
+        "market_cap": 2473624320.0,
+        "trailing_pe": 9.968254,
+        "price_to_book": 1.3204374,
         "return_on_equity": null,
         "debt_to_equity_pct": 12.646,
         "operating_cash_flow": null,
         "free_cash_flow": null,
         "fifty_two_week_low": 5.81,
-        "fifty_two_week_high": 10.34,
+        "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-10-29T17:04:42+00:00",
+        "fetched_at": "2026-10-30T16:49:30+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        8.07,
         7.9,
         7.89,
         7.68,
@@ -122,7 +121,8 @@
         6.08,
         6.11,
         6.26,
-        6.29
+        6.29,
+        6.28
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -162,6 +162,12 @@
       "live_flags": [],
       "news": [
         {
+          "title": "Nila Infrastructures Ltd. Peer Comparison – Compare with Others - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxORHRvbzNZSVRhd09HakZYOE5LUUJNNTdlSkpkWkFMODJlWklnNWxPbEZwbVk2WkRlZU5yc2FUSWhTb3V4R2xLYzVoVzFNYmRLSTVtYjM4bHY2d0VlQjltVmJZaUs3d0l3RDBOOEJmQ3MzN2c2aXlwZ3JZNk9ELThESDNDQ2ZldFlLd3lxQ0pMbVdYM0M0?oc=5",
+          "source": "Value Research",
+          "published": "2026-08-26 17:02 UTC"
+        },
+        {
           "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
           "source": "Univest",
@@ -172,12 +178,6 @@
           "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOYTJZVHhqRjhEVU1SQUJYc2FOSDZuYWM0X2hvSlhqUXJBS2otdXVQSmIyZVJURzNFMzI5TzlCTEE3cEtjVXQzbjJjRXNIWDZLYjhZNjRfQndWU1FZUFAxMVhSdk1SSXJGVG5sbTZCRDdkR1VIS1FzR3k0azczM1E3NmFUcld1M3dPSUVXMjRnSThMdHk1d2NCbW5kUUd2TGV3emZJb1diLUQ3WHV3N1g4Z1dXd3hHSWU3ZU1qaw?oc=5",
           "source": "EquityBulls",
           "published": "2026-10-02 07:00 UTC"
-        },
-        {
-          "title": "Why Is Nila Infrastructures Share Price Falling Key Reasons 2026 - Univest",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA0S0R5TWVFU1FTTGtOaWlkY1dlRGFVcTN6TjlPellRMUo4MjZ3a3JvdXNEd2dBeHYwYUREVTFSZ0JoX1FqMHlHMlNieEVuLVpLOGFWVU9NNUtnem51UXBQRy0tdy04dlMtNXkxSzNmd3Q5eVp1RHpGbWxQWUM?oc=5",
-          "source": "Univest",
-          "published": "2026-06-17 07:00 UTC"
         },
         {
           "title": "Nila Infrastructures Reports Q1 FY27 Consolidated Results: Net Profit Rises 25.8% YoY to ₹8.44 Crore - EquityBulls",
@@ -216,7 +216,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-10-29T17:04:43+00:00",
+        "fetched_at": "2026-10-30T16:49:31+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -253,12 +253,6 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Top 39 Gold Stocks To Buy In India October 2026 - Samco",
-          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15R2dHNW1LcXE5aVVZTUFnbVhGX0YtZDg1cXNoeER4S2UzTXk1c2ZPVmRLaWdzSUJKYlNhOWN1SFV6UUNIVlNCdm11T1NFRU9PVHJlYmVyUzdiTEVaYWVwT1F3TnpfR2ZGdGxZ?oc=5",
-          "source": "Samco",
-          "published": "2026-10-28 06:51 UTC"
-        },
-        {
           "title": "Ashapuri Gold Ornament Lower Circuit Streak: Day 2 Price and Data - Univest",
           "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBTX3dCSml1dEl4M2YyXzhnZzlaUFh0TGlDLU15aW9rU21FaU5rRTJLZ0hLXzVTZDQtMDlySXZfMEd5QjdjVTA3Vzdxc3RObmRPRUdCYnpXc2phcU5LcGZuc0F0ZHhNdUt3SXdjbXI4ZWdxSVJlOHdoamZB?oc=5",
           "source": "Univest",
@@ -271,16 +265,22 @@
           "published": "2026-10-09 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Ltd Share Price Today NSE/BSE Charts - Alice Blue",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9YRlZEYnkxRG00TXY0aWg4V3ZPZVh3Tzl6X08xX2IyeGpyMnVKdTcwNlhxRHlDelNDTldaa01rUW5uMnFqcnppWlNJZGRSd210QzVRaDJtM1pveWJXaWgyM2xBOGVHU0NxMzlsdW5Nd3U4d3ROYkZZUHF3dWw?oc=5",
-          "source": "Alice Blue",
-          "published": "2026-10-21 04:19 UTC"
-        },
-        {
           "title": "NSE to list shares of Ashapuri Gold Ornament, Belding India and Triveni Power Transmission from October 12 - Traders Union",
           "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZ2QtTFAzU2hBY2hQX1JNM2dsSnhrbVZwakFNdEtSRThFeU10dDljQ0tSRzZmZlFhR2hnMWRUaTF4RFlRcEg4bUxPSUhLT3NkeVRYeEFiQzRaUk5zcUlUYjgwQ0x6em9fSE9POEVzMHEtSGpiZXI5OGgyUC12QUQ0ME8zWk80TXdmTFRlem13N3NmZmRqNXFoTXFodHNIRkNibEE?oc=5",
           "source": "Traders Union",
           "published": "2026-10-08 14:30 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Ltd. Share Price Today - Ashapuri Gold Ornament Ltd. Stock Price Live NSE/BSE - CNBC TV18",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUFc1VWdEMFc2N0xzU1VUUHpKeDZPQlVyNDBpeTMxcjBrSDNhV3ZwZkJOSEtldG8zME1mTEZZX01mSXVTTzZkNnNoOFZVQ0hxaUZCOFJzR1hoUzJsSmxyQWRkc1JNUV9GT2J4MnV2VlRSY2lhVVpGSUx3MWtVX0FneF9lV19lN2hMSVFaa29B?oc=5",
+          "source": "CNBC TV18",
+          "published": "2026-01-18 12:32 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Lower Circuit Today: Price, Data and Peers - Univest",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9qVkxWSFlEM25NS1hlYVpnd0pHVkd2THVXTmp4R05GY2lYU3pUQkE0UGVjRXJlWFBiSTdVaWpqbzA1azBpbW5IbUlpMFY4cnBUU05qMXJmSm1tVlBNXzFQR2NnNGE5Y1lOMThHaks1MFdNZUxPUmg5ekZR?oc=5",
+          "source": "Univest",
+          "published": "2026-10-26 06:21 UTC"
         }
       ]
     },
@@ -294,12 +294,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.98,
-        "previous_close": 6.92,
-        "change_pct": 0.8670520231213841,
-        "market_cap": 1881679360.0,
-        "trailing_pe": 7.2708335,
-        "price_to_book": 0.78532857,
+        "price": 6.86,
+        "previous_close": 6.98,
+        "change_pct": -1.7191977077363862,
+        "market_cap": 1849329536.0,
+        "trailing_pe": 7.1458335,
+        "price_to_book": 0.7718272,
         "return_on_equity": null,
         "debt_to_equity_pct": 68.69,
         "operating_cash_flow": null,
@@ -307,7 +307,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-10-29T17:04:43+00:00",
+        "fetched_at": "2026-10-30T16:49:32+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -361,7 +361,8 @@
         7.06,
         7.07,
         6.92,
-        6.98
+        6.98,
+        6.86
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
