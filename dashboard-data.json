@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T16:54:46+00:00",
+  "generated_at": "2026-11-02T20:30:10+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -18,9 +18,9 @@
         "price": 6.28,
         "previous_close": 6.29,
         "change_pct": -0.15898251192368873,
-        "market_cap": 2473624320.0,
-        "trailing_pe": 9.968254,
-        "price_to_book": 1.3204374,
+        "market_cap": 2556340992.0,
+        "trailing_pe": 10.301587,
+        "price_to_book": 1.2167228,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-01T16:54:44+00:00",
+        "fetched_at": "2026-11-02T20:30:07+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-01T16:54:45+00:00",
+        "fetched_at": "2026-11-02T20:30:09+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -256,10 +256,10 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Ashapuri Gold adopts FY26 financials, appoints Jitendrakumar Soni as director - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQUmZ1WHE2eEM2SHlCWTdDMDZ0THpQd3dRamczREtYV280NlE2WksydW0tNDROLWx4b3NCTWZndG85RWZKUzdMT0pRTGlFdW1mOVZydnN6TkNLMmZmTkhzanRpRnhDM2ZZVEFWczFBSEsxS0xEcUxQcVpzR1NUcGhVSWtPNk14TGRSdTRZdWlyRmltcXBSWVB4ZFp6LTZ3b3dCdEdnUkVJbFQ3N0lPelVRdWNBTEpWVjZVazNmdmJn?oc=5",
+          "title": "Ashapuri Gold Ornament gets NSE listing approval for Oct 12 trading - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
           "source": "scanx.trade",
-          "published": "2026-10-30 08:07 UTC"
+          "published": "2026-10-08 07:00 UTC"
         },
         {
           "title": "NSE to list shares of Ashapuri Gold Ornament, Belding India and Triveni Power Transmission from October 12 - Traders Union",
@@ -268,22 +268,22 @@
           "published": "2026-10-08 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Lower Circuit Streak: Day 2 Price and Data - Univest",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBTX3dCSml1dEl4M2YyXzhnZzlaUFh0TGlDLU15aW9rU21FaU5rRTJLZ0hLXzVTZDQtMDlySXZfMEd5QjdjVTA3Vzdxc3RObmRPRUdCYnpXc2phcU5LcGZuc0F0ZHhNdUt3SXdjbXI4ZWdxSVJlOHdoamZB?oc=5",
+          "title": "Ashapuri Gold Ornament Ltd Share Price Today NSE/BSE Charts - Alice Blue",
+          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9YRlZEYnkxRG00TXY0aWg4V3ZPZVh3Tzl6X08xX2IyeGpyMnVKdTcwNlhxRHlDelNDTldaa01rUW5uMnFqcnppWlNJZGRSd210QzVRaDJtM1pveWJXaWgyM2xBOGVHU0NxMzlsdW5Nd3U4d3ROYkZZUHF3dWw?oc=5",
+          "source": "Alice Blue",
+          "published": "2026-10-21 04:19 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Upper Circuit Today: Price, Data and Peers - Univest",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE96VU5sVHBZazRPZU9sQmRtS1lSbUowVlVqSVpmeUtFdGw5em84dlExZkxOU05NUWoyd2dkNV9EcDJKRkdJNWl3YllJdnQxSDdkSTNIcEotR3BLckg4OHdqWFd1Z25fMXZtVVpxWkVtbWwyd1FGYm9WajRB?oc=5",
           "source": "Univest",
-          "published": "2026-10-27 04:34 UTC"
+          "published": "2026-10-21 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Receives NSE Listing Approval Effective October 12 - Whalesbook",
-          "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNNlVLbThUemFTNUJmeTE3UFBDVmxUQ2pVRGJhMUxzX2ZuQzAzU0tiZUxiRTFUeXA1MFlNOWF6RWdfM2d0LUgzLU1hcjN6RjhQQ0x3RGstQVdWVEthZTdYSEVNb05sT18zaENZS0FXUG1XOEtnZm1kWU5qbVR6MGVqLWRtcUk5R2RxR3BUc28zeERpVHQ4eFFRcjdicXlKRVkwLUU4WDAwd25ZQ1A5Rk9qanhfRWZJaXZJTFVZaWJFaXRweVB2X1JYbVVQaFBwcFo0clNlck90QWlEalB1dU9yajRBaGJibDRIVHc?oc=5",
-          "source": "Whalesbook",
-          "published": "2026-10-09 07:00 UTC"
-        },
-        {
-          "title": "Ashapuri Gold Share Price, Stock Price - NSE/BSE Live - NDTV Profit",
-          "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFB1b0NRc3lwTzlxSW9oN0dDRnpNTEVSUDNuUzJWVWtuLTBUX1NGWG1zTUxuZ2tISnV3bWVNM29aZ3hhT2VjbjREZHRHNnk3ZXpwU3hWeFJ0RGRZWDJGekU4bXp2OE1TOFRhWjdZbUJPNGE0Zw?oc=5",
-          "source": "NDTV Profit",
-          "published": "2026-10-13 19:43 UTC"
+          "title": "Ashapuri Gold Ornament Ltd. Share Price Today - Ashapuri Gold Ornament Ltd. Stock Price Live NSE/BSE - CNBC TV18",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUFc1VWdEMFc2N0xzU1VUUHpKeDZPQlVyNDBpeTMxcjBrSDNhV3ZwZkJOSEtldG8zME1mTEZZX01mSXVTTzZkNnNoOFZVQ0hxaUZCOFJzR1hoUzJsSmxyQWRkc1JNUV9GT2J4MnV2VlRSY2lhVVpGSUx3MWtVX0FneF9lV19lN2hMSVFaa29B?oc=5",
+          "source": "CNBC TV18",
+          "published": "2026-01-18 12:32 UTC"
         }
       ]
     },
@@ -300,9 +300,9 @@
         "price": 6.86,
         "previous_close": 6.98,
         "change_pct": -1.7191977077363862,
-        "market_cap": 1849329536.0,
-        "trailing_pe": 7.1458335,
-        "price_to_book": 0.7718272,
+        "market_cap": 1838546304.0,
+        "trailing_pe": 7.104167,
+        "price_to_book": 0.78680205,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-01T16:54:45+00:00",
+        "fetched_at": "2026-11-02T20:30:10+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -400,6 +400,12 @@
       "live_flags": [],
       "news": [
         {
+          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
+          "source": "CNBC TV18",
+          "published": "2026-10-30 09:59 UTC"
+        },
+        {
           "title": "Madhav Infra starts e-voting for ₹34 crore preferential allotment - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNeFNPRWZnRW5CYm5nbnNNc1NJbkQ3WDdMMGJSZ2pyRXhWbXRtZ2ExcXh0eE1tY3JCbTRqN2w0RlRsVm96bmNyYmxvNzg1Ukx5TkIzOHN4V1J3ZExuZmszdnM0X3dLSnJnNXAtOEIwcXlDRF92TjhYQW43NVl6Uk5DbzNpbXdhTWxLdXlLS1NOR1Aza3JxXzNBamRfeVMxaHBCS1Vod0VJOEJ2Y3NSSndHZlZ4LTNEZEZrUnRoZg?oc=5",
           "source": "scanx.trade",
@@ -412,22 +418,16 @@
           "published": "2026-04-20 05:28 UTC"
         },
         {
-          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
-          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
-          "source": "CNBC TV18",
-          "published": "2026-01-03 15:50 UTC"
-        },
-        {
           "title": "Madhav Infra Projects Ltd Share Price Today NSE/BSE Charts - Alice Blue",
           "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE91QnozWHFiT0tHZERaS1U5ZzZRd2RaRjhGVVR6TWg0UTZTZDA3TTBDeEk5dnFHNUlGZ1F4WWVYeEQ4QTRFb0tYX3V0Q2NXQ2ZsRkNWa1ZCcjlvRTczNVhZckVqWXJucm9zQ2k5QVUyR3Q3RXg5T2lRMnJsUQ?oc=5",
           "source": "Alice Blue",
           "published": "2026-09-05 04:14 UTC"
         },
         {
-          "title": "Madhav Infra Projects standalone PAT falls 35% YoY in Q1FY26 - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNNEpqcGVTNXB1aXdINWIwb19qU3lTMFc3c2lMNjBMVnZQenc3UEFVdC02Mkhzcnh3OWI3OXMwdE5LTXdZR1YyRG40blBqUjQxMmE3V1dMM0V3d01FTkJjZThTeW8wdTdSb2o3clk2MHpzblpNT0ZoeUhrUnFiSUF5dVdrNUlMRXVZZ0IwOE55UmVndG1HbzhhZXBNVDdOZ2Y2U1BMLWtlc2ZWV25zOVFrZTB5bGtXNDV5ci1MNDJ0eC1henJFTVRxOWZTbk0?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-07-30 17:03 UTC"
+          "title": "Madhav Infra Projects Ltd. Share Price Today | Madhav Infra Live NSE/BSE - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNRHVEQUVWVG9zWmNjWUJUdjJldTNhazFNemJkdW84ZkIxQkstMmxKT2QyTFRaZWtHbl9WZUo4WW5LZG5wQ2QtX0p2amhMVUVCRU12TVVaQXRPVWhlcEFtNjBiXy1VaVlZUnFHWVhXWG03MGtRd1ktSkhJY0dVYS1YRXpn?oc=5",
+          "source": "Value Research",
+          "published": "2022-03-25 08:42 UTC"
         }
       ]
     }
