@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T20:30:10+00:00",
+  "generated_at": "2026-11-03T18:02:22+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -15,12 +15,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.28,
-        "previous_close": 6.29,
-        "change_pct": -0.15898251192368873,
-        "market_cap": 2556340992.0,
-        "trailing_pe": 10.301587,
-        "price_to_book": 1.2167228,
+        "price": 6.44,
+        "previous_close": 6.49,
+        "change_pct": -0.7704160246533087,
+        "market_cap": 2536646656.0,
+        "trailing_pe": 10.222222,
+        "price_to_book": 1.2073491,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,13 +28,11 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-02T20:30:07+00:00",
+        "fetched_at": "2026-11-03T18:02:19+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.9,
-        7.89,
         7.68,
         7.53,
         7.36,
@@ -122,7 +120,9 @@
         6.11,
         6.26,
         6.29,
-        6.28
+        6.28,
+        6.49,
+        6.44
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -183,16 +183,16 @@
           "published": "2026-10-02 07:00 UTC"
         },
         {
-          "title": "Nila Infrastructures Appoints Gajendra Sharma as Group President for Strategy, Finance & Operations - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPQWxmVDRJNkNOWVgteS0yQjB4ZWxrcU1wY09yZ1RxeHVyT3diM2JLa1lFWGw1a01wTUlzX283eFNzTzFoQXM0QUkzRnJLVmVtSm1QLVJZdHc4YUF3cXo0NHhoRkluRWR3OUg4Z09oclo4VU5sTzlyMHJOMTVDWDZELUoyQ2pwUHZYTnFWRjNjdk5VYTlOSjI1UjZiMUpmckhFN05GVVBabURJUjQ2Q0VCc1pKNUQtR0ZLUWpYUndwSFM5WHN2Zi1Eclc5cXF4eTl2bzhiZmZrV0pjS0dTakxPLXZlb1ZxT3M2?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-03-30 07:00 UTC"
+          "title": "Nila Infrastructures Ltd. Share Price Today | Nila Infras Live NSE/BSE - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1lMjlWRTJyUWhVa0Q5akVmRXAwZVFhbzg2Qkxncm9USWhwLUlJZVlKMlI0NHNyTzVWaUVlZFprdENDMUxEcmVnWmxILUNsQ01zVDFxTFVPa1dYUHVhdV9oS0RWTERISUp6dXQ1THZ0SXJvSFhBQmFEZGlIMm41VzQ?oc=5",
+          "source": "Value Research",
+          "published": "2022-03-25 09:18 UTC"
         },
         {
-          "title": "Nila Infrastructures (NILAINFRA.NS) Steadies Near ₹6.70 as ₹6.37 Support Comes Into Focus - Counter Trend Trade - https://www.siam.in/",
-          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOc29QUmx2VkhvanpjVVRVaTNlX2xROWVwMjNzNU83cDRTQmF2NExwdDF6RHpwcmhiSHRGVThldVJ1eW9XTTgyM0lOVUkzN3h5NlZ1MVpMZXdJWUFSWTZkS0NUakx0MDYxN0tRNWt0UkVQOERpR19rT01Ia3M0T0otZ3FiczRjLTJsSkFTTGxxNUdIdVZnTXZuT0ZqZTRpNWt3QXR1VGlyZS1xcjY2blV5REItNDlvZXBqOHhUMDlqQzI0dGs?oc=5",
-          "source": "https://www.siam.in/",
-          "published": "2026-10-06 07:00 UTC"
+          "title": "Nila Infrastructures Ltd Share Price Today,, NILAINFRA Share Price NSE, BSE - Business Today",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQMjJaU2djZXNVdWxxYkdPUW56WDhhdHZ5N3FhckVIcE5WNC0tWExTcUgzbEhvSUN0RmJOeFowMkVTZ3VLNWdsZjExSlE0QjlDdVVKcHlSWHVIdHV4OUJtZms3Mm5jVWVKLS01bmRfakdYR2tVX3k3dF82ZGd0bWRsa3pMLVlJYlJiOGlfVUJMUk5IWU0?oc=5",
+          "source": "Business Today",
+          "published": "2023-01-31 09:45 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-02T20:30:09+00:00",
+        "fetched_at": "2026-11-03T18:02:20+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -297,12 +297,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.86,
-        "previous_close": 6.98,
-        "change_pct": -1.7191977077363862,
-        "market_cap": 1838546304.0,
-        "trailing_pe": 7.104167,
-        "price_to_book": 0.78680205,
+        "price": 6.67,
+        "previous_close": 6.82,
+        "change_pct": -2.1994134897360795,
+        "market_cap": 1798109056.0,
+        "trailing_pe": 10.421875,
+        "price_to_book": 0.769497,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-02T20:30:10+00:00",
+        "fetched_at": "2026-11-03T18:02:21+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -365,7 +365,9 @@
         7.07,
         6.92,
         6.98,
-        6.86
+        6.86,
+        6.82,
+        6.67
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
