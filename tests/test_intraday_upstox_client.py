@@ -14,7 +14,6 @@ class FakeStreamer:
         self.instrument_keys = instrument_keys
         self.mode = mode
         self.handlers = {}
-        self.mode_changes = []
         self.connected = False
         self.disconnected = False
 
@@ -28,14 +27,11 @@ class FakeStreamer:
         self.connected = True
         self.handlers["open"]()
 
-    def change_mode(self, keys, mode):
-        self.mode_changes.append((keys, mode))
-
     def disconnect(self):
         self.disconnected = True
 
 
-def test_upstox_client_promotes_and_demotes_only_known_symbols(monkeypatch):
+def test_upstox_client_uses_ltpc_only_and_tracks_sdk_connection_events(monkeypatch):
     fake = SimpleNamespace(
         Configuration=lambda: SimpleNamespace(access_token=None),
         ApiClient=lambda config: ("api-client", config.access_token),
@@ -54,15 +50,20 @@ def test_upstox_client_promotes_and_demotes_only_known_symbols(monkeypatch):
     assert client.connected is True
     assert client._streamer.reconnect == (True, 5, 20)
 
-    client.promote_to_full(["NSE_EQ|INE002A01018"])
-    client.demote_to_ltpc(["NSE_EQ|INE002A01018"])
-    assert client._streamer.mode_changes == [
-        (["NSE_EQ|INE002A01018"], "full"),
-        (["NSE_EQ|INE002A01018"], "ltpc"),
-    ]
+    assert client._streamer.mode == "ltpc"
+    assert {
+        "open", "close", "error", "reconnecting",
+        "autoReconnectStopped", "message",
+    } <= set(client._streamer.handlers)
+    assert not hasattr(client, "promote_to_full")
+    assert not hasattr(client, "demote_to_ltpc")
 
-    with pytest.raises(ValueError):
-        client.promote_to_full(["NSE_EQ|UNKNOWN"])
+    client._streamer.handlers["reconnecting"]()
+    assert client.connected is False
+    assert client.last_error == "Upstox market-data stream is reconnecting"
+    client._streamer.handlers["open"]()
+    assert client.connected is True
+    assert client.last_error is None
     client.disconnect()
     assert client.connected is False
     assert client._streamer.disconnected is True
@@ -86,3 +87,69 @@ def test_upstox_client_stops_health_state_on_error():
     assert client.connected is False
     assert "RuntimeError" in client.last_error
     assert "private error text" not in client.last_error
+
+
+
+def test_upstox_client_rejects_malformed_payload_without_crashing_stream_callback():
+    client = UpstoxV3MarketDataClient.__new__(UpstoxV3MarketDataClient)
+    client.connected = True
+    client.last_error = None
+    client.symbol_by_key = {"NSE_EQ|INE002A01018": "RELIANCE"}
+    delivered = []
+    client.on_tick = delivered.append
+
+    client._on_message("{not-json")
+    assert client.connected is True
+    assert delivered == []
+    assert "UpstoxFeedError" in client.last_error
+
+
+def test_upstox_client_decodes_message_and_delivers_only_valid_ticks():
+    from datetime import datetime, timezone
+
+    client = UpstoxV3MarketDataClient.__new__(UpstoxV3MarketDataClient)
+    client.connected = True
+    client.last_error = "previous recoverable parsing warning"
+    client.symbol_by_key = {"NSE_EQ|INE002A01018": "RELIANCE"}
+    delivered = []
+    client.on_tick = delivered.append
+    now = datetime(2026, 11, 4, 4, 30, tzinfo=timezone.utc)
+
+    client._on_message({
+        "feeds": {
+            "NSE_EQ|INE002A01018": {
+                "ltpc": {
+                    "ltp": 100,
+                    "ltt": str(int(now.timestamp() * 1000)),
+                    "ltq": "10",
+                }
+            }
+        }
+    })
+    assert len(delivered) == 1
+    assert delivered[0].symbol == "RELIANCE"
+    assert client.last_error is None
+
+
+def test_upstox_client_contains_consumer_exceptions_and_marks_callback_fault():
+    client = UpstoxV3MarketDataClient.__new__(UpstoxV3MarketDataClient)
+    client.connected = True
+    client.last_error = None
+    client.symbol_by_key = {"NSE_EQ|INE002A01018": "RELIANCE"}
+    client.on_tick = lambda tick: (_ for _ in ()).throw(RuntimeError("private details"))
+    from datetime import datetime, timezone
+    now = datetime(2026, 11, 4, 4, 30, tzinfo=timezone.utc)
+
+    client._on_message({
+        "feeds": {
+            "NSE_EQ|INE002A01018": {
+                "ltpc": {
+                    "ltp": 100,
+                    "ltt": str(int(now.timestamp() * 1000)),
+                    "ltq": "10",
+                }
+            }
+        }
+    })
+    assert "RuntimeError" in client.last_error
+    assert "private details" not in client.last_error
