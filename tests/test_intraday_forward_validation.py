@@ -142,3 +142,11 @@ def test_weekend_and_after_close_session_start_are_rejected():
         ForwardSessionTracker(datetime(2026, 11, 7, 9, 15, tzinfo=IST))
     with pytest.raises(ValueError, match="15:30"):
         ForwardSessionTracker(at_ist(15, 30))
+
+
+
+def test_session_tracker_rejects_samples_after_its_market_date():
+    tracker = ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled=True)
+    next_day = datetime(2026, 11, 5, 9, 15, tzinfo=IST)
+    with pytest.raises(ValueError, match="session date"):
+        tracker.sample(next_day, "healthy")
