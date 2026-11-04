@@ -6,3 +6,7 @@ data/*.csv
 data/*.parquet
 data/*.json
 !data/.gitkeep
+
+data/*.sqlite3
+data/*.sqlite3-shm
+data/*.sqlite3-wal
