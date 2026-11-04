@@ -61,19 +61,23 @@ class ForwardSessionTracker:
 
     def record_tick(self) -> None:
         with self._lock:
-            self.accepted_ticks += 1
+            if self.status == "in_progress":
+                self.accepted_ticks += 1
 
     def record_signal(self) -> None:
         with self._lock:
-            self.discovered_signals += 1
+            if self.status == "in_progress":
+                self.discovered_signals += 1
 
     def record_closed_trade(self) -> None:
         with self._lock:
-            self.closed_paper_trades += 1
+            if self.status == "in_progress":
+                self.closed_paper_trades += 1
 
     def record_risk_halt(self) -> None:
         with self._lock:
-            self.risk_halts += 1
+            if self.status == "in_progress":
+                self.risk_halts += 1
 
     def sample(self, now: datetime, feed_state: str) -> None:
         """Account only short, regularly observed loop intervals.
