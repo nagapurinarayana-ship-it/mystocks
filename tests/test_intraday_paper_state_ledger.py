@@ -139,18 +139,18 @@ def test_forward_validation_rejects_bad_snapshot_status_and_non_json_values(tmp_
 
 def test_runtime_lease_allows_only_one_active_radar_and_releases_on_exit(tmp_path):
     database = tmp_path / "runtime-lease.sqlite3"
-    with PaperLedger(database) as ledger:
+    with PaperLedger(database) as ledger, PaperLedger(database) as contender:
         with ledger.runtime_lease(
             "intraday_radar", "process-one", heartbeat_seconds=60
         ) as first:
             first.assert_held()
             with pytest.raises(RuntimeError, match="already owns"):
-                with ledger.runtime_lease(
+                with contender.runtime_lease(
                     "intraday_radar", "process-two", heartbeat_seconds=60
                 ):
-                    pytest.fail("second radar process must not enter the lease")
-        # The lease is released by the context manager.
-        with ledger.runtime_lease(
+                    pytest.fail("second SQLite connection must not enter the lease")
+        # The lease is released by the context manager, visible to a second connection.
+        with contender.runtime_lease(
             "intraday_radar", "process-two", heartbeat_seconds=60
         ) as second:
             second.assert_held()
