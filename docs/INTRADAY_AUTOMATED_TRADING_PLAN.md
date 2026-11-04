@@ -35,8 +35,9 @@ The following code has been added to `feature/intraday-automated-trading-foundat
 **Run the local scanner**
 1. Install the optional adapter: `pip install -r requirements-intraday.txt`.
 2. Complete the official broker OAuth flow and set `UPSTOX_ACCESS_TOKEN` in the local process environment. Never place tokens in the repository, GitHub variables used for public workflows, logs, or chat.
-3. Start the local feed process during market hours: `python scripts/run_intraday_radar.py`.
-4. Keep the process running. To qualify forward paper-validation sessions, also configure all eight `MYSTOCKS_PAPER_FEE_*` values from the selected broker's current tariff and stated slippage assumption; without the full schedule the scanner still runs, but paper fills and qualifying paper sessions remain disabled. The dashboard reads its local SQLite ledger; it cannot start or keep the feed process alive.
+3. First run the one-symbol authenticated connectivity check during regular market hours: `python scripts/check_upstox_connection.py --symbol RELIANCE`. It must receive a live LTPC tick and a fresh two-sided REST top-of-book quote. It does not place orders or read account balances. The script prints no token or one-time authorization URL.
+4. Only after that smoke test passes, start the local scanner: `python scripts/run_intraday_radar.py`.
+5. Keep the process running. To qualify forward paper-validation sessions, also configure all eight `MYSTOCKS_PAPER_FEE_*` values from the selected broker's current tariff and stated slippage assumption; without the full schedule the scanner still runs, but paper fills and qualifying paper sessions remain disabled. The dashboard reads its local SQLite ledger; it cannot start or keep the feed process alive.
 
 **Run a historical single-symbol backtest**
 1. Configure all eight `MYSTOCKS_PAPER_FEE_*` environment variables using the selected broker's current tariff and an explicit slippage assumption. The code intentionally supplies no default broker fee schedule.
