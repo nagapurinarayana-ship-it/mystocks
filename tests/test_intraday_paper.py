@@ -162,3 +162,43 @@ def test_fee_schedule_rejects_negative_or_excessive_cost_inputs():
             gst_rate=Decimal("0"), stt_sell_rate=Decimal("0"),
             stamp_buy_rate=Decimal("0"), slippage_bps=Decimal("1001"),
         )
+
+
+
+def test_signal_cannot_be_filled_if_the_next_bar_is_more_than_five_minutes_late():
+    paper = engine()
+    paper.submit_signal(signal(), instrument())
+    event = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 30, tzinfo=IST), 100, 100.5, 99.5, 100.2)
+    )
+    assert event is not None and event.event_type == "signal_expired"
+    assert paper.position is None
+    assert paper.cash == Decimal("1000.00")
+
+
+def test_overnight_safety_exit_waits_for_the_open_of_the_correct_symbol():
+    paper = engine()
+    paper.submit_signal(signal(), instrument())
+    entry = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 20, tzinfo=IST), 100, 100.5, 99.5, 100.2)
+    )
+    assert entry is not None and entry.event_type == "entry_filled"
+    assert paper.position is not None
+
+    other_symbol_bar = CompletedBar(
+        symbol="TCS",
+        start_time=datetime(2026, 11, 5, 9, 15, tzinfo=IST),
+        end_time=datetime(2026, 11, 5, 9, 20, tzinfo=IST),
+        open=3500, high=3510, low=3490, close=3505, volume=1000,
+    )
+    assert paper.on_bar(other_symbol_bar) is None
+    assert paper.position is not None
+
+    position_open = bar(
+        datetime(2026, 11, 5, 9, 15, tzinfo=IST),
+        98, 99, 97, 98.5,
+    )
+    event = paper.on_bar(position_open)
+    assert event is not None and event.event_type == "exit_filled"
+    assert paper.trades[-1].exit_reason == "overnight_safety_exit"
+    assert paper.position is None
