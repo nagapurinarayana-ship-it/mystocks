@@ -129,6 +129,23 @@ def make_backtest_bars():
         "close": 105.5,
         "volume": 1500,
     })
+    # The first bar beginning at the signal timestamp cannot fill the signal:
+    # its opening trade preceded the completed-bar decision. The following
+    # bar is the first eligible fill bar, then a later bar reaches the target.
+    bars.append({
+        "open": 104.6,
+        "high": 104.8,
+        "low": 104.5,
+        "close": 104.7,
+        "volume": 1000,
+    })
+    bars.append({
+        "open": 104.7,
+        "high": 105.6,
+        "low": 104.6,
+        "close": 105.5,
+        "volume": 1200,
+    })
     from intraday.domain import CompletedBar
     return tuple(
         CompletedBar(
@@ -152,7 +169,7 @@ def test_backtester_runs_completed_bar_strategy_and_reports_after_cost_results()
     report = result.summary
     assert report.symbol == "RELIANCE"
     assert report.strategy_id == "vwap_momentum"
-    assert report.bars == 23
+    assert report.bars == 25
     assert report.trades == 1
     assert report.wins == 1
     assert report.net_pnl > 0
