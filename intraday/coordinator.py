@@ -110,6 +110,7 @@ class AutonomousPaperCoordinator:
     def _handle_symbol_discontinuity(
         self, symbol: str, occurred_at: datetime
     ) -> PaperEvent | None:
+        self.scanner.invalidate_symbol_candidates(symbol)
         position = self.paper_engine.position
         pending = self.paper_engine.pending
         if self.paper_engine.halted_reason is not None:
