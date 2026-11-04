@@ -42,6 +42,8 @@ class MarketTick:
     cumulative_volume: int | None = None
     best_bid: float | None = None
     best_ask: float | None = None
+    best_bid_quantity: int | None = None
+    best_ask_quantity: int | None = None
 
     def __post_init__(self) -> None:
         require_aware(self.exchange_time, "exchange_time")
@@ -60,6 +62,10 @@ class MarketTick:
             raise ValueError("best_ask must be positive")
         if self.best_bid is not None and self.best_ask is not None and self.best_bid > self.best_ask:
             raise ValueError("crossed market quote is invalid")
+        if self.best_bid_quantity is not None and self.best_bid_quantity < 0:
+            raise ValueError("best_bid_quantity cannot be negative")
+        if self.best_ask_quantity is not None and self.best_ask_quantity < 0:
+            raise ValueError("best_ask_quantity cannot be negative")
 
 
 @dataclass(frozen=True, slots=True)
