@@ -19,12 +19,14 @@ class _WorkingBar:
     low: float
     close: float
     volume: int
+    value_volume: float
 
     def apply(self, price: float, quantity: int) -> None:
         self.high = max(self.high, price)
         self.low = min(self.low, price)
         self.close = price
         self.volume += quantity
+        self.value_volume += price * quantity
 
     def freeze(self) -> CompletedBar:
         return CompletedBar(
@@ -72,26 +74,19 @@ class FiveMinuteBarBuilder:
         previous_day = self._session_day.get(tick.symbol)
         completed: CompletedBar | None = None
         if previous_day is not None and day != previous_day:
-            old = self._working.pop(tick.symbol, None)
-            if old is not None:
-                completed = old.freeze()
-                self._bars[tick.symbol].append(completed)
+            self._working.pop(tick.symbol, None)
             self._session_value[tick.symbol] = 0.0
             self._session_volume[tick.symbol] = 0
             self._bars[tick.symbol].clear()
 
         self._session_day[tick.symbol] = day
         self._last_trade_time[tick.symbol] = tick.exchange_time
-        if tick.last_trade_quantity > 0:
-            self._session_value[tick.symbol] += tick.price * tick.last_trade_quantity
-            self._session_volume[tick.symbol] += tick.last_trade_quantity
-
         bucket = self._bucket_start(tick.exchange_time)
         working = self._working.get(tick.symbol)
         if working is None:
             self._working[tick.symbol] = _WorkingBar(
                 tick.symbol, bucket, tick.price, tick.price, tick.price,
-                tick.price, tick.last_trade_quantity
+                tick.price, tick.last_trade_quantity, tick.price * tick.last_trade_quantity
             )
             return completed
 
@@ -103,9 +98,11 @@ class FiveMinuteBarBuilder:
 
         completed = working.freeze()
         self._bars[tick.symbol].append(completed)
+        self._session_value[tick.symbol] += working.value_volume
+        self._session_volume[tick.symbol] += working.volume
         self._working[tick.symbol] = _WorkingBar(
             tick.symbol, bucket, tick.price, tick.price, tick.price,
-            tick.price, tick.last_trade_quantity
+            tick.price, tick.last_trade_quantity, tick.price * tick.last_trade_quantity
         )
         return completed
 
