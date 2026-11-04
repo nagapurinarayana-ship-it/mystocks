@@ -161,6 +161,7 @@ class UpstoxV3MarketDataClient:
         self._streamer.on("open", self._on_open)
         self._streamer.on("close", self._on_close)
         self._streamer.on("error", self._on_error)
+        self._streamer.on("reconnecting", self._on_reconnecting)
         self._streamer.on("autoReconnectStopped", self._on_error)
         self._streamer.on("message", self._on_message)
         self._streamer.connect()
@@ -172,6 +173,10 @@ class UpstoxV3MarketDataClient:
     def _on_close(self, *_: Any) -> None:
         self.connected = False
 
+    def _on_reconnecting(self, *_: Any) -> None:
+        self.connected = False
+        self.last_error = "Upstox market-data stream is reconnecting"
+
     def _on_error(self, error: Any = None, *_: Any) -> None:
         self.connected = False
         self.last_error = "Upstox market-data stream reported an error"
@@ -179,30 +184,25 @@ class UpstoxV3MarketDataClient:
             self.last_error = f"{self.last_error}: {type(error).__name__}"
 
     def _on_message(self, message: Any) -> None:
-        for tick in parse_upstox_v3_message(message, symbol_by_key=self.symbol_by_key):
-            self.on_tick(tick)
-
-    def promote_to_full(self, instrument_keys: list[str]) -> None:
-        """Promote a bounded candidate shortlist to full bid/ask depth mode."""
-        if self._streamer is None or not self.connected:
-            raise UpstoxFeedError("cannot promote instruments while WebSocket is disconnected")
-        keys = sorted(set(instrument_keys))
-        if not keys:
+        try:
+            ticks = parse_upstox_v3_message(
+                message, symbol_by_key=self.symbol_by_key
+            )
+        except (UpstoxFeedError, TypeError, ValueError) as exc:
+            # A malformed update is never allowed to reach the scanner. Keep
+            # the transport connected, but expose the decode fault and let the
+            # independent feed-freshness watchdog block candidate selection.
+            self.last_error = f"Upstox market-data message rejected: {type(exc).__name__}"
             return
-        if len(keys) > 2000:
-            raise ValueError("full feed shortlist exceeds Upstox 2,000-instrument limit")
-        unknown = set(keys) - set(self.instrument_keys)
-        if unknown:
-            raise ValueError("cannot promote instrument keys outside the base subscription")
-        self._streamer.change_mode(keys, "full")
 
-    def demote_to_ltpc(self, instrument_keys: list[str]) -> None:
-        """Demote held/expired candidates back to broad LTPC mode."""
-        if self._streamer is None or not self.connected:
-            raise UpstoxFeedError("cannot demote instruments while WebSocket is disconnected")
-        keys = sorted(set(instrument_keys))
-        if keys:
-            self._streamer.change_mode(keys, "ltpc")
+        if ticks:
+            self.last_error = None
+        for tick in ticks:
+            try:
+                self.on_tick(tick)
+            except Exception as exc:
+                self.last_error = f"Market-data consumer callback failed: {type(exc).__name__}"
+                return
 
     def disconnect(self) -> None:
         self.connected = False
