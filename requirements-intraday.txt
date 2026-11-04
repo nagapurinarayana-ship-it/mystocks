@@ -1,3 +1,6 @@
-# Optional live market-data adapter only; not needed for the existing app or unit tests.
-# Pin the current official SDK release after checking the upstream release history.
+# Optional official Upstox V3 Protobuf schema plus a TLS-verified WebSocket transport.
+# The official SDK WebSocket feeder disables TLS certificate/hostname verification;
+# MyStocks therefore uses websocket-client directly with an explicit verified SSLContext.
 upstox-python-sdk==2.30.0
+websocket-client>=1.8.0,<2.0
+certifi>=2024.2.2
