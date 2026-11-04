@@ -218,6 +218,15 @@ def test_multi_bucket_gap_on_held_symbol_halts_and_preserves_open_position():
         strategy_id="vwap_momentum",
     )
 
+    cached_candidate_time = datetime(2026, 11, 4, 9, 20, tzinfo=IST)
+    cached_candidate = TradeSignal(
+        "vwap_momentum", "RELIANCE", cached_candidate_time,
+        100, 99, 102, 1.5, 70, "pre-gap candidate must be discarded",
+    )
+    cached_key = ("RELIANCE", "vwap_momentum", cached_candidate_time)
+    coordinator.scanner._candidate_signals[cached_key] = cached_candidate
+    coordinator.scanner._emitted_signals.add(cached_key)
+
     first_time = datetime(2026, 11, 4, 9, 15, 10, tzinfo=IST)
     first_tick = MarketTick(
         "RELIANCE", "NSE_EQ|INE002A01018", 100,
@@ -241,3 +250,8 @@ def test_multi_bucket_gap_on_held_symbol_halts_and_preserves_open_position():
     assert paper.position is not None
     assert paper.position.symbol == "RELIANCE"
     assert paper.trades == []
+    assert coordinator.scanner.candidate_signals(
+        now=gap_time.astimezone(timezone.utc)
+    ) == ()
+    assert cached_key not in coordinator.scanner._candidate_signals
+    assert cached_key not in coordinator.scanner._emitted_signals
