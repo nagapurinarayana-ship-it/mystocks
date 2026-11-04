@@ -103,7 +103,11 @@ class ForwardSessionTracker:
             if delta < 0:
                 raise ValueError("forward validation samples must be chronological")
             if self.last_sample_state is None:
+                # The first observed state has no preceding sampled interval.
+                # Start measurement here rather than attributing unknown time.
+                self.last_sample_at = current
                 self.last_sample_state = feed_state
+                return
             if delta > 0:
                 if delta > MAX_SAMPLE_INTERVAL_SECONDS:
                     self.loop_gap_count += 1
