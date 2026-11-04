@@ -2,6 +2,8 @@ from datetime import datetime, timedelta
 from decimal import Decimal
 from zoneinfo import ZoneInfo
 
+import pytest
+
 from intraday.domain import CompletedBar, Instrument, TradeSignal
 from intraday.execution.paper import FeeSchedule, PaperExecutionEngine
 
@@ -60,26 +62,67 @@ def engine():
     return PaperExecutionEngine(cost_schedule())
 
 
-def test_paper_entry_uses_next_completed_bar_open_and_whole_shares():
+def signal_boundary(paper):
+    """The bar that generated the signal cannot also provide the entry fill."""
+    assert paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 20, tzinfo=IST), 100, 100.5, 99.5, 100.2)
+    ) is None
+    assert paper.pending is not None
+    assert paper.position is None
+
+
+def test_paper_entry_waits_until_the_first_bar_that_starts_after_signal_time():
     paper = engine()
     assert paper.submit_signal(signal(), instrument()) is True
-    event = paper.on_bar(bar(datetime(2026, 11, 4, 9, 20, tzinfo=IST), 100, 100.5, 99.5, 100.2))
-    assert event is not None
-    assert event.event_type == "entry_filled"
+    signal_boundary(paper)
+
+    event = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 25, tzinfo=IST), 100, 100.5, 99.5, 100.2)
+    )
+    assert event is not None and event.event_type == "entry_filled"
     assert event.quantity >= 1
     assert event.price is not None and event.price > Decimal("100")
     assert paper.position is not None
     assert paper.cash >= 0
 
 
-def test_same_bar_stop_and_target_uses_conservative_stop_first():
+def test_entry_bar_stop_and_target_collision_is_stop_first():
     paper = engine()
     paper.submit_signal(signal(), instrument())
-    entry = paper.on_bar(bar(datetime(2026, 11, 4, 9, 20, tzinfo=IST), 100, 100.5, 99.5, 100.2))
+    signal_boundary(paper)
+    event = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 25, tzinfo=IST), 100, 103, 98, 101)
+    )
+    assert event is not None and event.event_type == "entry_and_exit_same_bar"
+    assert paper.position is None
+    assert paper.trades[-1].exit_reason == "entry_bar_stop_first"
+    assert paper.trades[-1].net_pnl < 0
+
+
+def test_entry_bar_target_is_not_ignored():
+    paper = engine()
+    paper.submit_signal(signal(), instrument())
+    signal_boundary(paper)
+    event = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 25, tzinfo=IST), 100, 102.5, 99.5, 102.1)
+    )
+    assert event is not None and event.event_type == "entry_and_exit_same_bar"
+    assert paper.position is None
+    assert paper.trades[-1].exit_reason == "entry_bar_profit_target"
+
+
+def test_same_bar_stop_and_target_during_later_position_bar_uses_stop_first():
+    paper = engine()
+    paper.submit_signal(signal(), instrument())
+    signal_boundary(paper)
+    entry = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 25, tzinfo=IST), 100, 100.5, 99.5, 100.2)
+    )
     assert entry is not None and entry.event_type == "entry_filled"
 
-    exit_bar = bar(datetime(2026, 11, 4, 9, 25, tzinfo=IST), 100, 103, 98, 101)
-    event = paper.on_bar(exit_bar)
+    event = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 30, tzinfo=IST), 100, 103, 98, 101)
+    )
     assert event is not None and event.event_type == "exit_filled"
     assert paper.trades[-1].exit_reason == "same_bar_stop_first"
     assert paper.position is None
@@ -90,18 +133,28 @@ def test_same_bar_stop_and_target_uses_conservative_stop_first():
 def test_profit_target_exit_is_recorded_net_of_broker_charges():
     paper = engine()
     paper.submit_signal(signal(), instrument())
-    paper.on_bar(bar(datetime(2026, 11, 4, 9, 20, tzinfo=IST), 100, 100.5, 99.5, 100.2))
-    event = paper.on_bar(bar(datetime(2026, 11, 4, 9, 25, tzinfo=IST), 100.5, 102.5, 100.2, 102.2))
+    signal_boundary(paper)
+    entry = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 25, tzinfo=IST), 100, 100.5, 99.5, 100.2)
+    )
+    assert entry is not None and entry.event_type == "entry_filled"
+
+    event = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 30, tzinfo=IST), 100.5, 102.5, 100.2, 102.2)
+    )
     assert event is not None
     assert paper.trades[-1].exit_reason == "profit_target"
     assert paper.trades[-1].charges > 0
     assert paper.trades[-1].net_pnl == paper.trades[-1].gross_pnl - paper.trades[-1].charges
 
 
-def test_entry_is_rejected_when_next_open_gaps_beyond_allowed_drift():
+def test_entry_is_rejected_when_eligible_open_gaps_beyond_allowed_drift():
     paper = engine()
     paper.submit_signal(signal(), instrument())
-    event = paper.on_bar(bar(datetime(2026, 11, 4, 9, 20, tzinfo=IST), 101, 101.5, 100.5, 101.2))
+    signal_boundary(paper)
+    event = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 25, tzinfo=IST), 101, 101.5, 100.5, 101.2)
+    )
     assert event is not None and event.event_type == "signal_expired"
     assert paper.position is None
     assert paper.cash == Decimal("1000.00")
@@ -127,7 +180,10 @@ def test_daily_risk_budget_can_reject_trade_that_cannot_fit_one_share():
         explanation="test",
     )
     paper.submit_signal(expensive_signal, instrument())
-    event = paper.on_bar(bar(datetime(2026, 11, 4, 9, 20, tzinfo=IST), 100, 100.5, 99.5, 100.2))
+    signal_boundary(paper)
+    event = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 25, tzinfo=IST), 100, 100.5, 99.5, 100.2)
+    )
     assert event is not None and event.event_type == "entry_rejected"
     assert paper.position is None
     assert paper.cash == Decimal("1000.00")
@@ -136,7 +192,11 @@ def test_daily_risk_budget_can_reject_trade_that_cannot_fit_one_share():
 def test_session_close_closes_position_and_cancels_pending_entry():
     paper = engine()
     paper.submit_signal(signal(), instrument())
-    paper.on_bar(bar(datetime(2026, 11, 4, 9, 20, tzinfo=IST), 100, 100.5, 99.5, 100.2))
+    signal_boundary(paper)
+    entry = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 25, tzinfo=IST), 100, 100.5, 99.5, 100.2)
+    )
+    assert entry is not None and entry.event_type == "entry_filled"
     event = paper.force_session_close(
         bar(datetime(2026, 11, 4, 15, 20, tzinfo=IST), 101, 101.2, 100.8, 101)
     )
@@ -146,8 +206,6 @@ def test_session_close_closes_position_and_cancels_pending_entry():
 
 
 def test_fee_schedule_rejects_negative_or_excessive_cost_inputs():
-    import pytest
-    import math
     with pytest.raises(ValueError):
         FeeSchedule(
             brokerage_rate=Decimal("-0.1"), brokerage_cap_per_order=Decimal("20"),
@@ -164,10 +222,10 @@ def test_fee_schedule_rejects_negative_or_excessive_cost_inputs():
         )
 
 
-
-def test_signal_cannot_be_filled_if_the_next_bar_is_more_than_five_minutes_late():
+def test_signal_expires_if_first_eligible_bar_is_more_than_five_minutes_late():
     paper = engine()
     paper.submit_signal(signal(), instrument())
+    signal_boundary(paper)
     event = paper.on_bar(
         bar(datetime(2026, 11, 4, 9, 30, tzinfo=IST), 100, 100.5, 99.5, 100.2)
     )
@@ -179,8 +237,9 @@ def test_signal_cannot_be_filled_if_the_next_bar_is_more_than_five_minutes_late(
 def test_overnight_safety_exit_waits_for_the_open_of_the_correct_symbol():
     paper = engine()
     paper.submit_signal(signal(), instrument())
+    signal_boundary(paper)
     entry = paper.on_bar(
-        bar(datetime(2026, 11, 4, 9, 20, tzinfo=IST), 100, 100.5, 99.5, 100.2)
+        bar(datetime(2026, 11, 4, 9, 25, tzinfo=IST), 100, 100.5, 99.5, 100.2)
     )
     assert entry is not None and entry.event_type == "entry_filled"
     assert paper.position is not None
