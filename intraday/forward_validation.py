@@ -29,6 +29,8 @@ class ForwardSessionTracker:
 
     def __init__(self, started_at: datetime, paper_engine_enabled: bool = False) -> None:
         self._require_aware(started_at, "started_at")
+        if not isinstance(paper_engine_enabled, bool):
+            raise ValueError("paper_engine_enabled must be a boolean")
         local = started_at.astimezone(IST)
         if local.weekday() >= 5:
             raise ValueError("forward validation sessions must be on NSE weekdays")
