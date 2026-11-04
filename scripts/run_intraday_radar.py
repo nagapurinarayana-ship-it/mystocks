@@ -15,6 +15,7 @@ import os
 import sys
 import time
 from concurrent.futures import Future, ThreadPoolExecutor
+from uuid import uuid4
 from datetime import datetime, time as clock_time, timezone
 from zoneinfo import ZoneInfo
 from pathlib import Path
@@ -144,7 +145,10 @@ def main() -> int:
 
         quotes_client = UpstoxFullMarketQuotesV3Client(access_token=access_token)
 
-        with PaperLedger("data/mystocks_intraday.sqlite3") as ledger:
+        lease_owner = f"{os.getpid()}-{uuid4().hex}"
+        with PaperLedger("data/mystocks_intraday.sqlite3") as ledger, ledger.runtime_lease(
+            "intraday_radar", lease_owner
+        ) as runtime_lease:
             startup_time = datetime.now(timezone.utc)
             interrupted_sessions = ledger.interrupt_open_forward_sessions(
                 startup_time.isoformat()
@@ -286,6 +290,7 @@ def main() -> int:
 
             try:
                 while True:
+                    runtime_lease.assert_held()
                     now = datetime.now(timezone.utc)
                     local_now = now.astimezone(IST)
                     if paper_coordinator is not None:
