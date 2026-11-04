@@ -221,13 +221,14 @@ def main() -> int:
                         )
                         last_quote_poll = monotonic_now
                         try:
-                            quotes = quotes_client.fetch_quotes(instruments_to_quote, now=now)
+                            quotes = quotes_client.fetch_quotes(instruments_to_quote)
+                            quote_now = datetime.now(timezone.utc)
                             for quote_tick in quotes.values():
-                                scanner.update_quote(quote_tick, now=now)
+                                scanner.update_quote(quote_tick, now=quote_now)
 
                             for signal in active_candidates:
                                 key = (signal.symbol, signal.strategy_id, signal.generated_at)
-                                valid, reason = scanner.validate_candidate_depth(signal, now=now)
+                                valid, reason = scanner.validate_candidate_depth(signal, now=quote_now)
                                 if quote_status.get(key) != reason:
                                     quote_status[key] = reason
                                     ledger.record_event(
@@ -237,7 +238,7 @@ def main() -> int:
                                         f"{signal.symbol} {signal.strategy_id}: {reason}",
                                     )
                             if paper_coordinator is not None:
-                                queued = paper_coordinator.evaluate_candidates(now=now)
+                                queued = paper_coordinator.evaluate_candidates(now=quote_now)
                                 if queued is not None:
                                     logging.info(
                                         "PAPER signal queued after REST depth validation: %s %s",
