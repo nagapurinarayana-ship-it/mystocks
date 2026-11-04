@@ -10,6 +10,7 @@ import pytest
 from intraday.market_data.upstox_v3 import (
     UpstoxFeedError,
     UpstoxV3MarketDataClient,
+    WEBSOCKET_AUTH_URL,
 )
 
 
@@ -56,6 +57,18 @@ def test_client_requires_all_instrument_symbol_mappings():
         make_client(symbol_by_key={})
 
 
+class FakeAuthResponse:
+    def __init__(self, status_code=200, url=None):
+        self.status_code = status_code
+        self._url = url or "wss://feed-01.upstox.com/v3/feed?requestId=test&code=one-time"
+
+    def json(self):
+        return {
+            "status": "success",
+            "data": {"authorized_redirect_uri": self._url},
+        }
+
+
 class FakeWebSocketApp:
     def __init__(self, url, header, on_open, on_message, on_error, on_close):
         self.url = url
@@ -84,6 +97,15 @@ class FakeWebSocketApp:
 
 def test_connect_sends_ltpc_frame_over_certificate_verified_websocket(monkeypatch):
     apps = []
+    auth_calls = []
+
+    def authorize(url, headers, timeout):
+        auth_calls.append((url, headers, timeout))
+        return FakeAuthResponse()
+
+    monkeypatch.setattr(
+        "intraday.market_data.upstox_v3.requests.get", authorize
+    )
 
     def make_app(*args, **kwargs):
         app = FakeWebSocketApp(*args, **kwargs)
@@ -105,11 +127,16 @@ def test_connect_sends_ltpc_frame_over_certificate_verified_websocket(monkeypatc
     assert client.connected is True
     assert len(apps) == 1
     app = apps[0]
-    assert app.url == "wss://api.upstox.com/v3/feed/market-data-feed"
-    assert app.header == {
-        "Authorization": "Bearer unit-test-token",
-        "Accept": "*/*",
-    }
+    assert app.url == "wss://feed-01.upstox.com/v3/feed?requestId=test&code=one-time"
+    assert app.header == {"Accept": "*/*"}
+    assert auth_calls == [(
+        WEBSOCKET_AUTH_URL,
+        {
+            "Accept": "application/json",
+            "Authorization": "Bearer unit-test-token",
+        },
+        (5, 15),
+    )]
     assert app.ssl_context.verify_mode == ssl.CERT_REQUIRED
     assert app.ssl_context.check_hostname is True
     assert len(app.sent) == 1
@@ -191,3 +218,60 @@ def test_consumer_callback_failure_is_contained_and_sanitized():
     client._on_message(None, payload)
     assert "RuntimeError" in client.last_error
     assert "private error text" not in client.last_error
+
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        "https://feed-01.upstox.com/ws?code=one-time",
+        "wss://upstox.com/ws?code=one-time",
+        "wss://feed-01.upstox.com/ws",
+        "wss://feed-01.upstox.com:8443/ws?code=one-time",
+        "wss://feed-01.upstox.com.evil.test/ws?code=one-time",
+        "wss://user:password@feed-01.upstox.com/ws?code=one-time",
+        "wss://feed-01.upstox.com/ws?code=one-time#fragment",
+    ],
+)
+def test_authorization_rejects_non_upstox_or_non_tls_socket_urls(monkeypatch, url):
+    monkeypatch.setattr(
+        "intraday.market_data.upstox_v3.requests.get",
+        lambda *args, **kwargs: FakeAuthResponse(url=url),
+    )
+    client = make_client()
+    with pytest.raises(UpstoxFeedError, match="invalid socket URL"):
+        client._authorize_websocket_url()
+
+
+def test_authorization_401_is_fatal_and_never_logs_token(monkeypatch):
+    secret = "unit-test-token"
+
+    class Unauthorized:
+        status_code = 401
+
+    monkeypatch.setattr(
+        "intraday.market_data.upstox_v3.requests.get",
+        lambda *args, **kwargs: Unauthorized(),
+    )
+    client = make_client(access_token=secret)
+    with pytest.raises(UpstoxFeedError, match="authentication rejected"):
+        client._authorize_websocket_url()
+    assert client._fatal_auth_error is True
+    assert client._stop_event.is_set()
+    assert client.last_error == "Upstox rejected market-data authentication (HTTP 401)"
+    assert secret not in client.last_error
+
+
+def test_authorization_failure_does_not_echo_http_body_or_secrets(monkeypatch):
+    class Failed:
+        status_code = 500
+        text = "private response body"
+
+    monkeypatch.setattr(
+        "intraday.market_data.upstox_v3.requests.get",
+        lambda *args, **kwargs: Failed(),
+    )
+    client = make_client()
+    with pytest.raises(UpstoxFeedError, match="HTTP 500") as exc:
+        client._authorize_websocket_url()
+    assert "private response body" not in str(exc.value)
