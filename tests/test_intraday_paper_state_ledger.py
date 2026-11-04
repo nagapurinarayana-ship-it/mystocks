@@ -6,7 +6,7 @@ from intraday.ledger import PaperLedger
 def test_paper_account_state_persists_across_ledger_reopen(tmp_path):
     database = tmp_path / "paper-state.sqlite3"
     snapshot = {
-        "version": 2,
+        "version": 3,
         "fee_schedule": {
             "brokerage_rate": "0.0001",
             "brokerage_cap_per_order": "20",
@@ -23,6 +23,7 @@ def test_paper_account_state_persists_across_ledger_reopen(tmp_path):
         "daily_net_pnl": "-3.50",
         "realised_net_pnl": "15.25",
         "overnight_exit_pending": False,
+        "halted_reason": None,
         "position": None,
         "pending": None,
     }
