@@ -2,7 +2,7 @@
 
 ## Product decision
 
-Build a **live NSE market radar with assisted/manual execution** as the first production target. Real-time market-data ingestion, scanning, alerts, position monitoring and paper trading are in scope. Broker order placement is technically possible later, but is deliberately out of scope for the ₹1,000 initial-capital release; it remains disabled until capital, broker requirements, static-IP infrastructure, compliance and validation justify a separate release. Preserve the existing long-term watchlist and short-term daily research engine; this is a separate capability.
+Build MyStocks toward **fully automated NSE cash-equity trading**: live market-data ingestion, strategy selection, cash/risk sizing, automatic entries, broker-side protective exits, position monitoring, reconciliation and automatic exits. The intended end state requires no manual trade-by-trade order entry. However, live execution must remain disabled until the strategy demonstrates a durable after-cost edge in robust out-of-sample tests and forward paper operation, and until the user selects a broker and all broker/exchange, static-IP, authentication, security and compliance requirements are verified. Until then, the production service may run live-market scans and autonomous paper trading only. Preserve the existing long-term watchlist and short-term daily research engine; this is a separate capability.
 
 ## Non-negotiable safety boundary
 
@@ -94,6 +94,7 @@ The initial capital provided for evaluation is **₹1,000 total**. Treat this as
 - Estimate the complete round-trip cost before every candidate: brokerage on both executed sides, STT, exchange charges, GST, SEBI charges, stamp duty, spread and expected slippage. Reject candidates when net expected edge is not clearly positive after costs or the cost estimate is stale.
 - Keep a separate strategy ledger that reports starting capital, peak/trough equity, realised net P&L, charges, drawdown, return on initial capital, number of trades, and how much profit is retained. Do not count unrealised gains as spendable profit.
 - The system may correctly produce no trade for many sessions. It must never manufacture activity to meet a daily profit target.
+- No algorithm, backtest or live execution setting may promise or imply guaranteed profits, fixed daily income or assured capital preservation. 'Sustainable' means only that the measured net expectancy and operational controls continue to hold over sufficiently varied unseen market periods; it is never certain.
 
 A small-account cost illustration must be shown in the UI, using the chosen broker's live published tariff and a test order size. For context only, Zerodha currently publishes intraday brokerage at 0.03% or ₹20 per executed order (whichever is lower), plus statutory charges such as sell-side STT, exchange transaction charges, GST and buy-side stamp duty; the actual broker has not been selected, and the estimate must be recalculated for that broker before any use.
 
@@ -137,7 +138,7 @@ Before any live API trading, obtain broker confirmation of eligibility and requi
 
 - Target market: NSE cash equities.
 - Opportunity cap: three per trading session.
-- Execution ambition: eventual live automated trading; currently disabled.
+- Execution ambition: fully automatic entries, protective exits and position management as the end state; live order placement currently hard-disabled pending evidence, broker selection and compliance approval.
 - Broker: undecided.
 - Market-data provider: undecided.
 - Initial strategy direction: long-only; no leverage/F&O.
@@ -146,19 +147,21 @@ Before any live API trading, obtain broker confirmation of eligibility and requi
 - Recurring data/hosting spend target: ₹0 from the initial capital; any required paid compliance infrastructure blocks live activation until separately authorised.
 
 
-## Recommended v1 design for ₹1,000: live radar, manual execution
+## Recommended design: fully automatic target with a gated live rollout
 
 ### Decision
 
-Do not build an always-on auto-order bot for the first release. Build a real-time market scanner and trade-assistance system that:
-1. Receives live NSE cash-market updates during market hours.
-2. Scans the eligible universe and surfaces up to three explainable opportunities.
-3. Shows a conditional entry zone, invalidation, stop, targets, spread/liquidity, estimated costs, risk in rupees, and the exact data timestamp.
-4. Sends alerts when an opportunity becomes valid, changes materially, or is invalidated.
-5. Tracks a paper ledger and optionally monitors a position entered manually by the user.
-6. Never submits, modifies, cancels or squares off a real broker order in v1.
+The intended end state is an autonomous, long-only NSE cash-equity system that can:
+1. Receive live NSE cash-market updates during market hours and maintain a healthy/stale-feed state.
+2. Scan the eligible universe and select up to three explainable opportunities, or none.
+3. Calculate conditional entry, stop, targets, whole-share quantity, estimated costs and rupee risk before every order.
+4. Automatically submit eligible entries through the selected broker adapter when live mode is separately authorised.
+5. Immediately place/verify broker-supported protective exits and manage partial fills, rejected orders, gaps, price bands and uncertain order states.
+6. Monitor positions and automatically exit when the strategy invalidates, the stop/target condition occurs, risk limits trigger, or the session cutoff is reached.
+7. Reconcile orders, trades, positions and funds against broker records; maintain a durable audit ledger and P&L after all charges.
+8. Stop opening new positions and invoke the configured safe-state procedure on stale data, lost connection, broker mismatch, failed protective-order confirmation, daily loss limit or global kill switch.
 
-This gives the user live information and automated analysis without exposing a ₹1,000 account to unattended order, token-expiry, connectivity or stop-execution failures.
+The rollout is deliberately staged: live-market autonomous paper trading first; then read-only broker reconciliation; then a separate live execution release only after evidence and regulatory readiness. The initial implementation must not silently fall back from live to paper or claim an order was placed unless the broker confirms it.
 
 ### Initial market-data provider candidate
 
@@ -195,11 +198,11 @@ Zerodha's currently published retail Kite Connect pricing is ₹500 per month fo
 - The existing conservative paper limits (0.5% planned risk per trade; 1% daily loss limit; one open position) are hard research guardrails, not a claim that every ₹1,000 portfolio can place a valid trade. If one share cannot fit the risk budget after estimated costs, show no trade.
 - Net P&L is only recognised after actual charges; unrealised gain is not withdrawable profit. No automated cash movement.
 
-### Future auto-ordering gate
+### Live auto-ordering gate
 
-If the user later requests a separate live-execution release, first confirm the chosen broker and exact account/API terms. NSE/SEBI retail-algo requirements and broker procedures apply. Current broker documentation notes registered static-IP controls for API order traffic; Upstox documents user-level static-IP registration, and Zerodha states static IP is required for API order placement from 1 April 2026. WebSocket market-data access can have different IP requirements from order placement.
+The intended product is fully automatic, but this is a separate activation milestone—not an automatic consequence of passing unit tests. First confirm the chosen broker and exact account/API terms. NSE/SEBI retail-algo requirements and broker procedures apply. Current exchange guidance requires broker documentation/registration for Client Direct API retail algo access. Static-IP and hosting requirements must be confirmed with the selected broker for the chosen client API architecture; WebSocket market-data access can have different requirements from order placement.
 
-Before any order endpoint is implemented, require:
+Before any live order endpoint is enabled, require:
 - Broker-confirmed Client Direct API/algo eligibility and exchange registration/tagging requirements.
 - Registered static IP and reliable always-on execution host, with a documented cost that is not funded out of the ₹1,000 trading capital.
 - Fresh broker authentication/session lifecycle, secret isolation and audit trail.
