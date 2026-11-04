@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T18:02:22+00:00",
+  "generated_at": "2026-11-04T18:13:29+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -15,12 +15,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.44,
-        "previous_close": 6.49,
-        "change_pct": -0.7704160246533087,
-        "market_cap": 2536646656.0,
-        "trailing_pe": 10.222222,
-        "price_to_book": 1.2073491,
+        "price": 6.86,
+        "previous_close": 6.44,
+        "change_pct": 6.521739130434789,
+        "market_cap": 2702080000.0,
+        "trailing_pe": 10.888889,
+        "price_to_book": 1.2860892,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,12 +28,11 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-03T18:02:19+00:00",
+        "fetched_at": "2026-11-04T18:13:26+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.68,
         7.53,
         7.36,
         7.51,
@@ -122,7 +121,8 @@
         6.29,
         6.28,
         6.49,
-        6.44
+        6.44,
+        6.86
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-03T18:02:20+00:00",
+        "fetched_at": "2026-11-04T18:13:27+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -256,15 +256,15 @@
       "live_flags": [],
       "news": [
         {
+          "title": "AGOL Share Price Today - Ashapuri Gold Ornament Stock Analysis - Equitypandit",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5TYkZfT3hvbU9fRnlva1ZtZVFmRm9qTW5ZR3RNUFRIdVlWZER3Q0ptajJRUnp4a2Q3SEczUkxRTzJQTi1iTEpXaC1JbGNnY1U0aFk0em5Xa3Y?oc=5",
+          "source": "Equitypandit",
+          "published": "2026-10-13 01:07 UTC"
+        },
+        {
           "title": "Ashapuri Gold Ornament gets NSE listing approval for Oct 12 trading - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
           "source": "scanx.trade",
-          "published": "2026-10-08 07:00 UTC"
-        },
-        {
-          "title": "NSE to list shares of Ashapuri Gold Ornament, Belding India and Triveni Power Transmission from October 12 - Traders Union",
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZ2QtTFAzU2hBY2hQX1JNM2dsSnhrbVZwakFNdEtSRThFeU10dDljQ0tSRzZmZlFhR2hnMWRUaTF4RFlRcEg4bUxPSUhLT3NkeVRYeEFiQzRaUk5zcUlUYjgwQ0x6em9fSE9POEVzMHEtSGpiZXI5OGgyUC12QUQ0ME8zWk80TXdmTFRlem13N3NmZmRqNXFoTXFodHNIRkNibEE?oc=5",
-          "source": "Traders Union",
           "published": "2026-10-08 07:00 UTC"
         },
         {
@@ -274,16 +274,16 @@
           "published": "2026-10-21 04:19 UTC"
         },
         {
+          "title": "NSE to list shares of Ashapuri Gold Ornament, Belding India and Triveni Power Transmission from October 12 - Traders Union",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZ2QtTFAzU2hBY2hQX1JNM2dsSnhrbVZwakFNdEtSRThFeU10dDljQ0tSRzZmZlFhR2hnMWRUaTF4RFlRcEg4bUxPSUhLT3NkeVRYeEFiQzRaUk5zcUlUYjgwQ0x6em9fSE9POEVzMHEtSGpiZXI5OGgyUC12QUQ0ME8zWk80TXdmTFRlem13N3NmZmRqNXFoTXFodHNIRkNibEE?oc=5",
+          "source": "Traders Union",
+          "published": "2026-10-08 07:00 UTC"
+        },
+        {
           "title": "Ashapuri Gold Ornament Upper Circuit Today: Price, Data and Peers - Univest",
           "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE96VU5sVHBZazRPZU9sQmRtS1lSbUowVlVqSVpmeUtFdGw5em84dlExZkxOU05NUWoyd2dkNV9EcDJKRkdJNWl3YllJdnQxSDdkSTNIcEotR3BLckg4OHdqWFd1Z25fMXZtVVpxWkVtbWwyd1FGYm9WajRB?oc=5",
           "source": "Univest",
           "published": "2026-10-21 07:00 UTC"
-        },
-        {
-          "title": "Ashapuri Gold Ornament Ltd. Share Price Today - Ashapuri Gold Ornament Ltd. Stock Price Live NSE/BSE - CNBC TV18",
-          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUFc1VWdEMFc2N0xzU1VUUHpKeDZPQlVyNDBpeTMxcjBrSDNhV3ZwZkJOSEtldG8zME1mTEZZX01mSXVTTzZkNnNoOFZVQ0hxaUZCOFJzR1hoUzJsSmxyQWRkc1JNUV9GT2J4MnV2VlRSY2lhVVpGSUx3MWtVX0FneF9lV19lN2hMSVFaa29B?oc=5",
-          "source": "CNBC TV18",
-          "published": "2026-01-18 12:32 UTC"
         }
       ]
     },
@@ -297,20 +297,20 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.67,
-        "previous_close": 6.82,
-        "change_pct": -2.1994134897360795,
-        "market_cap": 1798109056.0,
-        "trailing_pe": 10.421875,
-        "price_to_book": 0.769497,
+        "price": 6.84,
+        "previous_close": 6.67,
+        "change_pct": 2.5487256371814038,
+        "market_cap": 1843937920.0,
+        "trailing_pe": 10.523078,
+        "price_to_book": 0.78910935,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
-        "free_cash_flow": 566939520.0,
+        "free_cash_flow": 570792640.0,
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-03T18:02:21+00:00",
+        "fetched_at": "2026-11-04T18:13:28+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -367,7 +367,8 @@
         6.98,
         6.86,
         6.82,
-        6.67
+        6.67,
+        6.84
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -426,10 +427,10 @@
           "published": "2026-09-05 04:14 UTC"
         },
         {
-          "title": "Madhav Infra Projects Ltd. Share Price Today | Madhav Infra Live NSE/BSE - Value Research",
-          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNRHVEQUVWVG9zWmNjWUJUdjJldTNhazFNemJkdW84ZkIxQkstMmxKT2QyTFRaZWtHbl9WZUo4WW5LZG5wQ2QtX0p2amhMVUVCRU12TVVaQXRPVWhlcEFtNjBiXy1VaVlZUnFHWVhXWG03MGtRd1ktSkhJY0dVYS1YRXpn?oc=5",
-          "source": "Value Research",
-          "published": "2022-03-25 08:42 UTC"
+          "title": "Madhav Infra Projects promoters execute inter-se share gift - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOekhkSlpydmZyU0ZqRTdBektHRWNHbkFPMXVYT2ZLQlR3T1JKQXJmSGhHZ2ZLVkpKV080X2R5UDh2eDZmT2tEb2FQVXJXTUo2N3hqS29ZU0N3alhqZ0ViSXo5TGstaXNPTENNRjRZcXM2RTE5M0JTQUlqR3IycUJsaHBteXlxOVpzRWpYbXR5UFFMeUcxZmt2aS1nYWpxTXUyVkZBYV9CZ1V2UV9vVzNMZmxFemgzejg?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-08-05 07:00 UTC"
         }
       ]
     }
