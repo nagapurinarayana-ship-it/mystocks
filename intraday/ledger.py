@@ -159,6 +159,18 @@ class PaperLedger:
             ).fetchone()
             return dict(row) if row else None
 
+    def latest_feed_event(self) -> dict[str, Any] | None:
+        with self._lock:
+            row = self._connection.execute(
+                """
+                SELECT * FROM intraday_system_events
+                WHERE code IN ('feed_healthy', 'feed_stale', 'feed_disconnected',
+                               'scanner_starting', 'scanner_stopped')
+                ORDER BY id DESC LIMIT 1
+                """
+            ).fetchone()
+            return dict(row) if row else None
+
     def paper_performance(self) -> dict[str, Any]:
         with self._lock:
             row = self._connection.execute(
