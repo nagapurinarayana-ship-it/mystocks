@@ -22,6 +22,7 @@ class IntradayScanner:
         self.bar_builder = FiveMinuteBarBuilder()
         self.last_feed_receive: datetime | None = None
         self.rejected_ticks: dict[str, int] = {}
+        self._emitted_signals: set[tuple[str, str, datetime]] = set()
 
     def on_tick(self, tick: MarketTick, now: datetime | None = None) -> bool:
         if tick.instrument_key not in self.by_key:
@@ -38,7 +39,9 @@ class IntradayScanner:
         self.bar_builder.ingest(tick)
         return True
 
-    def opportunities(self) -> tuple[TradeSignal, ...]:
+    def opportunities(self, now: datetime | None = None) -> tuple[TradeSignal, ...]:
+        if not self.feed_is_fresh(now=now):
+            return ()
         candidates: list[TradeSignal] = []
         for symbol, instrument in self.instruments.items():
             bars = self.bar_builder.bars(symbol)
@@ -48,7 +51,9 @@ class IntradayScanner:
                 opening_range_breakout_signal(instrument, bars, vwap),
             ):
                 if signal is not None:
-                    candidates.append(signal)
+                    key = (signal.symbol, signal.strategy_id, signal.generated_at)
+                    if key not in self._emitted_signals:
+                        candidates.append(signal)
         candidates.sort(key=lambda item: (item.score, item.volume_ratio), reverse=True)
         selected: list[TradeSignal] = []
         seen: set[str] = set()
@@ -56,6 +61,7 @@ class IntradayScanner:
             if candidate.symbol in seen:
                 continue
             selected.append(candidate)
+            self._emitted_signals.add((candidate.symbol, candidate.strategy_id, candidate.generated_at))
             seen.add(candidate.symbol)
             if len(selected) >= self.max_opportunities:
                 break
