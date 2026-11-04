@@ -18,6 +18,7 @@ from long_term_watchlist import (
 from nse_universe import discover_current_nse_symbols, load_saved_universe, save_universe
 from research_data import ResearchDataConfig, load_universe
 from research_policy import history_tier
+from intraday.ledger import PaperLedger
 
 st.set_page_config(
     page_title="MyStocks — India Research Radar",
@@ -353,16 +354,108 @@ def render_short_term_research() -> None:
             st.success("Existing research output detected in the local data directory.")
 
 
+
+def render_intraday_radar() -> None:
+    st.title("🤖 MyStocks — Intraday Radar")
+    st.caption(
+        "Live NSE cash-equity scanner with completed-candle signals and an auditable paper-trading ledger. "
+        "No real broker orders are enabled."
+    )
+    st.warning(
+        "Research / paper mode only. Signal candidates are not guaranteed trades or returns. "
+        "Live order placement, fund transfers and withdrawals are disabled."
+    )
+
+    database = Path("data/mystocks_intraday.sqlite3")
+    if not database.exists():
+        st.info(
+            "The live scanner has not written any local data yet. Start it on an always-on machine "
+            "during NSE market hours using the instructions below."
+        )
+        signals = pd.DataFrame()
+        trades = pd.DataFrame()
+        performance = {"trades": 0, "realised_net_pnl": 0.0, "wins": 0, "losses": 0, "charges": 0.0}
+        feed_event = None
+    else:
+        try:
+            with PaperLedger(database) as ledger:
+                signals = pd.DataFrame(ledger.recent_signals(50))
+                trades = pd.DataFrame(ledger.recent_trades(50))
+                performance = ledger.paper_performance()
+                feed_event = ledger.latest_feed_event()
+        except Exception as exc:
+            st.error(f"Could not read the intraday ledger: {exc}")
+            return
+
+    if feed_event is None:
+        st.info("Feed status: not started or no status event recorded.")
+    elif feed_event["code"] == "feed_healthy":
+        st.success(f"Live feed healthy · last status update {feed_event['occurred_at']}")
+    elif feed_event["code"] in {"feed_stale", "feed_disconnected"}:
+        st.warning(f"Live feed {feed_event['code'].replace('feed_', '')} · {feed_event['occurred_at']}")
+    else:
+        st.info(f"Feed status: {feed_event['message']} · {feed_event['occurred_at']}")
+
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Signals recorded", f"{len(signals):,}")
+    c2.metric("Paper trades closed", f"{int(performance['trades']):,}")
+    c3.metric("Realised paper P&L", f"₹{float(performance['realised_net_pnl']):,.2f}")
+    c4.metric("Paper charges", f"₹{float(performance['charges']):,.2f}")
+    st.caption(
+        "The ₹1,000 starting capital is a paper-policy setting only. It is not connected to or deposited with a broker. "
+        "Paper results are meaningful only after a verified broker-specific fee schedule and fill model are configured."
+    )
+
+    st.subheader("Latest intraday opportunities")
+    if signals.empty:
+        st.write("No signals recorded yet. No signal is a valid outcome.")
+    else:
+        display = signals[[
+            "generated_at", "symbol", "strategy_id", "entry_reference",
+            "stop_price", "target_price", "volume_ratio", "score", "explanation",
+        ]].copy()
+        display["entry_reference"] = display["entry_reference"].map(lambda x: f"₹{float(x):,.2f}")
+        display["stop_price"] = display["stop_price"].map(lambda x: f"₹{float(x):,.2f}")
+        display["target_price"] = display["target_price"].map(lambda x: f"₹{float(x):,.2f}")
+        display["volume_ratio"] = display["volume_ratio"].map(lambda x: f"{float(x):.2f}×")
+        display["score"] = display["score"].map(lambda x: f"{float(x):.1f}")
+        st.dataframe(display, use_container_width=True, hide_index=True)
+
+    st.subheader("Closed paper trades")
+    if trades.empty:
+        st.write("No paper fills have been recorded. Live orders are not enabled.")
+    else:
+        st.dataframe(trades, use_container_width=True, hide_index=True)
+
+    if st.button("Refresh intraday dashboard", use_container_width=True):
+        st.rerun()
+
+    with st.expander("Start the live market-data scanner"):
+        st.markdown(
+            """
+1. Install the optional Upstox SDK on an always-on computer: `pip install -r requirements-intraday.txt`.
+2. Create an Upstox Developer App and complete its official OAuth login. The access token expires at 3:30 AM the following day; obtain a fresh token according to Upstox's process.
+3. Set `UPSTOX_ACCESS_TOKEN` in that computer's environment. Do not paste it into GitHub, this dashboard, chat, screenshots, or logs.
+4. From the repository root, run `python scripts/run_intraday_radar.py`.
+5. Keep that process running during market hours. This Streamlit page reads the local SQLite ledger written by that process.
+
+The scanner currently records market-feed status and candidate signals. Automatic paper fills require a broker-specific fee schedule and a forward-tested fill model. This page does not start a background service or place orders.
+            """
+        )
+
+
 with st.sidebar:
     st.title("MyStocks")
     workspace = st.radio(
         "Workspace",
-        ["Long-term watchlist", "Short-term research radar"],
+        ["Long-term watchlist", "Short-term research radar", "Intraday Radar"],
         index=0,
     )
     st.caption("Research tooling only — not a guarantee of returns.")
 
 if workspace == "Long-term watchlist":
     render_long_term_watchlist()
-else:
+elif workspace == "Short-term research radar":
     render_short_term_research()
+else:
+    render_intraday_radar()
