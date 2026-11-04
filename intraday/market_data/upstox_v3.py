@@ -263,6 +263,8 @@ class UpstoxV3MarketDataClient:
                     "Authorization": f"Bearer {self.access_token}",
                 },
                 timeout=(5, 15),
+                verify=True,
+                allow_redirects=False,
             )
         except requests.RequestException as exc:
             raise UpstoxFeedError("Upstox market-data authorization request failed") from exc
