@@ -106,6 +106,8 @@ def parse_upstox_v3_message(
                 best_ask=float(ask) if ask is not None else None,
                 best_bid_quantity=max(0, _as_int(bid_quantity)) if bid_quantity is not None else None,
                 best_ask_quantity=max(0, _as_int(ask_quantity)) if ask_quantity is not None else None,
+                upper_circuit_limit=float(details["uc"]) if details.get("uc") is not None else None,
+                lower_circuit_limit=float(details["lc"]) if details.get("lc") is not None else None,
             ))
         except (TypeError, ValueError):
             continue
