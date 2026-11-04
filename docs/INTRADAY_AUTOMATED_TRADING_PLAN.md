@@ -9,7 +9,7 @@ Build MyStocks toward **fully automated NSE cash-equity trading**: live market-d
 The following code has been added to `feature/intraday-automated-trading-foundation`. It is not merged to `main`.
 
 **Implemented in code**
-- Upstox V3 Protobuf WebSocket adapter using `websocket-client` with CA and hostname verification explicitly enabled, bounded reconnects, 401 fail-stop, LTPC-only subscription, NSE symbol mapping and IST timestamps. The pinned Upstox SDK is used for its official V3 Protobuf schema; its built-in V3 feeder transport is not used because its source disables certificate and hostname verification. Full Market Quotes V3 REST snapshots supply shortlist depth.
+- Upstox V3 Protobuf WebSocket adapter using `websocket-client` with CA and hostname verification explicitly enabled, bounded reconnects, 401 fail-stop, LTPC-only subscription, NSE symbol mapping and IST timestamps. It first obtains a one-time socket URL from Upstox's HTTPS market-data authorization endpoint; the bearer token is not sent on the WebSocket handshake. The pinned Upstox SDK supplies its official V3 Protobuf schema; its built-in V3 feeder transport is not used because its source disables certificate and hostname verification. Full Market Quotes V3 REST snapshots supply shortlist depth.
 - BOD instrument-master parser and reconciliation that retains an include/exclude reason for every broker-distributed NSE instrument row.
 - Tick validation for timestamps, price, spread, quote depth and circuit bands; five-minute completed-bar construction; session VWAP from completed trade ticks only. A quote is rejected if its own snapshot is recent but its last trade time is stale or missing. Multi-bucket stream gaps discard the partial candle and reset that symbol's history/VWAP context instead of fabricating a completed candle.
 - Two explainable long-only strategies: VWAP momentum and opening-range breakout. The live scanner returns at most three fresh candidates and suppresses duplicates and stale data.
@@ -40,7 +40,7 @@ The following code has been added to `feature/intraday-automated-trading-foundat
 2. Run, for example: `python scripts/run_intraday_backtest.py --symbol RELIANCE --from-date 2026-09-01 --to-date 2026-10-31 --strategy vwap_momentum`.
 3. Inspect the JSON report in `data/intraday-backtests`, including its data-quality counts and execution assumptions.
 
-The latest completed market-data/safety CI run on commit `abeb70b` passed **101 tests**, including Python compile checks and installation of the pinned Upstox SDK, Protobuf frame decoding, verified-TLS context and stale-position watchdog regressions. These use deterministic fixtures and local WebSocket fakes; no authenticated Upstox session or real-market execution path has been exercised in this workspace. SEO Quality passed on the latest feature head.
+The latest completed market-data/safety CI run on commit `aa4e83b` passed **112 tests**, including Python compile checks and installation of the pinned Upstox SDK, Protobuf frame decoding, verified-TLS context, OAuth socket-URL validation and stale-position watchdog regressions. These use deterministic fixtures and local WebSocket fakes; no authenticated Upstox session or real-market execution path has been exercised in this workspace. SEO Quality passed on the same feature head.
 
 ---
 
