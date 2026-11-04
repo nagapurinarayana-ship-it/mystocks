@@ -36,10 +36,7 @@ from intraday.scanner import IntradayScanner  # noqa: E402
 from intraday.ledger import PaperLedger  # noqa: E402
 from intraday.execution.paper import FeeSchedule, PaperExecutionEngine  # noqa: E402
 from intraday.coordinator import AutonomousPaperCoordinator  # noqa: E402
-from intraday.execution.configuration import (  # noqa: E402
-    FeeConfigurationError,
-    load_fee_schedule_from_environment,
-)
+from intraday.execution.configuration import load_fee_schedule_from_environment  # noqa: E402
 
 INSTRUMENTS_URL = "https://assets.upstox.com/market-quote/instruments/exchange/NSE.json.gz"
 IST = ZoneInfo("Asia/Kolkata")
@@ -206,7 +203,7 @@ def main() -> int:
     except requests.RequestException as exc:
         logging.exception("Could not download Upstox instrument master: %s", exc)
         return 3
-    except (FeeConfigurationError, Exception) as exc:
+    except Exception as exc:
         logging.exception("Intraday radar stopped safely: %s", exc)
         return 4
     return 0
