@@ -4,6 +4,46 @@
 
 Build MyStocks toward **fully automated NSE cash-equity trading**: live market-data ingestion, strategy selection, cash/risk sizing, automatic entries, broker-side protective exits, position monitoring, reconciliation and automatic exits. The intended end state requires no manual trade-by-trade order entry. However, live execution must remain disabled until the strategy demonstrates a durable after-cost edge in robust out-of-sample tests and forward paper operation, and until the user selects a broker and all broker/exchange, static-IP, authentication, security and compliance requirements are verified. Until then, the production service may run live-market scans and autonomous paper trading only. Preserve the existing long-term watchlist and short-term daily research engine; this is a separate capability.
 
+## Current implementation status — feature branch
+
+The following code has been added to `feature/intraday-automated-trading-foundation`. It is not merged to `main`.
+
+**Implemented in code**
+- Vendor-specific Upstox Market Data Feed V3 adapter for LTPC streaming, dynamic promotion of shortlisted candidates to full depth, reconnect state, NSE symbol mapping and IST timestamps. The optional SDK is pinned in `requirements-intraday.txt`.
+- BOD instrument-master parser and reconciliation that retains an include/exclude reason for every broker-distributed NSE instrument row.
+- Tick validation for timestamps, price, spread, quote depth and circuit bands; five-minute completed-bar construction; session VWAP from completed trade ticks only.
+- Two explainable long-only strategies: VWAP momentum and opening-range breakout. The live scanner returns at most three fresh candidates and suppresses duplicates and stale data.
+- Top-of-book depth validation for shortlisted candidates, including minimum bid/ask quantity, spread and circuit-proximity checks.
+- ₹1,000 cash-only capital policy, Decimal whole-share sizing, explicit broker fee configuration, automatic paper entry/exit simulation, same-bar stop-first handling, next-bar entry expiry, end-of-session entry cutoff and paper square-off.
+- SQLite paper audit ledger for signals, closed trades and feed/system events.
+- Upstox V3 historical five-minute candle adapter, chunked historical retrieval, one-symbol OHLCV backtest, after-cost metrics and JSON report output.
+- A separate Intraday Radar dashboard workspace showing local feed status, signals, paper trades and the latest backtest report.
+- Tests and a feature-branch CI workflow; existing stock research engines remain separate.
+
+**Not yet implemented or verified**
+- No broker has been selected. Upstox is the current market-data adapter candidate only; it is not a commitment to open or move a brokerage account.
+- No live Upstox session has been authenticated or tested in this environment because no access token was provided. The user must create/authorise their own developer app and set the token locally.
+- No real account funds, positions, trades or fees have been read. Paper fills remain disabled unless the full selected-broker fee schedule is explicitly configured.
+- Only two strategies are implemented; unusual-volume, reversal and sector-leadership strategies are future work.
+- The historical backtest is a single-symbol five-minute OHLCV model. It estimates session VWAP using typical-price-times-volume; it is not trade-level VWAP, an all-NSE point-in-time test, or a full market-impact, queue-priority and partial-fill simulator.
+- No 30-session forward paper validation has been completed. No live broker order API, auto-buy, broker-side stop, order reconciliation, fund transfer or withdrawal feature exists. The live execution gate remains hard-disabled.
+- The runner is a local foreground process; GitHub Actions is used for tests, not as a continuous market-data service. NSE holiday-calendar integration and always-on production hosting are still open items.
+
+**Run the local scanner**
+1. Install the optional adapter: `pip install -r requirements-intraday.txt`.
+2. Complete the official broker OAuth flow and set `UPSTOX_ACCESS_TOKEN` in the local process environment. Never place tokens in the repository, GitHub variables used for public workflows, logs, or chat.
+3. Start the local feed process during market hours: `python scripts/run_intraday_radar.py`.
+4. Keep the process running. The dashboard reads its local SQLite ledger; it cannot start or keep the feed process alive.
+
+**Run a historical single-symbol backtest**
+1. Configure all eight `MYSTOCKS_PAPER_FEE_*` environment variables using the selected broker's current tariff and an explicit slippage assumption. The code intentionally supplies no default broker fee schedule.
+2. Run, for example: `python scripts/run_intraday_backtest.py --symbol RELIANCE --from-date 2026-09-01 --to-date 2026-10-31 --strategy vwap_momentum`.
+3. Inspect the JSON report in `data/intraday-backtests`, including its data-quality counts and execution assumptions.
+
+The live-feed, history, dashboard and paper code have unit tests, but an SDK-connected feed session and real-market execution path have not been exercised in this workspace.
+
+---
+
 ## Non-negotiable safety boundary
 
 - Default mode is `research`; paper mode is opt-in; live mode is unavailable unless a deliberate, authenticated, audited enablement process is completed.
@@ -16,7 +56,7 @@ Build MyStocks toward **fully automated NSE cash-equity trading**: live market-d
 
 ## Architecture
 
-Create a dedicated `intraday/` package. Do not alter the existing `engine.py`, `backtest.py`, long-term watchlist, or current research workflows as part of the initial foundation.
+Create a dedicated `intraday/` package. Do not alter the existing `engine.py`, `backtest.py`, long-term watchlist, or current research workflows as part of this feature.
 
 Proposed modules:
 
@@ -64,13 +104,13 @@ intraday/
 
 - Discover and reconcile the full eligible NSE cash-equity universe from exchange/broker instrument masters; preserve an accounting row for every discovered instrument, including excluded/unavailable symbols and reasons.
 - Validate trading status, symbol/token mapping, series, price bands/circuit limits, tick size, lot/unit rules, corporate actions, and instrument-master freshness.
-- Require timestamped intraday candles (1-minute and 5-minute minimum), trades/volume and preferably bid/ask/depth. Derive VWAP and same-time-of-day relative volume from source data.
+- The current first release uses timestamped live ticks and completed 5-minute bars; 1-minute candles may be added later after latency and data-quality validation. Require trades/volume and candidate bid/ask/depth. Live VWAP is calculated from completed trade ticks; historical OHLCV tests use an explicitly labelled typical-price proxy.
 - Existing Yahoo daily data is not an intraday execution feed. Select a broker/market-data provider only after checking API access, historical minute data, retention, latency, licensing, static-IP requirements, rate limits, support and total cost.
 - Keep a vendor-neutral market-data contract so a broker can be selected later. Do not use fixture or synthetic data to claim real-market performance.
 
 ### Strategy and opportunity selection
 
-Implement independent research strategies: opening-range breakout, VWAP momentum, unusual volume with price confirmation, momentum reversal, and sector leadership. Keep strategy signals explainable and persist the input timestamps and feature values.
+Planned strategy family: opening-range breakout, VWAP momentum, unusual volume with price confirmation, momentum reversal, and sector leadership. The current first implementation contains only VWAP momentum and opening-range breakout. Add other strategies only as independent modules with separate after-cost out-of-sample evidence. Keep all signals explainable and persist input timestamps and feature values.
 
 Display at most three opportunities per session. It is valid to display fewer than three or none. Require fresh data, sufficient liquidity, acceptable spread/slippage, validated out-of-sample net expectancy, and configured risk checks before a candidate can be marked eligible.
 
