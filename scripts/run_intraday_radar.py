@@ -388,6 +388,16 @@ def main() -> int:
                                 f"Shortlist quote refresh failed: {type(exc).__name__}",
                             )
                             logging.warning("Shortlist quote refresh failed: %s", type(exc).__name__)
+                        except Exception as exc:
+                            # A malformed provider response must not terminate the
+                            # feed loop or delay the held-position watchdog.
+                            ledger.record_event(
+                                quote_now.isoformat(), "WARNING", "candidate_quote_processing_failed",
+                                f"Shortlist quote processing failed: {type(exc).__name__}",
+                            )
+                            logging.warning(
+                                "Shortlist quote processing failed: %s", type(exc).__name__
+                            )
                         finally:
                             quote_future = None
                             quote_pending_signals = ()
