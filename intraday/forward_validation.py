@@ -26,7 +26,7 @@ MAX_SAMPLE_INTERVAL_SECONDS = 2.0
 class ForwardSessionTracker:
     """Collect per-day feed-observation quality for the 30-session paper trial."""
 
-    def __init__(self, started_at: datetime) -> None:
+    def __init__(self, started_at: datetime, paper_engine_enabled: bool = False) -> None:
         self._require_aware(started_at, "started_at")
         local = started_at.astimezone(IST)
         if local.weekday() >= 5:
@@ -41,6 +41,7 @@ class ForwardSessionTracker:
         self.last_sample_at = self.started_at
         self.closed_at: datetime | None = None
         self.status = "in_progress"
+        self.paper_engine_enabled = bool(paper_engine_enabled)
         self.observed_seconds = 0.0
         self.healthy_seconds = 0.0
         self.stale_seconds = 0.0
@@ -139,6 +140,7 @@ class ForwardSessionTracker:
                 "healthy_feed_at_least_98_percent": healthy_ratio >= MIN_HEALTHY_RATIO,
                 "no_more_than_five_loop_gaps": self.loop_gap_count <= MAX_LOOP_GAPS,
                 "at_least_one_accepted_tick": self.accepted_ticks > 0,
+                "paper_engine_enabled_with_explicit_fees": self.paper_engine_enabled,
                 "no_paper_risk_halt": self.risk_halts == 0,
             }
             self.status = "qualified" if all(criteria.values()) else "incomplete"
@@ -179,6 +181,7 @@ class ForwardSessionTracker:
                 "discovered_signals": self.discovered_signals,
                 "closed_paper_trades": self.closed_paper_trades,
                 "risk_halts": self.risk_halts,
+                "paper_engine_enabled": self.paper_engine_enabled,
             }
             if criteria is not None:
                 result["qualification_criteria"] = dict(criteria)
@@ -190,7 +193,10 @@ class ForwardSessionTracker:
         if not isinstance(snapshot, dict):
             raise ValueError("forward session snapshot must be an object")
         started_at = datetime.fromisoformat(snapshot["started_at"])
-        tracker = cls(started_at)
+        tracker = cls(
+            started_at,
+            paper_engine_enabled=bool(snapshot.get("paper_engine_enabled", False)),
+        )
         tracker.status = str(snapshot["status"])
         if tracker.status not in {"in_progress", "qualified", "incomplete", "interrupted"}:
             raise ValueError("invalid forward validation session status")
