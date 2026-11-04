@@ -151,9 +151,19 @@ class UpstoxFullMarketQuotesV3Client:
             symbol = symbol_by_key.get(instrument_key)
             if not symbol:
                 continue
+            # "timestamp" is when the snapshot was generated. "last_trade_time"
+            # is when the LTP actually last changed. A fresh response can still
+            # contain an old last trade, so both clocks must pass freshness.
             snapshot_time = _parse_timestamp(row.get("timestamp"))
+            last_trade_time = _parse_timestamp(row.get("last_trade_time"))
             price = _positive_float(row.get("last_price"))
-            if snapshot_time is None or price is None:
+            if snapshot_time is None or last_trade_time is None or price is None:
+                continue
+            snapshot_age = (received_at - snapshot_time).total_seconds()
+            last_trade_age = (received_at - last_trade_time).total_seconds()
+            if not (-3.0 <= snapshot_age <= 5.0):
+                continue
+            if not (-3.0 <= last_trade_age <= 5.0):
                 continue
 
             depth = _mapping(row.get("depth"))
@@ -172,7 +182,7 @@ class UpstoxFullMarketQuotesV3Client:
                     symbol=symbol,
                     instrument_key=instrument_key,
                     price=price,
-                    exchange_time=snapshot_time,
+                    exchange_time=last_trade_time,
                     received_at=received_at,
                     last_trade_quantity=0,
                     cumulative_volume=_nonnegative_int(row.get("volume")),
