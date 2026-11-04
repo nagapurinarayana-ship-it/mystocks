@@ -106,6 +106,15 @@ class AutonomousPaperCoordinator:
         if fresh and local_time < time(15, 15):
             queued = self.evaluate_candidates(now=now)
 
+
+        return CoordinatorUpdate(
+            accepted_tick=True,
+            completed_bars=len(completed),
+            paper_events=tuple(events),
+            queued_signal=queued,
+            feed_fresh=fresh,
+        )
+
     def evaluate_candidates(self, now: datetime | None = None) -> TradeSignal | None:
         """Queue at most one paper entry from a fresh REST-validated depth snapshot."""
         with self._lock:
@@ -152,11 +161,3 @@ class AutonomousPaperCoordinator:
                     )
                 return signal
             return None
-
-        return CoordinatorUpdate(
-            accepted_tick=True,
-            completed_bars=len(completed),
-            paper_events=tuple(events),
-            queued_signal=queued,
-            feed_fresh=fresh,
-        )
