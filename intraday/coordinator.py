@@ -32,6 +32,7 @@ class AutonomousPaperCoordinator:
         self.scanner = scanner
         self.paper_engine = paper_engine
         self.ledger = ledger
+        self._depth_status: dict[tuple[str, str, datetime], str] = {}
 
     def on_tick(self, tick: MarketTick, now: datetime | None = None) -> CoordinatorUpdate:
         accepted = self.scanner.on_tick(tick, now=now)
@@ -55,12 +56,24 @@ class AutonomousPaperCoordinator:
 
         queued: TradeSignal | None = None
         fresh = self.scanner.feed_is_fresh(now=now)
-        if (
-            fresh
-            and self.paper_engine.position is None
-            and self.paper_engine.pending is None
-        ):
-            for signal in self.scanner.opportunities(now=now):
+        if fresh:
+            # Refresh the scanner's candidate cache using only completed bars.
+            self.scanner.opportunities(now=now)
+            active_candidates = self.scanner.candidate_signals(now=now)
+            for signal in active_candidates:
+                key = (signal.symbol, signal.strategy_id, signal.generated_at)
+                valid, reason = self.scanner.validate_candidate_depth(signal, now=now)
+                if self._depth_status.get(key) != reason:
+                    self._depth_status[key] = reason
+                    if self.ledger is not None:
+                        self.ledger.record_event(
+                            (now or signal.generated_at).isoformat(),
+                            "INFO" if valid else "WARNING",
+                            "candidate_depth_validated" if valid else "candidate_depth_waiting",
+                            f"{signal.symbol} {signal.strategy_id}: {reason}",
+                        )
+                if not valid:
+                    continue
                 instrument = self.scanner.instruments.get(signal.symbol)
                 if instrument is not None and self.paper_engine.submit_signal(signal, instrument):
                     queued = signal
@@ -69,7 +82,7 @@ class AutonomousPaperCoordinator:
                         self.ledger.record_event(
                             signal.generated_at.isoformat(), "INFO",
                             "paper_signal_queued",
-                            f"{signal.strategy_id} candidate queued for {signal.symbol}",
+                            f"{signal.strategy_id} candidate queued for {signal.symbol} after depth validation",
                         )
                     break
 
