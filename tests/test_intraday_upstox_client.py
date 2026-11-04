@@ -228,6 +228,7 @@ def test_consumer_callback_failure_is_contained_and_sanitized():
         "wss://upstox.com/ws?code=one-time",
         "wss://feed-01.upstox.com/ws",
         "wss://feed-01.upstox.com:8443/ws?code=one-time",
+        "wss://feed-01.upstox.com:bad/ws?code=one-time",
         "wss://feed-01.upstox.com.evil.test/ws?code=one-time",
         "wss://user:password@feed-01.upstox.com/ws?code=one-time",
         "wss://feed-01.upstox.com/ws?code=one-time#fragment",
@@ -275,3 +276,26 @@ def test_authorization_failure_does_not_echo_http_body_or_secrets(monkeypatch):
     with pytest.raises(UpstoxFeedError, match="HTTP 500") as exc:
         client._authorize_websocket_url()
     assert "private response body" not in str(exc.value)
+
+
+
+def test_authorization_rejects_non_success_json_even_if_socket_url_is_present(monkeypatch):
+    class FailedPayload:
+        status_code = 200
+
+        def json(self):
+            return {
+                "status": "error",
+                "data": {
+                    "authorized_redirect_uri":
+                        "wss://feed-01.upstox.com/ws?requestId=x&code=y"
+                },
+            }
+
+    monkeypatch.setattr(
+        "intraday.market_data.upstox_v3.requests.get",
+        lambda *args, **kwargs: FailedPayload(),
+    )
+    client = make_client()
+    with pytest.raises(UpstoxFeedError, match="did not return success"):
+        client._authorize_websocket_url()
