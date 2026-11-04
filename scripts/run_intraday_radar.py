@@ -14,6 +14,7 @@ import logging
 import os
 import sys
 import time
+from concurrent.futures import Future, ThreadPoolExecutor
 from datetime import datetime, time as clock_time, timezone
 from zoneinfo import ZoneInfo
 from pathlib import Path
@@ -39,6 +40,11 @@ from intraday.ledger import PaperLedger  # noqa: E402
 from intraday.execution.paper import FeeSchedule, PaperExecutionEngine  # noqa: E402
 from intraday.coordinator import AutonomousPaperCoordinator  # noqa: E402
 from intraday.execution.configuration import load_fee_schedule_from_environment  # noqa: E402
+from intraday.forward_validation import (  # noqa: E402
+    ForwardSessionTracker,
+    SESSION_CLOSE,
+    SESSION_OPEN,
+)
 
 INSTRUMENTS_URL = "https://assets.upstox.com/market-quote/instruments/exchange/NSE.json.gz"
 IST = ZoneInfo("Asia/Kolkata")
@@ -139,6 +145,15 @@ def main() -> int:
         quotes_client = UpstoxFullMarketQuotesV3Client(access_token=access_token)
 
         with PaperLedger("data/mystocks_intraday.sqlite3") as ledger:
+            startup_time = datetime.now(timezone.utc)
+            interrupted_sessions = ledger.interrupt_open_forward_sessions(
+                startup_time.isoformat()
+            )
+            if interrupted_sessions:
+                logging.warning(
+                    "Marked %d unfinished forward-validation session(s) interrupted after restart",
+                    interrupted_sessions,
+                )
             saved_paper_state = ledger.load_paper_state()
             paper_engine = PaperExecutionEngine(fee_schedule) if fee_schedule is not None else None
             paper_coordinator = None
@@ -195,22 +210,37 @@ def main() -> int:
                 "Intraday scanner starting with LTPC-only WebSocket and REST shortlist depth",
             )
 
+            forward_tracker: ForwardSessionTracker | None = None
+            forward_validation_blocked_date = None
+            last_forward_validation_save = 0.0
+
             def handle_tick(tick) -> None:
                 now = datetime.now(timezone.utc)
                 if paper_coordinator is not None:
                     update = paper_coordinator.on_tick(tick, now=now)
                     if not update.accepted_tick:
                         return
+                    if forward_tracker is not None:
+                        forward_tracker.record_tick()
                     for event in update.paper_events:
                         logging.info("PAPER %s %s", event.event_type, event.message)
+                        if forward_tracker is not None:
+                            if event.event_type == "risk_halt":
+                                forward_tracker.record_risk_halt()
+                            if event.event_type in {"exit_filled", "entry_and_exit_same_bar"}:
+                                forward_tracker.record_closed_trade()
                 else:
                     if not scanner.on_tick(tick, now=now):
                         return
+                    if forward_tracker is not None:
+                        forward_tracker.record_tick()
                     scanner.opportunities(now=now)
 
                 for item in scanner.candidate_signals(now=now):
                     inserted = ledger.record_signal(item)
                     if inserted:
+                        if forward_tracker is not None:
+                            forward_tracker.record_signal()
                         logging.info(
                             "RADAR %s strategy=%s entry~%.2f stop=%.2f target=%.2f volume=%.2fx",
                             item.symbol, item.strategy_id, item.entry_reference,
@@ -231,10 +261,16 @@ def main() -> int:
             previous_state = None
             last_quote_poll = 0.0
             quote_status: dict[tuple[str, str, datetime], str] = {}
+            quote_executor = ThreadPoolExecutor(
+                max_workers=1, thread_name_prefix="mystocks-shortlist-quotes"
+            )
+            quote_future: Future | None = None
+            quote_pending_signals = ()
 
             try:
                 while True:
                     now = datetime.now(timezone.utc)
+                    local_now = now.astimezone(IST)
                     if paper_coordinator is not None:
                         watchdog_event = paper_coordinator.check_position_feed(now=now)
                         if watchdog_event is not None:
@@ -243,7 +279,73 @@ def main() -> int:
                                 watchdog_event.event_type,
                                 watchdog_event.message,
                             )
+                            if forward_tracker is not None and watchdog_event.event_type == "risk_halt":
+                                forward_tracker.record_risk_halt()
                     state = _market_state(client, scanner, now)
+
+                    if forward_validation_blocked_date != local_now.date():
+                        forward_validation_blocked_date = None
+                    in_market_window = (
+                        local_now.weekday() < 5
+                        and SESSION_OPEN <= local_now.time().replace(tzinfo=None) < SESSION_CLOSE
+                    )
+                    if (
+                        forward_tracker is None
+                        and forward_validation_blocked_date is None
+                        and in_market_window
+                    ):
+                        existing_session = ledger.load_forward_session(local_now.date().isoformat())
+                        if existing_session is not None:
+                            # A date can contribute at most one session. A restart,
+                            # earlier partial attempt or completed record blocks retries.
+                            forward_validation_blocked_date = local_now.date()
+                            logging.warning(
+                                "Forward-validation session already exists for %s; not counting a second run",
+                                local_now.date().isoformat(),
+                            )
+                        else:
+                            forward_tracker = ForwardSessionTracker(now)
+                            if paper_engine is not None and paper_engine.halted_reason:
+                                forward_tracker.record_risk_halt()
+                            ledger.save_forward_session(
+                                forward_tracker.snapshot(), now.isoformat()
+                            )
+                            last_forward_validation_save = time.monotonic()
+                            logging.info(
+                                "Forward paper-validation session started for %s",
+                                local_now.date().isoformat(),
+                            )
+
+                    if forward_tracker is not None:
+                        forward_tracker.sample(now, state)
+                        if local_now.time().replace(tzinfo=None) >= SESSION_CLOSE:
+                            session_snapshot = forward_tracker.finish(now)
+                            ledger.save_forward_session(session_snapshot, now.isoformat())
+                            ledger.record_event(
+                                now.isoformat(),
+                                "INFO" if session_snapshot["status"] == "qualified" else "WARNING",
+                                f"forward_validation_{session_snapshot['status']}",
+                                (
+                                    f"Forward paper-validation session {session_snapshot['status']}: "
+                                    f"coverage={session_snapshot['coverage_ratio']:.2%}, "
+                                    f"healthy={session_snapshot['healthy_ratio']:.2%}, "
+                                    f"ticks={session_snapshot['accepted_ticks']}, "
+                                    f"risk_halts={session_snapshot['risk_halts']}"
+                                ),
+                            )
+                            logging.info(
+                                "Forward validation session %s: coverage %.2f%%, feed healthy %.2f%%",
+                                session_snapshot["status"],
+                                session_snapshot["coverage_ratio"] * 100,
+                                session_snapshot["healthy_ratio"] * 100,
+                            )
+                            forward_tracker = None
+                            forward_validation_blocked_date = local_now.date()
+                        elif time.monotonic() - last_forward_validation_save >= 10:
+                            ledger.save_forward_session(
+                                forward_tracker.snapshot(), now.isoformat()
+                            )
+                            last_forward_validation_save = time.monotonic()
                     if state != previous_state:
                         severity = "WARNING" if state in {"disconnected", "stale"} else "INFO"
                         ledger.record_event(
@@ -253,32 +355,22 @@ def main() -> int:
                         logging.info("Market feed state: %s", state)
                         previous_state = state
 
-                    active_candidates = scanner.candidate_signals(now=now)
-                    monotonic_now = time.monotonic()
-                    if (
-                        state == "healthy"
-                        and active_candidates
-                        and monotonic_now - last_quote_poll >= QUOTE_REFRESH_SECONDS
-                    ):
-                        instruments_to_quote = tuple(
-                            scanner.instruments[item.symbol]
-                            for item in active_candidates
-                            if item.symbol in scanner.instruments
-                        )
-                        last_quote_poll = monotonic_now
+                    # Apply a completed REST request without blocking the one-second
+                    # feed/position watchdog. Only one shortlist request runs at once.
+                    if quote_future is not None and quote_future.done():
+                        quote_now = datetime.now(timezone.utc)
                         try:
-                            quotes = quotes_client.fetch_quotes(instruments_to_quote)
-                            quote_now = datetime.now(timezone.utc)
+                            quotes = quote_future.result()
                             for quote_tick in quotes.values():
                                 scanner.update_quote(quote_tick, now=quote_now)
 
-                            for signal in active_candidates:
+                            for signal in quote_pending_signals:
                                 key = (signal.symbol, signal.strategy_id, signal.generated_at)
                                 valid, reason = scanner.validate_candidate_depth(signal, now=quote_now)
                                 if quote_status.get(key) != reason:
                                     quote_status[key] = reason
                                     ledger.record_event(
-                                        now.isoformat(),
+                                        quote_now.isoformat(),
                                         "INFO" if valid else "WARNING",
                                         "candidate_depth_validated" if valid else "candidate_depth_waiting",
                                         f"{signal.symbol} {signal.strategy_id}: {reason}",
@@ -291,12 +383,34 @@ def main() -> int:
                                         queued.symbol, queued.strategy_id,
                                     )
                         except (MarketQuoteError, requests.RequestException) as exc:
-                            # The scanner continues, but no new candidate can pass depth validation.
                             ledger.record_event(
-                                now.isoformat(), "WARNING", "candidate_quote_request_failed",
+                                quote_now.isoformat(), "WARNING", "candidate_quote_request_failed",
                                 f"Shortlist quote refresh failed: {type(exc).__name__}",
                             )
                             logging.warning("Shortlist quote refresh failed: %s", type(exc).__name__)
+                        finally:
+                            quote_future = None
+                            quote_pending_signals = ()
+
+                    active_candidates = scanner.candidate_signals(now=now)
+                    monotonic_now = time.monotonic()
+                    if (
+                        quote_future is None
+                        and state == "healthy"
+                        and active_candidates
+                        and monotonic_now - last_quote_poll >= QUOTE_REFRESH_SECONDS
+                    ):
+                        instruments_to_quote = tuple(
+                            scanner.instruments[item.symbol]
+                            for item in active_candidates
+                            if item.symbol in scanner.instruments
+                        )
+                        if instruments_to_quote:
+                            quote_pending_signals = active_candidates
+                            quote_future = quote_executor.submit(
+                                quotes_client.fetch_quotes, instruments_to_quote
+                            )
+                            last_quote_poll = monotonic_now
 
                     time.sleep(1)
             except KeyboardInterrupt:
@@ -307,6 +421,7 @@ def main() -> int:
                 )
             finally:
                 client.disconnect()
+                quote_executor.shutdown(wait=False, cancel_futures=True)
     except requests.RequestException as exc:
         logging.exception("Could not download Upstox instrument master: %s", type(exc).__name__)
         return 3
