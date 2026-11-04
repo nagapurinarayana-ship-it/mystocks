@@ -162,3 +162,82 @@ def test_coordinator_checkpoints_queued_paper_state_for_restart(tmp_path):
         assert restored_engine.pending is not None
         assert restored_engine.pending[0] == signal
         assert restored_engine.cash == Decimal("1000.00")
+
+
+
+def test_open_position_feed_timeout_halts_paper_and_persists_unresolved_position(tmp_path):
+    base, paper, signal, tick, now = components(with_depth=True)
+    paper.position = PaperPosition(
+        symbol="RELIANCE",
+        quantity=1,
+        entry_price=Decimal("100.00"),
+        stop_price=Decimal("99.00"),
+        target_price=Decimal("102.00"),
+        entry_fee=Decimal("0.20"),
+        tick_size=Decimal("0.05"),
+        opened_at=now,
+        strategy_id="vwap_momentum",
+    )
+    database = tmp_path / "stale-held-symbol.sqlite3"
+    with PaperLedger(database) as ledger:
+        coordinator = AutonomousPaperCoordinator(base.scanner, paper, ledger)
+        event = coordinator.check_position_feed(now=now, max_age_seconds=15)
+        assert event is not None and event.event_type == "risk_halt"
+        assert paper.halted_reason is not None
+        assert paper.position is not None
+        assert paper.position.symbol == "RELIANCE"
+        saved = ledger.load_paper_state()
+        assert saved is not None
+        assert saved["halted_reason"] == paper.halted_reason
+        assert saved["position"]["symbol"] == "RELIANCE"
+        assert ledger.latest_event()["code"] == "paper_position_feed_stale"
+
+
+def test_pending_entry_is_cancelled_when_its_own_symbol_feed_is_stale():
+    coordinator, paper, signal, tick, now = components(with_depth=True)
+    assert paper.submit_signal(signal, coordinator.scanner.instruments["RELIANCE"])
+
+    event = coordinator.check_position_feed(now=now, max_age_seconds=15)
+    assert event is not None and event.event_type == "signal_expired"
+    assert paper.pending is None
+    assert paper.position is None
+    assert paper.halted_reason is None
+
+
+def test_multi_bucket_gap_on_held_symbol_halts_and_preserves_open_position():
+    coordinator, paper, signal, tick, now = components(with_depth=True)
+    paper.position = PaperPosition(
+        symbol="RELIANCE",
+        quantity=1,
+        entry_price=Decimal("100.00"),
+        stop_price=Decimal("99.00"),
+        target_price=Decimal("102.00"),
+        entry_fee=Decimal("0.20"),
+        tick_size=Decimal("0.05"),
+        opened_at=datetime(2026, 11, 4, 9, 14, tzinfo=IST),
+        strategy_id="vwap_momentum",
+    )
+
+    first_time = datetime(2026, 11, 4, 9, 15, 10, tzinfo=IST)
+    first_tick = MarketTick(
+        "RELIANCE", "NSE_EQ|INE002A01018", 100,
+        first_time, first_time.astimezone(timezone.utc), last_trade_quantity=10,
+    )
+    assert coordinator.scanner.on_tick(
+        first_tick, now=first_time.astimezone(timezone.utc)
+    )
+
+    gap_time = datetime(2026, 11, 4, 9, 30, 1, tzinfo=IST)
+    gap_tick = MarketTick(
+        "RELIANCE", "NSE_EQ|INE002A01018", 100.5,
+        gap_time, gap_time.astimezone(timezone.utc), last_trade_quantity=5,
+    )
+    result = coordinator.on_tick(
+        gap_tick, now=gap_time.astimezone(timezone.utc)
+    )
+    assert any(event.event_type == "risk_halt" for event in result.paper_events)
+    assert paper.halted_reason is not None
+    assert "gap" in paper.halted_reason.lower()
+    assert paper.position is not None
+    assert paper.position.symbol == "RELIANCE"
+    assert paper.trades == []
