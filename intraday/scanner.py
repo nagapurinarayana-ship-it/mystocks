@@ -56,7 +56,12 @@ class IntradayScanner:
         self.last_feed_receive = tick.received_at
         self._last_feed_by_symbol[tick.symbol] = tick.received_at
         self._latest_ticks[tick.symbol] = tick
+        previous_gap_count = self.bar_builder.discontinuity_count(tick.symbol)
         completed = self.bar_builder.ingest(tick)
+        if self.bar_builder.discontinuity_count(tick.symbol) > previous_gap_count:
+            # A signal derived before the gap must never be queued against a
+            # post-gap quote, whether or not the paper coordinator is enabled.
+            self.invalidate_symbol_candidates(tick.symbol)
         if completed is not None:
             self._completed_bars.append(completed)
         return True
