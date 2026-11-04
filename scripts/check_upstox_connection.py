@@ -7,7 +7,7 @@ the process environment. The script intentionally never prints auth URLs/tokens.
 from __future__ import annotations
 
 import argparse
-from datetime import datetime, timezone
+from datetime import datetime, time as clock_time, timezone
 import os
 import sys
 import threading
@@ -62,9 +62,7 @@ def main() -> int:
     now_local = datetime.now(IST)
     if (
         now_local.weekday() >= 5
-        or not (datetime.strptime("09:15", "%H:%M").time()
-                <= now_local.time().replace(tzinfo=None)
-                < datetime.strptime("15:30", "%H:%M").time())
+        or not (clock_time(9, 15) <= now_local.time().replace(tzinfo=None) < clock_time(15, 30))
     ):
         print(
             "NSE regular session is closed. Run this smoke test on a weekday "
