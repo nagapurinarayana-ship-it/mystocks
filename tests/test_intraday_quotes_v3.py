@@ -28,8 +28,8 @@ class FakeSession:
         self.responses = list(responses)
         self.calls = []
 
-    def get(self, url, headers, timeout):
-        self.calls.append((url, headers, timeout))
+    def get(self, url, headers, timeout, verify=True, allow_redirects=True):
+        self.calls.append((url, headers, timeout, verify, allow_redirects))
         return self.responses.pop(0)
 
 
@@ -78,6 +78,8 @@ def test_full_quote_v3_parses_ltp_depth_circuits_and_volume():
     assert tick.received_at == received
     assert "%7C" in session.calls[0][0]
     assert "Bearer test-token" == session.calls[0][1]["Authorization"]
+    assert session.calls[0][3] is True
+    assert session.calls[0][4] is False
 
 
 def test_full_quote_v3_ignores_unknown_instruments_and_invalid_depth():
@@ -206,3 +208,23 @@ def test_full_quote_v3_requires_last_trade_timestamp_even_when_snapshot_is_fresh
         max_retries=0,
     )
     assert client.fetch_quotes((instrument,), now=now) == {}
+
+
+
+def test_full_quote_v3_refuses_redirects_and_keeps_tls_verification(monkeypatch):
+    instrument = Instrument(
+        "RELIANCE", "NSE_EQ|INE002A01018", "Reliance Industries",
+        Decimal("0.05"), 1,
+    )
+    session = FakeSession([FakeResponse(status_code=302, headers={
+        "Location": "https://unexpected.example/collect"
+    })])
+    client = UpstoxFullMarketQuotesV3Client(
+        "test-token", session=session, max_retries=0
+    )
+    with pytest.raises(MarketQuoteError, match="HTTP 302"):
+        client.fetch_quotes((instrument,))
+
+    assert len(session.calls) == 1
+    assert session.calls[0][3] is True
+    assert session.calls[0][4] is False
