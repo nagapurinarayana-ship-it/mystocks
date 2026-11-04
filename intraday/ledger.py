@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import sqlite3
 import threading
 from pathlib import Path
@@ -54,6 +55,11 @@ CREATE TABLE IF NOT EXISTS intraday_system_events (
 );
 CREATE INDEX IF NOT EXISTS ix_intraday_events_time
     ON intraday_system_events(occurred_at DESC);
+CREATE TABLE IF NOT EXISTS intraday_paper_state (
+    id INTEGER PRIMARY KEY CHECK (id = 1),
+    state_json TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+);
 """
 
 
@@ -170,6 +176,49 @@ class PaperLedger:
                 """
             ).fetchone()
             return dict(row) if row else None
+
+    def save_paper_state(self, state: dict[str, Any], updated_at: str) -> None:
+        """Persist the single resumable paper account snapshot atomically."""
+        if not isinstance(state, dict):
+            raise ValueError("paper state must be a dictionary")
+        try:
+            encoded = json.dumps(state, separators=(",", ":"), sort_keys=True, allow_nan=False)
+        except (TypeError, ValueError) as exc:
+            raise ValueError("paper state is not valid JSON data") from exc
+        with self._lock, self._connection:
+            self._connection.execute(
+                """
+                INSERT INTO intraday_paper_state (id, state_json, updated_at)
+                VALUES (1, ?, ?)
+                ON CONFLICT(id) DO UPDATE SET
+                    state_json = excluded.state_json,
+                    updated_at = excluded.updated_at
+                """,
+                (encoded, updated_at),
+            )
+
+    def load_paper_state(self) -> dict[str, Any] | None:
+        """Load saved state; malformed or corrupt data raises and must not reset cash."""
+        with self._lock:
+            row = self._connection.execute(
+                "SELECT state_json FROM intraday_paper_state WHERE id = 1"
+            ).fetchone()
+            if row is None:
+                return None
+            try:
+                state = json.loads(row["state_json"])
+            except (TypeError, json.JSONDecodeError) as exc:
+                raise ValueError("saved paper state is corrupt; refusing a silent reset") from exc
+            if not isinstance(state, dict):
+                raise ValueError("saved paper state has an invalid shape")
+            return state
+
+    def paper_state_updated_at(self) -> str | None:
+        with self._lock:
+            row = self._connection.execute(
+                "SELECT updated_at FROM intraday_paper_state WHERE id = 1"
+            ).fetchone()
+            return str(row["updated_at"]) if row else None
 
     def paper_performance(self) -> dict[str, Any]:
         with self._lock:
