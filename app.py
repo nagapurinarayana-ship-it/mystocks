@@ -389,12 +389,23 @@ def render_intraday_radar() -> None:
 
     if feed_event is None:
         st.info("Feed status: not started or no status event recorded.")
-    elif feed_event["code"] == "feed_healthy":
-        st.success(f"Live feed healthy · last status update {feed_event['occurred_at']}")
-    elif feed_event["code"] in {"feed_stale", "feed_disconnected"}:
-        st.warning(f"Live feed {feed_event['code'].replace('feed_', '')} · {feed_event['occurred_at']}")
     else:
-        st.info(f"Feed status: {feed_event['message']} · {feed_event['occurred_at']}")
+        try:
+            event_time = pd.Timestamp(feed_event["occurred_at"])
+            age_seconds = (pd.Timestamp.now(tz="UTC") - event_time.tz_convert("UTC")).total_seconds()
+        except Exception:
+            age_seconds = None
+        if feed_event["code"] == "feed_market_closed":
+            st.info(f"NSE session closed · last status update {feed_event['occurred_at']}")
+        elif feed_event["code"] == "feed_healthy" and age_seconds is not None and age_seconds <= 15:
+            st.success(f"Live feed healthy · last status update {feed_event['occurred_at']}")
+        elif feed_event["code"] in {"feed_stale", "feed_disconnected"} or age_seconds is None or age_seconds > 15:
+            st.warning(
+                f"Live feed stale/offline · last event {feed_event['occurred_at']} "
+                f"· state {feed_event['code']}"
+            )
+        else:
+            st.info(f"Feed status: {feed_event['message']} · {feed_event['occurred_at']}")
 
     c1, c2, c3, c4 = st.columns(4)
     c1.metric("Signals recorded", f"{len(signals):,}")
