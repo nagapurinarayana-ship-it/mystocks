@@ -6,6 +6,7 @@ from intraday.coordinator import AutonomousPaperCoordinator
 from intraday.domain import Instrument, MarketTick, TradeSignal
 from intraday.execution.paper import FeeSchedule, PaperExecutionEngine, PaperPosition
 from intraday.scanner import IntradayScanner
+from intraday.ledger import PaperLedger
 
 IST = ZoneInfo("Asia/Kolkata")
 
@@ -110,3 +111,54 @@ def test_coordinator_paper_square_off_uses_real_position_symbol_tick_after_1525(
     assert any(event.event_type == "exit_filled" for event in result.paper_events)
     assert paper.position is None
     assert paper.trades[-1].exit_reason == "session_close"
+
+
+
+def test_coordinator_checkpoints_queued_paper_state_for_restart(tmp_path):
+    instrument = Instrument(
+        "RELIANCE", "NSE_EQ|INE002A01018", "Reliance Industries",
+        Decimal("0.05"), 1,
+    )
+    scanner = IntradayScanner((instrument,))
+    fees = FeeSchedule(
+        brokerage_rate=Decimal("0.0001"),
+        brokerage_cap_per_order=Decimal("20"),
+        exchange_transaction_rate=Decimal("0.00001"),
+        sebi_turnover_rate=Decimal("0.000001"),
+        gst_rate=Decimal("0.18"),
+        stt_sell_rate=Decimal("0.00025"),
+        stamp_buy_rate=Decimal("0.00003"),
+        slippage_bps=Decimal("5"),
+    )
+    paper = PaperExecutionEngine(fees)
+    generated = datetime(2026, 11, 4, 10, 0, tzinfo=IST)
+    signal = TradeSignal(
+        "vwap_momentum", "RELIANCE", generated,
+        100, 99, 102, 1.5, 70, "persist candidate",
+    )
+    scanner._candidate_signals[("RELIANCE", "vwap_momentum", generated)] = signal
+    now = datetime(2026, 11, 4, 4, 30, 3, tzinfo=timezone.utc)
+    tick = MarketTick(
+        "RELIANCE", instrument.instrument_key, 100,
+        generated + timedelta(seconds=3), now,
+        last_trade_quantity=10,
+        best_bid=99.95, best_ask=100.05,
+        best_bid_quantity=100, best_ask_quantity=100,
+    )
+
+    database = tmp_path / "coordinator-state.sqlite3"
+    with PaperLedger(database) as ledger:
+        coordinator = AutonomousPaperCoordinator(scanner, paper, ledger)
+        update = coordinator.on_tick(tick, now=now)
+        assert update.queued_signal == signal
+        saved = ledger.load_paper_state()
+        assert saved is not None
+        assert saved["pending"]["signal"]["symbol"] == "RELIANCE"
+        assert saved["cash"] == "1000.00"
+
+    with PaperLedger(database) as reopened:
+        restored_engine = PaperExecutionEngine(fees)
+        restored_engine.restore_state(reopened.load_paper_state())
+        assert restored_engine.pending is not None
+        assert restored_engine.pending[0] == signal
+        assert restored_engine.cash == Decimal("1000.00")
