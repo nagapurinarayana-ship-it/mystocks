@@ -224,7 +224,7 @@ class PaperExecutionEngine:
             }
 
         return {
-            "version": 1,
+            "version": 2,
             "fee_schedule": {
                 "brokerage_rate": str(self.cost_schedule.brokerage_rate),
                 "brokerage_cap_per_order": str(self.cost_schedule.brokerage_cap_per_order),
@@ -247,7 +247,7 @@ class PaperExecutionEngine:
 
     def restore_state(self, state: dict) -> None:
         """Restore validated state. Any corruption raises instead of resetting equity."""
-        if not isinstance(state, dict) or state.get("version") != 1:
+        if not isinstance(state, dict) or state.get("version") != 2:
             raise ValueError("unsupported or invalid paper-state version")
 
         def parse_aware(value: str, field: str) -> datetime:
