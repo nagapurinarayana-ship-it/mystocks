@@ -13,7 +13,7 @@ The following code has been added to `feature/intraday-automated-trading-foundat
 - BOD instrument-master parser and reconciliation that retains an include/exclude reason for every broker-distributed NSE instrument row.
 - Tick validation for timestamps, price, spread, quote depth and circuit bands; five-minute completed-bar construction; session VWAP from completed trade ticks only.
 - Two explainable long-only strategies: VWAP momentum and opening-range breakout. The live scanner returns at most three fresh candidates and suppresses duplicates and stale data.
-- Top-of-book depth validation for shortlisted candidates, including minimum bid/ask quantity, spread and circuit-proximity checks.
+- Top-of-book depth validation for up to three shortlisted candidates, including minimum bid/ask quantity, spread, price drift and circuit-proximity checks. REST snapshots refresh every five seconds while candidates remain active; the WebSocket trade timestamp must also remain fresh per symbol.
 - ₹1,000 cash-only capital policy, Decimal whole-share sizing, explicit broker fee configuration, automatic paper entry/exit simulation, same-bar stop-first handling, next-bar entry expiry, end-of-session entry cutoff and paper square-off.
 - SQLite paper audit ledger for signals, closed trades and feed/system events.
 - Upstox V3 historical five-minute candle adapter, chunked historical retrieval, one-symbol OHLCV backtest, after-cost metrics and JSON report output.
@@ -205,10 +205,9 @@ The rollout is deliberately staged: live-market autonomous paper trading first; 
 
 ### Initial market-data provider candidate
 
-Evaluate **Upstox Market Data Feed V3 as the first adapter candidate**, not as a mandatory broker switch:
+Evaluate **Upstox Market Data Feed V3 plus Full Market Quotes V3 as the first adapter candidate**, not as a mandatory broker switch:
 - Upstox currently states that its trading and data APIs are free of API subscription charges.
-- Its V3 WebSocket feed provides real-time LTPC updates and richer full-feed market depth.
-- Documented normal limits include up to 5,000 LTPC keys when using that category alone, and up to 1,500 combined keys when mixing subscription categories; full feed has an individual limit of 2,000. Use LTPC for broad discovery, then promote a smaller candidate set to full depth rather than subscribing the entire universe to depth.
+- Its V3 WebSocket feed provides real-time LTPC updates. The normal individual limit is 5,000 LTPC keys when that mode is used alone; mixed subscription categories have lower combined limits. The implementation therefore stays LTPC-only on the WebSocket and uses the Full Market Quotes V3 REST endpoint for top-five bid/ask depth and circuit limits on the maximum-three shortlist. The REST endpoint supports up to 500 instrument keys per request, so the three-candidate request remains comfortably within the documented batch size.
 - Its V3 historical candles support minute intervals from 1 through 300; minute history is available from January 2022 with a maximum one-month retrieval window for 1–15 minute intervals.
 - A free API is not an SLA and does not remove brokerage, statutory charges, connectivity, or infrastructure costs. Measure feed gaps, latency and reconnect behaviour in paper operation.
 - Do not open or switch a broker account solely because of this document. First check whether the user's existing broker already provides an adequate free live-data API.
@@ -220,7 +219,7 @@ Zerodha's currently published retail Kite Connect pricing is ₹500 per month fo
 - At market open, load the latest broker instrument master; reconcile NSE equity series, status, symbol/token mapping, tick size, price bands and corporate actions. Preserve a row and exclusion reason for every discovered symbol.
 - Broad scan: subscribe to LTPC for eligible instruments; do not poll individual quote endpoints repeatedly.
 - Candidate scan: compute 1-minute and 5-minute bars with timestamped tick data, and reconcile bars with the provider's candle endpoint. Use 15-minute confirmation and daily trend context to avoid reacting to every tick.
-- Candidate enrichment: subscribe to full feed (best bid/ask and available market depth) only for the shortlist and held positions.
+- Candidate enrichment: query Full Market Quotes V3 REST snapshots for best bid/ask depth and circuit limits only for the shortlist and any held position. Keep the broad WebSocket LTPC-only so the 5,000-key single-category limit remains available.
 - Filters: exclude stale or halted data, surveillance/price-band risks, weak turnover, wide spreads, thin depth, and symbols whose one-share notional exceeds available cash. Never select penny stocks merely because the share price is low.
 - First strategies: keep it deliberately simple—(1) daily/15-minute trend plus relative-strength pullback, and (2) opening-range/VWAP continuation with liquidity and volume confirmation. Keep them independently measured; do not blend them into an opaque model.
 - Rank at most three. "No trade" is a valid daily outcome.
