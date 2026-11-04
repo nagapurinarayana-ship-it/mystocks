@@ -282,19 +282,26 @@ class UpstoxV3MarketDataClient:
         except ValueError as exc:
             raise UpstoxFeedError("Upstox authorization response was not valid JSON") from exc
 
-        data = _mapping(_mapping(payload).get("data"))
+        root = _mapping(payload)
+        if root.get("status") != "success":
+            raise UpstoxFeedError("Upstox market-data authorization did not return success")
+        data = _mapping(root.get("data"))
         authorized_url = data.get("authorized_redirect_uri")
         if not isinstance(authorized_url, str) or not authorized_url:
             raise UpstoxFeedError("Upstox authorization response omitted its socket URL")
 
-        parsed = urlsplit(authorized_url)
-        hostname = (parsed.hostname or "").lower()
+        try:
+            parsed = urlsplit(authorized_url)
+            hostname = (parsed.hostname or "").lower()
+            port = parsed.port
+        except ValueError as exc:
+            raise UpstoxFeedError("Upstox authorization returned an invalid socket URL") from exc
         if (
             parsed.scheme != "wss"
             or not hostname.endswith(".upstox.com")
             or parsed.username is not None
             or parsed.password is not None
-            or parsed.port not in (None, 443)
+            or port not in (None, 443)
             or not parsed.query
             or parsed.fragment
         ):
