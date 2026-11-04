@@ -207,6 +207,13 @@ class IntradayScanner:
             return False, "candidate_price_moved_over_0_5_percent"
         return True, "depth_validated"
 
+    def symbol_feed_is_fresh(
+        self, symbol: str, now: datetime | None = None, max_age_seconds: int = 15
+    ) -> bool:
+        """Public per-instrument feed freshness check for position watchdogs."""
+        with self._lock:
+            return self._symbol_feed_is_fresh(symbol, now, max_age_seconds)
+
     def _symbol_feed_is_fresh(
         self, symbol: str, now: datetime | None = None, max_age_seconds: int = 15
     ) -> bool:
