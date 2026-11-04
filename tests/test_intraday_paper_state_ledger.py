@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta, timezone
+
 import pytest
 
 from intraday.ledger import PaperLedger
@@ -131,4 +133,62 @@ def test_forward_validation_rejects_bad_snapshot_status_and_non_json_values(tmp_
                     "value": float("nan"),
                 },
                 "2026-11-04T10:00:00+00:00",
+            )
+
+
+
+def test_runtime_lease_allows_only_one_active_radar_and_releases_on_exit(tmp_path):
+    database = tmp_path / "runtime-lease.sqlite3"
+    with PaperLedger(database) as ledger:
+        with ledger.runtime_lease(
+            "intraday_radar", "process-one", heartbeat_seconds=60
+        ) as first:
+            first.assert_held()
+            with pytest.raises(RuntimeError, match="already owns"):
+                with ledger.runtime_lease(
+                    "intraday_radar", "process-two", heartbeat_seconds=60
+                ):
+                    pytest.fail("second radar process must not enter the lease")
+        # The lease is released by the context manager.
+        with ledger.runtime_lease(
+            "intraday_radar", "process-two", heartbeat_seconds=60
+        ) as second:
+            second.assert_held()
+
+
+def test_runtime_lease_can_be_taken_over_after_expired_heartbeat(tmp_path):
+    database = tmp_path / "runtime-lease-expired.sqlite3"
+    first = datetime(2026, 11, 4, 10, 0, tzinfo=timezone.utc)
+    with PaperLedger(database) as ledger:
+        assert ledger.acquire_runtime_lease(
+            "intraday_radar", "crashed-process", now=first,
+            stale_after_seconds=30,
+        )
+        assert not ledger.acquire_runtime_lease(
+            "intraday_radar", "second-process",
+            now=first + timedelta(seconds=29),
+            stale_after_seconds=30,
+        )
+        assert ledger.acquire_runtime_lease(
+            "intraday_radar", "second-process",
+            now=first + timedelta(seconds=31),
+            stale_after_seconds=30,
+        )
+        assert not ledger.renew_runtime_lease(
+            "intraday_radar", "crashed-process",
+            now=first + timedelta(seconds=32),
+        )
+        assert ledger.renew_runtime_lease(
+            "intraday_radar", "second-process",
+            now=first + timedelta(seconds=32),
+        )
+        assert ledger.release_runtime_lease("intraday_radar", "second-process")
+
+
+def test_runtime_lease_rejects_naive_heartbeat_timestamp(tmp_path):
+    with PaperLedger(tmp_path / "runtime-lease-naive.sqlite3") as ledger:
+        with pytest.raises(ValueError, match="timezone-aware"):
+            ledger.acquire_runtime_lease(
+                "intraday_radar", "process-one",
+                now=datetime(2026, 11, 4, 10, 0),
             )
