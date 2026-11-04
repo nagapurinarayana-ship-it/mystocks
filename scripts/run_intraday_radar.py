@@ -215,7 +215,7 @@ def main() -> int:
                     if state != previous_state:
                         logging.warning("Market feed state: %s", state)
                         ledger.record_event(
-                            now.isoformat(), "WARNING" if state != "healthy" else "INFO",
+                            now.isoformat(), "WARNING" if state in {"disconnected", "stale"} else "INFO",
                             f"feed_{state}", client.last_error or f"Market feed state changed to {state}",
                         )
                         previous_state = state
