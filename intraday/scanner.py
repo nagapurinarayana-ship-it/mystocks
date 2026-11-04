@@ -207,6 +207,20 @@ class IntradayScanner:
             return False, "candidate_price_moved_over_0_5_percent"
         return True, "depth_validated"
 
+    def invalidate_symbol_candidates(self, symbol: str) -> int:
+        """Drop all cached and emitted candidates after this symbol's data gap."""
+        with self._lock:
+            before = len(self._candidate_signals)
+            self._candidate_signals = {
+                key: signal
+                for key, signal in self._candidate_signals.items()
+                if signal.symbol != symbol
+            }
+            self._emitted_signals = {
+                key for key in self._emitted_signals if key[0] != symbol
+            }
+            return before - len(self._candidate_signals)
+
     def symbol_feed_is_fresh(
         self, symbol: str, now: datetime | None = None, max_age_seconds: int = 15
     ) -> bool:
