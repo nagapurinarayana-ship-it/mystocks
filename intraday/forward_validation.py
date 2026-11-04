@@ -39,6 +39,7 @@ class ForwardSessionTracker:
         self.session_date = local.date()
         self.started_at = started_at.astimezone(timezone.utc)
         self.last_sample_at = self.started_at
+        self.last_sample_state: str | None = None
         self.closed_at: datetime | None = None
         self.status = "in_progress"
         self.paper_engine_enabled = bool(paper_engine_enabled)
@@ -98,21 +99,27 @@ class ForwardSessionTracker:
             delta = (current - self.last_sample_at).total_seconds()
             if delta < 0:
                 raise ValueError("forward validation samples must be chronological")
+            if self.last_sample_state is None:
+                self.last_sample_state = feed_state
             if delta > 0:
                 if delta > MAX_SAMPLE_INTERVAL_SECONDS:
                     self.loop_gap_count += 1
                     self.loop_gap_seconds += delta
                 else:
                     self.observed_seconds += delta
-                    if feed_state == "healthy":
+                    # Attribute elapsed time to the state observed at the start
+                    # of the interval, not the state discovered at its end.
+                    interval_state = self.last_sample_state
+                    if interval_state == "healthy":
                         self.healthy_seconds += delta
-                    elif feed_state == "stale":
+                    elif interval_state == "stale":
                         self.stale_seconds += delta
-                    elif feed_state == "disconnected":
+                    elif interval_state == "disconnected":
                         self.disconnected_seconds += delta
                     else:
                         self.other_seconds += delta
             self.last_sample_at = current
+            self.last_sample_state = feed_state
 
     def finish(self, closed_at: datetime) -> dict[str, Any]:
         self._require_aware(closed_at, "closed_at")
@@ -168,6 +175,7 @@ class ForwardSessionTracker:
                 "status": self.status,
                 "started_at": self.started_at.isoformat(),
                 "last_sample_at": self.last_sample_at.isoformat(),
+                "last_sample_state": self.last_sample_state,
                 "closed_at": self.closed_at.isoformat() if self.closed_at else None,
                 "expected_session_seconds": EXPECTED_SESSION_SECONDS,
                 "observed_seconds": round(self.observed_seconds, 3),
@@ -203,6 +211,10 @@ class ForwardSessionTracker:
         if tracker.status not in {"in_progress", "qualified", "incomplete", "interrupted"}:
             raise ValueError("invalid forward validation session status")
         tracker.last_sample_at = datetime.fromisoformat(snapshot["last_sample_at"])
+        last_sample_state = snapshot.get("last_sample_state")
+        if last_sample_state not in {None, "healthy", "stale", "disconnected", "market_closed"}:
+            raise ValueError("invalid last forward-validation feed state")
+        tracker.last_sample_state = last_sample_state
         tracker.closed_at = (
             datetime.fromisoformat(snapshot["closed_at"])
             if snapshot.get("closed_at") else None
