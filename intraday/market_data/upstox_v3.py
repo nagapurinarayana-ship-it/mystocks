@@ -1,19 +1,32 @@
-"""Optional Upstox Market Data Feed V3 adapter.
+"""TLS-verified Upstox Market Data Feed V3 client.
 
-Install requirements-intraday.txt to use this module. The SDK access token must
-be supplied by the runtime environment; it is never persisted or logged here.
-This adapter provides market data only and has no order-placement methods.
+The upstream Python SDK V3 WebSocket feeder currently disables TLS peer and
+hostname verification in its transport. This adapter therefore uses the
+upstream SDK's official Protobuf schema with websocket-client directly and an
+explicit verified SSLContext. It is market-data-only and exposes no order API.
 """
 
 from __future__ import annotations
 
 import json
 import os
+import ssl
+import threading
+import time
+import uuid
 from datetime import datetime, timezone
-from zoneinfo import ZoneInfo
 from typing import Any, Callable, Mapping
+from zoneinfo import ZoneInfo
 
 from intraday.domain import MarketTick
+
+
+WEBSOCKET_URL = "wss://api.upstox.com/v3/feed/market-data-feed"
+MAX_LTPC_INSTRUMENTS = 5000
+MAX_RECONNECT_ATTEMPTS = 20
+RECONNECT_INTERVAL_SECONDS = 5
+PING_INTERVAL_SECONDS = 20
+PING_TIMEOUT_SECONDS = 10
 
 
 class UpstoxFeedError(RuntimeError):
@@ -51,7 +64,9 @@ def parse_upstox_v3_message(
     received_at: datetime | None = None,
     symbol_by_key: Mapping[str, str] | None = None,
 ) -> tuple[MarketTick, ...]:
-    """Convert decoded SDK V3 feed messages to internal ticks."""
+    """Convert decoded Upstox V3 Protobuf dictionaries to internal ticks."""
+    if isinstance(message, (bytes, bytearray, memoryview)):
+        raise UpstoxFeedError("binary feed frame must be decoded from the Upstox V3 Protobuf schema")
     if isinstance(message, str):
         try:
             message = json.loads(message)
@@ -92,6 +107,10 @@ def parse_upstox_v3_message(
         ask_quantity = _first(best, "askQ", "aq")
         details = _mapping(market_ff.get("eFeedDetails"))
         volume = _first(details, "vtt", "volumeTradedToday")
+        if volume is None:
+            volume = _first(
+                _mapping(feed.get("firstLevelWithGreeks")), "vtt"
+            )
 
         try:
             result.append(MarketTick(
@@ -115,7 +134,7 @@ def parse_upstox_v3_message(
 
 
 class UpstoxV3MarketDataClient:
-    """Small event adapter around the official Upstox Python SDK."""
+    """LTPC-only feed client with verified TLS and bounded reconnects."""
 
     def __init__(
         self,
@@ -123,14 +142,21 @@ class UpstoxV3MarketDataClient:
         on_tick: Callable[[MarketTick], None],
         access_token: str | None = None,
         symbol_by_key: Mapping[str, str] | None = None,
+        max_reconnect_attempts: int = MAX_RECONNECT_ATTEMPTS,
+        reconnect_interval_seconds: float = RECONNECT_INTERVAL_SECONDS,
     ) -> None:
         if not instrument_keys:
             raise ValueError("at least one instrument key is required")
-        if len(instrument_keys) > 5000:
+        if len(instrument_keys) > MAX_LTPC_INSTRUMENTS:
             raise ValueError("LTPC-only Upstox subscription limit is 5,000 keys")
         if len(set(instrument_keys)) != len(instrument_keys):
             raise ValueError("instrument keys must be unique")
-        self.instrument_keys = instrument_keys
+        if max_reconnect_attempts < 0 or max_reconnect_attempts > 100:
+            raise ValueError("max_reconnect_attempts must be between 0 and 100")
+        if reconnect_interval_seconds <= 0:
+            raise ValueError("reconnect_interval_seconds must be positive")
+
+        self.instrument_keys = list(instrument_keys)
         self.on_tick = on_tick
         self.symbol_by_key = dict(symbol_by_key or {})
         missing = set(instrument_keys) - set(self.symbol_by_key)
@@ -139,72 +165,209 @@ class UpstoxV3MarketDataClient:
         self.access_token = access_token or os.getenv("UPSTOX_ACCESS_TOKEN", "")
         if not self.access_token.strip():
             raise UpstoxFeedError("UPSTOX_ACCESS_TOKEN is not configured")
-        self._streamer = None
-        self.last_error: str | None = None
-        self.connected = False
 
-    def connect(self) -> None:
+        self.max_reconnect_attempts = max_reconnect_attempts
+        self.reconnect_interval_seconds = reconnect_interval_seconds
+        self._stop_event = threading.Event()
+        self._thread: threading.Thread | None = None
+        self._websocket_app = None
+        self._lock = threading.RLock()
+        self.connected = False
+        self.last_error: str | None = None
+        self._fatal_auth_error = False
+        self._connected_since: float | None = None
+
+    @staticmethod
+    def verified_tls_context():
+        """Build a CA-verified, hostname-verified TLS context."""
+        import certifi
+
+        context = ssl.create_default_context(cafile=certifi.where())
+        if context.verify_mode != ssl.CERT_REQUIRED or not context.check_hostname:
+            raise UpstoxFeedError("TLS verification could not be enabled")
+        return context
+
+    @staticmethod
+    def build_subscription_frame(instrument_keys: list[str]) -> bytes:
+        """Build the V3 binary subscription message for LTPC-only mode."""
+        if not instrument_keys:
+            raise ValueError("at least one instrument key is required")
+        payload = {
+            "guid": str(uuid.uuid4()),
+            "method": "sub",
+            "data": {
+                "mode": "ltpc",
+                "instrumentKeys": instrument_keys,
+            },
+        }
+        return json.dumps(payload, separators=(",", ":")).encode("utf-8")
+
+    @staticmethod
+    def decode_protobuf_frame(frame: bytes) -> Mapping[str, Any]:
+        """Decode the exact FeedResponse Protobuf type distributed in the SDK."""
         try:
-            import upstox_client
-        except ImportError as exc:
+            from google.protobuf.json_format import MessageToDict
+            from upstox_client.feeder.proto import MarketDataFeedV3_pb2
+            decoded = MarketDataFeedV3_pb2.FeedResponse.FromString(bytes(frame))
+            return MessageToDict(decoded)
+        except Exception as exc:
             raise UpstoxFeedError(
-                "Upstox SDK missing. Install requirements-intraday.txt first."
+                f"Upstox V3 Protobuf frame could not be decoded: {type(exc).__name__}"
             ) from exc
 
-        configuration = upstox_client.Configuration()
-        configuration.access_token = self.access_token
-        api_client = upstox_client.ApiClient(configuration)
-        self._streamer = upstox_client.MarketDataStreamerV3(
-            api_client, self.instrument_keys, "ltpc"
-        )
-        self._streamer.auto_reconnect(True, 5, 20)
-        self._streamer.on("open", self._on_open)
-        self._streamer.on("close", self._on_close)
-        self._streamer.on("error", self._on_error)
-        self._streamer.on("reconnecting", self._on_reconnecting)
-        self._streamer.on("autoReconnectStopped", self._on_error)
-        self._streamer.on("message", self._on_message)
-        self._streamer.connect()
+    def connect(self) -> None:
+        """Start the verified WebSocket loop in a dedicated foreground-owned thread."""
+        if self._thread is not None and self._thread.is_alive():
+            return
+        try:
+            import websocket
+            # Resolve schema import before opening a socket so missing SDK files
+            # fail immediately rather than looking like a feed outage.
+            from upstox_client.feeder.proto import MarketDataFeedV3_pb2  # noqa: F401
+        except ImportError as exc:
+            raise UpstoxFeedError(
+                "Upstox SDK or websocket-client missing. Install requirements-intraday.txt first."
+            ) from exc
 
-    def _on_open(self, *_: Any) -> None:
-        self.connected = True
-        self.last_error = None
+        self._stop_event.clear()
+        self._fatal_auth_error = False
+        self._thread = threading.Thread(
+            target=self._run_connection_loop,
+            args=(websocket,),
+            name="mystocks-upstox-v3-feed",
+            daemon=True,
+        )
+        self._thread.start()
+
+    def _run_connection_loop(self, websocket_module: Any) -> None:
+        attempt = 0
+        while not self._stop_event.is_set():
+            try:
+                app = websocket_module.WebSocketApp(
+                    WEBSOCKET_URL,
+                    header={"Authorization": f"Bearer {self.access_token}"},
+                    on_open=self._on_open,
+                    on_message=self._on_message,
+                    on_error=self._on_error,
+                    on_close=self._on_close,
+                )
+                with self._lock:
+                    self._websocket_app = app
+                app.run_forever(
+                    sslopt={"context": self.verified_tls_context()},
+                    ping_interval=PING_INTERVAL_SECONDS,
+                    ping_timeout=PING_TIMEOUT_SECONDS,
+                )
+            except Exception as exc:
+                with self._lock:
+                    self.connected = False
+                    self.last_error = f"Upstox WebSocket loop failed: {type(exc).__name__}"
+
+            if self._stop_event.is_set() or self._fatal_auth_error:
+                break
+
+            with self._lock:
+                connected_since = self._connected_since
+                self.connected = False
+                self._websocket_app = None
+                self._connected_since = None
+            if connected_since is not None and time.monotonic() - connected_since >= 60:
+                attempt = 0
+
+            attempt += 1
+            if attempt > self.max_reconnect_attempts:
+                with self._lock:
+                    self.last_error = "Upstox WebSocket reconnect attempts exhausted"
+                break
+
+            with self._lock:
+                self.last_error = f"Upstox WebSocket reconnecting ({attempt}/{self.max_reconnect_attempts})"
+            self._stop_event.wait(self.reconnect_interval_seconds)
+
+        with self._lock:
+            self.connected = False
+            self._websocket_app = None
+
+    def _on_open(self, ws: Any, *_: Any) -> None:
+        try:
+            frame = self.build_subscription_frame(self.instrument_keys)
+            import websocket
+
+            ws.send(frame, opcode=websocket.ABNF.OPCODE_BINARY)
+            with self._lock:
+                self.connected = True
+                self.last_error = None
+                self._connected_since = time.monotonic()
+        except Exception as exc:
+            with self._lock:
+                self.connected = False
+                self.last_error = f"Upstox LTPC subscription failed: {type(exc).__name__}"
+            try:
+                ws.close()
+            except Exception:
+                pass
 
     def _on_close(self, *_: Any) -> None:
-        self.connected = False
+        with self._lock:
+            self.connected = False
 
-    def _on_reconnecting(self, *_: Any) -> None:
-        self.connected = False
-        self.last_error = "Upstox market-data stream is reconnecting"
+    def _on_error(self, _ws: Any, error: Any = None) -> None:
+        error_text = str(error).lower() if error is not None else ""
+        with self._lock:
+            self.connected = False
+            if "401" in error_text or "unauthorized" in error_text:
+                self._fatal_auth_error = True
+                self.last_error = "Upstox rejected market-data authentication (HTTP 401)"
+                self._stop_event.set()
+            else:
+                self.last_error = (
+                    f"Upstox market-data transport error: {type(error).__name__}"
+                    if error is not None else "Upstox market-data transport error"
+                )
 
-    def _on_error(self, error: Any = None, *_: Any) -> None:
-        self.connected = False
-        self.last_error = "Upstox market-data stream reported an error"
-        if error is not None:
-            self.last_error = f"{self.last_error}: {type(error).__name__}"
+    def _decode_message(self, message: Any) -> Mapping[str, Any] | str:
+        if isinstance(message, (bytes, bytearray, memoryview)):
+            return self.decode_protobuf_frame(bytes(message))
+        if isinstance(message, (Mapping, str)):
+            return message
+        raise UpstoxFeedError("unexpected Upstox WebSocket message type")
 
-    def _on_message(self, message: Any) -> None:
+    def _on_message(self, _ws: Any, message: Any) -> None:
         try:
+            decoded = self._decode_message(message)
             ticks = parse_upstox_v3_message(
-                message, symbol_by_key=self.symbol_by_key
+                decoded, symbol_by_key=self.symbol_by_key
             )
         except (UpstoxFeedError, TypeError, ValueError) as exc:
-            # A malformed update is never allowed to reach the scanner. Keep
-            # the transport connected, but expose the decode fault and let the
-            # independent feed-freshness watchdog block candidate selection.
-            self.last_error = f"Upstox market-data message rejected: {type(exc).__name__}"
+            with self._lock:
+                self.last_error = f"Upstox market-data frame rejected: {type(exc).__name__}"
             return
 
         if ticks:
-            self.last_error = None
+            with self._lock:
+                self.last_error = None
         for tick in ticks:
             try:
                 self.on_tick(tick)
             except Exception as exc:
-                self.last_error = f"Market-data consumer callback failed: {type(exc).__name__}"
+                with self._lock:
+                    self.last_error = f"Market-data consumer callback failed: {type(exc).__name__}"
                 return
 
     def disconnect(self) -> None:
-        self.connected = False
-        if self._streamer is not None:
-            self._streamer.disconnect()
+        """Stop reconnects and close the current socket."""
+        self._stop_event.set()
+        with self._lock:
+            app = self._websocket_app
+            self.connected = False
+        if app is not None:
+            try:
+                app.close()
+            except Exception:
+                pass
+        thread = self._thread
+        if thread is not None and thread.is_alive() and thread is not threading.current_thread():
+            thread.join(timeout=10)
+        with self._lock:
+            self.connected = False
+            self._websocket_app = None
