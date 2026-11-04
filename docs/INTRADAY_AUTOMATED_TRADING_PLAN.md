@@ -83,6 +83,20 @@ Display at most three opportunities per session. It is valid to display fewer th
 - Define maximum daily loss, maximum concurrent positions, maximum exposure, per-symbol cap, stale-data timeout, connectivity-loss behaviour, and end-of-day square-off policy before any live pilot.
 - The first release should be long-only cash equities; do not add leverage, MTF, F&O, short selling, or overnight carry without a separate risk and compliance review.
 
+### ₹1,000 starting-capital operating constraint
+
+The initial capital provided for evaluation is **₹1,000 total**. Treat this as the only external funding: no automatic top-ups, borrowed funds, margin/leverage, MTF, F&O, or short selling. Profits may be retained and compounded only after they are realised net of all charges and reflected as available broker funds. A loss must never trigger an automatic request for more money.
+
+- Do not promise that ₹1,000 can generate enough profit to pay for the system or become self-sustaining. The product must report actual net results, including losing days and periods with no trades.
+- Target **zero recurring infrastructure/data spend** for the initial build. Do not subscribe to paid feeds, VPS/static-IP services, or paid algo services from this ₹1,000 budget. If the selected broker's compliant API setup requires additional recurring spend, keep live trading disabled and continue paper research until separately funded and explicitly approved.
+- For paper evaluation, start with a maximum planned loss budget of 0.5% of current strategy equity per trade and 1% per day, inclusive of estimated charges and slippage; one open position maximum. These are conservative test guardrails, not promises or a claim that trades will be available.
+- Size positions using whole shares and cash-only notional. If the minimum whole-share quantity, stop distance, estimated costs, or slippage breaches the risk budget, skip the trade. Never loosen the stop, increase quantity, or use leverage to force a trade.
+- Estimate the complete round-trip cost before every candidate: brokerage on both executed sides, STT, exchange charges, GST, SEBI charges, stamp duty, spread and expected slippage. Reject candidates when net expected edge is not clearly positive after costs or the cost estimate is stale.
+- Keep a separate strategy ledger that reports starting capital, peak/trough equity, realised net P&L, charges, drawdown, return on initial capital, number of trades, and how much profit is retained. Do not count unrealised gains as spendable profit.
+- The system may correctly produce no trade for many sessions. It must never manufacture activity to meet a daily profit target.
+
+A small-account cost illustration must be shown in the UI, using the chosen broker's live published tariff and a test order size. For context only, Zerodha currently publishes intraday brokerage at 0.03% or ₹20 per executed order (whichever is lower), plus statutory charges such as sell-side STT, exchange transaction charges, GST and buy-side stamp duty; the actual broker has not been selected, and the estimate must be recalculated for that broker before any use.
+
 ### Broker adapter boundary
 
 Define a common interface for authentication status, instrument master, quotes/stream, historical candles, funds/margins, positions, orders, order status, trades and (eventually) order placement/modification/cancellation. Implement only read-only capability until a broker is chosen and reviewed. Broker adapters must advertise capabilities explicitly; unsupported operations fail closed.
@@ -127,4 +141,6 @@ Before any live API trading, obtain broker confirmation of eligibility and requi
 - Broker: undecided.
 - Market-data provider: undecided.
 - Initial strategy direction: long-only; no leverage/F&O.
-- Capital, per-trade risk, daily loss limit, and maximum concurrent positions: must be configured and explicitly reviewed before paper/live evaluation; do not guess these values.
+- Starting external capital: ₹1,000 only; retained realised net profits may compound, but no external top-ups are assumed.
+- Paper guardrails: 0.5% planned risk per trade, 1% daily loss limit including estimated costs, and one open position maximum; these must be tested and may result in no-trade outcomes.
+- Recurring data/hosting spend target: ₹0 from the initial capital; any required paid compliance infrastructure blocks live activation until separately authorised.
