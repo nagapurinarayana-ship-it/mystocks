@@ -46,7 +46,7 @@ def make_bars(count=22):
             open_price = close - 0.5
             close = 103.2
             high = 103.3
-            low = 102.5
+            low = 101.5
             volume = 2000
         bar_start = start + timedelta(minutes=5 * i)
         bars.append(CompletedBar(
