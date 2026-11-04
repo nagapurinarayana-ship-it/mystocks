@@ -78,12 +78,15 @@ def main() -> int:
             now_iso = datetime.now(timezone.utc).isoformat()
             ledger.record_event(now_iso, "INFO", "scanner_starting", "Intraday live scanner starting")
 
+            promoted_keys: set[str] = set()
+            depth_validated: set[tuple[str, str, datetime]] = set()
+
             def handle_tick(tick) -> None:
                 now = datetime.now(timezone.utc)
                 if not scanner.on_tick(tick, now=now):
                     return
-                candidates = scanner.opportunities(now=now)
-                for item in candidates:
+                newly_discovered = scanner.opportunities(now=now)
+                for item in newly_discovered:
                     inserted = ledger.record_signal(item)
                     if inserted:
                         logging.info(
@@ -94,6 +97,46 @@ def main() -> int:
                         ledger.record_event(
                             item.generated_at.isoformat(), "INFO", "signal_discovered",
                             f"{item.strategy_id} candidate for {item.symbol}; no broker order sent",
+                        )
+
+                active_candidates = scanner.candidate_signals(now=now)
+                active_keys = {
+                    scanner.instruments[item.symbol].instrument_key
+                    for item in active_candidates if item.symbol in scanner.instruments
+                }
+                to_promote = sorted(active_keys - promoted_keys)
+                if to_promote and client.connected:
+                    client.promote_to_full(to_promote)
+                    promoted_keys.update(to_promote)
+                    ledger.record_event(
+                        now.isoformat(), "INFO", "candidate_depth_requested",
+                        f"Requested full quote depth for {len(to_promote)} shortlisted symbols",
+                    )
+
+                expired_keys = sorted(promoted_keys - active_keys)
+                if expired_keys and client.connected:
+                    client.demote_to_ltpc(expired_keys)
+                    promoted_keys.difference_update(expired_keys)
+                    ledger.record_event(
+                        now.isoformat(), "INFO", "candidate_depth_released",
+                        f"Returned {len(expired_keys)} expired candidates to LTPC mode",
+                    )
+
+                for item in active_candidates:
+                    key = (item.symbol, item.strategy_id, item.generated_at)
+                    if key in depth_validated:
+                        continue
+                    valid, reason = scanner.validate_candidate_depth(item, now=now)
+                    if valid:
+                        depth_validated.add(key)
+                        ledger.record_event(
+                            now.isoformat(), "INFO", "candidate_depth_validated",
+                            f"{item.symbol} {item.strategy_id}: two-sided depth and spread validated",
+                        )
+                    elif reason not in {"full_depth_not_received", "candidate_quote_stale"}:
+                        ledger.record_event(
+                            now.isoformat(), "WARNING", "candidate_depth_rejected",
+                            f"{item.symbol} {item.strategy_id}: {reason}",
                         )
 
             client = UpstoxV3MarketDataClient(
