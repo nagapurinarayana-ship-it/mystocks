@@ -425,15 +425,16 @@ def render_intraday_radar() -> None:
     st.caption(
         "A session counts only when monitoring starts by 09:16 IST, reaches 15:30 IST, "
         "records at least 98% observation coverage and 98% healthy-feed time, has no more "
-        "than five monitoring-loop gaps, includes accepted market ticks and records no "
-        "paper risk halt. This is a data-quality gate, not proof of strategy profitability."
+        "than five monitoring-loop gaps, includes accepted market ticks, uses the fee-configured "
+        "paper engine and records no paper risk halt. Feed-only sessions do not count. This is "
+        "a data-quality gate, not proof of strategy profitability."
     )
     if forward_sessions:
         forward_display = pd.DataFrame(forward_sessions)
         forward_columns = [
             "session_date", "status", "coverage_ratio", "healthy_ratio",
             "accepted_ticks", "discovered_signals", "closed_paper_trades",
-            "risk_halts", "loop_gap_count",
+            "risk_halts", "loop_gap_count", "paper_engine_enabled",
         ]
         visible_columns = [name for name in forward_columns if name in forward_display.columns]
         if visible_columns:
