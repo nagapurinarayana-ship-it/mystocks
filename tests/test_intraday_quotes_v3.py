@@ -46,6 +46,7 @@ def test_full_quote_v3_parses_ltp_depth_circuits_and_volume():
                 "instrument_token": instrument.instrument_key,
                 "symbol": "RELIANCE",
                 "timestamp": at.isoformat(),
+                "last_trade_time": str(int(at.timestamp() * 1000)),
                 "last_price": 100.0,
                 "volume": 123456,
                 "depth": {
@@ -96,6 +97,7 @@ def test_full_quote_v3_ignores_unknown_instruments_and_invalid_depth():
             "NSE_EQ:RELIANCE": {
                 "instrument_token": instrument.instrument_key,
                 "timestamp": at.isoformat(),
+                "last_trade_time": str(int(at.timestamp() * 1000)),
                 "last_price": 100,
                 "depth": {"buy": [{"price": 0, "quantity": 0}], "sell": []},
             },
@@ -143,3 +145,64 @@ def test_full_quote_v3_does_not_echo_access_token_on_http_error():
     with pytest.raises(MarketQuoteError) as exc:
         client.fetch_quotes((instrument,))
     assert secret not in str(exc.value)
+
+
+
+def test_full_quote_v3_rejects_fresh_snapshot_with_stale_last_trade():
+    instrument = Instrument(
+        "RELIANCE", "NSE_EQ|INE002A01018", "Reliance Industries",
+        Decimal("0.05"), 1,
+    )
+    now = datetime(2026, 11, 4, 10, 0, 10, tzinfo=IST)
+    last_trade = now - timedelta(seconds=10)
+    payload = {
+        "status": "success",
+        "data": {
+            "NSE_EQ:RELIANCE": {
+                "instrument_token": instrument.instrument_key,
+                "symbol": "RELIANCE",
+                "timestamp": now.isoformat(),
+                "last_trade_time": str(int(last_trade.timestamp() * 1000)),
+                "last_price": 100,
+                "volume": 123456,
+                "depth": {
+                    "buy": [{"price": 99.95, "quantity": 120}],
+                    "sell": [{"price": 100.05, "quantity": 80}],
+                },
+            }
+        },
+    }
+    client = UpstoxFullMarketQuotesV3Client(
+        "test-token",
+        session=FakeSession([FakeResponse(payload=payload)]),
+        max_retries=0,
+    )
+    assert client.fetch_quotes((instrument,), now=now) == {}
+
+
+def test_full_quote_v3_requires_last_trade_timestamp_even_when_snapshot_is_fresh():
+    instrument = Instrument(
+        "RELIANCE", "NSE_EQ|INE002A01018", "Reliance Industries",
+        Decimal("0.05"), 1,
+    )
+    now = datetime(2026, 11, 4, 10, 0, tzinfo=IST)
+    payload = {
+        "status": "success",
+        "data": {
+            "NSE_EQ:RELIANCE": {
+                "instrument_token": instrument.instrument_key,
+                "timestamp": now.isoformat(),
+                "last_price": 100,
+                "depth": {
+                    "buy": [{"price": 99.95, "quantity": 120}],
+                    "sell": [{"price": 100.05, "quantity": 80}],
+                },
+            }
+        },
+    }
+    client = UpstoxFullMarketQuotesV3Client(
+        "test-token",
+        session=FakeSession([FakeResponse(payload=payload)]),
+        max_retries=0,
+    )
+    assert client.fetch_quotes((instrument,), now=now) == {}
