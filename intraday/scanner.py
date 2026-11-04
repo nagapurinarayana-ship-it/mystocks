@@ -54,6 +54,9 @@ class IntradayScanner:
                     key = (signal.symbol, signal.strategy_id, signal.generated_at)
                     if key not in self._emitted_signals:
                         candidates.append(signal)
+        self._emitted_signals.update(
+            (item.symbol, item.strategy_id, item.generated_at) for item in candidates
+        )
         candidates.sort(key=lambda item: (item.score, item.volume_ratio), reverse=True)
         selected: list[TradeSignal] = []
         seen: set[str] = set()
@@ -61,7 +64,6 @@ class IntradayScanner:
             if candidate.symbol in seen:
                 continue
             selected.append(candidate)
-            self._emitted_signals.add((candidate.symbol, candidate.strategy_id, candidate.generated_at))
             seen.add(candidate.symbol)
             if len(selected) >= self.max_opportunities:
                 break
