@@ -528,7 +528,9 @@ class PaperExecutionEngine:
         return PaperEvent("signal_expired", signal.symbol, reason)
 
     def force_session_close(self, bar: CompletedBar) -> PaperEvent | None:
-        """Close any paper position and cancel a pending entry before session end."""
+        """Close a tracked position before the session only when data is not halted."""
+        if self.halted_reason is not None:
+            return None
         self.pending = None
         if self.position is None:
             return None
