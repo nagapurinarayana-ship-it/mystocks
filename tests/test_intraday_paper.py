@@ -261,3 +261,29 @@ def test_overnight_safety_exit_waits_for_the_open_of_the_correct_symbol():
     assert event is not None and event.event_type == "exit_filled"
     assert paper.trades[-1].exit_reason == "overnight_safety_exit"
     assert paper.position is None
+
+
+def test_entry_is_rejected_when_tick_rounding_and_slippage_remove_reward_to_target():
+    paper = engine()
+    tight_signal = TradeSignal(
+        strategy_id="test_strategy",
+        symbol="RELIANCE",
+        generated_at=datetime(2026, 11, 4, 9, 20, tzinfo=IST),
+        entry_reference=100.0,
+        stop_price=99.0,
+        target_price=100.01,
+        volume_ratio=1.5,
+        score=70,
+        explanation="tight target test",
+    )
+    paper.submit_signal(tight_signal, instrument())
+    assert paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 20, tzinfo=IST), 100, 100.2, 99.8, 100.1)
+    ) is None
+    event = paper.on_bar(
+        bar(datetime(2026, 11, 4, 9, 25, tzinfo=IST), 100, 100.2, 99.8, 100.1)
+    )
+    assert event is not None
+    assert event.event_type == "entry_rejected"
+    assert paper.position is None
+    assert paper.cash == Decimal("1000.00")
