@@ -159,6 +159,7 @@ class PaperExecutionEngine:
         self._day: object | None = None
         self._day_start_cash = self.cash
         self._daily_net_pnl = ZERO
+        self._realised_net_pnl = ZERO
         self._overnight_exit_pending = False
         self.max_entry_drift_fraction = _dec(max_entry_drift_fraction, "max_entry_drift_fraction")
         self.max_hold_bars = max_hold_bars
@@ -177,7 +178,7 @@ class PaperExecutionEngine:
 
     @property
     def realised_net_pnl(self) -> Decimal:
-        return sum((trade.net_pnl for trade in self.trades), ZERO)
+        return self._realised_net_pnl
 
     def export_state(self) -> dict:
         """Export resumable simulation state without credentials or API tokens."""
@@ -238,6 +239,7 @@ class PaperExecutionEngine:
             "day": self._day.isoformat() if isinstance(self._day, date) else None,
             "day_start_cash": str(self._day_start_cash),
             "daily_net_pnl": str(self._daily_net_pnl),
+            "realised_net_pnl": str(self._realised_net_pnl),
             "overnight_exit_pending": bool(self._overnight_exit_pending),
             "position": position,
             "pending": pending,
@@ -269,6 +271,7 @@ class PaperExecutionEngine:
         cash = _dec(state.get("cash"), "cash")
         day_start_cash = _dec(state.get("day_start_cash"), "day_start_cash")
         daily_net_pnl = _dec(state.get("daily_net_pnl"), "daily_net_pnl")
+        realised_net_pnl = _dec(state.get("realised_net_pnl"), "realised_net_pnl")
         if cash < ZERO or day_start_cash <= ZERO:
             raise ValueError("saved paper cash values are invalid")
 
@@ -342,6 +345,7 @@ class PaperExecutionEngine:
         self._day = restored_day
         self._day_start_cash = day_start_cash
         self._daily_net_pnl = daily_net_pnl
+        self._realised_net_pnl = realised_net_pnl
         self._overnight_exit_pending = bool(state.get("overnight_exit_pending", False))
         self.trades.clear()
         self.rejected_entries.clear()
@@ -563,6 +567,7 @@ class PaperExecutionEngine:
         )
         self.trades.append(trade)
         self._daily_net_pnl += net
+        self._realised_net_pnl += net
         self.position = None
         return PaperEvent(
             "exit_filled", position.symbol,
