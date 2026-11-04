@@ -300,6 +300,21 @@ def main() -> int:
                                 forward_tracker.record_risk_halt()
                     state = _market_state(client, scanner, now)
 
+                    if (
+                        forward_tracker is not None
+                        and local_now.date() != forward_tracker.session_date
+                    ):
+                        interrupted = forward_tracker.interrupt(
+                            "scanner did not observe the 15:30 IST session close before the date changed"
+                        )
+                        ledger.save_forward_session(interrupted, now.isoformat())
+                        ledger.record_event(
+                            now.isoformat(), "WARNING", "forward_validation_interrupted",
+                            f"Forward paper-validation session {interrupted['session_date']} was interrupted before session close",
+                        )
+                        forward_validation_blocked_date = forward_tracker.session_date
+                        forward_tracker = None
+
                     if forward_validation_blocked_date != local_now.date():
                         forward_validation_blocked_date = None
                     in_market_window = (
