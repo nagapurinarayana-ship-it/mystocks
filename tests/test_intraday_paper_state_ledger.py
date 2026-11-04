@@ -55,3 +55,80 @@ def test_corrupt_persisted_paper_state_fails_closed(tmp_path):
         ledger._connection.commit()
         with pytest.raises(ValueError, match="corrupt"):
             ledger.load_paper_state()
+
+
+
+def test_forward_validation_session_is_persisted_and_counted_by_status(tmp_path):
+    database = tmp_path / "forward-validation.sqlite3"
+    qualified = {
+        "session_date": "2026-11-04",
+        "status": "qualified",
+        "started_at": "2026-11-04T03:45:00+00:00",
+        "last_sample_at": "2026-11-04T10:00:00+00:00",
+        "closed_at": "2026-11-04T10:00:00+00:00",
+        "accepted_ticks": 1000,
+        "coverage_ratio": 0.999,
+        "healthy_ratio": 0.999,
+    }
+    incomplete = {
+        "session_date": "2026-11-03",
+        "status": "incomplete",
+        "started_at": "2026-11-03T05:00:00+00:00",
+        "accepted_ticks": 50,
+        "coverage_ratio": 0.4,
+        "healthy_ratio": 0.7,
+    }
+
+    with PaperLedger(database) as ledger:
+        ledger.save_forward_session(qualified, "2026-11-04T10:00:00+00:00")
+        ledger.save_forward_session(incomplete, "2026-11-03T10:00:00+00:00")
+        assert ledger.load_forward_session("2026-11-04") == qualified
+        assert ledger.forward_sessions(10) == [qualified, incomplete]
+        assert ledger.forward_validation_summary() == {
+            "total_sessions": 2,
+            "qualified_sessions": 1,
+            "incomplete_sessions": 1,
+            "interrupted_sessions": 0,
+            "in_progress_sessions": 0,
+        }
+
+
+def test_forward_validation_process_restart_marks_open_sessions_interrupted(tmp_path):
+    database = tmp_path / "forward-validation-restart.sqlite3"
+    snapshot = {
+        "session_date": "2026-11-04",
+        "status": "in_progress",
+        "started_at": "2026-11-04T03:45:00+00:00",
+        "last_sample_at": "2026-11-04T05:00:00+00:00",
+        "accepted_ticks": 500,
+    }
+    with PaperLedger(database) as ledger:
+        ledger.save_forward_session(snapshot, "2026-11-04T05:00:00+00:00")
+        assert ledger.interrupt_open_forward_sessions(
+            "2026-11-04T05:01:00+00:00"
+        ) == 1
+        saved = ledger.load_forward_session("2026-11-04")
+        assert saved["status"] == "interrupted"
+        assert "restarted" in saved["interruption_reason"]
+        assert ledger.forward_validation_summary()["interrupted_sessions"] == 1
+        assert ledger.interrupt_open_forward_sessions(
+            "2026-11-04T05:02:00+00:00"
+        ) == 0
+
+
+def test_forward_validation_rejects_bad_snapshot_status_and_non_json_values(tmp_path):
+    with PaperLedger(tmp_path / "forward-validation-invalid.sqlite3") as ledger:
+        with pytest.raises(ValueError, match="status"):
+            ledger.save_forward_session(
+                {"session_date": "2026-11-04", "status": "ready"},
+                "2026-11-04T10:00:00+00:00",
+            )
+        with pytest.raises(ValueError, match="valid JSON"):
+            ledger.save_forward_session(
+                {
+                    "session_date": "2026-11-04",
+                    "status": "in_progress",
+                    "value": float("nan"),
+                },
+                "2026-11-04T10:00:00+00:00",
+            )
