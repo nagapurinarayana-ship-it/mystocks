@@ -71,14 +71,13 @@ def main() -> int:
     try:
         instruments = load_instruments()
         scanner = IntradayScanner(instruments, max_opportunities=3)
-        key_to_symbol = {item.instrument_key: item.symbol for item in instruments}
         logging.info("Starting live LTPC subscription for %d NSE cash equities", len(instruments))
 
         def handle_tick(tick) -> None:
             now = datetime.now(timezone.utc)
             if not scanner.on_tick(tick, now=now):
                 return
-            candidates = scanner.opportunities()
+            candidates = scanner.opportunities(now=now)
             if candidates:
                 logging.info(
                     "RADAR %s",
@@ -92,6 +91,7 @@ def main() -> int:
         client = UpstoxV3MarketDataClient(
             [item.instrument_key for item in instruments],
             on_tick=handle_tick,
+            symbol_by_key={item.instrument_key: item.symbol for item in instruments},
         )
         client.connect()
         try:
