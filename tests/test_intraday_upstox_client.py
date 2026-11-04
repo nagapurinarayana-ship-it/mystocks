@@ -106,7 +106,10 @@ def test_connect_sends_ltpc_frame_over_certificate_verified_websocket(monkeypatc
     assert len(apps) == 1
     app = apps[0]
     assert app.url == "wss://api.upstox.com/v3/feed/market-data-feed"
-    assert app.header == {"Authorization": "Bearer unit-test-token"}
+    assert app.header == {
+        "Authorization": "Bearer unit-test-token",
+        "Accept": "*/*",
+    }
     assert app.ssl_context.verify_mode == ssl.CERT_REQUIRED
     assert app.ssl_context.check_hostname is True
     assert len(app.sent) == 1
