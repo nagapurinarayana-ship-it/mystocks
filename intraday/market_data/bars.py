@@ -60,6 +60,7 @@ class FiveMinuteBarBuilder:
         self._session_day: dict[str, object] = {}
         self._session_value: dict[str, float] = defaultdict(float)
         self._session_volume: dict[str, int] = defaultdict(int)
+        self._discontinuities: dict[str, int] = defaultdict(int)
 
     @staticmethod
     def _bucket_start(value: datetime) -> datetime:
@@ -103,6 +104,20 @@ class FiveMinuteBarBuilder:
 
         if bucket < working.start:
             return None
+        if bucket - working.start > timedelta(minutes=5):
+            # Do not turn a partial candle into a completed bar after a stream
+            # interruption. Also clear earlier session context: without the
+            # missing buckets its VWAP/history window is no longer trustworthy.
+            self._working.pop(tick.symbol, None)
+            self._bars[tick.symbol].clear()
+            self._session_value[tick.symbol] = 0.0
+            self._session_volume[tick.symbol] = 0
+            self._discontinuities[tick.symbol] += 1
+            self._working[tick.symbol] = _WorkingBar(
+                tick.symbol, bucket, tick.price, tick.price, tick.price,
+                tick.price, tick.last_trade_quantity, tick.price * tick.last_trade_quantity
+            )
+            return None
         if bucket == working.start:
             working.apply(tick.price, tick.last_trade_quantity)
             return completed
@@ -119,6 +134,10 @@ class FiveMinuteBarBuilder:
 
     def bars(self, symbol: str) -> tuple[CompletedBar, ...]:
         return tuple(self._bars.get(symbol, ()))
+
+    def discontinuity_count(self, symbol: str) -> int:
+        """Number of detected multi-bucket gaps since this builder was created."""
+        return self._discontinuities.get(symbol, 0)
 
     def session_vwap(self, symbol: str) -> float | None:
         volume = self._session_volume.get(symbol, 0)
