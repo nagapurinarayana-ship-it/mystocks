@@ -99,8 +99,8 @@ def test_connect_sends_ltpc_frame_over_certificate_verified_websocket(monkeypatc
     apps = []
     auth_calls = []
 
-    def authorize(url, headers, timeout):
-        auth_calls.append((url, headers, timeout))
+    def authorize(url, headers, timeout, verify, allow_redirects):
+        auth_calls.append((url, headers, timeout, verify, allow_redirects))
         return FakeAuthResponse()
 
     monkeypatch.setattr(
