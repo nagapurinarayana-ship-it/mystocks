@@ -4,7 +4,7 @@ from zoneinfo import ZoneInfo
 
 from intraday.coordinator import AutonomousPaperCoordinator
 from intraday.domain import Instrument, MarketTick, TradeSignal
-from intraday.execution.paper import FeeSchedule, PaperExecutionEngine
+from intraday.execution.paper import FeeSchedule, PaperExecutionEngine, PaperPosition
 from intraday.scanner import IntradayScanner
 
 IST = ZoneInfo("Asia/Kolkata")
@@ -67,3 +67,46 @@ def test_coordinator_does_not_queue_signal_without_full_depth():
     assert result.queued_signal is None
     assert paper.pending is None
     assert paper.position is None
+
+
+
+def test_coordinator_cancels_new_paper_entries_after_1515_ist():
+    coordinator, paper, signal, tick, now = components(with_depth=True)
+    late_exchange = datetime(2026, 11, 4, 15, 15, 5, tzinfo=IST)
+    late_now = late_exchange.astimezone(timezone.utc)
+    late_tick = MarketTick(
+        symbol="RELIANCE", instrument_key="NSE_EQ|INE002A01018",
+        price=100, exchange_time=late_exchange, received_at=late_now,
+        last_trade_quantity=10, best_bid=99.95, best_ask=100.05,
+        best_bid_quantity=100, best_ask_quantity=100,
+    )
+    result = coordinator.on_tick(late_tick, now=late_now)
+    assert result.queued_signal is None
+    assert paper.pending is None
+
+
+def test_coordinator_paper_square_off_uses_real_position_symbol_tick_after_1525():
+    coordinator, paper, signal, tick, now = components(with_depth=True)
+    paper.position = PaperPosition(
+        symbol="RELIANCE",
+        quantity=1,
+        entry_price=Decimal("100.00"),
+        stop_price=Decimal("99.00"),
+        target_price=Decimal("102.00"),
+        entry_fee=Decimal("0"),
+        tick_size=Decimal("0.05"),
+        opened_at=datetime(2026, 11, 4, 10, 0, tzinfo=IST),
+        strategy_id="vwap_momentum",
+    )
+    exchange_time = datetime(2026, 11, 4, 15, 25, 1, tzinfo=IST)
+    received = exchange_time.astimezone(timezone.utc)
+    close_tick = MarketTick(
+        symbol="RELIANCE", instrument_key="NSE_EQ|INE002A01018",
+        price=101.0, exchange_time=exchange_time, received_at=received,
+        last_trade_quantity=15, best_bid=100.95, best_ask=101.05,
+        best_bid_quantity=100, best_ask_quantity=100,
+    )
+    result = coordinator.on_tick(close_tick, now=received)
+    assert any(event.event_type == "exit_filled" for event in result.paper_events)
+    assert paper.position is None
+    assert paper.trades[-1].exit_reason == "session_close"
