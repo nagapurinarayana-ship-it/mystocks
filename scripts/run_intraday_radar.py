@@ -139,16 +139,41 @@ def main() -> int:
         quotes_client = UpstoxFullMarketQuotesV3Client(access_token=access_token)
 
         with PaperLedger("data/mystocks_intraday.sqlite3") as ledger:
+            saved_paper_state = ledger.load_paper_state()
             paper_engine = PaperExecutionEngine(fee_schedule) if fee_schedule is not None else None
-            paper_coordinator = (
-                AutonomousPaperCoordinator(scanner, paper_engine, ledger)
-                if paper_engine is not None else None
-            )
-            if paper_coordinator is not None:
+            paper_coordinator = None
+
+            if paper_engine is not None:
+                if saved_paper_state is not None:
+                    # If the snapshot is corrupt or the tariff changed, stop safely:
+                    # never silently reset the paper account to ₹1,000.
+                    paper_engine.restore_state(saved_paper_state)
+                    ledger.record_event(
+                        datetime.now(timezone.utc).isoformat(), "INFO",
+                        "paper_state_restored",
+                        "Saved paper cash, daily risk and open/pending state restored",
+                    )
+                else:
+                    ledger.save_paper_state(
+                        paper_engine.export_state(),
+                        datetime.now(timezone.utc).isoformat(),
+                    )
+                    ledger.record_event(
+                        datetime.now(timezone.utc).isoformat(), "INFO",
+                        "paper_state_initialised",
+                        "Initial ₹1,000 paper account state saved",
+                    )
+                paper_coordinator = AutonomousPaperCoordinator(scanner, paper_engine, ledger)
                 ledger.record_event(
                     datetime.now(timezone.utc).isoformat(), "INFO",
                     "paper_engine_enabled",
                     "Autonomous paper simulation enabled with explicit broker tariff; live orders remain disabled",
+                )
+            elif saved_paper_state is not None:
+                ledger.record_event(
+                    datetime.now(timezone.utc).isoformat(), "WARNING",
+                    "paper_state_not_loaded",
+                    "A saved paper account exists, but paper execution is disabled until the complete matching fee schedule is configured",
                 )
 
             ledger.record_event(
