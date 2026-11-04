@@ -90,6 +90,8 @@ class ForwardSessionTracker:
         if feed_state not in {"healthy", "stale", "disconnected", "market_closed"}:
             raise ValueError("unsupported feed state")
         current = now.astimezone(timezone.utc)
+        if current.astimezone(IST).date() != self.session_date:
+            raise ValueError("forward validation samples must remain on the session date")
         with self._lock:
             if self.status != "in_progress":
                 return
