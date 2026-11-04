@@ -140,3 +140,81 @@ def test_corrupt_or_unsafe_paper_state_is_rejected_before_assignment(mutation):
     with pytest.raises((ValueError, TypeError, KeyError)):
         restored.restore_state(invalid)
     assert restored.export_state() == before
+
+
+
+def test_halted_paper_account_preserves_open_position_and_survives_restart():
+    original = PaperExecutionEngine(fees())
+    original.cash = Decimal("899.50")
+    original.position = PaperPosition(
+        symbol="RELIANCE",
+        quantity=1,
+        entry_price=Decimal("100.50"),
+        stop_price=Decimal("99.00"),
+        target_price=Decimal("103.00"),
+        entry_fee=Decimal("0.20"),
+        tick_size=Decimal("0.05"),
+        opened_at=datetime(2026, 11, 4, 10, 5, tzinfo=IST),
+        strategy_id="vwap_momentum",
+        bars_held=2,
+    )
+    halted = original.halt(
+        "No fresh market tick for open RELIANCE position within 15s; manual review required."
+    )
+    assert halted.event_type == "risk_halt"
+    assert original.position is not None
+    assert original.position.symbol == "RELIANCE"
+    assert original.pending is None
+    assert original.halted_reason is not None
+    assert original.submit_signal(signal(), instrument()) is False
+
+    snapshot = json.loads(json.dumps(original.export_state()))
+    assert snapshot["version"] == 3
+    restored = PaperExecutionEngine(fees())
+    restored.restore_state(snapshot)
+
+    assert restored.halted_reason == original.halted_reason
+    assert restored.position is not None
+    assert restored.position.symbol == "RELIANCE"
+    assert restored.cash == Decimal("899.50")
+
+
+def test_halted_paper_account_does_not_simulate_an_exit_from_late_or_missing_bar():
+    from datetime import timedelta
+    from intraday.domain import CompletedBar
+
+    paper = PaperExecutionEngine(fees())
+    paper.position = PaperPosition(
+        symbol="RELIANCE",
+        quantity=1,
+        entry_price=Decimal("100.50"),
+        stop_price=Decimal("99.00"),
+        target_price=Decimal("103.00"),
+        entry_fee=Decimal("0.20"),
+        tick_size=Decimal("0.05"),
+        opened_at=datetime(2026, 11, 4, 10, 5, tzinfo=IST),
+        strategy_id="vwap_momentum",
+    )
+    paper.halt("Feed gap; position unresolved")
+    bar = CompletedBar(
+        "RELIANCE",
+        datetime(2026, 11, 4, 10, 10, tzinfo=IST),
+        datetime(2026, 11, 4, 10, 15, tzinfo=IST),
+        98, 98.5, 97, 97.5, 1000,
+    )
+    assert paper.on_bar(bar) is None
+    assert paper.force_session_close(bar) is None
+    assert paper.position is not None
+    assert paper.trades == []
+
+
+def test_restore_rejects_invalid_halt_reason_without_resetting_existing_engine():
+    original = PaperExecutionEngine(fees())
+    invalid = original.export_state()
+    invalid["halted_reason"] = "x" * 501
+    restored = PaperExecutionEngine(fees())
+    before = restored.export_state()
+
+    with pytest.raises(ValueError, match="halt reason"):
+        restored.restore_state(invalid)
+    assert restored.export_state() == before
