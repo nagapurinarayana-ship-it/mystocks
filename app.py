@@ -377,6 +377,7 @@ def render_intraday_radar() -> None:
         trades = pd.DataFrame()
         performance = {"trades": 0, "realised_net_pnl": 0.0, "wins": 0, "losses": 0, "charges": 0.0}
         feed_event = None
+        paper_state = None
     else:
         try:
             with PaperLedger(database) as ledger:
@@ -384,6 +385,7 @@ def render_intraday_radar() -> None:
                 trades = pd.DataFrame(ledger.recent_trades(50))
                 performance = ledger.paper_performance()
                 feed_event = ledger.latest_feed_event()
+                paper_state = ledger.load_paper_state()
         except Exception as exc:
             st.error(f"Could not read the intraday ledger: {exc}")
             return
@@ -408,15 +410,35 @@ def render_intraday_radar() -> None:
         else:
             st.info(f"Feed status: {feed_event['message']} · {feed_event['occurred_at']}")
 
-    c1, c2, c3, c4 = st.columns(4)
+    c1, c2, c3, c4, c5 = st.columns(5)
     c1.metric("Signals recorded", f"{len(signals):,}")
     c2.metric("Paper trades closed", f"{int(performance['trades']):,}")
     c3.metric("Realised paper P&L", f"₹{float(performance['realised_net_pnl']):,.2f}")
     c4.metric("Paper charges", f"₹{float(performance['charges']):,.2f}")
+    c5.metric(
+        "Paper cash",
+        f"₹{float(paper_state['cash']):,.2f}" if paper_state is not None else "—",
+    )
     st.caption(
         "The ₹1,000 starting capital is a paper-policy setting only. It is not connected to or deposited with a broker. "
         "Paper results are meaningful only after a verified broker-specific fee schedule and fill model are configured."
     )
+    if paper_state is not None and paper_state.get("position"):
+        position = paper_state["position"]
+        st.info(
+            f"Open paper position: **{position['symbol']} × {position['quantity']}** · "
+            f"Entry ₹{float(position['entry_price']):,.2f} · "
+            f"Stop ₹{float(position['stop_price']):,.2f} · "
+            f"Target ₹{float(position['target_price']):,.2f}"
+        )
+    elif paper_state is not None and paper_state.get("pending"):
+        pending = paper_state["pending"]["signal"]
+        st.info(
+            f"Pending paper entry: **{pending['symbol']}** · "
+            f"Reference ₹{float(pending['entry_reference']):,.2f}; this is not a broker order."
+        )
+    elif paper_state is not None:
+        st.caption("Paper account restored from the local SQLite checkpoint. No paper position is currently open.")
 
     st.subheader("Latest intraday opportunities")
     if signals.empty:
