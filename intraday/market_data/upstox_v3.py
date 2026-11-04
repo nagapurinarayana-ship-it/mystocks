@@ -88,6 +88,8 @@ def parse_upstox_v3_message(
         best = _mapping(quotes[0]) if quotes else {}
         bid = _first(best, "bidP", "bp")
         ask = _first(best, "askP", "ap")
+        bid_quantity = _first(best, "bidQ", "bq")
+        ask_quantity = _first(best, "askQ", "aq")
         details = _mapping(market_ff.get("eFeedDetails"))
         volume = _first(details, "vtt", "volumeTradedToday")
 
@@ -102,6 +104,8 @@ def parse_upstox_v3_message(
                 cumulative_volume=max(0, _as_int(volume)) if volume is not None else None,
                 best_bid=float(bid) if bid is not None else None,
                 best_ask=float(ask) if ask is not None else None,
+                best_bid_quantity=max(0, _as_int(bid_quantity)) if bid_quantity is not None else None,
+                best_ask_quantity=max(0, _as_int(ask_quantity)) if ask_quantity is not None else None,
             ))
         except (TypeError, ValueError):
             continue
@@ -167,6 +171,7 @@ class UpstoxV3MarketDataClient:
         self.connected = False
 
     def _on_error(self, error: Any = None, *_: Any) -> None:
+        self.connected = False
         self.last_error = "Upstox market-data stream reported an error"
         if error is not None:
             self.last_error = f"{self.last_error}: {type(error).__name__}"
@@ -174,6 +179,28 @@ class UpstoxV3MarketDataClient:
     def _on_message(self, message: Any) -> None:
         for tick in parse_upstox_v3_message(message, symbol_by_key=self.symbol_by_key):
             self.on_tick(tick)
+
+    def promote_to_full(self, instrument_keys: list[str]) -> None:
+        """Promote a bounded candidate shortlist to full bid/ask depth mode."""
+        if self._streamer is None or not self.connected:
+            raise UpstoxFeedError("cannot promote instruments while WebSocket is disconnected")
+        keys = sorted(set(instrument_keys))
+        if not keys:
+            return
+        if len(keys) > 2000:
+            raise ValueError("full feed shortlist exceeds Upstox 2,000-instrument limit")
+        unknown = set(keys) - set(self.instrument_keys)
+        if unknown:
+            raise ValueError("cannot promote instrument keys outside the base subscription")
+        self._streamer.change_mode(keys, "full")
+
+    def demote_to_ltpc(self, instrument_keys: list[str]) -> None:
+        """Demote held/expired candidates back to broad LTPC mode."""
+        if self._streamer is None or not self.connected:
+            raise UpstoxFeedError("cannot demote instruments while WebSocket is disconnected")
+        keys = sorted(set(instrument_keys))
+        if keys:
+            self._streamer.change_mode(keys, "ltpc")
 
     def disconnect(self) -> None:
         self.connected = False
