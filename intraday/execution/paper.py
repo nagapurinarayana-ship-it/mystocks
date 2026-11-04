@@ -217,7 +217,10 @@ class PaperExecutionEngine:
         signal, instrument = self.pending
         if bar.symbol != signal.symbol:
             return None
-        if bar.start_time < signal.generated_at:
+        # With only completed 5-minute OHLC bars, never fill at the open of
+        # the bar that began at the signal timestamp: that open happened
+        # before the completed-bar signal was available to the strategy.
+        if bar.start_time <= signal.generated_at:
             return None
         self.pending = None
         if (
