@@ -111,6 +111,7 @@ class PaperPosition:
     stop_price: Decimal
     target_price: Decimal
     entry_fee: Decimal
+    tick_size: Decimal
     opened_at: datetime
     strategy_id: str
     bars_held: int = 0
@@ -157,6 +158,7 @@ class PaperExecutionEngine:
         self._day: object | None = None
         self._day_start_cash = self.cash
         self._daily_net_pnl = ZERO
+        self._overnight_exit_pending = False
         self.max_entry_drift_fraction = _dec(max_entry_drift_fraction, "max_entry_drift_fraction")
         self.max_hold_bars = max_hold_bars
         if not ZERO < self.max_entry_drift_fraction <= Decimal("0.02"):
@@ -192,16 +194,19 @@ class PaperExecutionEngine:
             self._day = day
             self._day_start_cash = self.cash
         elif day != self._day:
-            if self.position is not None:
-                return self._close_position(
-                    bar, bar.open, "overnight_safety_exit", apply_slippage=True
-                )
             self.pending = None
             self._day = day
             self._day_start_cash = self.cash
             self._daily_net_pnl = ZERO
+            self._overnight_exit_pending = self.position is not None
 
         if self.position is not None:
+            if self._overnight_exit_pending and bar.symbol == self.position.symbol:
+                self._overnight_exit_pending = False
+                return self._close_position(
+                    bar, _dec(bar.open, "bar.open"),
+                    "overnight_safety_exit", apply_slippage=True
+                )
             return self._manage_position(bar)
         if self.pending is not None:
             return self._try_entry(bar)
@@ -210,9 +215,17 @@ class PaperExecutionEngine:
     def _try_entry(self, bar: CompletedBar) -> PaperEvent | None:
         assert self.pending is not None
         signal, instrument = self.pending
-        if bar.symbol != signal.symbol or bar.start_time < signal.generated_at:
+        if bar.symbol != signal.symbol:
+            return None
+        if bar.start_time < signal.generated_at:
             return None
         self.pending = None
+        if (
+            bar.start_time.date() != signal.generated_at.date()
+            or (bar.start_time - signal.generated_at).total_seconds() > 300
+        ):
+            self.rejected_entries.append(f"{signal.symbol}:signal_expired_before_next_bar")
+            return PaperEvent("signal_expired", signal.symbol, "Candidate did not receive a next five-minute bar")
 
         reference = _dec(signal.entry_reference, "entry_reference")
         open_price = _dec(bar.open, "bar.open")
@@ -259,6 +272,7 @@ class PaperExecutionEngine:
             stop_price=stop,
             target_price=target,
             entry_fee=entry_fee,
+            tick_size=instrument.tick_size,
             opened_at=bar.start_time,
             strategy_id=signal.strategy_id,
         )
@@ -318,7 +332,10 @@ class PaperExecutionEngine:
         assert position is not None
         exit_price = raw_exit_price
         if apply_slippage:
-            exit_price *= Decimal("1") - self.cost_schedule.slippage_rate
+            exit_price = _floor_tick(
+                exit_price * (Decimal("1") - self.cost_schedule.slippage_rate),
+                position.tick_size,
+            )
         sell_fee = self.cost_schedule.sell_charges(exit_price, position.quantity)
         proceeds = exit_price * position.quantity - sell_fee
         self.cash += proceeds
