@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime
 from decimal import Decimal
+from math import isfinite
 
 
 def require_aware(value: datetime, field: str) -> None:
@@ -24,7 +25,7 @@ class Instrument:
     def __post_init__(self) -> None:
         if not self.symbol or not self.instrument_key:
             raise ValueError("instrument symbol and key are required")
-        if self.tick_size <= 0:
+        if not self.tick_size.is_finite() or self.tick_size <= 0:
             raise ValueError("tick_size must be positive")
         if self.lot_size != 1:
             raise ValueError("cash-equity scanner supports whole-share lot size 1 only")
@@ -47,15 +48,15 @@ class MarketTick:
         require_aware(self.received_at, "received_at")
         if not self.symbol or not self.instrument_key:
             raise ValueError("tick symbol and instrument key are required")
-        if not (self.price > 0):
+        if not isfinite(self.price) or self.price <= 0:
             raise ValueError("tick price must be positive")
         if self.last_trade_quantity < 0:
             raise ValueError("last_trade_quantity cannot be negative")
         if self.cumulative_volume is not None and self.cumulative_volume < 0:
             raise ValueError("cumulative_volume cannot be negative")
-        if self.best_bid is not None and self.best_bid <= 0:
+        if self.best_bid is not None and (not isfinite(self.best_bid) or self.best_bid <= 0):
             raise ValueError("best_bid must be positive")
-        if self.best_ask is not None and self.best_ask <= 0:
+        if self.best_ask is not None and (not isfinite(self.best_ask) or self.best_ask <= 0):
             raise ValueError("best_ask must be positive")
         if self.best_bid is not None and self.best_ask is not None and self.best_bid > self.best_ask:
             raise ValueError("crossed market quote is invalid")
@@ -77,7 +78,7 @@ class CompletedBar:
         require_aware(self.end_time, "end_time")
         if self.end_time <= self.start_time:
             raise ValueError("bar end_time must follow start_time")
-        if min(self.open, self.high, self.low, self.close) <= 0:
+        if not all(isfinite(value) for value in (self.open, self.high, self.low, self.close)) or min(self.open, self.high, self.low, self.close) <= 0:
             raise ValueError("bar prices must be positive")
         if self.high < max(self.open, self.close, self.low):
             raise ValueError("bar high is inconsistent")
@@ -101,7 +102,7 @@ class TradeSignal:
 
     def __post_init__(self) -> None:
         require_aware(self.generated_at, "generated_at")
-        if self.entry_reference <= 0 or self.stop_price <= 0 or self.target_price <= 0:
+        if not all(isfinite(value) for value in (self.entry_reference, self.stop_price, self.target_price, self.volume_ratio, self.score)) or self.entry_reference <= 0 or self.stop_price <= 0 or self.target_price <= 0:
             raise ValueError("signal prices must be positive")
         if not self.stop_price < self.entry_reference < self.target_price:
             raise ValueError("long signal must have stop < entry < target")
