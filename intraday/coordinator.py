@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, time, timedelta
+from zoneinfo import ZoneInfo
 
 from intraday.execution.paper import PaperEvent, PaperExecutionEngine
 from intraday.scanner import IntradayScanner
-from intraday.domain import MarketTick, TradeSignal
+from intraday.domain import CompletedBar, MarketTick, TradeSignal
 from intraday.ledger import PaperLedger
 
 
@@ -33,6 +34,7 @@ class AutonomousPaperCoordinator:
         self.paper_engine = paper_engine
         self.ledger = ledger
         self._depth_status: dict[tuple[str, str, datetime], str] = {}
+        self._session_cutoff_handled = False
 
     def on_tick(self, tick: MarketTick, now: datetime | None = None) -> CoordinatorUpdate:
         accepted = self.scanner.on_tick(tick, now=now)
@@ -54,9 +56,48 @@ class AutonomousPaperCoordinator:
                 for trade in self.paper_engine.trades[previous_trade_count:]:
                     self.ledger.record_trade(trade)
 
+        local_time = tick.exchange_time.astimezone(ZoneInfo("Asia/Kolkata")).time()
+        if local_time >= time(15, 15):
+            cancelled = self.paper_engine.cancel_pending_entry(
+                "No new paper entries after 15:15 IST"
+            )
+            if cancelled is not None:
+                events.append(cancelled)
+                if self.ledger is not None:
+                    self.ledger.record_event(
+                        tick.exchange_time.isoformat(), "INFO",
+                        cancelled.event_type, cancelled.message,
+                    )
+
+        if local_time >= time(15, 25) and self.paper_engine.position is not None:
+            position = self.paper_engine.position
+            if tick.symbol == position.symbol:
+                mark_bar = CompletedBar(
+                    symbol=tick.symbol,
+                    start_time=tick.exchange_time,
+                    end_time=tick.exchange_time + timedelta(microseconds=1),
+                    open=tick.price,
+                    high=tick.price,
+                    low=tick.price,
+                    close=tick.price,
+                    volume=tick.last_trade_quantity,
+                )
+                previous_trade_count = len(self.paper_engine.trades)
+                event = self.paper_engine.force_session_close(mark_bar)
+                if event is not None:
+                    events.append(event)
+                    if self.ledger is not None:
+                        self.ledger.record_event(
+                            tick.exchange_time.isoformat(), "WARNING",
+                            "paper_session_close", event.message,
+                        )
+                if self.ledger is not None and len(self.paper_engine.trades) > previous_trade_count:
+                    for trade in self.paper_engine.trades[previous_trade_count:]:
+                        self.ledger.record_trade(trade)
+
         queued: TradeSignal | None = None
         fresh = self.scanner.feed_is_fresh(now=now)
-        if fresh:
+        if fresh and local_time < time(15, 15):
             # Refresh the scanner's candidate cache using only completed bars.
             self.scanner.opportunities(now=now)
             active_candidates = self.scanner.candidate_signals(now=now)
