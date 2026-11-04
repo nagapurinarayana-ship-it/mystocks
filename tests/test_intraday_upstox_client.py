@@ -136,6 +136,8 @@ def test_connect_sends_ltpc_frame_over_certificate_verified_websocket(monkeypatc
             "Authorization": "Bearer unit-test-token",
         },
         (5, 15),
+        True,
+        False,
     )]
     assert app.ssl_context.verify_mode == ssl.CERT_REQUIRED
     assert app.ssl_context.check_hostname is True
@@ -299,3 +301,27 @@ def test_authorization_rejects_non_success_json_even_if_socket_url_is_present(mo
     client = make_client()
     with pytest.raises(UpstoxFeedError, match="did not return success"):
         client._authorize_websocket_url()
+
+
+
+def test_authorization_refuses_http_redirects_instead_of_forwarding_credentials(monkeypatch):
+    class Redirect:
+        status_code = 302
+        headers = {"Location": "https://unexpected.example/collect"}
+
+    calls = []
+
+    def request(*args, **kwargs):
+        calls.append((args, kwargs))
+        return Redirect()
+
+    monkeypatch.setattr(
+        "intraday.market_data.upstox_v3.requests.get", request
+    )
+    client = make_client()
+    with pytest.raises(UpstoxFeedError, match="HTTP 302"):
+        client._authorize_websocket_url()
+
+    assert len(calls) == 1
+    assert calls[0][1]["verify"] is True
+    assert calls[0][1]["allow_redirects"] is False
