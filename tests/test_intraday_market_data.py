@@ -285,3 +285,38 @@ def test_builder_drops_partial_bar_and_resets_session_context_after_multi_bucket
     assert new_bar.open == 103
     assert new_bar.close == 103
     assert new_bar.volume == 20
+
+
+
+def test_scanner_invalidates_pre_gap_candidates_even_without_paper_coordinator():
+    instrument = make_instrument()
+    scanner = IntradayScanner((instrument,))
+    generated = datetime(2026, 11, 4, 9, 20, tzinfo=IST)
+    signal = vwap_momentum_signal(
+        instrument,
+        make_bars(),
+        session_vwap=100.5,
+    )
+    # Keep the candidate key explicit so the test isolates gap invalidation.
+    from intraday.domain import TradeSignal
+    signal = TradeSignal(
+        "vwap_momentum", "RELIANCE", generated,
+        100, 99, 102, 1.5, 70, "candidate before feed gap",
+    )
+    key = (signal.symbol, signal.strategy_id, signal.generated_at)
+    scanner._candidate_signals[key] = signal
+    scanner._emitted_signals.add(key)
+
+    first = make_tick(
+        when=datetime(2026, 11, 4, 9, 15, 10, tzinfo=IST),
+    )
+    gap = make_tick(
+        when=datetime(2026, 11, 4, 9, 30, 1, tzinfo=IST),
+        price=101,
+        qty=5,
+    )
+    assert scanner.on_tick(first, now=first.received_at)
+    assert scanner.on_tick(gap, now=gap.received_at)
+    assert key not in scanner._candidate_signals
+    assert key not in scanner._emitted_signals
+    assert scanner.candidate_signals(now=gap.received_at) == ()
