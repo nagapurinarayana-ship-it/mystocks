@@ -201,3 +201,40 @@ def test_scanner_requires_fresh_feed_and_rejects_unknown_or_mismatched_instrumen
     good = make_tick()
     assert scanner.on_tick(good, now=now) is True
     assert scanner.feed_is_fresh(now=now) is True
+
+
+
+def test_full_feed_parser_extracts_best_bid_ask_and_quantities():
+    from intraday.market_data.upstox_v3 import parse_upstox_v3_message
+
+    at = datetime(2026, 11, 4, 10, 0, tzinfo=IST)
+    msg = {
+        "feeds": {
+            "NSE_EQ|INE002A01018": {
+                "fullFeed": {
+                    "marketFF": {
+                        "ltpc": {
+                            "ltp": 100.0,
+                            "ltt": str(int(at.timestamp() * 1000)),
+                            "ltq": "25",
+                        },
+                        "marketLevel": {
+                            "bidAskQuote": [
+                                {"bidP": 99.95, "bidQ": "120", "askP": 100.05, "askQ": "80"}
+                            ]
+                        },
+                    }
+                }
+            }
+        }
+    }
+    parsed = parse_upstox_v3_message(
+        msg,
+        received_at=at,
+        symbol_by_key={"NSE_EQ|INE002A01018": "RELIANCE"},
+    )
+    assert len(parsed) == 1
+    assert parsed[0].best_bid == 99.95
+    assert parsed[0].best_ask == 100.05
+    assert parsed[0].best_bid_quantity == 120
+    assert parsed[0].best_ask_quantity == 80
