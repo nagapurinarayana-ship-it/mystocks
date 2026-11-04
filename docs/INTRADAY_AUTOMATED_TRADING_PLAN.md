@@ -2,7 +2,7 @@
 
 ## Product decision
 
-Build toward eventual live automated trading for Indian equities, while keeping every live trading capability disabled until the account owner explicitly authorises it. Broker selection is intentionally deferred. Preserve the existing long-term watchlist and short-term daily research engine; this is a separate capability.
+Build a **live NSE market radar with assisted/manual execution** as the first production target. Real-time market-data ingestion, scanning, alerts, position monitoring and paper trading are in scope. Broker order placement is technically possible later, but is deliberately out of scope for the ₹1,000 initial-capital release; it remains disabled until capital, broker requirements, static-IP infrastructure, compliance and validation justify a separate release. Preserve the existing long-term watchlist and short-term daily research engine; this is a separate capability.
 
 ## Non-negotiable safety boundary
 
@@ -144,3 +144,66 @@ Before any live API trading, obtain broker confirmation of eligibility and requi
 - Starting external capital: ₹1,000 only; retained realised net profits may compound, but no external top-ups are assumed.
 - Paper guardrails: 0.5% planned risk per trade, 1% daily loss limit including estimated costs, and one open position maximum; these must be tested and may result in no-trade outcomes.
 - Recurring data/hosting spend target: ₹0 from the initial capital; any required paid compliance infrastructure blocks live activation until separately authorised.
+
+
+## Recommended v1 design for ₹1,000: live radar, manual execution
+
+### Decision
+
+Do not build an always-on auto-order bot for the first release. Build a real-time market scanner and trade-assistance system that:
+1. Receives live NSE cash-market updates during market hours.
+2. Scans the eligible universe and surfaces up to three explainable opportunities.
+3. Shows a conditional entry zone, invalidation, stop, targets, spread/liquidity, estimated costs, risk in rupees, and the exact data timestamp.
+4. Sends alerts when an opportunity becomes valid, changes materially, or is invalidated.
+5. Tracks a paper ledger and optionally monitors a position entered manually by the user.
+6. Never submits, modifies, cancels or squares off a real broker order in v1.
+
+This gives the user live information and automated analysis without exposing a ₹1,000 account to unattended order, token-expiry, connectivity or stop-execution failures.
+
+### Initial market-data provider candidate
+
+Evaluate **Upstox Market Data Feed V3 as the first adapter candidate**, not as a mandatory broker switch:
+- Upstox currently states that its trading and data APIs are free of API subscription charges.
+- Its V3 WebSocket feed provides real-time LTPC updates and richer full-feed market depth.
+- Documented normal limits include up to 5,000 LTPC keys when using that category alone, and up to 1,500 combined keys when mixing subscription categories; full feed has an individual limit of 2,000. Use LTPC for broad discovery, then promote a smaller candidate set to full depth rather than subscribing the entire universe to depth.
+- Its V3 historical candles support minute intervals from 1 through 300; minute history is available from January 2022 with a maximum one-month retrieval window for 1–15 minute intervals.
+- A free API is not an SLA and does not remove brokerage, statutory charges, connectivity, or infrastructure costs. Measure feed gaps, latency and reconnect behaviour in paper operation.
+- Do not open or switch a broker account solely because of this document. First check whether the user's existing broker already provides an adequate free live-data API.
+
+Zerodha's currently published retail Kite Connect pricing is ₹500 per month for real-time WebSocket and historical data; its free personal tier does not include either. That is unsuitable for a ₹1,000 starting account unless the user already has a separately justified subscription.
+
+### Reliable ingestion and scan design
+
+- At market open, load the latest broker instrument master; reconcile NSE equity series, status, symbol/token mapping, tick size, price bands and corporate actions. Preserve a row and exclusion reason for every discovered symbol.
+- Broad scan: subscribe to LTPC for eligible instruments; do not poll individual quote endpoints repeatedly.
+- Candidate scan: compute 1-minute and 5-minute bars with timestamped tick data, and reconcile bars with the provider's candle endpoint. Use 15-minute confirmation and daily trend context to avoid reacting to every tick.
+- Candidate enrichment: subscribe to full feed (best bid/ask and available market depth) only for the shortlist and held positions.
+- Filters: exclude stale or halted data, surveillance/price-band risks, weak turnover, wide spreads, thin depth, and symbols whose one-share notional exceeds available cash. Never select penny stocks merely because the share price is low.
+- First strategies: keep it deliberately simple—(1) daily/15-minute trend plus relative-strength pullback, and (2) opening-range/VWAP continuation with liquidity and volume confirmation. Keep them independently measured; do not blend them into an opaque model.
+- Rank at most three. "No trade" is a valid daily outcome.
+- Recompute signals only on completed candles; show live LTP separately. Do not treat an unfinished candle as a confirmed signal.
+- On disconnect, stale timestamps, market-status mismatch, instrument-master mismatch, or candle reconciliation failure, show feed degraded and suppress new opportunities. Reconnect with bounded backoff, resubscribe, obtain a fresh snapshot, reconcile candle gaps, then mark healthy.
+- Do not rely on GitHub Actions as a live feed process. Run one persistent market-hours worker on an available always-on device. With a zero-recurring-cost target, start on a user's own PC; the dashboard must clearly show offline whenever that process is not running. A cloud worker/VPS/static egress IP is a separate cost decision.
+
+### ₹1,000 capital economics
+
+- Do not allocate any of the ₹1,000 to monthly market-data subscriptions, VPS or static-IP infrastructure.
+- Upstox's published equity intraday brokerage is ₹20 per executed order or 0.1% of order value, whichever is lower, with statutory charges added. At ₹1,000 notional, brokerage alone is about ₹1 per side; taxes/fees also apply. Actual charges must be recalculated from the broker's current tariff and actual fills.
+- Frequent delivery trading is particularly uneconomic on a small account where the broker charges per order and DP charges on delivery sells. Compare the selected broker's exact charges before enabling any trade workflow.
+- Spread and slippage are additional real costs. A candidate whose expected move cannot clear all-in costs is rejected.
+- Cash-only whole shares; one open position maximum. No leverage, MTF, F&O, short selling, averaging down, or low-liquidity price chasing.
+- The existing conservative paper limits (0.5% planned risk per trade; 1% daily loss limit; one open position) are hard research guardrails, not a claim that every ₹1,000 portfolio can place a valid trade. If one share cannot fit the risk budget after estimated costs, show no trade.
+- Net P&L is only recognised after actual charges; unrealised gain is not withdrawable profit. No automated cash movement.
+
+### Future auto-ordering gate
+
+If the user later requests a separate live-execution release, first confirm the chosen broker and exact account/API terms. NSE/SEBI retail-algo requirements and broker procedures apply. Current broker documentation notes registered static-IP controls for API order traffic; Upstox documents user-level static-IP registration, and Zerodha states static IP is required for API order placement from 1 April 2026. WebSocket market-data access can have different IP requirements from order placement.
+
+Before any order endpoint is implemented, require:
+- Broker-confirmed Client Direct API/algo eligibility and exchange registration/tagging requirements.
+- Registered static IP and reliable always-on execution host, with a documented cost that is not funded out of the ₹1,000 trading capital.
+- Fresh broker authentication/session lifecycle, secret isolation and audit trail.
+- Verified order-state reconciliation, idempotency, partial fills, rejects, circuit/price-band handling and broker-side protective order behaviour.
+- At least 30 market sessions of paper operation and independent review of net outcomes, drawdown and operational failure tests.
+- A separate explicit authorisation step by the user. The execution gate must remain closed until this separate change is approved.
+
