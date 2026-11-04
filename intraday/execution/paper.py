@@ -95,7 +95,8 @@ class FeeSchedule:
 @dataclass(frozen=True, slots=True)
 class PaperEvent:
     event_type: Literal[
-        "entry_filled", "exit_filled", "entry_rejected", "signal_expired", "risk_halt"
+        "entry_filled", "exit_filled", "entry_and_exit_same_bar",
+        "entry_rejected", "signal_expired", "risk_halt"
     ]
     symbol: str
     message: str
@@ -279,8 +280,36 @@ class PaperExecutionEngine:
             opened_at=bar.start_time,
             strategy_id=signal.strategy_id,
         )
+
+        # The eligible entry bar is only processed once it is complete. Its
+        # high/low therefore must be checked; otherwise a stop/target hit in
+        # the entry bar would be silently ignored and the backtest would bias
+        # results upward.
+        hit_stop = _dec(bar.low, "bar.low") <= stop
+        hit_target = _dec(bar.high, "bar.high") >= target
+        if hit_stop or hit_target:
+            if hit_stop:
+                reason = "entry_bar_stop_first" if hit_target else "entry_bar_stop"
+                raw_exit = stop
+                adverse = True
+            else:
+                reason = "entry_bar_profit_target"
+                raw_exit = target
+                adverse = False
+            exit_event = self._close_position(
+                bar, raw_exit, reason, apply_slippage=adverse
+            )
+            return PaperEvent(
+                "entry_and_exit_same_bar",
+                signal.symbol,
+                f"Paper entry and exit occurred within the same 5-minute bar: {reason}; "
+                f"net P&L ₹{self.trades[-1].net_pnl:.2f}",
+                quantity=best,
+                price=exit_event.price,
+            )
+
         return PaperEvent(
-            "entry_filled", signal.symbol, "Paper entry filled at next-bar open with adverse slippage",
+            "entry_filled", signal.symbol, "Paper entry filled at eligible next-bar open with adverse slippage",
             quantity=best, price=entry_fill,
         )
 
