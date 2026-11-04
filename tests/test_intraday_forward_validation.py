@@ -25,7 +25,7 @@ def simulate_full_healthy_session(tracker):
 
 
 def test_full_day_healthy_capture_qualifies_as_a_data_session_not_profitability():
-    tracker = ForwardSessionTracker(at_ist(9, 15))
+    tracker = ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled=True)
     tracker.record_tick()
     tracker.record_signal()
     tracker.record_closed_trade()
@@ -43,7 +43,7 @@ def test_full_day_healthy_capture_qualifies_as_a_data_session_not_profitability(
 
 
 def test_late_start_cannot_count_as_a_full_forward_validation_session():
-    tracker = ForwardSessionTracker(at_ist(10, 0))
+    tracker = ForwardSessionTracker(at_ist(10, 0), paper_engine_enabled=True)
     tracker.record_tick()
     end = at_ist(15, 30)
     cursor = at_ist(10, 0)
@@ -58,7 +58,7 @@ def test_late_start_cannot_count_as_a_full_forward_validation_session():
 
 
 def test_stale_or_disconnected_feed_time_prevents_session_qualification():
-    tracker = ForwardSessionTracker(at_ist(9, 15))
+    tracker = ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled=True)
     tracker.record_tick()
     start, end = at_ist(9, 15), at_ist(15, 30)
     cursor = start
@@ -75,7 +75,7 @@ def test_stale_or_disconnected_feed_time_prevents_session_qualification():
 
 
 def test_monitoring_pauses_are_not_counted_as_healthy_coverage():
-    tracker = ForwardSessionTracker(at_ist(9, 15))
+    tracker = ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled=True)
     tracker.record_tick()
     start, end = at_ist(9, 15), at_ist(15, 30)
     cursor = start
@@ -94,8 +94,18 @@ def test_monitoring_pauses_are_not_counted_as_healthy_coverage():
     assert result["qualification_criteria"]["no_more_than_five_loop_gaps"] is False
 
 
+def test_paper_engine_disabled_means_feed_capture_does_not_count_as_paper_validation():
+    tracker = ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled=False)
+    tracker.record_tick()
+    simulate_full_healthy_session(tracker)
+    result = tracker.finish(at_ist(15, 30))
+
+    assert result["status"] == "incomplete"
+    assert result["qualification_criteria"]["paper_engine_enabled_with_explicit_fees"] is False
+
+
 def test_paper_risk_halt_prevents_a_session_from_being_marked_qualified():
-    tracker = ForwardSessionTracker(at_ist(9, 15))
+    tracker = ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled=True)
     tracker.record_tick()
     tracker.record_risk_halt()
     simulate_full_healthy_session(tracker)
@@ -107,7 +117,7 @@ def test_paper_risk_halt_prevents_a_session_from_being_marked_qualified():
 
 
 def test_session_finish_requires_aware_datetime_and_after_close():
-    tracker = ForwardSessionTracker(at_ist(9, 15))
+    tracker = ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled=True)
     with pytest.raises(ValueError, match="timezone-aware"):
         tracker.sample(datetime(2026, 11, 4, 10, 0), "healthy")
     with pytest.raises(ValueError, match="before 15:30"):
@@ -115,7 +125,7 @@ def test_session_finish_requires_aware_datetime_and_after_close():
 
 
 def test_session_snapshot_can_be_restored_and_marked_interrupted():
-    tracker = ForwardSessionTracker(at_ist(9, 15))
+    tracker = ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled=True)
     tracker.record_tick()
     tracker.sample(at_ist(9, 15, 1), "healthy")
     snapshot = tracker.snapshot()
