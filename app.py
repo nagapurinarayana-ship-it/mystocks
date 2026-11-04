@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 from typing import Any
 
 import pandas as pd
@@ -438,6 +439,48 @@ def render_intraday_radar() -> None:
     else:
         st.dataframe(trades, use_container_width=True, hide_index=True)
 
+    st.subheader("Historical strategy validation")
+    report_dir = Path("data/intraday-backtests")
+    report_files = sorted(
+        report_dir.glob("*.json"),
+        key=lambda item: item.stat().st_mtime,
+        reverse=True,
+    ) if report_dir.exists() else []
+    if not report_files:
+        st.info(
+            "No historical backtest report exists yet. Run the historical backtest CLI after "
+            "configuring an explicit selected-broker fee schedule."
+        )
+    else:
+        try:
+            backtest_payload = json.loads(report_files[0].read_text(encoding="utf-8"))
+            backtest = backtest_payload.get("summary", {})
+            b1, b2, b3, b4, b5 = st.columns(5)
+            b1.metric("Backtest trades", f"{int(backtest.get('trades', 0)):,}")
+            b2.metric("Net P&L", f"₹{float(backtest.get('net_pnl', 0)):,.2f}")
+            b3.metric("Charges", f"₹{float(backtest.get('charges', 0)):,.2f}")
+            b4.metric("Max drawdown", f"{float(backtest.get('max_drawdown_pct', 0)):.2f}%")
+            b5.metric("Win rate", f"{float(backtest.get('win_rate', 0)) * 100:.1f}%")
+            st.caption(
+                f"{backtest.get('symbol', '—')} · {backtest.get('strategy_id', '—')} · "
+                f"{backtest.get('from_date', '—')} to {backtest.get('to_date', '—')} · "
+                f"VWAP method: {backtest.get('vwap_method', '—')}"
+            )
+            history_quality = backtest_payload.get("history_quality", {})
+            st.caption(
+                f"Historical bars: {history_quality.get('valid_bars', '—')} · "
+                f"invalid rows: {history_quality.get('invalid_rows', '—')} · "
+                f"duplicates: {history_quality.get('duplicate_rows', '—')}"
+            )
+            with st.expander("Backtest execution assumptions"):
+                for item in backtest.get("execution_assumptions", []):
+                    st.markdown(f"- {item}")
+            backtest_trades = pd.DataFrame(backtest_payload.get("trades", []))
+            if not backtest_trades.empty:
+                st.dataframe(backtest_trades, use_container_width=True, hide_index=True)
+        except Exception as exc:
+            st.error(f"The latest historical backtest report could not be read: {exc}")
+
     if st.button("Refresh intraday dashboard", use_container_width=True):
         st.rerun()
 
@@ -450,7 +493,13 @@ def render_intraday_radar() -> None:
 4. From the repository root, run `python scripts/run_intraday_radar.py`.
 5. Keep that process running during market hours. This Streamlit page reads the local SQLite ledger written by that process.
 
-The scanner currently records market-feed status and candidate signals. Automatic paper fills require a broker-specific fee schedule and a forward-tested fill model. This page does not start a background service or place orders.
+For historical research, configure all eight `MYSTOCKS_PAPER_FEE_*` variables from the selected broker's current published tariff and a clearly stated slippage assumption. Rates are decimal proportions; `SLIPPAGE_BPS` is basis points. Then run:
+
+`python scripts/run_intraday_backtest.py --symbol RELIANCE --from-date YYYY-MM-DD --to-date YYYY-MM-DD --strategy vwap_momentum`
+
+The backtest writes a JSON report under `data/intraday-backtests`. It uses five-minute OHLCV candles and a typical-price VWAP proxy, not trade-level VWAP or a full market-impact/queue simulation. Do not interpret historical results as a promise of future returns.
+
+The live scanner and autonomous paper engine have separate controls. The runner enables paper fills only when a complete broker-specific fee schedule is supplied. It never places broker orders. This page does not start a background service.
             """
         )
 
