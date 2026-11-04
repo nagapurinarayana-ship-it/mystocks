@@ -60,6 +60,14 @@ CREATE TABLE IF NOT EXISTS intraday_paper_state (
     state_json TEXT NOT NULL,
     updated_at TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS intraday_forward_validation (
+    session_date TEXT PRIMARY KEY,
+    status TEXT NOT NULL,
+    snapshot_json TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS ix_intraday_forward_validation_status
+    ON intraday_forward_validation(status, session_date DESC);
 """
 
 
@@ -219,6 +227,138 @@ class PaperLedger:
                 "SELECT updated_at FROM intraday_paper_state WHERE id = 1"
             ).fetchone()
             return str(row["updated_at"]) if row else None
+
+    def save_forward_session(self, snapshot: dict[str, Any], updated_at: str) -> None:
+        """Persist one date-keyed forward-validation session snapshot."""
+        if not isinstance(snapshot, dict):
+            raise ValueError("forward session snapshot must be a dictionary")
+        session_date = snapshot.get("session_date")
+        status = snapshot.get("status")
+        if not isinstance(session_date, str) or len(session_date) != 10:
+            raise ValueError("forward session date must be YYYY-MM-DD")
+        if status not in {"in_progress", "qualified", "incomplete", "interrupted"}:
+            raise ValueError("forward session status is invalid")
+        try:
+            encoded = json.dumps(
+                snapshot, separators=(",", ":"), sort_keys=True, allow_nan=False
+            )
+        except (TypeError, ValueError) as exc:
+            raise ValueError("forward session snapshot is not valid JSON data") from exc
+        with self._lock, self._connection:
+            self._connection.execute(
+                """
+                INSERT INTO intraday_forward_validation
+                    (session_date, status, snapshot_json, updated_at)
+                VALUES (?, ?, ?, ?)
+                ON CONFLICT(session_date) DO UPDATE SET
+                    status = excluded.status,
+                    snapshot_json = excluded.snapshot_json,
+                    updated_at = excluded.updated_at
+                """,
+                (session_date, status, encoded, updated_at),
+            )
+
+    def load_forward_session(self, session_date: str) -> dict[str, Any] | None:
+        with self._lock:
+            row = self._connection.execute(
+                "SELECT snapshot_json FROM intraday_forward_validation WHERE session_date = ?",
+                (session_date,),
+            ).fetchone()
+            if row is None:
+                return None
+            try:
+                snapshot = json.loads(row["snapshot_json"])
+            except (TypeError, json.JSONDecodeError) as exc:
+                raise ValueError("saved forward-validation session is corrupt") from exc
+            if not isinstance(snapshot, dict):
+                raise ValueError("saved forward-validation session has an invalid shape")
+            return snapshot
+
+    def forward_sessions(self, limit: int = 100) -> list[dict[str, Any]]:
+        if not 1 <= limit <= 1000:
+            raise ValueError("limit must be between 1 and 1000")
+        with self._lock:
+            rows = self._connection.execute(
+                """
+                SELECT snapshot_json FROM intraday_forward_validation
+                ORDER BY session_date DESC LIMIT ?
+                """,
+                (limit,),
+            ).fetchall()
+        result = []
+        for row in rows:
+            try:
+                snapshot = json.loads(row["snapshot_json"])
+            except (TypeError, json.JSONDecodeError) as exc:
+                raise ValueError("saved forward-validation session is corrupt") from exc
+            if not isinstance(snapshot, dict):
+                raise ValueError("saved forward-validation session has an invalid shape")
+            result.append(snapshot)
+        return result
+
+    def forward_validation_summary(self) -> dict[str, int]:
+        with self._lock:
+            rows = self._connection.execute(
+                """
+                SELECT status, COUNT(*) AS count
+                FROM intraday_forward_validation
+                GROUP BY status
+                """
+            ).fetchall()
+        counts = {
+            "total_sessions": 0,
+            "qualified_sessions": 0,
+            "incomplete_sessions": 0,
+            "interrupted_sessions": 0,
+            "in_progress_sessions": 0,
+        }
+        for row in rows:
+            status = str(row["status"])
+            count = int(row["count"])
+            counts["total_sessions"] += count
+            key = {
+                "qualified": "qualified_sessions",
+                "incomplete": "incomplete_sessions",
+                "interrupted": "interrupted_sessions",
+                "in_progress": "in_progress_sessions",
+            }.get(status)
+            if key:
+                counts[key] = count
+        return counts
+
+    def interrupt_open_forward_sessions(self, occurred_at: str) -> int:
+        """Mark sessions left open by a previous process as interrupted."""
+        with self._lock, self._connection:
+            rows = self._connection.execute(
+                """
+                SELECT session_date, snapshot_json
+                FROM intraday_forward_validation
+                WHERE status = 'in_progress'
+                """
+            ).fetchall()
+            for row in rows:
+                try:
+                    snapshot = json.loads(row["snapshot_json"])
+                except (TypeError, json.JSONDecodeError) as exc:
+                    raise ValueError("saved forward-validation session is corrupt") from exc
+                if not isinstance(snapshot, dict):
+                    raise ValueError("saved forward-validation session has an invalid shape")
+                snapshot["status"] = "interrupted"
+                snapshot["interruption_reason"] = (
+                    "scanner process restarted before this market session was finalized"
+                )
+                encoded = json.dumps(
+                    snapshot, separators=(",", ":"), sort_keys=True, allow_nan=False
+                )
+                self._connection.execute(
+                    """
+                    UPDATE intraday_forward_validation
+                    SET status = 'interrupted', snapshot_json = ?, updated_at = ?
+                    WHERE session_date = ?
+                    """,
+                    (encoded, occurred_at, row["session_date"]),
+                )
+            return len(rows)
 
     def paper_performance(self) -> dict[str, Any]:
         with self._lock:
