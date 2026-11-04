@@ -21,6 +21,7 @@ def test_paper_account_state_persists_across_ledger_reopen(tmp_path):
         "day": "2026-11-04",
         "day_start_cash": "1000",
         "daily_net_pnl": "-3.50",
+        "realised_net_pnl": "15.25",
         "overnight_exit_pending": False,
         "position": None,
         "pending": None,
