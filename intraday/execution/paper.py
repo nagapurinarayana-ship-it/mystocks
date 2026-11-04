@@ -161,6 +161,7 @@ class PaperExecutionEngine:
         self._daily_net_pnl = ZERO
         self._realised_net_pnl = ZERO
         self._overnight_exit_pending = False
+        self.halted_reason: str | None = None
         self.max_entry_drift_fraction = _dec(max_entry_drift_fraction, "max_entry_drift_fraction")
         self.max_hold_bars = max_hold_bars
         if not ZERO < self.max_entry_drift_fraction <= Decimal("0.02"):
@@ -224,7 +225,7 @@ class PaperExecutionEngine:
             }
 
         return {
-            "version": 2,
+            "version": 3,
             "fee_schedule": {
                 "brokerage_rate": str(self.cost_schedule.brokerage_rate),
                 "brokerage_cap_per_order": str(self.cost_schedule.brokerage_cap_per_order),
@@ -241,13 +242,14 @@ class PaperExecutionEngine:
             "daily_net_pnl": str(self._daily_net_pnl),
             "realised_net_pnl": str(self._realised_net_pnl),
             "overnight_exit_pending": bool(self._overnight_exit_pending),
+            "halted_reason": self.halted_reason,
             "position": position,
             "pending": pending,
         }
 
     def restore_state(self, state: dict) -> None:
         """Restore validated state. Any corruption raises instead of resetting equity."""
-        if not isinstance(state, dict) or state.get("version") != 2:
+        if not isinstance(state, dict) or state.get("version") != 3:
             raise ValueError("unsupported or invalid paper-state version")
 
         def parse_aware(value: str, field: str) -> datetime:
@@ -337,6 +339,12 @@ class PaperExecutionEngine:
         restored_day = date.fromisoformat(day_value) if day_value else None
         if state.get("overnight_exit_pending") and position is None:
             raise ValueError("overnight exit flag requires an open position")
+        halted_reason = state.get("halted_reason")
+        if halted_reason is not None and (
+            not isinstance(halted_reason, str) or not halted_reason.strip()
+            or len(halted_reason) > 500
+        ):
+            raise ValueError("saved paper halt reason is invalid")
 
         # Assign only after all fields have passed validation.
         self.cash = cash
@@ -347,10 +355,13 @@ class PaperExecutionEngine:
         self._daily_net_pnl = daily_net_pnl
         self._realised_net_pnl = realised_net_pnl
         self._overnight_exit_pending = bool(state.get("overnight_exit_pending", False))
+        self.halted_reason = halted_reason
         self.trades.clear()
         self.rejected_entries.clear()
 
     def submit_signal(self, signal: TradeSignal, instrument: Instrument) -> bool:
+        if self.halted_reason is not None:
+            return False
         if self.position is not None or self.pending is not None:
             return False
         if signal.symbol != instrument.symbol or instrument.lot_size != 1:
@@ -361,6 +372,8 @@ class PaperExecutionEngine:
         return True
 
     def on_bar(self, bar: CompletedBar) -> PaperEvent | None:
+        if self.halted_reason is not None:
+            return None
         day = bar.end_time.date()
         if self._day is None:
             self._day = day
@@ -485,6 +498,26 @@ class PaperExecutionEngine:
         return PaperEvent(
             "entry_filled", signal.symbol, "Paper entry filled at eligible next-bar open with adverse slippage",
             quantity=best, price=entry_fill,
+        )
+
+    def halt(self, reason: str) -> PaperEvent:
+        """Freeze paper execution while preserving any unresolved open position."""
+        cleaned = " ".join(str(reason).split())[:500]
+        if not cleaned:
+            cleaned = "Paper execution paused pending operator review"
+        self.halted_reason = cleaned
+        symbol = (
+            self.position.symbol if self.position is not None
+            else self.pending[0].symbol if self.pending is not None
+            else "SYSTEM"
+        )
+        self.pending = None
+        return PaperEvent(
+            "risk_halt",
+            symbol,
+            f"Paper execution halted: {cleaned}",
+            quantity=self.position.quantity if self.position is not None else 0,
+            price=self.position.entry_price if self.position is not None else None,
         )
 
     def cancel_pending_entry(self, reason: str = "entry window closed") -> PaperEvent | None:
