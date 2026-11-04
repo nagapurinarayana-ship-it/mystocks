@@ -378,6 +378,12 @@ def render_intraday_radar() -> None:
         performance = {"trades": 0, "realised_net_pnl": 0.0, "wins": 0, "losses": 0, "charges": 0.0}
         feed_event = None
         paper_state = None
+        forward_summary = {
+            "total_sessions": 0, "qualified_sessions": 0,
+            "incomplete_sessions": 0, "interrupted_sessions": 0,
+            "in_progress_sessions": 0,
+        }
+        forward_sessions = []
     else:
         try:
             with PaperLedger(database) as ledger:
@@ -386,6 +392,8 @@ def render_intraday_radar() -> None:
                 performance = ledger.paper_performance()
                 feed_event = ledger.latest_feed_event()
                 paper_state = ledger.load_paper_state()
+                forward_summary = ledger.forward_validation_summary()
+                forward_sessions = ledger.forward_sessions(30)
         except Exception as exc:
             st.error(f"Could not read the intraday ledger: {exc}")
             return
@@ -409,6 +417,35 @@ def render_intraday_radar() -> None:
             )
         else:
             st.info(f"Feed status: {feed_event['message']} · {feed_event['occurred_at']}")
+
+    st.subheader("Forward paper-validation progress")
+    qualified_sessions = int(forward_summary["qualified_sessions"])
+    st.metric("Qualified full sessions", f"{qualified_sessions} / 30")
+    st.progress(min(1.0, qualified_sessions / 30.0))
+    st.caption(
+        "A session counts only when monitoring starts by 09:16 IST, reaches 15:30 IST, "
+        "records at least 98% observation coverage and 98% healthy-feed time, has no more "
+        "than five monitoring-loop gaps, includes accepted market ticks and records no "
+        "paper risk halt. This is a data-quality gate, not proof of strategy profitability."
+    )
+    if forward_sessions:
+        forward_display = pd.DataFrame(forward_sessions)
+        forward_columns = [
+            "session_date", "status", "coverage_ratio", "healthy_ratio",
+            "accepted_ticks", "discovered_signals", "closed_paper_trades",
+            "risk_halts", "loop_gap_count",
+        ]
+        visible_columns = [name for name in forward_columns if name in forward_display.columns]
+        if visible_columns:
+            forward_display = forward_display[visible_columns].copy()
+            for column in ("coverage_ratio", "healthy_ratio"):
+                if column in forward_display.columns:
+                    forward_display[column] = forward_display[column].map(
+                        lambda value: f"{float(value):.1%}"
+                    )
+            st.dataframe(forward_display, use_container_width=True, hide_index=True)
+    else:
+        st.write("No forward-validation sessions have been recorded yet.")
 
     c1, c2, c3, c4, c5 = st.columns(5)
     c1.metric("Signals recorded", f"{len(signals):,}")
