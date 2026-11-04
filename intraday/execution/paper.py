@@ -281,6 +281,13 @@ class PaperExecutionEngine:
             quantity=best, price=entry_fill,
         )
 
+    def cancel_pending_entry(self, reason: str = "entry window closed") -> PaperEvent | None:
+        if self.pending is None:
+            return None
+        signal, _instrument = self.pending
+        self.pending = None
+        return PaperEvent("signal_expired", signal.symbol, reason)
+
     def force_session_close(self, bar: CompletedBar) -> PaperEvent | None:
         """Close any paper position and cancel a pending entry before session end."""
         self.pending = None
