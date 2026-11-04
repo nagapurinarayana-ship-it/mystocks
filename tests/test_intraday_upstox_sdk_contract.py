@@ -6,5 +6,5 @@ def test_installed_upstox_sdk_exposes_required_market_data_v3_methods():
     assert hasattr(upstox_client, "MarketDataStreamerV3")
 
     streamer = upstox_client.MarketDataStreamerV3
-    for method in ("connect", "disconnect", "on", "auto_reconnect"):
+    for method in ("connect", "disconnect", "on", "auto_reconnect", "change_mode"):
         assert callable(getattr(streamer, method, None)), method
