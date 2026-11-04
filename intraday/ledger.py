@@ -128,11 +128,15 @@ class RuntimeLease:
 
     def _heartbeat_loop(self) -> None:
         while not self._stop.wait(self.heartbeat_seconds):
-            renewed = self.ledger.renew_runtime_lease(
-                self.lease_name,
-                self.owner_id,
-                now=datetime.now(timezone.utc),
-            )
+            try:
+                renewed = self.ledger.renew_runtime_lease(
+                    self.lease_name,
+                    self.owner_id,
+                    now=datetime.now(timezone.utc),
+                )
+            except Exception:
+                self._lost.set()
+                return
             if not renewed:
                 self._lost.set()
                 return
