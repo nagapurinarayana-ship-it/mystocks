@@ -241,3 +241,47 @@ def test_full_feed_parser_extracts_best_bid_ask_and_quantities():
     assert parsed[0].best_ask_quantity == 80
     assert parsed[0].upper_circuit_limit == 110.0
     assert parsed[0].lower_circuit_limit == 90.0
+
+
+
+def test_builder_drops_partial_bar_and_resets_session_context_after_multi_bucket_gap():
+    builder = FiveMinuteBarBuilder()
+    first = make_tick(
+        when=datetime(2026, 11, 4, 9, 15, 10, tzinfo=IST),
+        price=100,
+        qty=10,
+    )
+    first_bar_end = make_tick(
+        when=datetime(2026, 11, 4, 9, 20, 1, tzinfo=IST),
+        price=101,
+        qty=5,
+    )
+    gap_tick = make_tick(
+        when=datetime(2026, 11, 4, 9, 30, 1, tzinfo=IST),
+        price=103,
+        qty=20,
+    )
+
+    assert builder.ingest(first) is None
+    completed = builder.ingest(first_bar_end)
+    assert completed is not None
+    assert builder.session_vwap("RELIANCE") == 100
+    assert len(builder.bars("RELIANCE")) == 1
+
+    # The 09:20 partial working bar is not treated as complete at 09:30.
+    assert builder.ingest(gap_tick) is None
+    assert builder.discontinuity_count("RELIANCE") == 1
+    assert builder.bars("RELIANCE") == ()
+    assert builder.session_vwap("RELIANCE") is None
+
+    next_bucket = make_tick(
+        when=datetime(2026, 11, 4, 9, 35, 1, tzinfo=IST),
+        price=103.5,
+        qty=10,
+    )
+    new_bar = builder.ingest(next_bucket)
+    assert new_bar is not None
+    assert new_bar.start_time.minute == 30
+    assert new_bar.open == 103
+    assert new_bar.close == 103
+    assert new_bar.volume == 20
