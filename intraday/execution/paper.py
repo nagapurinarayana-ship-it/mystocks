@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime
-from decimal import Decimal, ROUND_FLOOR
+from decimal import Decimal, ROUND_CEILING, ROUND_FLOOR
 from typing import Literal
 
 from intraday.config import DEFAULT_CAPITAL_POLICY, CapitalPolicy
@@ -17,6 +17,14 @@ from intraday.domain import CompletedBar, Instrument, TradeSignal
 
 ZERO = Decimal("0")
 TEN_THOUSAND = Decimal("10000")
+
+
+def _floor_tick(price: Decimal, tick_size: Decimal) -> Decimal:
+    return (price / tick_size).to_integral_value(rounding=ROUND_FLOOR) * tick_size
+
+
+def _ceil_tick(price: Decimal, tick_size: Decimal) -> Decimal:
+    return (price / tick_size).to_integral_value(rounding=ROUND_CEILING) * tick_size
 
 
 def _dec(value: Decimal | int | float | str, field: str) -> Decimal:
@@ -49,6 +57,7 @@ class FeeSchedule:
             "stt_sell_rate", "stamp_buy_rate", "slippage_bps",
         ):
             value = _dec(getattr(self, name), name)
+            object.__setattr__(self, name, value)
             if value < ZERO:
                 raise ValueError(f"{name} cannot be negative")
         if self.brokerage_cap_per_order <= ZERO:
@@ -207,16 +216,16 @@ class PaperExecutionEngine:
 
         reference = _dec(signal.entry_reference, "entry_reference")
         open_price = _dec(bar.open, "bar.open")
-        stop = _dec(signal.stop_price, "stop_price")
-        target = _dec(signal.target_price, "target_price")
+        stop = _floor_tick(_dec(signal.stop_price, "stop_price"), instrument.tick_size)
+        target = _ceil_tick(_dec(signal.target_price, "target_price"), instrument.tick_size)
         drift = abs(open_price - reference) / reference
         if drift > self.max_entry_drift_fraction or open_price <= stop or open_price >= target:
             self.rejected_entries.append(f"{signal.symbol}:entry_gap_or_signal_expired")
             return PaperEvent("signal_expired", signal.symbol, "Next-bar open moved outside the entry rule")
 
         slip = self.cost_schedule.slippage_rate
-        entry_fill = open_price * (Decimal("1") + slip)
-        stop_fill = stop * (Decimal("1") - slip)
+        entry_fill = _ceil_tick(open_price * (Decimal("1") + slip), instrument.tick_size)
+        stop_fill = _floor_tick(stop * (Decimal("1") - slip), instrument.tick_size)
         if entry_fill <= stop_fill:
             self.rejected_entries.append(f"{signal.symbol}:invalid_stop_after_slippage")
             return PaperEvent("entry_rejected", signal.symbol, "Stop distance is invalid after slippage")
@@ -256,6 +265,17 @@ class PaperExecutionEngine:
         return PaperEvent(
             "entry_filled", signal.symbol, "Paper entry filled at next-bar open with adverse slippage",
             quantity=best, price=entry_fill,
+        )
+
+    def force_session_close(self, bar: CompletedBar) -> PaperEvent | None:
+        """Close any paper position and cancel a pending entry before session end."""
+        self.pending = None
+        if self.position is None:
+            return None
+        if bar.symbol != self.position.symbol:
+            return None
+        return self._close_position(
+            bar, _dec(bar.close, "bar.close"), "session_close", apply_slippage=True
         )
 
     def _manage_position(self, bar: CompletedBar) -> PaperEvent | None:
