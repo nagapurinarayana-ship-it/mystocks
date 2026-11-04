@@ -55,7 +55,9 @@ def test_candidate_depth_rejects_missing_depth_and_stale_quotes():
     scanner.on_tick(tick, now=now)
     assert scanner.validate_candidate_depth(signal, now=now) == (False, "full_depth_not_received")
     later = now + timedelta(seconds=7)
-    assert scanner.validate_candidate_depth(signal, now=later) == (False, "market_feed_stale")
+    assert scanner.validate_candidate_depth(signal, now=later) == (False, "candidate_quote_stale")
+    much_later = now + timedelta(seconds=16)
+    assert scanner.validate_candidate_depth(signal, now=much_later) == (False, "market_feed_stale")
 
 
 def test_candidate_depth_rejects_wide_spread_even_if_ltpc_tick_is_fresh():
