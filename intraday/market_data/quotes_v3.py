@@ -108,7 +108,11 @@ class UpstoxFullMarketQuotesV3Client:
         for attempt in range(self.max_retries + 1):
             try:
                 response = self.session.get(
-                    url, headers=headers, timeout=self.request_timeout
+                    url,
+                    headers=headers,
+                    timeout=self.request_timeout,
+                    verify=True,
+                    allow_redirects=False,
                 )
             except requests.RequestException as exc:
                 if attempt >= self.max_retries:
