@@ -1,9 +1,9 @@
-"""Run the live Upstox market-data radar locally.
+"""Run the live Upstox LTPC scanner and REST-depth validated paper pipeline.
 
-Set UPSTOX_ACCESS_TOKEN in the process environment before running. Tokens are
-short-lived and must be obtained through Upstox's official OAuth process.
-This runner scans and prints paper/research candidates only; it cannot place
-broker orders.
+Set UPSTOX_ACCESS_TOKEN in the process environment before running. This runner
+uses an LTPC-only WebSocket for broad discovery and the Full Market Quotes V3
+REST endpoint for the maximum-three candidate shortlist. No broker order
+placement methods are used or available here.
 """
 
 from __future__ import annotations
@@ -14,7 +14,7 @@ import logging
 import os
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, time as clock_time, timezone
 from zoneinfo import ZoneInfo
 from pathlib import Path
 from typing import Any
@@ -29,8 +29,10 @@ from intraday.market_data.instruments import (  # noqa: E402
     parse_upstox_instrument_payload,
     reconcile_nse_cash_equities,
 )
-from intraday.market_data.upstox_v3 import (  # noqa: E402
-    UpstoxV3MarketDataClient,
+from intraday.market_data.upstox_v3 import UpstoxV3MarketDataClient  # noqa: E402
+from intraday.market_data.quotes_v3 import (  # noqa: E402
+    MarketQuoteError,
+    UpstoxFullMarketQuotesV3Client,
 )
 from intraday.scanner import IntradayScanner  # noqa: E402
 from intraday.ledger import PaperLedger  # noqa: E402
@@ -40,8 +42,12 @@ from intraday.execution.configuration import load_fee_schedule_from_environment 
 
 INSTRUMENTS_URL = "https://assets.upstox.com/market-quote/instruments/exchange/NSE.json.gz"
 IST = ZoneInfo("Asia/Kolkata")
+LTPC_INDIVIDUAL_LIMIT = 5000
+QUOTE_REFRESH_SECONDS = 5.0
+
+
 def load_optional_fee_schedule() -> FeeSchedule | None:
-    """Compatibility wrapper for the explicit shared fee configuration."""
+    """Return only a complete, explicit tariff for the selected broker."""
     return load_fee_schedule_from_environment()
 
 
@@ -55,17 +61,54 @@ def load_instruments() -> tuple:
     if not reconciliation.eligible:
         raise RuntimeError("instrument master contains no eligible NSE cash equities")
     logging.info(
-        "Instrument master: %d rows, %d eligible, %d excluded",
+        "Broker NSE instrument master: %d rows, %d eligible EQ instruments, %d excluded",
         reconciliation.source_rows,
         len(reconciliation.eligible),
         len(reconciliation.excluded),
     )
+    if len(reconciliation.eligible) > LTPC_INDIVIDUAL_LIMIT:
+        raise RuntimeError(
+            f"Eligible instrument count {len(reconciliation.eligible)} exceeds the "
+            f"Upstox LTPC-only limit of {LTPC_INDIVIDUAL_LIMIT}; refusing to silently omit symbols"
+        )
     Path("data").mkdir(exist_ok=True)
-    exclusion_path = Path("data/intraday-universe-exclusions.json")
-    exclusion_path.write_text(
+    Path("data/intraday-universe-exclusions.json").write_text(
         json.dumps(reconciliation.excluded, indent=2), encoding="utf-8"
     )
+    Path("data/intraday-universe-summary.json").write_text(
+        json.dumps(
+            {
+                "source": "Upstox NSE BOD instrument master",
+                "source_rows": reconciliation.source_rows,
+                "eligible_rows": len(reconciliation.eligible),
+                "excluded_rows": len(reconciliation.excluded),
+                "accounted_rows": reconciliation.accounted_rows,
+                "coverage_complete": reconciliation.accounted_rows == reconciliation.source_rows,
+                "ltpc_subscription_limit": LTPC_INDIVIDUAL_LIMIT,
+                "subscription_mode": "LTPC-only WebSocket plus REST depth for shortlist",
+                "observed_at": datetime.now(timezone.utc).isoformat(),
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
     return reconciliation.eligible
+
+
+def _market_state(client: UpstoxV3MarketDataClient, scanner: IntradayScanner, now: datetime) -> str:
+    local_now = now.astimezone(IST)
+    market_open = (
+        local_now.weekday() < 5
+        and (local_now.hour, local_now.minute) >= (9, 15)
+        and (local_now.hour, local_now.minute) < (15, 30)
+    )
+    if not client.connected:
+        return "disconnected"
+    if not market_open:
+        return "market_closed"
+    if not scanner.feed_is_fresh(now=now):
+        return "stale"
+    return "healthy"
 
 
 def main() -> int:
@@ -73,37 +116,46 @@ def main() -> int:
         level=logging.INFO,
         format="%(asctime)s %(levelname)s %(message)s",
     )
-    if not os.getenv("UPSTOX_ACCESS_TOKEN"):
-        logging.error("Set UPSTOX_ACCESS_TOKEN in your shell; no credentials are stored in Git.")
+    access_token = os.getenv("UPSTOX_ACCESS_TOKEN", "")
+    if not access_token.strip():
+        logging.error("Set UPSTOX_ACCESS_TOKEN through the official OAuth process; no token is stored in Git.")
         return 2
 
     try:
         instruments = load_instruments()
         scanner = IntradayScanner(instruments, max_opportunities=3)
-        logging.info("Starting live LTPC subscription for %d NSE cash equities", len(instruments))
+        logging.info(
+            "Starting LTPC-only live subscription for all %d eligible NSE cash equities",
+            len(instruments),
+        )
+
         fee_schedule = load_optional_fee_schedule()
         if fee_schedule is None:
             logging.warning(
-                "Autonomous paper fills disabled: configure the selected broker's exact fee schedule "
-                "after verifying its published tariff. Scanner and depth validation remain active."
+                "Paper fills disabled: configure all broker-specific MYSTOCKS_PAPER_FEE_* values "
+                "from the selected broker tariff. Live scanning and shortlist quote snapshots remain active."
             )
 
+        quotes_client = UpstoxFullMarketQuotesV3Client(access_token=access_token)
+
         with PaperLedger("data/mystocks_intraday.sqlite3") as ledger:
-            paper_coordinator = None
-            if fee_schedule is not None:
-                paper_coordinator = AutonomousPaperCoordinator(
-                    scanner, PaperExecutionEngine(fee_schedule), ledger
-                )
+            paper_engine = PaperExecutionEngine(fee_schedule) if fee_schedule is not None else None
+            paper_coordinator = (
+                AutonomousPaperCoordinator(scanner, paper_engine, ledger)
+                if paper_engine is not None else None
+            )
+            if paper_coordinator is not None:
                 ledger.record_event(
                     datetime.now(timezone.utc).isoformat(), "INFO",
                     "paper_engine_enabled",
-                    "Autonomous paper execution enabled with explicit fee schedule; live broker orders remain disabled",
+                    "Autonomous paper simulation enabled with explicit broker tariff; live orders remain disabled",
                 )
-            now_iso = datetime.now(timezone.utc).isoformat()
-            ledger.record_event(now_iso, "INFO", "scanner_starting", "Intraday live scanner starting")
 
-            promoted_keys: set[str] = set()
-            depth_validated: set[tuple[str, str, datetime]] = set()
+            ledger.record_event(
+                datetime.now(timezone.utc).isoformat(), "INFO",
+                "scanner_starting",
+                "Intraday scanner starting with LTPC-only WebSocket and REST shortlist depth",
+            )
 
             def handle_tick(tick) -> None:
                 now = datetime.now(timezone.utc)
@@ -118,8 +170,7 @@ def main() -> int:
                         return
                     scanner.opportunities(now=now)
 
-                active_candidates = scanner.candidate_signals(now=now)
-                for item in active_candidates:
+                for item in scanner.candidate_signals(now=now):
                     inserted = ledger.record_signal(item)
                     if inserted:
                         logging.info(
@@ -129,82 +180,91 @@ def main() -> int:
                         )
                         ledger.record_event(
                             item.generated_at.isoformat(), "INFO", "signal_discovered",
-                            f"{item.strategy_id} candidate for {item.symbol}; waiting for depth validation",
-                        )
-                active_keys = {
-                    scanner.instruments[item.symbol].instrument_key
-                    for item in active_candidates if item.symbol in scanner.instruments
-                }
-                to_promote = sorted(active_keys - promoted_keys)
-                if to_promote and client.connected:
-                    client.promote_to_full(to_promote)
-                    promoted_keys.update(to_promote)
-                    ledger.record_event(
-                        now.isoformat(), "INFO", "candidate_depth_requested",
-                        f"Requested full quote depth for {len(to_promote)} shortlisted symbols",
-                    )
-
-                expired_keys = sorted(promoted_keys - active_keys)
-                if expired_keys and client.connected:
-                    client.demote_to_ltpc(expired_keys)
-                    promoted_keys.difference_update(expired_keys)
-                    ledger.record_event(
-                        now.isoformat(), "INFO", "candidate_depth_released",
-                        f"Returned {len(expired_keys)} expired candidates to LTPC mode",
-                    )
-
-                for item in active_candidates:
-                    key = (item.symbol, item.strategy_id, item.generated_at)
-                    if key in depth_validated:
-                        continue
-                    valid, reason = scanner.validate_candidate_depth(item, now=now)
-                    if valid:
-                        depth_validated.add(key)
-                        ledger.record_event(
-                            now.isoformat(), "INFO", "candidate_depth_validated",
-                            f"{item.symbol} {item.strategy_id}: two-sided depth and spread validated",
-                        )
-                    elif reason not in {"full_depth_not_received", "candidate_quote_stale", "market_feed_stale"}:
-                        ledger.record_event(
-                            now.isoformat(), "WARNING", "candidate_depth_rejected",
-                            f"{item.symbol} {item.strategy_id}: {reason}",
+                            f"{item.strategy_id} candidate for {item.symbol}; awaiting REST depth validation",
                         )
 
             client = UpstoxV3MarketDataClient(
                 [item.instrument_key for item in instruments],
                 on_tick=handle_tick,
+                access_token=access_token,
                 symbol_by_key={item.instrument_key: item.symbol for item in instruments},
             )
             client.connect()
+            previous_state = None
+            last_quote_poll = 0.0
+            quote_status: dict[tuple[str, str, datetime], str] = {}
+
             try:
-                previous_state = None
                 while True:
                     now = datetime.now(timezone.utc)
-                    if not client.connected:
-                        state = "disconnected"
-                    elif not scanner.feed_is_fresh(now=now):
-                        state = "stale"
-                    else:
-                        state = "healthy"
+                    state = _market_state(client, scanner, now)
                     if state != previous_state:
-                        logging.warning("Market feed state: %s", state)
+                        severity = "WARNING" if state in {"disconnected", "stale"} else "INFO"
                         ledger.record_event(
-                            now.isoformat(), "WARNING" if state in {"disconnected", "stale"} else "INFO",
-                            f"feed_{state}", client.last_error or f"Market feed state changed to {state}",
+                            now.isoformat(), severity, f"feed_{state}",
+                            client.last_error or f"Market feed state changed to {state}",
                         )
+                        logging.info("Market feed state: %s", state)
                         previous_state = state
-                    time.sleep(2)
+
+                    active_candidates = scanner.candidate_signals(now=now)
+                    monotonic_now = time.monotonic()
+                    if (
+                        state == "healthy"
+                        and active_candidates
+                        and monotonic_now - last_quote_poll >= QUOTE_REFRESH_SECONDS
+                    ):
+                        instruments_to_quote = tuple(
+                            scanner.instruments[item.symbol]
+                            for item in active_candidates
+                            if item.symbol in scanner.instruments
+                        )
+                        last_quote_poll = monotonic_now
+                        try:
+                            quotes = quotes_client.fetch_quotes(instruments_to_quote, now=now)
+                            for quote_tick in quotes.values():
+                                scanner.update_quote(quote_tick, now=now)
+
+                            for signal in active_candidates:
+                                key = (signal.symbol, signal.strategy_id, signal.generated_at)
+                                valid, reason = scanner.validate_candidate_depth(signal, now=now)
+                                if quote_status.get(key) != reason:
+                                    quote_status[key] = reason
+                                    ledger.record_event(
+                                        now.isoformat(),
+                                        "INFO" if valid else "WARNING",
+                                        "candidate_depth_validated" if valid else "candidate_depth_waiting",
+                                        f"{signal.symbol} {signal.strategy_id}: {reason}",
+                                    )
+                            if paper_coordinator is not None:
+                                queued = paper_coordinator.evaluate_candidates(now=now)
+                                if queued is not None:
+                                    logging.info(
+                                        "PAPER signal queued after REST depth validation: %s %s",
+                                        queued.symbol, queued.strategy_id,
+                                    )
+                        except (MarketQuoteError, requests.RequestException) as exc:
+                            # The scanner continues, but no new candidate can pass depth validation.
+                            ledger.record_event(
+                                now.isoformat(), "WARNING", "candidate_quote_request_failed",
+                                f"Shortlist quote refresh failed: {type(exc).__name__}",
+                            )
+                            logging.warning("Shortlist quote refresh failed: %s", type(exc).__name__)
+
+                    time.sleep(1)
             except KeyboardInterrupt:
                 logging.info("Stopping market-data radar")
-                ledger.record_event(datetime.now(timezone.utc).isoformat(), "INFO",
-                                    "scanner_stopped", "Scanner stopped by operator")
+                ledger.record_event(
+                    datetime.now(timezone.utc).isoformat(), "INFO",
+                    "scanner_stopped", "Scanner stopped by operator",
+                )
             finally:
                 client.disconnect()
     except requests.RequestException as exc:
-        logging.exception("Could not download Upstox instrument master: %s", exc)
+        logging.exception("Could not download Upstox instrument master: %s", type(exc).__name__)
         return 3
     except Exception as exc:
-        logging.exception("Intraday radar stopped safely: %s", exc)
+        logging.exception("Intraday radar stopped safely: %s", type(exc).__name__)
         return 4
     return 0
 
