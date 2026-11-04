@@ -7,6 +7,7 @@ profitability and never enables live broker execution.
 from __future__ import annotations
 
 from datetime import date, datetime, time, timedelta, timezone
+import math
 import threading
 from zoneinfo import ZoneInfo
 from typing import Any
@@ -205,12 +206,20 @@ class ForwardSessionTracker:
         started_at = datetime.fromisoformat(snapshot["started_at"])
         tracker = cls(
             started_at,
-            paper_engine_enabled=bool(snapshot.get("paper_engine_enabled", False)),
+            paper_engine_enabled=snapshot.get("paper_engine_enabled", False),
         )
+        if snapshot.get("session_date") != tracker.session_date.isoformat():
+            raise ValueError("saved forward-validation session date does not match its start timestamp")
         tracker.status = str(snapshot["status"])
         if tracker.status not in {"in_progress", "qualified", "incomplete", "interrupted"}:
             raise ValueError("invalid forward validation session status")
         tracker.last_sample_at = datetime.fromisoformat(snapshot["last_sample_at"])
+        cls._require_aware(tracker.last_sample_at, "last_sample_at")
+        if (
+            tracker.last_sample_at.astimezone(IST).date() != tracker.session_date
+            or tracker.last_sample_at < tracker.started_at
+        ):
+            raise ValueError("saved forward-validation last sample timestamp is inconsistent")
         last_sample_state = snapshot.get("last_sample_state")
         if last_sample_state not in {None, "healthy", "stale", "disconnected", "market_closed"}:
             raise ValueError("invalid last forward-validation feed state")
@@ -219,20 +228,38 @@ class ForwardSessionTracker:
             datetime.fromisoformat(snapshot["closed_at"])
             if snapshot.get("closed_at") else None
         )
+        if tracker.closed_at is not None:
+            cls._require_aware(tracker.closed_at, "closed_at")
+            if (
+                tracker.closed_at.astimezone(IST).date() != tracker.session_date
+                or tracker.closed_at < tracker.last_sample_at
+            ):
+                raise ValueError("saved forward-validation close timestamp is inconsistent")
+        if tracker.status in {"qualified", "incomplete"} and tracker.closed_at is None:
+            raise ValueError("finalized forward-validation session requires a close timestamp")
         for field in (
             "observed_seconds", "healthy_seconds", "stale_seconds",
             "disconnected_seconds", "other_seconds", "loop_gap_seconds",
         ):
             value = float(snapshot.get(field, 0))
-            if value < 0:
-                raise ValueError(f"{field} cannot be negative")
+            if not math.isfinite(value) or value < 0:
+                raise ValueError(f"{field} must be finite and nonnegative")
             setattr(tracker, field, value)
         for field in (
             "loop_gap_count", "accepted_ticks", "discovered_signals",
             "closed_paper_trades", "risk_halts",
         ):
-            value = int(snapshot.get(field, 0))
-            if value < 0:
-                raise ValueError(f"{field} cannot be negative")
+            raw_value = snapshot.get(field, 0)
+            if isinstance(raw_value, bool):
+                raise ValueError(f"{field} must be a nonnegative integer")
+            value = int(raw_value)
+            if value < 0 or value != raw_value:
+                raise ValueError(f"{field} must be a nonnegative integer")
             setattr(tracker, field, value)
+        if (
+            tracker.healthy_seconds + tracker.stale_seconds
+            + tracker.disconnected_seconds + tracker.other_seconds
+            > tracker.observed_seconds + 0.01
+        ):
+            raise ValueError("saved feed-state durations exceed observed time")
         return tracker
