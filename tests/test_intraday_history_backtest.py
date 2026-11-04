@@ -1,4 +1,5 @@
 from datetime import date, datetime, timedelta
+from dataclasses import asdict
 from decimal import Decimal
 from zoneinfo import ZoneInfo
 import json
@@ -159,7 +160,7 @@ def test_backtester_runs_completed_bar_strategy_and_reports_after_cost_results()
     assert report.max_drawdown_pct == 0
     assert report.vwap_method == "typical_price_times_volume_proxy_not_trade_level_vwap"
     # Report is JSON-safe and records each fill's inputs/results.
-    json.dumps({"summary": report.__dict__, "trades": result.trades})
+    json.dumps({"summary": asdict(report), "trades": result.trades})
 
 
 def test_backtester_reports_no_trades_when_history_is_insufficient():
