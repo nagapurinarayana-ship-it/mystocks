@@ -75,6 +75,7 @@ def test_open_position_state_round_trips_and_keeps_stop_tick_and_daily_guard():
     original._day = datetime(2026, 11, 4, tzinfo=IST).date()
     original._day_start_cash = Decimal("1000")
     original._daily_net_pnl = Decimal("-3.50")
+    original._realised_net_pnl = Decimal("12.75")
     original.position = PaperPosition(
         symbol="RELIANCE",
         quantity=1,
@@ -98,6 +99,7 @@ def test_open_position_state_round_trips_and_keeps_stop_tick_and_daily_guard():
     assert restored.position.tick_size == Decimal("0.05")
     assert restored.position.bars_held == 2
     assert restored.daily_net_pnl == Decimal("-3.50")
+    assert restored.realised_net_pnl == Decimal("12.75")
     assert restored.daily_loss_limit == Decimal("10.00")
 
 
