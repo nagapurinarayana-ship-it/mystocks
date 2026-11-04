@@ -31,6 +31,6 @@ jobs:
       - name: Install optional live market-data SDK
         run: pip install -r requirements-intraday.txt
       - name: Compile dashboard and intraday entry points
-        run: python -m compileall -q app.py intraday scripts/run_intraday_radar.py
+        run: python -m compileall -q app.py intraday scripts/run_intraday_radar.py scripts/check_upstox_connection.py
       - name: Run full test suite
         run: pytest -q
