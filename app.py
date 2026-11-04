@@ -423,6 +423,17 @@ def render_intraday_radar() -> None:
         "The ₹1,000 starting capital is a paper-policy setting only. It is not connected to or deposited with a broker. "
         "Paper results are meaningful only after a verified broker-specific fee schedule and fill model are configured."
     )
+    if paper_state is not None and paper_state.get("halted_reason"):
+        st.error(
+            "PAPER ENGINE HALTED — manual review required. "
+            + str(paper_state["halted_reason"])
+            + (
+                " The open paper position is intentionally preserved as unresolved; "
+                "no synthetic exit or automatic restart was recorded."
+                if paper_state.get("position") else
+                " Pending entries are cancelled and no new paper entries will be accepted."
+            )
+        )
     if paper_state is not None and paper_state.get("position"):
         position = paper_state["position"]
         st.info(
