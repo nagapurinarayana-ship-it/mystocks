@@ -1,0 +1,2 @@
+# Optional live market-data adapter only; not needed for unit tests or existing app.
+upstox-python-sdk==2.23.0
