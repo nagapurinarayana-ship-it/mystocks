@@ -9,13 +9,13 @@ Build MyStocks toward **fully automated NSE cash-equity trading**: live market-d
 The following code has been added to `feature/intraday-automated-trading-foundation`. It is not merged to `main`.
 
 **Implemented in code**
-- Vendor-specific Upstox Market Data Feed V3 adapter for LTPC streaming, dynamic promotion of shortlisted candidates to full depth, reconnect state, NSE symbol mapping and IST timestamps. The optional SDK is pinned in `requirements-intraday.txt`.
+- Vendor-specific Upstox Market Data Feed V3 adapter for broad LTPC-only WebSocket streaming, reconnect state, NSE symbol mapping and IST timestamps, plus Full Market Quotes V3 REST snapshots for shortlist depth. The optional SDK is pinned in `requirements-intraday.txt`.
 - BOD instrument-master parser and reconciliation that retains an include/exclude reason for every broker-distributed NSE instrument row.
 - Tick validation for timestamps, price, spread, quote depth and circuit bands; five-minute completed-bar construction; session VWAP from completed trade ticks only.
 - Two explainable long-only strategies: VWAP momentum and opening-range breakout. The live scanner returns at most three fresh candidates and suppresses duplicates and stale data.
 - Top-of-book depth validation for up to three shortlisted candidates, including minimum bid/ask quantity, spread, price drift and circuit-proximity checks. REST snapshots refresh every five seconds while candidates remain active; the WebSocket trade timestamp must also remain fresh per symbol.
 - ₹1,000 cash-only capital policy, Decimal whole-share sizing, explicit broker fee configuration, automatic paper entry/exit simulation, same-bar stop-first handling, next-bar entry expiry, end-of-session entry cutoff and paper square-off.
-- SQLite paper audit ledger for signals, closed trades and feed/system events.
+- SQLite paper audit ledger for signals, closed trades and feed/system events, plus a versioned paper-account checkpoint preserving cash, daily and cumulative realised P&L, position, stop/target, pending state and fee-schedule fingerprint across process restarts. Corrupt state or fee-schedule changes fail closed; pending entries are cancelled on restart because missed five-minute bars cannot safely be reconstructed.
 - Upstox V3 historical five-minute candle adapter, chunked historical retrieval, one-symbol OHLCV backtest, after-cost metrics and JSON report output.
 - A separate Intraday Radar dashboard workspace showing local feed status, signals, paper trades and the latest backtest report.
 - Tests and a feature-branch CI workflow; existing stock research engines remain separate.
@@ -27,7 +27,7 @@ The following code has been added to `feature/intraday-automated-trading-foundat
 - Only two strategies are implemented; unusual-volume, reversal and sector-leadership strategies are future work.
 - The historical backtest is a single-symbol five-minute OHLCV model. It estimates session VWAP using typical-price-times-volume; it is not trade-level VWAP, an all-NSE point-in-time test, or a full market-impact, queue-priority and partial-fill simulator.
 - No 30-session forward paper validation has been completed. No live broker order API, auto-buy, broker-side stop, order reconciliation, fund transfer or withdrawal feature exists. The live execution gate remains hard-disabled.
-- The runner is a local foreground process; GitHub Actions is used for tests, not as a continuous market-data service. NSE holiday-calendar integration and always-on production hosting are still open items.
+- The runner is a local foreground process; GitHub Actions is used for tests, not as a continuous market-data service. NSE holiday-calendar integration and always-on production hosting are still open items. Restored open paper positions do not yet receive full historical bar catch-up after downtime, so a restart gap remains a paper-data discontinuity that must be reviewed.
 
 **Run the local scanner**
 1. Install the optional adapter: `pip install -r requirements-intraday.txt`.
@@ -40,7 +40,7 @@ The following code has been added to `feature/intraday-automated-trading-foundat
 2. Run, for example: `python scripts/run_intraday_backtest.py --symbol RELIANCE --from-date 2026-09-01 --to-date 2026-10-31 --strategy vwap_momentum`.
 3. Inspect the JSON report in `data/intraday-backtests`, including its data-quality counts and execution assumptions.
 
-The live-feed, history, dashboard and paper code have unit tests, but an SDK-connected feed session and real-market execution path have not been exercised in this workspace.
+The latest feature-head CI run passed **82 tests**, including Python compile checks. These are deterministic tests; an SDK-authenticated feed session and real-market execution path have not been exercised in this workspace. SEO Quality also passed.
 
 ---
 
