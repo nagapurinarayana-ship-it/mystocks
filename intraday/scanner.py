@@ -132,6 +132,14 @@ class IntradayScanner:
             return False, "empty_top_of_book"
         if tick.best_ask < tick.best_bid:
             return False, "crossed_quote"
+        if tick.upper_circuit_limit is not None and (
+            tick.price >= tick.upper_circuit_limit * 0.995
+        ):
+            return False, "near_upper_circuit"
+        if tick.lower_circuit_limit is not None and (
+            tick.price <= tick.lower_circuit_limit * 1.005
+        ):
+            return False, "near_lower_circuit"
         mid = (tick.best_bid + tick.best_ask) / 2.0
         if mid <= 0:
             return False, "invalid_quote_midpoint"
@@ -148,4 +156,5 @@ class IntradayScanner:
         now = now or datetime.now(timezone.utc)
         if now.tzinfo is None or now.utcoffset() is None:
             raise ValueError("now must be timezone-aware")
-        return (now - self.last_feed_receive).total_seconds() <= max_age_seconds
+        age = (now - self.last_feed_receive).total_seconds()
+        return -1.0 <= age <= max_age_seconds
