@@ -36,6 +36,10 @@ def assess_tick(
         return TickQuality(False, "delayed_delivery")
     if tick.received_at > now + max_future_skew:
         return TickQuality(False, "receive_timestamp_in_future")
+    if tick.upper_circuit_limit is not None and tick.price >= tick.upper_circuit_limit:
+        return TickQuality(False, "upper_circuit")
+    if tick.lower_circuit_limit is not None and tick.price <= tick.lower_circuit_limit:
+        return TickQuality(False, "lower_circuit")
     if tick.best_bid is not None and tick.best_ask is not None:
         if (tick.best_ask - tick.best_bid) / tick.best_ask > 0.02:
             return TickQuality(False, "spread_over_2_percent")
