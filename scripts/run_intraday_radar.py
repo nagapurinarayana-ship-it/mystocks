@@ -15,7 +15,6 @@ import os
 import sys
 import time
 from datetime import datetime, timezone
-from decimal import Decimal, InvalidOperation
 from zoneinfo import ZoneInfo
 from pathlib import Path
 from typing import Any
@@ -37,38 +36,16 @@ from intraday.scanner import IntradayScanner  # noqa: E402
 from intraday.ledger import PaperLedger  # noqa: E402
 from intraday.execution.paper import FeeSchedule, PaperExecutionEngine  # noqa: E402
 from intraday.coordinator import AutonomousPaperCoordinator  # noqa: E402
+from intraday.execution.configuration import (  # noqa: E402
+    FeeConfigurationError,
+    load_fee_schedule_from_environment,
+)
 
 INSTRUMENTS_URL = "https://assets.upstox.com/market-quote/instruments/exchange/NSE.json.gz"
 IST = ZoneInfo("Asia/Kolkata")
-FEE_ENV_FIELDS = {
-    "brokerage_rate": "MYSTOCKS_PAPER_FEE_BROKERAGE_RATE",
-    "brokerage_cap_per_order": "MYSTOCKS_PAPER_FEE_BROKERAGE_CAP",
-    "exchange_transaction_rate": "MYSTOCKS_PAPER_FEE_EXCHANGE_RATE",
-    "sebi_turnover_rate": "MYSTOCKS_PAPER_FEE_SEBI_RATE",
-    "gst_rate": "MYSTOCKS_PAPER_FEE_GST_RATE",
-    "stt_sell_rate": "MYSTOCKS_PAPER_FEE_STT_SELL_RATE",
-    "stamp_buy_rate": "MYSTOCKS_PAPER_FEE_STAMP_BUY_RATE",
-    "slippage_bps": "MYSTOCKS_PAPER_FEE_SLIPPAGE_BPS",
-}
-
-
 def load_optional_fee_schedule() -> FeeSchedule | None:
-    """Load explicit selected-broker rates; never assume a tariff by default."""
-    present = {field: os.getenv(env_name) for field, env_name in FEE_ENV_FIELDS.items()}
-    configured = {field: value for field, value in present.items() if value is not None}
-    if not configured:
-        return None
-    missing = sorted(set(FEE_ENV_FIELDS) - set(configured))
-    if missing:
-        raise RuntimeError(
-            "Paper execution fee configuration is incomplete. Missing fields: "
-            + ", ".join(FEE_ENV_FIELDS[field] for field in missing)
-        )
-    try:
-        values = {field: Decimal(value) for field, value in configured.items()}
-    except (InvalidOperation, TypeError) as exc:
-        raise RuntimeError("Paper fee schedule contains a non-decimal value") from exc
-    return FeeSchedule(**values)
+    """Compatibility wrapper for the explicit shared fee configuration."""
+    return load_fee_schedule_from_environment()
 
 
 def load_instruments() -> tuple:
@@ -229,7 +206,7 @@ def main() -> int:
     except requests.RequestException as exc:
         logging.exception("Could not download Upstox instrument master: %s", exc)
         return 3
-    except Exception as exc:
+    except (FeeConfigurationError, Exception) as exc:
         logging.exception("Intraday radar stopped safely: %s", exc)
         return 4
     return 0
