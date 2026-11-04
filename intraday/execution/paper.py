@@ -414,9 +414,12 @@ class PaperExecutionEngine:
         slip = self.cost_schedule.slippage_rate
         entry_fill = _ceil_tick(open_price * (Decimal("1") + slip), instrument.tick_size)
         stop_fill = _floor_tick(stop * (Decimal("1") - slip), instrument.tick_size)
-        if entry_fill <= stop_fill:
-            self.rejected_entries.append(f"{signal.symbol}:invalid_stop_after_slippage")
-            return PaperEvent("entry_rejected", signal.symbol, "Stop distance is invalid after slippage")
+        if entry_fill <= stop_fill or entry_fill >= target:
+            self.rejected_entries.append(f"{signal.symbol}:invalid_risk_levels_after_slippage")
+            return PaperEvent(
+                "entry_rejected", signal.symbol,
+                "Entry fill would be outside the stop/target range after slippage",
+            )
 
         max_cash_qty = int((self.cash / entry_fill).to_integral_value(rounding=ROUND_FLOOR))
         risk_budget = self.cash * self.policy.max_risk_per_trade_fraction
