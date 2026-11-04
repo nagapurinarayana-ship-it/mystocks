@@ -148,10 +148,23 @@ def main() -> int:
                     # If the snapshot is corrupt or the tariff changed, stop safely:
                     # never silently reset the paper account to ₹1,000.
                     paper_engine.restore_state(saved_paper_state)
+                    cancelled_pending = paper_engine.cancel_pending_entry(
+                        "Pending paper entry cancelled on restart because missed market bars cannot be reconstructed safely"
+                    )
+                    if cancelled_pending is not None:
+                        ledger.record_event(
+                            datetime.now(timezone.utc).isoformat(), "WARNING",
+                            "paper_pending_cancelled_on_restart",
+                            cancelled_pending.message,
+                        )
+                        ledger.save_paper_state(
+                            paper_engine.export_state(),
+                            datetime.now(timezone.utc).isoformat(),
+                        )
                     ledger.record_event(
                         datetime.now(timezone.utc).isoformat(), "INFO",
                         "paper_state_restored",
-                        "Saved paper cash, daily risk and open/pending state restored",
+                        "Saved paper cash, daily risk and open position restored; stale pending entries are cancelled",
                     )
                 else:
                     ledger.save_paper_state(
