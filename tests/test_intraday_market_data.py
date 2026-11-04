@@ -223,6 +223,7 @@ def test_full_feed_parser_extracts_best_bid_ask_and_quantities():
                                 {"bidP": 99.95, "bidQ": "120", "askP": 100.05, "askQ": "80"}
                             ]
                         },
+                        "eFeedDetails": {"uc": 110.0, "lc": 90.0},
                     }
                 }
             }
@@ -238,3 +239,5 @@ def test_full_feed_parser_extracts_best_bid_ask_and_quantities():
     assert parsed[0].best_ask == 100.05
     assert parsed[0].best_bid_quantity == 120
     assert parsed[0].best_ask_quantity == 80
+    assert parsed[0].upper_circuit_limit == 110.0
+    assert parsed[0].lower_circuit_limit == 90.0
