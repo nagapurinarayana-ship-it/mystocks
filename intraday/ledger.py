@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import sqlite3
 import threading
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -68,7 +69,89 @@ CREATE TABLE IF NOT EXISTS intraday_forward_validation (
 );
 CREATE INDEX IF NOT EXISTS ix_intraday_forward_validation_status
     ON intraday_forward_validation(status, session_date DESC);
+CREATE TABLE IF NOT EXISTS intraday_runtime_leases (
+    lease_name TEXT PRIMARY KEY,
+    owner_id TEXT NOT NULL,
+    heartbeat_at TEXT NOT NULL
+);
 """
+
+
+class RuntimeLease:
+    """SQLite-backed singleton lease for a long-running local radar process."""
+
+    def __init__(
+        self,
+        ledger: "PaperLedger",
+        lease_name: str,
+        owner_id: str,
+        heartbeat_seconds: float = 5.0,
+        stale_after_seconds: int = 30,
+    ) -> None:
+        if not lease_name or len(lease_name) > 100:
+            raise ValueError("lease_name must contain 1-100 characters")
+        if not owner_id or len(owner_id) > 200:
+            raise ValueError("owner_id must contain 1-200 characters")
+        if heartbeat_seconds <= 0:
+            raise ValueError("heartbeat_seconds must be positive")
+        if stale_after_seconds < 10 or stale_after_seconds > 600:
+            raise ValueError("stale_after_seconds must be between 10 and 600")
+        self.ledger = ledger
+        self.lease_name = lease_name
+        self.owner_id = owner_id
+        self.heartbeat_seconds = heartbeat_seconds
+        self.stale_after_seconds = stale_after_seconds
+        self._stop = threading.Event()
+        self._lost = threading.Event()
+        self._thread: threading.Thread | None = None
+        self._entered = False
+
+    def __enter__(self) -> "RuntimeLease":
+        now = datetime.now(timezone.utc)
+        if not self.ledger.acquire_runtime_lease(
+            self.lease_name,
+            self.owner_id,
+            now=now,
+            stale_after_seconds=self.stale_after_seconds,
+        ):
+            raise RuntimeError(
+                "another MyStocks intraday radar process already owns this SQLite ledger"
+            )
+        self._entered = True
+        self._thread = threading.Thread(
+            target=self._heartbeat_loop,
+            name=f"mystocks-lease-{self.lease_name}",
+            daemon=True,
+        )
+        self._thread.start()
+        return self
+
+    def _heartbeat_loop(self) -> None:
+        while not self._stop.wait(self.heartbeat_seconds):
+            renewed = self.ledger.renew_runtime_lease(
+                self.lease_name,
+                self.owner_id,
+                now=datetime.now(timezone.utc),
+            )
+            if not renewed:
+                self._lost.set()
+                return
+
+    def assert_held(self) -> None:
+        if not self._entered or self._lost.is_set():
+            raise RuntimeError("MyStocks intraday radar lost its SQLite runtime lease; stopping safely")
+
+    def __exit__(self, *_: Any) -> None:
+        self._stop.set()
+        if self._thread is not None and self._thread.is_alive():
+            self._thread.join(timeout=max(1.0, self.heartbeat_seconds + 1.0))
+        if self._entered:
+            self.ledger.release_runtime_lease(
+                self.lease_name,
+                self.owner_id,
+                now=datetime.now(timezone.utc),
+            )
+        self._entered = False
 
 
 class PaperLedger:
@@ -96,6 +179,101 @@ class PaperLedger:
 
     def __exit__(self, *_: Any) -> None:
         self.close()
+
+    def runtime_lease(
+        self,
+        lease_name: str,
+        owner_id: str,
+        heartbeat_seconds: float = 5.0,
+        stale_after_seconds: int = 30,
+    ) -> RuntimeLease:
+        """Return a context manager that guarantees one active radar process per ledger."""
+        return RuntimeLease(
+            self,
+            lease_name,
+            owner_id,
+            heartbeat_seconds=heartbeat_seconds,
+            stale_after_seconds=stale_after_seconds,
+        )
+
+    def acquire_runtime_lease(
+        self,
+        lease_name: str,
+        owner_id: str,
+        now: datetime | None = None,
+        stale_after_seconds: int = 30,
+    ) -> bool:
+        now = now or datetime.now(timezone.utc)
+        if now.tzinfo is None or now.utcoffset() is None:
+            raise ValueError("runtime lease timestamp must be timezone-aware")
+        if stale_after_seconds < 10 or stale_after_seconds > 600:
+            raise ValueError("stale_after_seconds must be between 10 and 600")
+        current = now.astimezone(timezone.utc)
+        with self._lock:
+            self._connection.execute("BEGIN IMMEDIATE")
+            try:
+                row = self._connection.execute(
+                    """
+                    SELECT owner_id, heartbeat_at
+                    FROM intraday_runtime_leases WHERE lease_name = ?
+                    """,
+                    (lease_name,),
+                ).fetchone()
+                if row is not None and str(row["owner_id"]) != owner_id:
+                    try:
+                        heartbeat = datetime.fromisoformat(str(row["heartbeat_at"]))
+                    except ValueError as exc:
+                        raise ValueError("saved runtime lease heartbeat is corrupt") from exc
+                    if heartbeat.tzinfo is None or heartbeat.utcoffset() is None:
+                        raise ValueError("saved runtime lease heartbeat is not timezone-aware")
+                    age = (current - heartbeat.astimezone(timezone.utc)).total_seconds()
+                    if age < stale_after_seconds:
+                        self._connection.rollback()
+                        return False
+                self._connection.execute(
+                    """
+                    INSERT INTO intraday_runtime_leases (lease_name, owner_id, heartbeat_at)
+                    VALUES (?, ?, ?)
+                    ON CONFLICT(lease_name) DO UPDATE SET
+                        owner_id = excluded.owner_id,
+                        heartbeat_at = excluded.heartbeat_at
+                    """,
+                    (lease_name, owner_id, current.isoformat()),
+                )
+                self._connection.commit()
+                return True
+            except Exception:
+                self._connection.rollback()
+                raise
+
+    def renew_runtime_lease(
+        self, lease_name: str, owner_id: str, now: datetime | None = None
+    ) -> bool:
+        now = now or datetime.now(timezone.utc)
+        if now.tzinfo is None or now.utcoffset() is None:
+            raise ValueError("runtime lease timestamp must be timezone-aware")
+        with self._lock, self._connection:
+            cursor = self._connection.execute(
+                """
+                UPDATE intraday_runtime_leases
+                SET heartbeat_at = ?
+                WHERE lease_name = ? AND owner_id = ?
+                """,
+                (now.astimezone(timezone.utc).isoformat(), lease_name, owner_id),
+            )
+            return cursor.rowcount == 1
+
+    def release_runtime_lease(
+        self, lease_name: str, owner_id: str, now: datetime | None = None
+    ) -> bool:
+        if now is not None and (now.tzinfo is None or now.utcoffset() is None):
+            raise ValueError("runtime lease timestamp must be timezone-aware")
+        with self._lock, self._connection:
+            cursor = self._connection.execute(
+                "DELETE FROM intraday_runtime_leases WHERE lease_name = ? AND owner_id = ?",
+                (lease_name, owner_id),
+            )
+            return cursor.rowcount == 1
 
     def record_signal(self, signal: TradeSignal) -> bool:
         with self._lock, self._connection:
