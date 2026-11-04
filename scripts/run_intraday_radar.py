@@ -163,6 +163,23 @@ def main() -> int:
                     # If the snapshot is corrupt or the tariff changed, stop safely:
                     # never silently reset the paper account to ₹1,000.
                     paper_engine.restore_state(saved_paper_state)
+                    if paper_engine.position is not None and paper_engine.halted_reason is None:
+                        # Do not apply fresh live ticks to a position whose bars were
+                        # missed while the process was offline. Preserve it for review.
+                        halted = paper_engine.halt(
+                            "Open paper position restored after a process restart without "
+                            "historical bar catch-up; position is unresolved and requires manual review."
+                        )
+                        ledger.record_event(
+                            datetime.now(timezone.utc).isoformat(),
+                            "CRITICAL",
+                            "paper_position_unresolved_on_restart",
+                            halted.message,
+                        )
+                        ledger.save_paper_state(
+                            paper_engine.export_state(),
+                            datetime.now(timezone.utc).isoformat(),
+                        )
                     cancelled_pending = paper_engine.cancel_pending_entry(
                         "Pending paper entry cancelled on restart because missed market bars cannot be reconstructed safely"
                     )
@@ -304,7 +321,13 @@ def main() -> int:
                                 local_now.date().isoformat(),
                             )
                         else:
-                            forward_tracker = ForwardSessionTracker(now)
+                            forward_tracker = ForwardSessionTracker(
+                                now,
+                                paper_engine_enabled=(
+                                    paper_engine is not None
+                                    and paper_engine.halted_reason is None
+                                ),
+                            )
                             if paper_engine is not None and paper_engine.halted_reason:
                                 forward_tracker.record_risk_halt()
                             ledger.save_forward_session(
