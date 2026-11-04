@@ -1,8 +1,10 @@
 from datetime import datetime, timedelta, timezone
 
+import threading
+
 import pytest
 
-from intraday.ledger import PaperLedger
+from intraday.ledger import PaperLedger, RuntimeLease
 
 
 def test_paper_account_state_persists_across_ledger_reopen(tmp_path):
@@ -192,3 +194,29 @@ def test_runtime_lease_rejects_naive_heartbeat_timestamp(tmp_path):
                 "intraday_radar", "process-one",
                 now=datetime(2026, 11, 4, 10, 0),
             )
+
+
+
+def test_runtime_lease_lost_heartbeat_marks_lease_unheld():
+    class BrokenLedger:
+        def renew_runtime_lease(self, *args, **kwargs):
+            raise OSError("simulated database write failure")
+
+        def release_runtime_lease(self, *args, **kwargs):
+            return False
+
+    lease = RuntimeLease(
+        BrokenLedger(),
+        "intraday_radar",
+        "owner-one",
+        heartbeat_seconds=0.01,
+    )
+    lease._entered = True
+    lease._thread = threading.Thread(target=lease._heartbeat_loop, daemon=True)
+    lease._thread.start()
+    lease._thread.join(timeout=1)
+
+    assert lease._lost.is_set()
+    with pytest.raises(RuntimeError, match="lost its SQLite runtime lease"):
+        lease.assert_held()
+    lease.__exit__(None, None, None)
