@@ -224,6 +224,16 @@ class PaperExecutionEngine:
 
         return {
             "version": 1,
+            "fee_schedule": {
+                "brokerage_rate": str(self.cost_schedule.brokerage_rate),
+                "brokerage_cap_per_order": str(self.cost_schedule.brokerage_cap_per_order),
+                "exchange_transaction_rate": str(self.cost_schedule.exchange_transaction_rate),
+                "sebi_turnover_rate": str(self.cost_schedule.sebi_turnover_rate),
+                "gst_rate": str(self.cost_schedule.gst_rate),
+                "stt_sell_rate": str(self.cost_schedule.stt_sell_rate),
+                "stamp_buy_rate": str(self.cost_schedule.stamp_buy_rate),
+                "slippage_bps": str(self.cost_schedule.slippage_bps),
+            },
             "cash": str(self.cash),
             "day": self._day.isoformat() if isinstance(self._day, date) else None,
             "day_start_cash": str(self._day_start_cash),
@@ -245,6 +255,16 @@ class PaperExecutionEngine:
             if result.tzinfo is None or result.utcoffset() is None:
                 raise ValueError(f"{field} must be timezone-aware")
             return result
+
+        fee_data = state.get("fee_schedule")
+        if not isinstance(fee_data, dict):
+            raise ValueError("saved paper state has no fee schedule")
+        try:
+            saved_fees = FeeSchedule(**fee_data)
+        except (TypeError, ValueError) as exc:
+            raise ValueError("saved paper fee schedule is invalid") from exc
+        if saved_fees != self.cost_schedule:
+            raise ValueError("configured broker fee schedule differs from saved paper account state")
 
         cash = _dec(state.get("cash"), "cash")
         day_start_cash = _dec(state.get("day_start_cash"), "day_start_cash")
