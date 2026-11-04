@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import json
 from datetime import datetime, time, timedelta
 import threading
 from zoneinfo import ZoneInfo
@@ -37,6 +38,27 @@ class AutonomousPaperCoordinator:
         self._depth_status: dict[tuple[str, str, datetime], str] = {}
         self._session_cutoff_handled = False
         self._lock = threading.RLock()
+        self._last_saved_state = self._state_json()
+
+    def _state_json(self) -> str:
+        return json.dumps(
+            self.paper_engine.export_state(),
+            sort_keys=True,
+            separators=(",", ":"),
+            allow_nan=False,
+        )
+
+    def _persist_state_if_changed(self, now: datetime | None = None) -> None:
+        if self.ledger is None:
+            return
+        encoded = self._state_json()
+        if encoded == self._last_saved_state:
+            return
+        self.ledger.save_paper_state(
+            json.loads(encoded),
+            (now or datetime.now(ZoneInfo("UTC"))).isoformat(),
+        )
+        self._last_saved_state = encoded
 
     def on_tick(self, tick: MarketTick, now: datetime | None = None) -> CoordinatorUpdate:
         with self._lock:
@@ -107,6 +129,7 @@ class AutonomousPaperCoordinator:
             queued = self.evaluate_candidates(now=now)
 
 
+        self._persist_state_if_changed(now=now)
         return CoordinatorUpdate(
             accepted_tick=True,
             completed_bars=len(completed),
@@ -128,6 +151,7 @@ class AutonomousPaperCoordinator:
                     self.ledger.record_event(
                         now.isoformat(), "INFO", cancelled.event_type, cancelled.message
                     )
+                self._persist_state_if_changed(now=now)
                 return None
             if not self.scanner.feed_is_fresh(now=now):
                 return None
@@ -159,5 +183,6 @@ class AutonomousPaperCoordinator:
                         "paper_signal_queued",
                         f"{signal.strategy_id} candidate queued for {signal.symbol} after REST depth validation",
                     )
+                self._persist_state_if_changed(now=now)
                 return signal
             return None
