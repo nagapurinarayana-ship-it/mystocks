@@ -256,7 +256,10 @@ class UpstoxV3MarketDataClient:
             try:
                 app = websocket_module.WebSocketApp(
                     WEBSOCKET_URL,
-                    header={"Authorization": f"Bearer {self.access_token}"},
+                    header={
+                        "Authorization": f"Bearer {self.access_token}",
+                        "Accept": "*/*",
+                    },
                     on_open=self._on_open,
                     on_message=self._on_message,
                     on_error=self._on_error,
