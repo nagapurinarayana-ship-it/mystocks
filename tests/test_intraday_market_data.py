@@ -292,11 +292,6 @@ def test_scanner_invalidates_pre_gap_candidates_even_without_paper_coordinator()
     instrument = make_instrument()
     scanner = IntradayScanner((instrument,))
     generated = datetime(2026, 11, 4, 9, 20, tzinfo=IST)
-    signal = vwap_momentum_signal(
-        instrument,
-        make_bars(),
-        session_vwap=100.5,
-    )
     # Keep the candidate key explicit so the test isolates gap invalidation.
     from intraday.domain import TradeSignal
     signal = TradeSignal(
