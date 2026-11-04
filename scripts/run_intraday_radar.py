@@ -235,6 +235,14 @@ def main() -> int:
             try:
                 while True:
                     now = datetime.now(timezone.utc)
+                    if paper_coordinator is not None:
+                        watchdog_event = paper_coordinator.check_position_feed(now=now)
+                        if watchdog_event is not None:
+                            logging.critical(
+                                "PAPER %s %s",
+                                watchdog_event.event_type,
+                                watchdog_event.message,
+                            )
                     state = _market_state(client, scanner, now)
                     if state != previous_state:
                         severity = "WARNING" if state in {"disconnected", "stale"} else "INFO"
