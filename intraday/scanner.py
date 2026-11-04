@@ -23,6 +23,7 @@ class IntradayScanner:
         self.last_feed_receive: datetime | None = None
         self.rejected_ticks: dict[str, int] = {}
         self._emitted_signals: set[tuple[str, str, datetime]] = set()
+        self._completed_bars = []
 
     def on_tick(self, tick: MarketTick, now: datetime | None = None) -> bool:
         if tick.instrument_key not in self.by_key:
@@ -36,8 +37,16 @@ class IntradayScanner:
             self.rejected_ticks[quality.reason] = self.rejected_ticks.get(quality.reason, 0) + 1
             return False
         self.last_feed_receive = tick.received_at
-        self.bar_builder.ingest(tick)
+        completed = self.bar_builder.ingest(tick)
+        if completed is not None:
+            self._completed_bars.append(completed)
         return True
+
+    def drain_completed_bars(self):
+        """Return bars finalized since the previous drain, in event order."""
+        completed = tuple(self._completed_bars)
+        self._completed_bars.clear()
+        return completed
 
     def opportunities(self, now: datetime | None = None) -> tuple[TradeSignal, ...]:
         if not self.feed_is_fresh(now=now):
