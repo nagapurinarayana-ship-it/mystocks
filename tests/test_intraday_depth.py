@@ -80,3 +80,27 @@ def test_candidate_depth_rejects_wide_spread_even_if_ltpc_tick_is_fresh():
     )
     scanner.on_tick(tick, now=now)
     assert scanner.validate_candidate_depth(signal, now=now) == (False, "spread_too_wide")
+
+
+
+def test_candidate_depth_rejects_price_near_upper_circuit():
+    instrument = Instrument(
+        "RELIANCE", "NSE_EQ|INE002A01018", "Reliance Industries",
+        Decimal("0.05"), 1,
+    )
+    scanner = IntradayScanner((instrument,))
+    generated = datetime(2026, 11, 4, 10, 0, tzinfo=IST)
+    signal = TradeSignal(
+        "vwap_momentum", "RELIANCE", generated, 109.5, 108, 112, 1.5, 70, "test",
+    )
+    scanner._candidate_signals[("RELIANCE", "vwap_momentum", generated)] = signal
+    now = datetime(2026, 11, 4, 4, 30, 1, tzinfo=timezone.utc)
+    tick = MarketTick(
+        symbol="RELIANCE", instrument_key=instrument.instrument_key, price=109.5,
+        exchange_time=generated + timedelta(seconds=1), received_at=now,
+        last_trade_quantity=10, best_bid=109.45, best_ask=109.55,
+        best_bid_quantity=100, best_ask_quantity=100,
+        upper_circuit_limit=110.0, lower_circuit_limit=90.0,
+    )
+    scanner.on_tick(tick, now=now)
+    assert scanner.validate_candidate_depth(signal, now=now) == (False, "near_upper_circuit")
