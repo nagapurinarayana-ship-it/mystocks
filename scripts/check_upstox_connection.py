@@ -9,12 +9,13 @@ from __future__ import annotations
 import argparse
 from datetime import datetime, time as clock_time, timezone
 import os
+from pathlib import Path
 import sys
 import threading
 import time
 from zoneinfo import ZoneInfo
 
-ROOT = __import__("pathlib").Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
@@ -113,7 +114,13 @@ def main() -> int:
                 return 6
 
             quote = quotes.get(instrument.instrument_key)
-            if quote is None or quote.best_bid is None or quote.best_ask is None:
+            if (
+                quote is None
+                or quote.best_bid is None
+                or quote.best_ask is None
+                or not quote.best_bid_quantity
+                or not quote.best_ask_quantity
+            ):
                 print(
                     "WebSocket tick received, but no fresh two-sided REST top-of-book "
                     "quote was available. No trading action was taken."
