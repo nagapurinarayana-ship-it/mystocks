@@ -106,11 +106,22 @@ def parse_upstox_v3_message(
         bid_quantity = _first(best, "bidQ", "bq")
         ask_quantity = _first(best, "askQ", "aq")
         details = _mapping(market_ff.get("eFeedDetails"))
-        volume = _first(details, "vtt", "volumeTradedToday")
+        # In the official V3 Protobuf schema, vtt is a direct MarketFullFeed
+        # field (not nested under eFeedDetails). Retain aliases for documented
+        # JSON variants, but prefer the actual Protobuf field.
+        volume = _first(market_ff, "vtt", "volumeTradedToday")
+        if volume is None:
+            volume = _first(details, "vtt", "volumeTradedToday")
         if volume is None:
             volume = _first(
                 _mapping(feed.get("firstLevelWithGreeks")), "vtt"
             )
+        upper_circuit = _first(market_ff, "uc", "upperCircuitLimit")
+        if upper_circuit is None:
+            upper_circuit = details.get("uc")
+        lower_circuit = _first(market_ff, "lc", "lowerCircuitLimit")
+        if lower_circuit is None:
+            lower_circuit = details.get("lc")
 
         try:
             result.append(MarketTick(
@@ -125,8 +136,8 @@ def parse_upstox_v3_message(
                 best_ask=float(ask) if ask is not None else None,
                 best_bid_quantity=max(0, _as_int(bid_quantity)) if bid_quantity is not None else None,
                 best_ask_quantity=max(0, _as_int(ask_quantity)) if ask_quantity is not None else None,
-                upper_circuit_limit=float(details["uc"]) if details.get("uc") is not None else None,
-                lower_circuit_limit=float(details["lc"]) if details.get("lc") is not None else None,
+                upper_circuit_limit=float(upper_circuit) if upper_circuit is not None else None,
+                lower_circuit_limit=float(lower_circuit) if lower_circuit is not None else None,
             ))
         except (TypeError, ValueError):
             continue
