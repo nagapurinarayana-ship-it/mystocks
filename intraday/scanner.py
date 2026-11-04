@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, time, timezone
+from zoneinfo import ZoneInfo
 
 from intraday.domain import Instrument, MarketTick, TradeSignal
 from intraday.market_data.bars import FiveMinuteBarBuilder
@@ -28,6 +29,13 @@ class IntradayScanner:
         self._candidate_signals: dict[tuple[str, str, datetime], TradeSignal] = {}
 
     def on_tick(self, tick: MarketTick, now: datetime | None = None) -> bool:
+        exchange_time = tick.exchange_time.astimezone(ZoneInfo("Asia/Kolkata"))
+        if (
+            exchange_time.weekday() >= 5
+            or not (time(9, 15) <= exchange_time.time().replace(tzinfo=None) <= time(15, 30))
+        ):
+            self.rejected_ticks["outside_regular_session"] = self.rejected_ticks.get("outside_regular_session", 0) + 1
+            return False
         if tick.instrument_key not in self.by_key:
             self.rejected_ticks["unknown_instrument"] = self.rejected_ticks.get("unknown_instrument", 0) + 1
             return False
