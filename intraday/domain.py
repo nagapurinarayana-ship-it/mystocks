@@ -44,6 +44,8 @@ class MarketTick:
     best_ask: float | None = None
     best_bid_quantity: int | None = None
     best_ask_quantity: int | None = None
+    upper_circuit_limit: float | None = None
+    lower_circuit_limit: float | None = None
 
     def __post_init__(self) -> None:
         require_aware(self.exchange_time, "exchange_time")
@@ -66,6 +68,20 @@ class MarketTick:
             raise ValueError("best_bid_quantity cannot be negative")
         if self.best_ask_quantity is not None and self.best_ask_quantity < 0:
             raise ValueError("best_ask_quantity cannot be negative")
+        if self.upper_circuit_limit is not None and (
+            not isfinite(self.upper_circuit_limit) or self.upper_circuit_limit <= 0
+        ):
+            raise ValueError("upper_circuit_limit must be positive and finite")
+        if self.lower_circuit_limit is not None and (
+            not isfinite(self.lower_circuit_limit) or self.lower_circuit_limit <= 0
+        ):
+            raise ValueError("lower_circuit_limit must be positive and finite")
+        if (
+            self.upper_circuit_limit is not None
+            and self.lower_circuit_limit is not None
+            and self.lower_circuit_limit >= self.upper_circuit_limit
+        ):
+            raise ValueError("circuit band is invalid")
 
 
 @dataclass(frozen=True, slots=True)
