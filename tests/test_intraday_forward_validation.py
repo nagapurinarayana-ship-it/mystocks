@@ -150,3 +150,28 @@ def test_session_tracker_rejects_samples_after_its_market_date():
     next_day = datetime(2026, 11, 5, 9, 15, tzinfo=IST)
     with pytest.raises(ValueError, match="session date"):
         tracker.sample(next_day, "healthy")
+
+
+
+def test_feed_health_time_is_attributed_to_the_state_at_interval_start():
+    tracker = ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled=True)
+    tracker.sample(at_ist(9, 15), "healthy")
+    tracker.sample(at_ist(9, 15, 2), "stale")
+    tracker.sample(at_ist(9, 15, 4), "stale")
+
+    snapshot = tracker.snapshot()
+    assert snapshot["healthy_seconds"] == 2.0
+    assert snapshot["stale_seconds"] == 2.0
+
+
+def test_last_feed_state_is_preserved_when_tracker_snapshot_is_restored():
+    tracker = ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled=True)
+    tracker.sample(at_ist(9, 15), "healthy")
+    tracker.sample(at_ist(9, 15, 2), "stale")
+    snapshot = tracker.snapshot()
+    restored = ForwardSessionTracker.from_snapshot(snapshot)
+
+    restored.sample(at_ist(9, 15, 4), "disconnected")
+    result = restored.snapshot()
+    assert result["stale_seconds"] == 2.0
+    assert result["last_sample_state"] == "disconnected"
