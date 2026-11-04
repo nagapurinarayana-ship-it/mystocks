@@ -6,7 +6,7 @@ from intraday.ledger import PaperLedger
 def test_paper_account_state_persists_across_ledger_reopen(tmp_path):
     database = tmp_path / "paper-state.sqlite3"
     snapshot = {
-        "version": 1,
+        "version": 2,
         "fee_schedule": {
             "brokerage_rate": "0.0001",
             "brokerage_cap_per_order": "20",
