@@ -175,3 +175,31 @@ def test_last_feed_state_is_preserved_when_tracker_snapshot_is_restored():
     result = restored.snapshot()
     assert result["stale_seconds"] == 2.0
     assert result["last_sample_state"] == "disconnected"
+
+
+
+@pytest.mark.parametrize(
+    "mutation, message",
+    [
+        (lambda snapshot: snapshot.update(session_date="2026-11-05"), "date does not match"),
+        (lambda snapshot: snapshot.update(last_sample_at="2026-11-04T09:16:00"), "timezone-aware"),
+        (lambda snapshot: snapshot.update(paper_engine_enabled="false"), "boolean"),
+        (lambda snapshot: snapshot.update(observed_seconds=float("nan")), "finite and nonnegative"),
+        (lambda snapshot: snapshot.update(accepted_ticks=-1), "nonnegative integer"),
+    ],
+)
+def test_corrupt_forward_session_snapshots_fail_closed(mutation, message):
+    tracker = ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled=True)
+    tracker.record_tick()
+    tracker.sample(at_ist(9, 15, 2), "healthy")
+    snapshot = tracker.snapshot()
+    invalid = dict(snapshot)
+    mutation(invalid)
+
+    with pytest.raises(ValueError, match=message):
+        ForwardSessionTracker.from_snapshot(invalid)
+
+
+def test_forward_tracker_requires_boolean_paper_engine_flag():
+    with pytest.raises(ValueError, match="boolean"):
+        ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled="yes")
