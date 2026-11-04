@@ -16,12 +16,15 @@ import time
 import uuid
 from datetime import datetime, timezone
 from typing import Any, Callable, Mapping
+from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
+
+import requests
 
 from intraday.domain import MarketTick
 
 
-WEBSOCKET_URL = "wss://api.upstox.com/v3/feed/market-data-feed"
+WEBSOCKET_AUTH_URL = "https://api.upstox.com/v3/feed/market-data-feed/authorize"
 MAX_LTPC_INSTRUMENTS = 5000
 MAX_RECONNECT_ATTEMPTS = 20
 RECONNECT_INTERVAL_SECONDS = 5
@@ -250,16 +253,65 @@ class UpstoxV3MarketDataClient:
         )
         self._thread.start()
 
+    def _authorize_websocket_url(self) -> str:
+        """Obtain a one-time Upstox socket URL over verified HTTPS."""
+        try:
+            response = requests.get(
+                WEBSOCKET_AUTH_URL,
+                headers={
+                    "Accept": "application/json",
+                    "Authorization": f"Bearer {self.access_token}",
+                },
+                timeout=(5, 15),
+            )
+        except requests.RequestException as exc:
+            raise UpstoxFeedError("Upstox market-data authorization request failed") from exc
+
+        if response.status_code == 401:
+            with self._lock:
+                self._fatal_auth_error = True
+                self.last_error = "Upstox rejected market-data authentication (HTTP 401)"
+            self._stop_event.set()
+            raise UpstoxFeedError("Upstox market-data authentication rejected")
+        if response.status_code != 200:
+            raise UpstoxFeedError(
+                f"Upstox market-data authorization returned HTTP {response.status_code}"
+            )
+        try:
+            payload = response.json()
+        except ValueError as exc:
+            raise UpstoxFeedError("Upstox authorization response was not valid JSON") from exc
+
+        data = _mapping(_mapping(payload).get("data"))
+        authorized_url = data.get("authorized_redirect_uri")
+        if not isinstance(authorized_url, str) or not authorized_url:
+            raise UpstoxFeedError("Upstox authorization response omitted its socket URL")
+
+        parsed = urlsplit(authorized_url)
+        hostname = (parsed.hostname or "").lower()
+        if (
+            parsed.scheme != "wss"
+            or not hostname.endswith(".upstox.com")
+            or parsed.username is not None
+            or parsed.password is not None
+            or parsed.port not in (None, 443)
+            or not parsed.query
+            or parsed.fragment
+        ):
+            raise UpstoxFeedError("Upstox authorization returned an invalid socket URL")
+        return authorized_url
+
     def _run_connection_loop(self, websocket_module: Any) -> None:
         attempt = 0
         while not self._stop_event.is_set():
             try:
+                authorized_url = self._authorize_websocket_url()
                 app = websocket_module.WebSocketApp(
-                    WEBSOCKET_URL,
-                    header={
-                        "Authorization": f"Bearer {self.access_token}",
-                        "Accept": "*/*",
-                    },
+                    authorized_url,
+                    # The authorization response URL is one-time use. The bearer
+                    # token is sent only to the HTTPS authorization endpoint, not
+                    # repeated in a WebSocket handshake or redirect.
+                    header={"Accept": "*/*"},
                     on_open=self._on_open,
                     on_message=self._on_message,
                     on_error=self._on_error,
@@ -275,7 +327,8 @@ class UpstoxV3MarketDataClient:
             except Exception as exc:
                 with self._lock:
                     self.connected = False
-                    self.last_error = f"Upstox WebSocket loop failed: {type(exc).__name__}"
+                    if not self._fatal_auth_error:
+                        self.last_error = f"Upstox WebSocket loop failed: {type(exc).__name__}"
 
             if self._stop_event.is_set() or self._fatal_auth_error:
                 break
