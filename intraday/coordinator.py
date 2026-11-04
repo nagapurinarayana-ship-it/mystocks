@@ -8,6 +8,7 @@ from datetime import datetime
 from intraday.execution.paper import PaperEvent, PaperExecutionEngine
 from intraday.scanner import IntradayScanner
 from intraday.domain import MarketTick, TradeSignal
+from intraday.ledger import PaperLedger
 
 
 @dataclass(frozen=True, slots=True)
@@ -26,9 +27,11 @@ class AutonomousPaperCoordinator:
         self,
         scanner: IntradayScanner,
         paper_engine: PaperExecutionEngine,
+        ledger: PaperLedger | None = None,
     ) -> None:
         self.scanner = scanner
         self.paper_engine = paper_engine
+        self.ledger = ledger
 
     def on_tick(self, tick: MarketTick, now: datetime | None = None) -> CoordinatorUpdate:
         accepted = self.scanner.on_tick(tick, now=now)
@@ -38,9 +41,17 @@ class AutonomousPaperCoordinator:
         completed = self.scanner.drain_completed_bars()
         events: list[PaperEvent] = []
         for bar in completed:
+            previous_trade_count = len(self.paper_engine.trades)
             event = self.paper_engine.on_bar(bar)
             if event is not None:
                 events.append(event)
+                if self.ledger is not None:
+                    self.ledger.record_event(
+                        bar.end_time.isoformat(), "INFO", event.event_type, event.message
+                    )
+            if self.ledger is not None and len(self.paper_engine.trades) > previous_trade_count:
+                for trade in self.paper_engine.trades[previous_trade_count:]:
+                    self.ledger.record_trade(trade)
 
         queued: TradeSignal | None = None
         fresh = self.scanner.feed_is_fresh(now=now)
@@ -53,6 +64,13 @@ class AutonomousPaperCoordinator:
                 instrument = self.scanner.instruments.get(signal.symbol)
                 if instrument is not None and self.paper_engine.submit_signal(signal, instrument):
                     queued = signal
+                    if self.ledger is not None:
+                        self.ledger.record_signal(signal)
+                        self.ledger.record_event(
+                            signal.generated_at.isoformat(), "INFO",
+                            "paper_signal_queued",
+                            f"{signal.strategy_id} candidate queued for {signal.symbol}",
+                        )
                     break
 
         return CoordinatorUpdate(
