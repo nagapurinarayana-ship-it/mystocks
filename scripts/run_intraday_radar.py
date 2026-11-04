@@ -15,6 +15,8 @@ import os
 import sys
 import time
 from datetime import datetime, timezone
+from decimal import Decimal, InvalidOperation
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from typing import Any
 
@@ -33,8 +35,40 @@ from intraday.market_data.upstox_v3 import (  # noqa: E402
 )
 from intraday.scanner import IntradayScanner  # noqa: E402
 from intraday.ledger import PaperLedger  # noqa: E402
+from intraday.execution.paper import FeeSchedule, PaperExecutionEngine  # noqa: E402
+from intraday.coordinator import AutonomousPaperCoordinator  # noqa: E402
 
 INSTRUMENTS_URL = "https://assets.upstox.com/market-quote/instruments/exchange/NSE.json.gz"
+IST = ZoneInfo("Asia/Kolkata")
+FEE_ENV_FIELDS = {
+    "brokerage_rate": "MYSTOCKS_PAPER_FEE_BROKERAGE_RATE",
+    "brokerage_cap_per_order": "MYSTOCKS_PAPER_FEE_BROKERAGE_CAP",
+    "exchange_transaction_rate": "MYSTOCKS_PAPER_FEE_EXCHANGE_RATE",
+    "sebi_turnover_rate": "MYSTOCKS_PAPER_FEE_SEBI_RATE",
+    "gst_rate": "MYSTOCKS_PAPER_FEE_GST_RATE",
+    "stt_sell_rate": "MYSTOCKS_PAPER_FEE_STT_SELL_RATE",
+    "stamp_buy_rate": "MYSTOCKS_PAPER_FEE_STAMP_BUY_RATE",
+    "slippage_bps": "MYSTOCKS_PAPER_FEE_SLIPPAGE_BPS",
+}
+
+
+def load_optional_fee_schedule() -> FeeSchedule | None:
+    """Load explicit selected-broker rates; never assume a tariff by default."""
+    present = {field: os.getenv(env_name) for field, env_name in FEE_ENV_FIELDS.items()}
+    configured = {field: value for field, value in present.items() if value is not None}
+    if not configured:
+        return None
+    missing = sorted(set(FEE_ENV_FIELDS) - set(configured))
+    if missing:
+        raise RuntimeError(
+            "Paper execution fee configuration is incomplete. Missing fields: "
+            + ", ".join(FEE_ENV_FIELDS[field] for field in missing)
+        )
+    try:
+        values = {field: Decimal(value) for field, value in configured.items()}
+    except (InvalidOperation, TypeError) as exc:
+        raise RuntimeError("Paper fee schedule contains a non-decimal value") from exc
+    return FeeSchedule(**values)
 
 
 def load_instruments() -> tuple:
@@ -73,8 +107,24 @@ def main() -> int:
         instruments = load_instruments()
         scanner = IntradayScanner(instruments, max_opportunities=3)
         logging.info("Starting live LTPC subscription for %d NSE cash equities", len(instruments))
+        fee_schedule = load_optional_fee_schedule()
+        if fee_schedule is None:
+            logging.warning(
+                "Autonomous paper fills disabled: configure the selected broker's exact fee schedule "
+                "after verifying its published tariff. Scanner and depth validation remain active."
+            )
 
         with PaperLedger("data/mystocks_intraday.sqlite3") as ledger:
+            paper_coordinator = None
+            if fee_schedule is not None:
+                paper_coordinator = AutonomousPaperCoordinator(
+                    scanner, PaperExecutionEngine(fee_schedule), ledger
+                )
+                ledger.record_event(
+                    datetime.now(timezone.utc).isoformat(), "INFO",
+                    "paper_engine_enabled",
+                    "Autonomous paper execution enabled with explicit fee schedule; live broker orders remain disabled",
+                )
             now_iso = datetime.now(timezone.utc).isoformat()
             ledger.record_event(now_iso, "INFO", "scanner_starting", "Intraday live scanner starting")
 
@@ -83,10 +133,19 @@ def main() -> int:
 
             def handle_tick(tick) -> None:
                 now = datetime.now(timezone.utc)
-                if not scanner.on_tick(tick, now=now):
-                    return
-                newly_discovered = scanner.opportunities(now=now)
-                for item in newly_discovered:
+                if paper_coordinator is not None:
+                    update = paper_coordinator.on_tick(tick, now=now)
+                    if not update.accepted_tick:
+                        return
+                    for event in update.paper_events:
+                        logging.info("PAPER %s %s", event.event_type, event.message)
+                else:
+                    if not scanner.on_tick(tick, now=now):
+                        return
+                    scanner.opportunities(now=now)
+
+                active_candidates = scanner.candidate_signals(now=now)
+                for item in active_candidates:
                     inserted = ledger.record_signal(item)
                     if inserted:
                         logging.info(
@@ -96,10 +155,8 @@ def main() -> int:
                         )
                         ledger.record_event(
                             item.generated_at.isoformat(), "INFO", "signal_discovered",
-                            f"{item.strategy_id} candidate for {item.symbol}; no broker order sent",
+                            f"{item.strategy_id} candidate for {item.symbol}; waiting for depth validation",
                         )
-
-                active_candidates = scanner.candidate_signals(now=now)
                 active_keys = {
                     scanner.instruments[item.symbol].instrument_key
                     for item in active_candidates if item.symbol in scanner.instruments
@@ -133,7 +190,7 @@ def main() -> int:
                             now.isoformat(), "INFO", "candidate_depth_validated",
                             f"{item.symbol} {item.strategy_id}: two-sided depth and spread validated",
                         )
-                    elif reason not in {"full_depth_not_received", "candidate_quote_stale"}:
+                    elif reason not in {"full_depth_not_received", "candidate_quote_stale", "market_feed_stale"}:
                         ledger.record_event(
                             now.isoformat(), "WARNING", "candidate_depth_rejected",
                             f"{item.symbol} {item.strategy_id}: {reason}",
