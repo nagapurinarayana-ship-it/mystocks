@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import os
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from typing import Any, Callable, Mapping
 
 from intraday.domain import MarketTick
@@ -33,7 +34,7 @@ def _first(mapping: Mapping[str, Any], *keys: str) -> Any:
 
 def _timestamp_ms(value: Any) -> datetime | None:
     try:
-        return datetime.fromtimestamp(int(value) / 1000.0, tz=timezone.utc)
+        return datetime.fromtimestamp(int(value) / 1000.0, tz=ZoneInfo("Asia/Kolkata"))
     except (TypeError, ValueError, OverflowError, OSError):
         return None
 
@@ -48,6 +49,7 @@ def _as_int(value: Any, default: int = 0) -> int:
 def parse_upstox_v3_message(
     message: Any,
     received_at: datetime | None = None,
+    symbol_by_key: Mapping[str, str] | None = None,
 ) -> tuple[MarketTick, ...]:
     """Convert decoded SDK V3 feed messages to internal ticks."""
     if isinstance(message, str):
@@ -91,7 +93,7 @@ def parse_upstox_v3_message(
 
         try:
             result.append(MarketTick(
-                symbol=str(instrument_key).split("|")[-1],
+                symbol=(symbol_by_key or {}).get(str(instrument_key), str(instrument_key).split("|")[-1]),
                 instrument_key=str(instrument_key),
                 price=float(price),
                 exchange_time=trade_time,
@@ -114,6 +116,7 @@ class UpstoxV3MarketDataClient:
         instrument_keys: list[str],
         on_tick: Callable[[MarketTick], None],
         access_token: str | None = None,
+        symbol_by_key: Mapping[str, str] | None = None,
     ) -> None:
         if not instrument_keys:
             raise ValueError("at least one instrument key is required")
@@ -123,6 +126,10 @@ class UpstoxV3MarketDataClient:
             raise ValueError("instrument keys must be unique")
         self.instrument_keys = instrument_keys
         self.on_tick = on_tick
+        self.symbol_by_key = dict(symbol_by_key or {})
+        missing = set(instrument_keys) - set(self.symbol_by_key)
+        if missing:
+            raise ValueError(f"symbol mapping missing for {len(missing)} instrument keys")
         self.access_token = access_token or os.getenv("UPSTOX_ACCESS_TOKEN", "")
         if not self.access_token.strip():
             raise UpstoxFeedError("UPSTOX_ACCESS_TOKEN is not configured")
@@ -165,7 +172,7 @@ class UpstoxV3MarketDataClient:
             self.last_error = f"{self.last_error}: {type(error).__name__}"
 
     def _on_message(self, message: Any) -> None:
-        for tick in parse_upstox_v3_message(message):
+        for tick in parse_upstox_v3_message(message, symbol_by_key=self.symbol_by_key):
             self.on_tick(tick)
 
     def disconnect(self) -> None:
