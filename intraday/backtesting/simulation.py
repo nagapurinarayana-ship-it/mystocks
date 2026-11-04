@@ -156,7 +156,18 @@ def run_intraday_backtest(
     if session_bars:
         engine.force_session_close(session_bars[-1])
 
-    trades = tuple(asdict(trade) for trade in engine.trades)
+    decimal_fields = (
+        "entry_price", "exit_price", "gross_pnl", "charges", "net_pnl"
+    )
+    trades_list = []
+    for trade in engine.trades:
+        record = asdict(trade)
+        for field in decimal_fields:
+            record[field] = str(record[field])
+        record["entry_time"] = record["entry_time"].isoformat()
+        record["exit_time"] = record["exit_time"].isoformat()
+        trades_list.append(record)
+    trades = tuple(trades_list)
     gross = sum((trade.gross_pnl for trade in engine.trades), Decimal("0"))
     charges = sum((trade.charges for trade in engine.trades), Decimal("0"))
     net = sum((trade.net_pnl for trade in engine.trades), Decimal("0"))
@@ -164,7 +175,7 @@ def run_intraday_backtest(
     losses = sum(1 for trade in engine.trades if trade.net_pnl < 0)
     gross_wins = sum((trade.net_pnl for trade in engine.trades if trade.net_pnl > 0), Decimal("0"))
     gross_losses = abs(sum((trade.net_pnl for trade in engine.trades if trade.net_pnl < 0), Decimal("0")))
-    profit_factor = float(gross_wins / gross_losses) if gross_losses > 0 else (None if gross_wins == 0 else float("inf"))
+    profit_factor = float(gross_wins / gross_losses) if gross_losses > 0 else None
     count = len(engine.trades)
     initial = policy.starting_capital
     ending_cash = engine.cash
