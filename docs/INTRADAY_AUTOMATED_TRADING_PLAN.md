@@ -40,7 +40,7 @@ The following code has been added to `feature/intraday-automated-trading-foundat
 2. Run, for example: `python scripts/run_intraday_backtest.py --symbol RELIANCE --from-date 2026-09-01 --to-date 2026-10-31 --strategy vwap_momentum`.
 3. Inspect the JSON report in `data/intraday-backtests`, including its data-quality counts and execution assumptions.
 
-The latest feature-head CI run passed **82 tests**, including Python compile checks. These are deterministic tests; an SDK-authenticated feed session and real-market execution path have not been exercised in this workspace. SEO Quality also passed.
+The latest feature-head CI run passed **82 tests**, including Python compile checks. These include installation and local construction of the pinned Upstox SDK V3 streamer without connecting. They are deterministic tests; an authenticated feed session and real-market execution path have not been exercised in this workspace. SEO Quality also passed.
 
 ---
 
