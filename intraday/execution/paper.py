@@ -7,7 +7,7 @@ the chosen broker's current published tariff; no default fee assumptions exist.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import date, datetime
 from decimal import Decimal, ROUND_CEILING, ROUND_FLOOR
 from typing import Literal
 
@@ -178,6 +178,153 @@ class PaperExecutionEngine:
     @property
     def realised_net_pnl(self) -> Decimal:
         return sum((trade.net_pnl for trade in self.trades), ZERO)
+
+    def export_state(self) -> dict:
+        """Export resumable simulation state without credentials or API tokens."""
+        position = None
+        if self.position is not None:
+            item = self.position
+            position = {
+                "symbol": item.symbol,
+                "quantity": item.quantity,
+                "entry_price": str(item.entry_price),
+                "stop_price": str(item.stop_price),
+                "target_price": str(item.target_price),
+                "entry_fee": str(item.entry_fee),
+                "tick_size": str(item.tick_size),
+                "opened_at": item.opened_at.isoformat(),
+                "strategy_id": item.strategy_id,
+                "bars_held": item.bars_held,
+            }
+
+        pending = None
+        if self.pending is not None:
+            signal, instrument = self.pending
+            pending = {
+                "signal": {
+                    "strategy_id": signal.strategy_id,
+                    "symbol": signal.symbol,
+                    "generated_at": signal.generated_at.isoformat(),
+                    "entry_reference": signal.entry_reference,
+                    "stop_price": signal.stop_price,
+                    "target_price": signal.target_price,
+                    "volume_ratio": signal.volume_ratio,
+                    "score": signal.score,
+                    "explanation": signal.explanation,
+                },
+                "instrument": {
+                    "symbol": instrument.symbol,
+                    "instrument_key": instrument.instrument_key,
+                    "name": instrument.name,
+                    "tick_size": str(instrument.tick_size),
+                    "lot_size": instrument.lot_size,
+                    "security_type": instrument.security_type,
+                },
+            }
+
+        return {
+            "version": 1,
+            "cash": str(self.cash),
+            "day": self._day.isoformat() if isinstance(self._day, date) else None,
+            "day_start_cash": str(self._day_start_cash),
+            "daily_net_pnl": str(self._daily_net_pnl),
+            "overnight_exit_pending": bool(self._overnight_exit_pending),
+            "position": position,
+            "pending": pending,
+        }
+
+    def restore_state(self, state: dict) -> None:
+        """Restore validated state. Any corruption raises instead of resetting equity."""
+        if not isinstance(state, dict) or state.get("version") != 1:
+            raise ValueError("unsupported or invalid paper-state version")
+
+        def parse_aware(value: str, field: str) -> datetime:
+            if not isinstance(value, str):
+                raise ValueError(f"{field} must be an ISO timestamp")
+            result = datetime.fromisoformat(value)
+            if result.tzinfo is None or result.utcoffset() is None:
+                raise ValueError(f"{field} must be timezone-aware")
+            return result
+
+        cash = _dec(state.get("cash"), "cash")
+        day_start_cash = _dec(state.get("day_start_cash"), "day_start_cash")
+        daily_net_pnl = _dec(state.get("daily_net_pnl"), "daily_net_pnl")
+        if cash < ZERO or day_start_cash <= ZERO:
+            raise ValueError("saved paper cash values are invalid")
+
+        position_data = state.get("position")
+        position = None
+        if position_data is not None:
+            if not isinstance(position_data, dict):
+                raise ValueError("saved position is invalid")
+            position = PaperPosition(
+                symbol=str(position_data["symbol"]),
+                quantity=int(position_data["quantity"]),
+                entry_price=_dec(position_data["entry_price"], "position.entry_price"),
+                stop_price=_dec(position_data["stop_price"], "position.stop_price"),
+                target_price=_dec(position_data["target_price"], "position.target_price"),
+                entry_fee=_dec(position_data["entry_fee"], "position.entry_fee"),
+                tick_size=_dec(position_data["tick_size"], "position.tick_size"),
+                opened_at=parse_aware(position_data["opened_at"], "position.opened_at"),
+                strategy_id=str(position_data["strategy_id"]),
+                bars_held=int(position_data.get("bars_held", 0)),
+            )
+            if (
+                position.quantity < 1 or position.entry_price <= ZERO
+                or position.tick_size <= ZERO or position.entry_fee < ZERO
+                or not position.stop_price < position.entry_price < position.target_price
+                or position.bars_held < 0
+            ):
+                raise ValueError("saved paper position failed validation")
+
+        pending_data = state.get("pending")
+        pending = None
+        if pending_data is not None:
+            if not isinstance(pending_data, dict):
+                raise ValueError("saved pending entry is invalid")
+            signal_data = pending_data["signal"]
+            instrument_data = pending_data["instrument"]
+            pending_signal = TradeSignal(
+                strategy_id=str(signal_data["strategy_id"]),
+                symbol=str(signal_data["symbol"]),
+                generated_at=parse_aware(signal_data["generated_at"], "pending.generated_at"),
+                entry_reference=float(signal_data["entry_reference"]),
+                stop_price=float(signal_data["stop_price"]),
+                target_price=float(signal_data["target_price"]),
+                volume_ratio=float(signal_data["volume_ratio"]),
+                score=float(signal_data["score"]),
+                explanation=str(signal_data["explanation"]),
+            )
+            pending_instrument = Instrument(
+                symbol=str(instrument_data["symbol"]),
+                instrument_key=str(instrument_data["instrument_key"]),
+                name=str(instrument_data["name"]),
+                tick_size=_dec(instrument_data["tick_size"], "pending.instrument.tick_size"),
+                lot_size=int(instrument_data["lot_size"]),
+                security_type=str(instrument_data["security_type"]),
+            )
+            if pending_signal.symbol != pending_instrument.symbol:
+                raise ValueError("saved pending signal and instrument do not match")
+            pending = (pending_signal, pending_instrument)
+
+        if position is not None and pending is not None:
+            raise ValueError("saved state cannot contain both an open position and pending entry")
+
+        day_value = state.get("day")
+        restored_day = date.fromisoformat(day_value) if day_value else None
+        if state.get("overnight_exit_pending") and position is None:
+            raise ValueError("overnight exit flag requires an open position")
+
+        # Assign only after all fields have passed validation.
+        self.cash = cash
+        self.position = position
+        self.pending = pending
+        self._day = restored_day
+        self._day_start_cash = day_start_cash
+        self._daily_net_pnl = daily_net_pnl
+        self._overnight_exit_pending = bool(state.get("overnight_exit_pending", False))
+        self.trades.clear()
+        self.rejected_entries.clear()
 
     def submit_signal(self, signal: TradeSignal, instrument: Instrument) -> bool:
         if self.position is not None or self.pending is not None:
