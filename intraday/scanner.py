@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime, time, timezone
+import threading
 from zoneinfo import ZoneInfo
 
 from intraday.domain import Instrument, MarketTick, TradeSignal
@@ -27,8 +28,14 @@ class IntradayScanner:
         self._completed_bars = []
         self._latest_ticks: dict[str, MarketTick] = {}
         self._candidate_signals: dict[tuple[str, str, datetime], TradeSignal] = {}
+        self._last_feed_by_symbol: dict[str, datetime] = {}
+        self._lock = threading.RLock()
 
     def on_tick(self, tick: MarketTick, now: datetime | None = None) -> bool:
+        with self._lock:
+            return self._on_tick_locked(tick, now)
+
+    def _on_tick_locked(self, tick: MarketTick, now: datetime | None = None) -> bool:
         exchange_time = tick.exchange_time.astimezone(ZoneInfo("Asia/Kolkata"))
         if (
             exchange_time.weekday() >= 5
@@ -47,6 +54,7 @@ class IntradayScanner:
             self.rejected_ticks[quality.reason] = self.rejected_ticks.get(quality.reason, 0) + 1
             return False
         self.last_feed_receive = tick.received_at
+        self._last_feed_by_symbol[tick.symbol] = tick.received_at
         self._latest_ticks[tick.symbol] = tick
         completed = self.bar_builder.ingest(tick)
         if completed is not None:
@@ -55,15 +63,43 @@ class IntradayScanner:
 
     def drain_completed_bars(self):
         """Return bars finalized since the previous drain, in event order."""
-        completed = tuple(self._completed_bars)
-        self._completed_bars.clear()
-        return completed
+        with self._lock:
+            completed = tuple(self._completed_bars)
+            self._completed_bars.clear()
+            return completed
+
+    def update_quote(self, tick: MarketTick, now: datetime | None = None) -> bool:
+        """Store a REST full-quote snapshot without treating it as a trade tick."""
+        with self._lock:
+            instrument = self.by_key.get(tick.instrument_key)
+            if instrument is None or instrument.symbol != tick.symbol:
+                return False
+            quality = assess_tick(tick, now=now or datetime.now(timezone.utc))
+            if not quality.accepted:
+                self.rejected_ticks[quality.reason] = self.rejected_ticks.get(quality.reason, 0) + 1
+                return False
+            if (
+                tick.best_bid is None or tick.best_ask is None
+                or not tick.best_bid_quantity or not tick.best_ask_quantity
+            ):
+                self.rejected_ticks["quote_missing_top_of_book"] = self.rejected_ticks.get(
+                    "quote_missing_top_of_book", 0
+                ) + 1
+                return False
+            self._latest_ticks[tick.symbol] = tick
+            return True
 
     def opportunities(self, now: datetime | None = None) -> tuple[TradeSignal, ...]:
+        with self._lock:
+            return self._opportunities_locked(now)
+
+    def _opportunities_locked(self, now: datetime | None = None) -> tuple[TradeSignal, ...]:
         if not self.feed_is_fresh(now=now):
             return ()
         candidates: list[TradeSignal] = []
         for symbol, instrument in self.instruments.items():
+            if not self._symbol_feed_is_fresh(symbol, now=now):
+                continue
             bars = self.bar_builder.bars(symbol)
             vwap = self.bar_builder.session_vwap(symbol)
             for signal in (
@@ -92,17 +128,21 @@ class IntradayScanner:
         return tuple(selected)
 
     def candidate_signals(self, now: datetime | None = None, max_age_minutes: int = 10) -> tuple[TradeSignal, ...]:
-        """Return still-valid candidates for depth promotion and monitoring."""
-        now = now or datetime.now(timezone.utc)
-        active = []
-        for key, signal in list(self._candidate_signals.items()):
-            age = (now - signal.generated_at).total_seconds()
-            if age < 0 or age > max_age_minutes * 60:
-                self._candidate_signals.pop(key, None)
-                continue
-            active.append(signal)
-        active.sort(key=lambda item: (item.score, item.volume_ratio), reverse=True)
-        return tuple(active[: self.max_opportunities])
+        """Return fresh candidates; stale per-symbol data invalidates a candidate."""
+        with self._lock:
+            now = now or datetime.now(timezone.utc)
+            active = []
+            for key, signal in list(self._candidate_signals.items()):
+                age = (now - signal.generated_at).total_seconds()
+                if (
+                    age < 0 or age > max_age_minutes * 60
+                    or not self._symbol_feed_is_fresh(signal.symbol, now=now)
+                ):
+                    self._candidate_signals.pop(key, None)
+                    continue
+                active.append(signal)
+            active.sort(key=lambda item: (item.score, item.volume_ratio), reverse=True)
+            return tuple(active[: self.max_opportunities])
 
     def validate_candidate_depth(
         self,
@@ -112,9 +152,23 @@ class IntradayScanner:
         max_spread_fraction: float = 0.005,
     ) -> tuple[bool, str]:
         """Require fresh, two-sided, non-empty top-of-book liquidity."""
+        with self._lock:
+            return self._validate_candidate_depth_locked(
+                signal, now, max_quote_age_seconds, max_spread_fraction
+            )
+
+    def _validate_candidate_depth_locked(
+        self,
+        signal: TradeSignal,
+        now: datetime | None = None,
+        max_quote_age_seconds: int = 5,
+        max_spread_fraction: float = 0.005,
+    ) -> tuple[bool, str]:
         now = now or datetime.now(timezone.utc)
         if not self.feed_is_fresh(now=now):
             return False, "market_feed_stale"
+        if not self._symbol_feed_is_fresh(signal.symbol, now=now):
+            return False, "candidate_symbol_feed_stale"
         key = (signal.symbol, signal.strategy_id, signal.generated_at)
         if key not in self._candidate_signals:
             return False, "candidate_expired_or_unknown"
@@ -148,9 +202,26 @@ class IntradayScanner:
             return False, "spread_too_wide"
         if signal.entry_reference <= 0:
             return False, "invalid_signal_reference"
+        price_drift = abs(tick.price - signal.entry_reference) / signal.entry_reference
+        if price_drift > 0.005:
+            return False, "candidate_price_moved_over_0_5_percent"
         return True, "depth_validated"
 
+    def _symbol_feed_is_fresh(
+        self, symbol: str, now: datetime | None = None, max_age_seconds: int = 15
+    ) -> bool:
+        received = self._last_feed_by_symbol.get(symbol)
+        if received is None:
+            return False
+        now = now or datetime.now(timezone.utc)
+        age = (now - received).total_seconds()
+        return -1.0 <= age <= max_age_seconds
+
     def feed_is_fresh(self, now: datetime | None = None, max_age_seconds: int = 15) -> bool:
+        with self._lock:
+            return self._feed_is_fresh_locked(now, max_age_seconds)
+
+    def _feed_is_fresh_locked(self, now: datetime | None = None, max_age_seconds: int = 15) -> bool:
         if self.last_feed_receive is None:
             return False
         now = now or datetime.now(timezone.utc)
