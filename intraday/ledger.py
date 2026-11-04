@@ -165,7 +165,7 @@ class PaperLedger:
                 """
                 SELECT * FROM intraday_system_events
                 WHERE code IN ('feed_healthy', 'feed_stale', 'feed_disconnected',
-                               'scanner_starting', 'scanner_stopped')
+                               'feed_market_closed', 'scanner_starting', 'scanner_stopped')
                 ORDER BY id DESC LIMIT 1
                 """
             ).fetchone()
