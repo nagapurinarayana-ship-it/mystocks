@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime, time, timedelta
+import threading
 from zoneinfo import ZoneInfo
 
 from intraday.execution.paper import PaperEvent, PaperExecutionEngine
@@ -35,8 +36,13 @@ class AutonomousPaperCoordinator:
         self.ledger = ledger
         self._depth_status: dict[tuple[str, str, datetime], str] = {}
         self._session_cutoff_handled = False
+        self._lock = threading.RLock()
 
     def on_tick(self, tick: MarketTick, now: datetime | None = None) -> CoordinatorUpdate:
+        with self._lock:
+            return self._on_tick_locked(tick, now)
+
+    def _on_tick_locked(self, tick: MarketTick, now: datetime | None = None) -> CoordinatorUpdate:
         accepted = self.scanner.on_tick(tick, now=now)
         if not accepted:
             return CoordinatorUpdate(False, 0, (), None, self.scanner.feed_is_fresh(now=now))
@@ -95,20 +101,39 @@ class AutonomousPaperCoordinator:
                     for trade in self.paper_engine.trades[previous_trade_count:]:
                         self.ledger.record_trade(trade)
 
-        queued: TradeSignal | None = None
+        queued = None
         fresh = self.scanner.feed_is_fresh(now=now)
         if fresh and local_time < time(15, 15):
-            # Refresh the scanner's candidate cache using only completed bars.
+            queued = self.evaluate_candidates(now=now)
+
+    def evaluate_candidates(self, now: datetime | None = None) -> TradeSignal | None:
+        """Queue at most one paper entry from a fresh REST-validated depth snapshot."""
+        with self._lock:
+            now = now or datetime.now(ZoneInfo("UTC"))
+            local_time = now.astimezone(ZoneInfo("Asia/Kolkata")).time()
+            if local_time >= time(15, 15):
+                cancelled = self.paper_engine.cancel_pending_entry(
+                    "No new paper entries after 15:15 IST"
+                )
+                if cancelled is not None and self.ledger is not None:
+                    self.ledger.record_event(
+                        now.isoformat(), "INFO", cancelled.event_type, cancelled.message
+                    )
+                return None
+            if not self.scanner.feed_is_fresh(now=now):
+                return None
+            if self.paper_engine.position is not None or self.paper_engine.pending is not None:
+                return None
+
             self.scanner.opportunities(now=now)
-            active_candidates = self.scanner.candidate_signals(now=now)
-            for signal in active_candidates:
+            for signal in self.scanner.candidate_signals(now=now):
                 key = (signal.symbol, signal.strategy_id, signal.generated_at)
                 valid, reason = self.scanner.validate_candidate_depth(signal, now=now)
                 if self._depth_status.get(key) != reason:
                     self._depth_status[key] = reason
                     if self.ledger is not None:
                         self.ledger.record_event(
-                            (now or signal.generated_at).isoformat(),
+                            now.isoformat(),
                             "INFO" if valid else "WARNING",
                             "candidate_depth_validated" if valid else "candidate_depth_waiting",
                             f"{signal.symbol} {signal.strategy_id}: {reason}",
@@ -116,16 +141,17 @@ class AutonomousPaperCoordinator:
                 if not valid:
                     continue
                 instrument = self.scanner.instruments.get(signal.symbol)
-                if instrument is not None and self.paper_engine.submit_signal(signal, instrument):
-                    queued = signal
-                    if self.ledger is not None:
-                        self.ledger.record_signal(signal)
-                        self.ledger.record_event(
-                            signal.generated_at.isoformat(), "INFO",
-                            "paper_signal_queued",
-                            f"{signal.strategy_id} candidate queued for {signal.symbol} after depth validation",
-                        )
-                    break
+                if instrument is None or not self.paper_engine.submit_signal(signal, instrument):
+                    continue
+                if self.ledger is not None:
+                    self.ledger.record_signal(signal)
+                    self.ledger.record_event(
+                        signal.generated_at.isoformat(), "INFO",
+                        "paper_signal_queued",
+                        f"{signal.strategy_id} candidate queued for {signal.symbol} after REST depth validation",
+                    )
+                return signal
+            return None
 
         return CoordinatorUpdate(
             accepted_tick=True,
