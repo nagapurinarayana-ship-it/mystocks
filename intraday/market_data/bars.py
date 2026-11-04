@@ -56,6 +56,7 @@ class FiveMinuteBarBuilder:
             lambda: deque(maxlen=history_limit)
         )
         self._last_trade_time: dict[str, datetime] = {}
+        self._last_trade_fingerprint: dict[str, tuple[float, int]] = {}
         self._session_day: dict[str, object] = {}
         self._session_value: dict[str, float] = defaultdict(float)
         self._session_volume: dict[str, int] = defaultdict(int)
@@ -66,9 +67,18 @@ class FiveMinuteBarBuilder:
         return value.replace(minute=minute, second=0, microsecond=0)
 
     def ingest(self, tick: MarketTick) -> CompletedBar | None:
-        last_time = self._last_trade_time.get(tick.symbol)
-        if last_time is not None and tick.exchange_time <= last_time:
+        if tick.last_trade_quantity <= 0:
             return None
+        last_time = self._last_trade_time.get(tick.symbol)
+        fingerprint = (tick.price, tick.last_trade_quantity)
+        if last_time is not None:
+            if tick.exchange_time < last_time:
+                return None
+            if (
+                tick.exchange_time == last_time
+                and self._last_trade_fingerprint.get(tick.symbol) == fingerprint
+            ):
+                return None
 
         day = tick.exchange_time.date()
         previous_day = self._session_day.get(tick.symbol)
@@ -81,6 +91,7 @@ class FiveMinuteBarBuilder:
 
         self._session_day[tick.symbol] = day
         self._last_trade_time[tick.symbol] = tick.exchange_time
+        self._last_trade_fingerprint[tick.symbol] = fingerprint
         bucket = self._bucket_start(tick.exchange_time)
         working = self._working.get(tick.symbol)
         if working is None:
