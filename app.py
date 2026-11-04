@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 from typing import Any
 
 import pandas as pd
@@ -18,6 +19,7 @@ from long_term_watchlist import (
 from nse_universe import discover_current_nse_symbols, load_saved_universe, save_universe
 from research_data import ResearchDataConfig, load_universe
 from research_policy import history_tier
+from intraday.ledger import PaperLedger
 
 st.set_page_config(
     page_title="MyStocks — India Research Radar",
@@ -353,16 +355,238 @@ def render_short_term_research() -> None:
             st.success("Existing research output detected in the local data directory.")
 
 
+
+def render_intraday_radar() -> None:
+    st.title("🤖 MyStocks — Intraday Radar")
+    st.caption(
+        "Live NSE cash-equity scanner with completed-candle signals and an auditable paper-trading ledger. "
+        "No real broker orders are enabled."
+    )
+    st.warning(
+        "Research / paper mode only. Signal candidates are not guaranteed trades or returns. "
+        "Live order placement, fund transfers and withdrawals are disabled."
+    )
+
+    database = Path("data/mystocks_intraday.sqlite3")
+    if not database.exists():
+        st.info(
+            "The live scanner has not written any local data yet. Start it on an always-on machine "
+            "during NSE market hours using the instructions below."
+        )
+        signals = pd.DataFrame()
+        trades = pd.DataFrame()
+        performance = {"trades": 0, "realised_net_pnl": 0.0, "wins": 0, "losses": 0, "charges": 0.0}
+        feed_event = None
+        paper_state = None
+        forward_summary = {
+            "total_sessions": 0, "qualified_sessions": 0,
+            "incomplete_sessions": 0, "interrupted_sessions": 0,
+            "in_progress_sessions": 0,
+        }
+        forward_sessions = []
+    else:
+        try:
+            with PaperLedger(database) as ledger:
+                signals = pd.DataFrame(ledger.recent_signals(50))
+                trades = pd.DataFrame(ledger.recent_trades(50))
+                performance = ledger.paper_performance()
+                feed_event = ledger.latest_feed_event()
+                paper_state = ledger.load_paper_state()
+                forward_summary = ledger.forward_validation_summary()
+                forward_sessions = ledger.forward_sessions(30)
+        except Exception as exc:
+            st.error(f"Could not read the intraday ledger: {exc}")
+            return
+
+    if feed_event is None:
+        st.info("Feed status: not started or no status event recorded.")
+    else:
+        try:
+            event_time = pd.Timestamp(feed_event["occurred_at"])
+            age_seconds = (pd.Timestamp.now(tz="UTC") - event_time.tz_convert("UTC")).total_seconds()
+        except Exception:
+            age_seconds = None
+        if feed_event["code"] == "feed_market_closed":
+            st.info(f"NSE session closed · last status update {feed_event['occurred_at']}")
+        elif feed_event["code"] == "feed_healthy" and age_seconds is not None and age_seconds <= 15:
+            st.success(f"Live feed healthy · last status update {feed_event['occurred_at']}")
+        elif feed_event["code"] in {"feed_stale", "feed_disconnected"} or age_seconds is None or age_seconds > 15:
+            st.warning(
+                f"Live feed stale/offline · last event {feed_event['occurred_at']} "
+                f"· state {feed_event['code']}"
+            )
+        else:
+            st.info(f"Feed status: {feed_event['message']} · {feed_event['occurred_at']}")
+
+    st.subheader("Forward paper-validation progress")
+    qualified_sessions = int(forward_summary["qualified_sessions"])
+    st.metric("Qualified full sessions", f"{qualified_sessions} / 30")
+    st.progress(min(1.0, qualified_sessions / 30.0))
+    st.caption(
+        "A session counts only when monitoring starts by 09:16 IST, reaches 15:30 IST, "
+        "records at least 98% observation coverage and 98% healthy-feed time, has no more "
+        "than five monitoring-loop gaps, includes accepted market ticks, uses the fee-configured "
+        "paper engine and records no paper risk halt. Feed-only sessions do not count. This is "
+        "a data-quality gate, not proof of strategy profitability."
+    )
+    if forward_sessions:
+        forward_display = pd.DataFrame(forward_sessions)
+        forward_columns = [
+            "session_date", "status", "coverage_ratio", "healthy_ratio",
+            "accepted_ticks", "discovered_signals", "closed_paper_trades",
+            "risk_halts", "loop_gap_count", "paper_engine_enabled",
+        ]
+        visible_columns = [name for name in forward_columns if name in forward_display.columns]
+        if visible_columns:
+            forward_display = forward_display[visible_columns].copy()
+            for column in ("coverage_ratio", "healthy_ratio"):
+                if column in forward_display.columns:
+                    forward_display[column] = forward_display[column].map(
+                        lambda value: f"{float(value):.1%}"
+                    )
+            st.dataframe(forward_display, use_container_width=True, hide_index=True)
+    else:
+        st.write("No forward-validation sessions have been recorded yet.")
+
+    c1, c2, c3, c4, c5 = st.columns(5)
+    c1.metric("Signals recorded", f"{len(signals):,}")
+    c2.metric("Paper trades closed", f"{int(performance['trades']):,}")
+    c3.metric("Realised paper P&L", f"₹{float(performance['realised_net_pnl']):,.2f}")
+    c4.metric("Paper charges", f"₹{float(performance['charges']):,.2f}")
+    c5.metric(
+        "Paper cash",
+        f"₹{float(paper_state['cash']):,.2f}" if paper_state is not None else "—",
+    )
+    st.caption(
+        "The ₹1,000 starting capital is a paper-policy setting only. It is not connected to or deposited with a broker. "
+        "Paper results are meaningful only after a verified broker-specific fee schedule and fill model are configured."
+    )
+    if paper_state is not None and paper_state.get("halted_reason"):
+        st.error(
+            "PAPER ENGINE HALTED — manual review required. "
+            + str(paper_state["halted_reason"])
+            + (
+                " The open paper position is intentionally preserved as unresolved; "
+                "no synthetic exit or automatic restart was recorded."
+                if paper_state.get("position") else
+                " Pending entries are cancelled and no new paper entries will be accepted."
+            )
+        )
+    if paper_state is not None and paper_state.get("position"):
+        position = paper_state["position"]
+        st.info(
+            f"Open paper position: **{position['symbol']} × {position['quantity']}** · "
+            f"Entry ₹{float(position['entry_price']):,.2f} · "
+            f"Stop ₹{float(position['stop_price']):,.2f} · "
+            f"Target ₹{float(position['target_price']):,.2f}"
+        )
+    elif paper_state is not None and paper_state.get("pending"):
+        pending = paper_state["pending"]["signal"]
+        st.info(
+            f"Pending paper entry: **{pending['symbol']}** · "
+            f"Reference ₹{float(pending['entry_reference']):,.2f}; this is not a broker order."
+        )
+    elif paper_state is not None:
+        st.caption("Paper account restored from the local SQLite checkpoint. No paper position is currently open.")
+
+    st.subheader("Latest intraday opportunities")
+    if signals.empty:
+        st.write("No signals recorded yet. No signal is a valid outcome.")
+    else:
+        display = signals[[
+            "generated_at", "symbol", "strategy_id", "entry_reference",
+            "stop_price", "target_price", "volume_ratio", "score", "explanation",
+        ]].copy()
+        display["entry_reference"] = display["entry_reference"].map(lambda x: f"₹{float(x):,.2f}")
+        display["stop_price"] = display["stop_price"].map(lambda x: f"₹{float(x):,.2f}")
+        display["target_price"] = display["target_price"].map(lambda x: f"₹{float(x):,.2f}")
+        display["volume_ratio"] = display["volume_ratio"].map(lambda x: f"{float(x):.2f}×")
+        display["score"] = display["score"].map(lambda x: f"{float(x):.1f}")
+        st.dataframe(display, use_container_width=True, hide_index=True)
+
+    st.subheader("Closed paper trades")
+    if trades.empty:
+        st.write("No paper fills have been recorded. Live orders are not enabled.")
+    else:
+        st.dataframe(trades, use_container_width=True, hide_index=True)
+
+    st.subheader("Historical strategy validation")
+    report_dir = Path("data/intraday-backtests")
+    report_files = sorted(
+        report_dir.glob("*.json"),
+        key=lambda item: item.stat().st_mtime,
+        reverse=True,
+    ) if report_dir.exists() else []
+    if not report_files:
+        st.info(
+            "No historical backtest report exists yet. Run the historical backtest CLI after "
+            "configuring an explicit selected-broker fee schedule."
+        )
+    else:
+        try:
+            backtest_payload = json.loads(report_files[0].read_text(encoding="utf-8"))
+            backtest = backtest_payload.get("summary", {})
+            b1, b2, b3, b4, b5 = st.columns(5)
+            b1.metric("Backtest trades", f"{int(backtest.get('trades', 0)):,}")
+            b2.metric("Net P&L", f"₹{float(backtest.get('net_pnl', 0)):,.2f}")
+            b3.metric("Charges", f"₹{float(backtest.get('charges', 0)):,.2f}")
+            b4.metric("Max drawdown", f"{float(backtest.get('max_drawdown_pct', 0)):.2f}%")
+            b5.metric("Win rate", f"{float(backtest.get('win_rate', 0)) * 100:.1f}%")
+            st.caption(
+                f"{backtest.get('symbol', '—')} · {backtest.get('strategy_id', '—')} · "
+                f"{backtest.get('from_date', '—')} to {backtest.get('to_date', '—')} · "
+                f"VWAP method: {backtest.get('vwap_method', '—')}"
+            )
+            history_quality = backtest_payload.get("history_quality", {})
+            st.caption(
+                f"Historical bars: {history_quality.get('valid_bars', '—')} · "
+                f"invalid rows: {history_quality.get('invalid_rows', '—')} · "
+                f"duplicates: {history_quality.get('duplicate_rows', '—')}"
+            )
+            with st.expander("Backtest execution assumptions"):
+                for item in backtest.get("execution_assumptions", []):
+                    st.markdown(f"- {item}")
+            backtest_trades = pd.DataFrame(backtest_payload.get("trades", []))
+            if not backtest_trades.empty:
+                st.dataframe(backtest_trades, use_container_width=True, hide_index=True)
+        except Exception as exc:
+            st.error(f"The latest historical backtest report could not be read: {exc}")
+
+    if st.button("Refresh intraday dashboard", use_container_width=True):
+        st.rerun()
+
+    with st.expander("Start the live market-data scanner"):
+        st.markdown(
+            """
+1. Install the optional Upstox SDK on an always-on computer: `pip install -r requirements-intraday.txt`.
+2. Create an Upstox Developer App and complete its official OAuth login. The access token expires at 3:30 AM the following day; obtain a fresh token according to Upstox's process.
+3. Set `UPSTOX_ACCESS_TOKEN` in that computer's environment. Do not paste it into GitHub, this dashboard, chat, screenshots, or logs.
+4. From the repository root, run `python scripts/run_intraday_radar.py`.
+5. Keep that process running during market hours. This Streamlit page reads the local SQLite ledger written by that process.
+
+For historical research, configure all eight `MYSTOCKS_PAPER_FEE_*` variables from the selected broker's current published tariff and a clearly stated slippage assumption. Rates are decimal proportions; `SLIPPAGE_BPS` is basis points. Then run:
+
+`python scripts/run_intraday_backtest.py --symbol RELIANCE --from-date YYYY-MM-DD --to-date YYYY-MM-DD --strategy vwap_momentum`
+
+The backtest writes a JSON report under `data/intraday-backtests`. It uses five-minute OHLCV candles and a typical-price VWAP proxy, not trade-level VWAP or a full market-impact/queue simulation. Do not interpret historical results as a promise of future returns.
+
+The live scanner and autonomous paper engine have separate controls. The runner enables paper fills only when a complete broker-specific fee schedule is supplied. It never places broker orders. This page does not start a background service.
+            """
+        )
+
+
 with st.sidebar:
     st.title("MyStocks")
     workspace = st.radio(
         "Workspace",
-        ["Long-term watchlist", "Short-term research radar"],
+        ["Long-term watchlist", "Short-term research radar", "Intraday Radar"],
         index=0,
     )
     st.caption("Research tooling only — not a guarantee of returns.")
 
 if workspace == "Long-term watchlist":
     render_long_term_watchlist()
-else:
+elif workspace == "Short-term research radar":
     render_short_term_research()
+else:
+    render_intraday_radar()

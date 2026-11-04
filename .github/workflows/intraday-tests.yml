@@ -1,0 +1,36 @@
+name: MyStocks Intraday Safety Tests
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'intraday/**'
+      - 'tests/**'
+      - 'requirements.txt'
+      - '.github/workflows/intraday-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Unit and safety tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Install optional live market-data SDK
+        run: pip install -r requirements-intraday.txt
+      - name: Compile dashboard and intraday entry points
+        run: python -m compileall -q app.py intraday scripts/run_intraday_radar.py scripts/check_upstox_connection.py
+      - name: Run full test suite
+        run: pytest -q
