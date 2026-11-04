@@ -28,5 +28,7 @@ jobs:
           cache: 'pip'
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Compile dashboard and intraday entry points
+        run: python -m compileall -q app.py intraday scripts/run_intraday_radar.py
       - name: Run full test suite
         run: pytest -q
