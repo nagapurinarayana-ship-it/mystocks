@@ -485,6 +485,22 @@ def main() -> int:
                     "scanner_stopped", "Scanner stopped by operator",
                 )
             finally:
+                # Any exit path before the observed close must persist this
+                # session as interrupted immediately; restart recovery is a
+                # second line of defence, not the primary cleanup path.
+                if forward_tracker is not None:
+                    stop_time = datetime.now(timezone.utc)
+                    interrupted = forward_tracker.interrupt(
+                        "scanner process stopped before the 15:30 IST session close"
+                    )
+                    ledger.save_forward_session(interrupted, stop_time.isoformat())
+                    ledger.record_event(
+                        stop_time.isoformat(),
+                        "WARNING",
+                        "forward_validation_interrupted",
+                        f"Forward paper-validation session {interrupted['session_date']} interrupted as the scanner stopped",
+                    )
+                    forward_tracker = None
                 client.disconnect()
                 quote_executor.shutdown(wait=False, cancel_futures=True)
     except requests.RequestException as exc:
