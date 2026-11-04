@@ -32,6 +32,7 @@ from intraday.market_data.upstox_v3 import (  # noqa: E402
     UpstoxV3MarketDataClient,
 )
 from intraday.scanner import IntradayScanner  # noqa: E402
+from intraday.ledger import PaperLedger  # noqa: E402
 
 INSTRUMENTS_URL = "https://assets.upstox.com/market-quote/instruments/exchange/NSE.json.gz"
 
@@ -73,36 +74,58 @@ def main() -> int:
         scanner = IntradayScanner(instruments, max_opportunities=3)
         logging.info("Starting live LTPC subscription for %d NSE cash equities", len(instruments))
 
-        def handle_tick(tick) -> None:
-            now = datetime.now(timezone.utc)
-            if not scanner.on_tick(tick, now=now):
-                return
-            candidates = scanner.opportunities(now=now)
-            if candidates:
-                logging.info(
-                    "RADAR %s",
-                    " | ".join(
-                        f"{item.symbol} {item.strategy_id} entry~{item.entry_reference:.2f} "
-                        f"stop={item.stop_price:.2f} target={item.target_price:.2f}"
-                        for item in candidates
-                    ),
-                )
+        with PaperLedger("data/mystocks_intraday.sqlite3") as ledger:
+            now_iso = datetime.now(timezone.utc).isoformat()
+            ledger.record_event(now_iso, "INFO", "scanner_starting", "Intraday live scanner starting")
 
-        client = UpstoxV3MarketDataClient(
-            [item.instrument_key for item in instruments],
-            on_tick=handle_tick,
-            symbol_by_key={item.instrument_key: item.symbol for item in instruments},
-        )
-        client.connect()
-        try:
-            while True:
-                if not client.connected:
-                    logging.warning("Feed disconnected/degraded; suppressing trade decisions")
-                time.sleep(2)
-        except KeyboardInterrupt:
-            logging.info("Stopping market-data radar")
-        finally:
-            client.disconnect()
+            def handle_tick(tick) -> None:
+                now = datetime.now(timezone.utc)
+                if not scanner.on_tick(tick, now=now):
+                    return
+                candidates = scanner.opportunities(now=now)
+                for item in candidates:
+                    inserted = ledger.record_signal(item)
+                    if inserted:
+                        logging.info(
+                            "RADAR %s strategy=%s entry~%.2f stop=%.2f target=%.2f volume=%.2fx",
+                            item.symbol, item.strategy_id, item.entry_reference,
+                            item.stop_price, item.target_price, item.volume_ratio,
+                        )
+                        ledger.record_event(
+                            item.generated_at.isoformat(), "INFO", "signal_discovered",
+                            f"{item.strategy_id} candidate for {item.symbol}; no broker order sent",
+                        )
+
+            client = UpstoxV3MarketDataClient(
+                [item.instrument_key for item in instruments],
+                on_tick=handle_tick,
+                symbol_by_key={item.instrument_key: item.symbol for item in instruments},
+            )
+            client.connect()
+            try:
+                previous_state = None
+                while True:
+                    now = datetime.now(timezone.utc)
+                    if not client.connected:
+                        state = "disconnected"
+                    elif not scanner.feed_is_fresh(now=now):
+                        state = "stale"
+                    else:
+                        state = "healthy"
+                    if state != previous_state:
+                        logging.warning("Market feed state: %s", state)
+                        ledger.record_event(
+                            now.isoformat(), "WARNING" if state != "healthy" else "INFO",
+                            f"feed_{state}", client.last_error or f"Market feed state changed to {state}",
+                        )
+                        previous_state = state
+                    time.sleep(2)
+            except KeyboardInterrupt:
+                logging.info("Stopping market-data radar")
+                ledger.record_event(datetime.now(timezone.utc).isoformat(), "INFO",
+                                    "scanner_stopped", "Scanner stopped by operator")
+            finally:
+                client.disconnect()
     except requests.RequestException as exc:
         logging.exception("Could not download Upstox instrument master: %s", exc)
         return 3
