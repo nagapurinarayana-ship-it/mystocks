@@ -467,9 +467,21 @@ def main() -> int:
 
                     time.sleep(1)
             except KeyboardInterrupt:
+                stop_time = datetime.now(timezone.utc)
                 logging.info("Stopping market-data radar")
+                if forward_tracker is not None:
+                    interrupted = forward_tracker.interrupt(
+                        "scanner stopped by operator before the 15:30 IST session close"
+                    )
+                    ledger.save_forward_session(interrupted, stop_time.isoformat())
+                    ledger.record_event(
+                        stop_time.isoformat(), "WARNING",
+                        "forward_validation_interrupted",
+                        f"Forward paper-validation session {interrupted['session_date']} interrupted by operator",
+                    )
+                    forward_tracker = None
                 ledger.record_event(
-                    datetime.now(timezone.utc).isoformat(), "INFO",
+                    stop_time.isoformat(), "INFO",
                     "scanner_stopped", "Scanner stopped by operator",
                 )
             finally:
