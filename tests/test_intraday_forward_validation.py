@@ -203,3 +203,15 @@ def test_corrupt_forward_session_snapshots_fail_closed(mutation, message):
 def test_forward_tracker_requires_boolean_paper_engine_flag():
     with pytest.raises(ValueError, match="boolean"):
         ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled="yes")
+
+
+
+def test_first_feed_state_sample_does_not_claim_unobserved_prior_time():
+    tracker = ForwardSessionTracker(at_ist(9, 15), paper_engine_enabled=True)
+    tracker.sample(at_ist(9, 15, 1), "healthy")
+    tracker.sample(at_ist(9, 15, 2), "stale")
+
+    result = tracker.snapshot()
+    assert result["observed_seconds"] == 1.0
+    assert result["healthy_seconds"] == 1.0
+    assert result["stale_seconds"] == 0.0
