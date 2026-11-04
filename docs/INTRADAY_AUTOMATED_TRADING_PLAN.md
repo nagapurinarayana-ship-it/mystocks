@@ -42,7 +42,7 @@ The following code has been added to `feature/intraday-automated-trading-foundat
 2. Run, for example: `python scripts/run_intraday_backtest.py --symbol RELIANCE --from-date 2026-09-01 --to-date 2026-10-31 --strategy vwap_momentum`.
 3. Inspect the JSON report in `data/intraday-backtests`, including its data-quality counts and execution assumptions.
 
-The latest completed full CI run on feature head `ea0362c` passed **126 tests**. Python compilation now includes the scanner, dashboard and authenticated Upstox smoke-test CLI. Tests cover the actual V3 Protobuf schema/frame, verified TLS, OAuth socket-URL validation, local WebSocket transport, forward-session qualification, SQLite persistence/restart handling, paper-position restart halts, async quote-loop integration imports and candidate invalidation after feed gaps. SEO Quality passed on the same head. These are deterministic tests and local fakes; no authenticated Upstox session or real-market execution path has been exercised in this workspace.
+The latest completed full CI run on code commit `ac3ec42` passed **127 tests**. Python compilation includes the scanner, dashboard and authenticated Upstox smoke-test CLI. Tests cover the actual V3 Protobuf schema/frame, verified TLS, OAuth socket-URL validation, local WebSocket transport, forward-session qualification, SQLite persistence/restart handling, paper-position restart halts, candidate invalidation after feed gaps and rejection of samples that roll into a new session date. SEO Quality passed on the same code commit. These are deterministic tests and local fakes; no authenticated Upstox session or real-market execution path has been exercised in this workspace.
 
 ---
 
