@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T18:13:29+00:00",
+  "generated_at": "2026-11-05T18:16:45+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -15,12 +15,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.86,
-        "previous_close": 6.44,
-        "change_pct": 6.521739130434789,
-        "market_cap": 2702080000.0,
-        "trailing_pe": 10.888889,
-        "price_to_book": 1.2860892,
+        "price": 6.95,
+        "previous_close": 6.86,
+        "change_pct": 1.3119533527696792,
+        "market_cap": 2737529856.0,
+        "trailing_pe": 11.031746,
+        "price_to_book": 1.3029621,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,12 +28,11 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-04T18:13:26+00:00",
+        "fetched_at": "2026-11-05T18:16:43+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.53,
         7.36,
         7.51,
         7.63,
@@ -122,7 +121,8 @@
         6.28,
         6.49,
         6.44,
-        6.86
+        6.86,
+        6.95
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -189,10 +189,10 @@
           "published": "2022-03-25 09:18 UTC"
         },
         {
-          "title": "Nila Infrastructures Ltd Share Price Today,, NILAINFRA Share Price NSE, BSE - Business Today",
-          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQMjJaU2djZXNVdWxxYkdPUW56WDhhdHZ5N3FhckVIcE5WNC0tWExTcUgzbEhvSUN0RmJOeFowMkVTZ3VLNWdsZjExSlE0QjlDdVVKcHlSWHVIdHV4OUJtZms3Mm5jVWVKLS01bmRfakdYR2tVX3k3dF82ZGd0bWRsa3pMLVlJYlJiOGlfVUJMUk5IWU0?oc=5",
-          "source": "Business Today",
-          "published": "2023-01-31 09:45 UTC"
+          "title": "Nila Infrastructures locked at 20% upper circuit on order to construct residential units - Moneycontrol.com",
+          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPa1hIYzJxb0JTUS1PYXBJalNoMGducjk4cnc4cjhObUJ0TmhRVTVhU1pBbGlRSm1nRHZIeU1jeklTeWJFdU9JMjhBd1ZFRDhYSXltc3ZmcHBkQkh6Vm9LQUZpanU3cWkyMWRBZFpGV3NISGRGSTV3bFFCOUVKY09fQTR6SzNZc0FRc21XbS1WTll0VEVxUFlUanJrZFRZSmdCcEJSeERCeHNKcVpGUkJNZTNsU082RGZNT0loZXZ6Y1ptUkhoenVHbExvLUpWQWZBRDQtM2tpT2hraHl2QWFOLURkRUx2UdIB6wFBVV95cUxPM3hsOEV5aEMxd3lWUk9nOFdnZkFGc3lVUTUxc0ZXd1UtNV9pX01YV05YNkw3dU1lUnRzYmJrWDNtYlVrc2pEZHhlXzBxUU90bk1xQ3RaeGozWWRPQjBBRVVFMWJwUm04VkhhVmtmY3czSWpRZzdfeWtvNEhmc2dGOW0xelQ2Tk8tV0xvYlNucHRKYjdvdUhpTmc3bFZKbGw2YUJpa2NHRUstTnVzNDBnYVQ2UlpqM3cxMXhkYjNvcmtxZUNzQkpLLW9LWmZKbjBIN0VLN3VkY0hRc1lSUGxCcklERmttQTZJM2Rn?oc=5",
+          "source": "Moneycontrol.com",
+          "published": "2023-09-06 07:00 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-04T18:13:27+00:00",
+        "fetched_at": "2026-11-05T18:16:44+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -280,8 +280,8 @@
           "published": "2026-10-08 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Upper Circuit Today: Price, Data and Peers - Univest",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE96VU5sVHBZazRPZU9sQmRtS1lSbUowVlVqSVpmeUtFdGw5em84dlExZkxOU05NUWoyd2dkNV9EcDJKRkdJNWl3YllJdnQxSDdkSTNIcEotR3BLckg4OHdqWFd1Z25fMXZtVVpxWkVtbWwyd1FGYm9WajRB?oc=5",
+          "title": "Ashapuri Gold Ornament Share Price Rise in Jewellery Sector - Univest",
+          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
           "source": "Univest",
           "published": "2026-10-21 07:00 UTC"
         }
@@ -297,12 +297,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.84,
-        "previous_close": 6.67,
-        "change_pct": 2.5487256371814038,
-        "market_cap": 1843937920.0,
-        "trailing_pe": 10.523078,
-        "price_to_book": 0.78910935,
+        "price": 6.85,
+        "previous_close": 6.84,
+        "change_pct": 0.14619883040936088,
+        "market_cap": 1846633728.0,
+        "trailing_pe": 10.703125,
+        "price_to_book": 0.790263,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-04T18:13:28+00:00",
+        "fetched_at": "2026-11-05T18:16:44+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -368,7 +368,8 @@
         6.86,
         6.82,
         6.67,
-        6.84
+        6.84,
+        6.85
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
