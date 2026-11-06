@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T18:16:45+00:00",
+  "generated_at": "2026-11-06T17:40:40+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -15,12 +15,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.95,
-        "previous_close": 6.86,
-        "change_pct": 1.3119533527696792,
-        "market_cap": 2737529856.0,
-        "trailing_pe": 11.031746,
-        "price_to_book": 1.3029621,
+        "price": 6.82,
+        "previous_close": 6.95,
+        "change_pct": -1.8705035971222972,
+        "market_cap": 2686324480.0,
+        "trailing_pe": 10.8253975,
+        "price_to_book": 1.2785902,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,12 +28,11 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-05T18:16:43+00:00",
+        "fetched_at": "2026-11-06T17:40:38+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.36,
         7.51,
         7.63,
         7.79,
@@ -122,7 +121,8 @@
         6.49,
         6.44,
         6.86,
-        6.95
+        6.95,
+        6.82
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -177,16 +177,16 @@
           "published": "2026-07-01 07:00 UTC"
         },
         {
-          "title": "Nila Infrastructures Secures Expanded Work Order from Ahmedabad Municipal Corporation for Gulbai Tekra Slum Rehabilitation Project - EquityBulls",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOYTJZVHhqRjhEVU1SQUJYc2FOSDZuYWM0X2hvSlhqUXJBS2otdXVQSmIyZVJURzNFMzI5TzlCTEE3cEtjVXQzbjJjRXNIWDZLYjhZNjRfQndWU1FZUFAxMVhSdk1SSXJGVG5sbTZCRDdkR1VIS1FzR3k0azczM1E3NmFUcld1M3dPSUVXMjRnSThMdHk1d2NCbW5kUUd2TGV3emZJb1diLUQ3WHV3N1g4Z1dXd3hHSWU3ZU1qaw?oc=5",
-          "source": "EquityBulls",
-          "published": "2026-10-02 07:00 UTC"
-        },
-        {
           "title": "Nila Infrastructures Ltd. Share Price Today | Nila Infras Live NSE/BSE - Value Research",
           "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1lMjlWRTJyUWhVa0Q5akVmRXAwZVFhbzg2Qkxncm9USWhwLUlJZVlKMlI0NHNyTzVWaUVlZFprdENDMUxEcmVnWmxILUNsQ01zVDFxTFVPa1dYUHVhdV9oS0RWTERISUp6dXQ1THZ0SXJvSFhBQmFEZGlIMm41VzQ?oc=5",
           "source": "Value Research",
           "published": "2022-03-25 09:18 UTC"
+        },
+        {
+          "title": "Nila Infrastructures Ltd Share Price Today,, NILAINFRA Share Price NSE, BSE - Business Today",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQMjJaU2djZXNVdWxxYkdPUW56WDhhdHZ5N3FhckVIcE5WNC0tWExTcUgzbEhvSUN0RmJOeFowMkVTZ3VLNWdsZjExSlE0QjlDdVVKcHlSWHVIdHV4OUJtZms3Mm5jVWVKLS01bmRfakdYR2tVX3k3dF82ZGd0bWRsa3pMLVlJYlJiOGlfVUJMUk5IWU0?oc=5",
+          "source": "Business Today",
+          "published": "2023-01-31 09:45 UTC"
         },
         {
           "title": "Nila Infrastructures locked at 20% upper circuit on order to construct residential units - Moneycontrol.com",
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-05T18:16:44+00:00",
+        "fetched_at": "2026-11-06T17:40:39+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -268,12 +268,6 @@
           "published": "2026-10-08 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Ltd Share Price Today NSE/BSE Charts - Alice Blue",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9YRlZEYnkxRG00TXY0aWg4V3ZPZVh3Tzl6X08xX2IyeGpyMnVKdTcwNlhxRHlDelNDTldaa01rUW5uMnFqcnppWlNJZGRSd210QzVRaDJtM1pveWJXaWgyM2xBOGVHU0NxMzlsdW5Nd3U4d3ROYkZZUHF3dWw?oc=5",
-          "source": "Alice Blue",
-          "published": "2026-10-21 04:19 UTC"
-        },
-        {
           "title": "NSE to list shares of Ashapuri Gold Ornament, Belding India and Triveni Power Transmission from October 12 - Traders Union",
           "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZ2QtTFAzU2hBY2hQX1JNM2dsSnhrbVZwakFNdEtSRThFeU10dDljQ0tSRzZmZlFhR2hnMWRUaTF4RFlRcEg4bUxPSUhLT3NkeVRYeEFiQzRaUk5zcUlUYjgwQ0x6em9fSE9POEVzMHEtSGpiZXI5OGgyUC12QUQ0ME8zWk80TXdmTFRlem13N3NmZmRqNXFoTXFodHNIRkNibEE?oc=5",
           "source": "Traders Union",
@@ -284,6 +278,12 @@
           "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
           "source": "Univest",
           "published": "2026-10-21 07:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Ltd Share Price Today NSE/BSE Charts - Alice Blue",
+          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9YRlZEYnkxRG00TXY0aWg4V3ZPZVh3Tzl6X08xX2IyeGpyMnVKdTcwNlhxRHlDelNDTldaa01rUW5uMnFqcnppWlNJZGRSd210QzVRaDJtM1pveWJXaWgyM2xBOGVHU0NxMzlsdW5Nd3U4d3ROYkZZUHF3dWw?oc=5",
+          "source": "Alice Blue",
+          "published": "2026-10-21 04:19 UTC"
         }
       ]
     },
@@ -297,12 +297,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.85,
-        "previous_close": 6.84,
-        "change_pct": 0.14619883040936088,
-        "market_cap": 1846633728.0,
-        "trailing_pe": 10.703125,
-        "price_to_book": 0.790263,
+        "price": 6.8,
+        "previous_close": 6.85,
+        "change_pct": -0.7299270072992692,
+        "market_cap": 1833154688.0,
+        "trailing_pe": 10.625001,
+        "price_to_book": 0.7844947,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-05T18:16:44+00:00",
+        "fetched_at": "2026-11-06T17:40:39+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -369,7 +369,8 @@
         6.82,
         6.67,
         6.84,
-        6.85
+        6.85,
+        6.8
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -428,10 +429,10 @@
           "published": "2026-09-05 04:14 UTC"
         },
         {
-          "title": "Madhav Infra Projects promoters execute inter-se share gift - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOekhkSlpydmZyU0ZqRTdBektHRWNHbkFPMXVYT2ZLQlR3T1JKQXJmSGhHZ2ZLVkpKV080X2R5UDh2eDZmT2tEb2FQVXJXTUo2N3hqS29ZU0N3alhqZ0ViSXo5TGstaXNPTENNRjRZcXM2RTE5M0JTQUlqR3IycUJsaHBteXlxOVpzRWpYbXR5UFFMeUcxZmt2aS1nYWpxTXUyVkZBYV9CZ1V2UV9vVzNMZmxFemgzejg?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-08-05 07:00 UTC"
+          "title": "Madhav Infra Projects Share Price update after 13.57% gain - Univest",
+          "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNOXJKRV93SHRyMEN6UjNQYzR1Q3VhMzZ0WlB6cmNheE5mc1ViYkx0S0xqdUJyaG44LUZyZXJ0d3lyWF9Dc2M2RDRlR1BlWHpMT2NBNGFESno2bEIyWlNzcDFjejBpZW9SSS1VTkxjM0lRM1F6a3JRcGM1M3dFMWNaMV8tQTVDVzlseHdCMlhSWnp5dw?oc=5",
+          "source": "Univest",
+          "published": "2026-08-26 07:00 UTC"
         }
       ]
     }
