@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T17:40:40+00:00",
+  "generated_at": "2026-11-07T16:37:30+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-06T17:40:38+00:00",
+        "fetched_at": "2026-11-07T16:37:28+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -177,6 +177,12 @@
           "published": "2026-07-01 07:00 UTC"
         },
         {
+          "title": "Nila Infrastructures Share Price Today - Nila Infrastructures Ltd. Stock Price Live NSE/BSE - HDFC Sky",
+          "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1EMlU2aWFnVzRQU1YtX2FUVVZqX1lnU2R6U1dRQWF6MkRpYkJ6Szd4amVCUzZLc09LWXV1eVk2SmNJOUZsU25YX3VnRlU1ZExYM3o4a3dPVXBueGpzZ28yZA?oc=5",
+          "source": "HDFC Sky",
+          "published": "2025-08-17 21:31 UTC"
+        },
+        {
           "title": "Nila Infrastructures Ltd. Share Price Today | Nila Infras Live NSE/BSE - Value Research",
           "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1lMjlWRTJyUWhVa0Q5akVmRXAwZVFhbzg2Qkxncm9USWhwLUlJZVlKMlI0NHNyTzVWaUVlZFprdENDMUxEcmVnWmxILUNsQ01zVDFxTFVPa1dYUHVhdV9oS0RWTERISUp6dXQ1THZ0SXJvSFhBQmFEZGlIMm41VzQ?oc=5",
           "source": "Value Research",
@@ -187,12 +193,6 @@
           "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQMjJaU2djZXNVdWxxYkdPUW56WDhhdHZ5N3FhckVIcE5WNC0tWExTcUgzbEhvSUN0RmJOeFowMkVTZ3VLNWdsZjExSlE0QjlDdVVKcHlSWHVIdHV4OUJtZms3Mm5jVWVKLS01bmRfakdYR2tVX3k3dF82ZGd0bWRsa3pMLVlJYlJiOGlfVUJMUk5IWU0?oc=5",
           "source": "Business Today",
           "published": "2023-01-31 09:45 UTC"
-        },
-        {
-          "title": "Nila Infrastructures locked at 20% upper circuit on order to construct residential units - Moneycontrol.com",
-          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPa1hIYzJxb0JTUS1PYXBJalNoMGducjk4cnc4cjhObUJ0TmhRVTVhU1pBbGlRSm1nRHZIeU1jeklTeWJFdU9JMjhBd1ZFRDhYSXltc3ZmcHBkQkh6Vm9LQUZpanU3cWkyMWRBZFpGV3NISGRGSTV3bFFCOUVKY09fQTR6SzNZc0FRc21XbS1WTll0VEVxUFlUanJrZFRZSmdCcEJSeERCeHNKcVpGUkJNZTNsU082RGZNT0loZXZ6Y1ptUkhoenVHbExvLUpWQWZBRDQtM2tpT2hraHl2QWFOLURkRUx2UdIB6wFBVV95cUxPM3hsOEV5aEMxd3lWUk9nOFdnZkFGc3lVUTUxc0ZXd1UtNV9pX01YV05YNkw3dU1lUnRzYmJrWDNtYlVrc2pEZHhlXzBxUU90bk1xQ3RaeGozWWRPQjBBRVVFMWJwUm04VkhhVmtmY3czSWpRZzdfeWtvNEhmc2dGOW0xelQ2Tk8tV0xvYlNucHRKYjdvdUhpTmc3bFZKbGw2YUJpa2NHRUstTnVzNDBnYVQ2UlpqM3cxMXhkYjNvcmtxZUNzQkpLLW9LWmZKbjBIN0VLN3VkY0hRc1lSUGxCcklERmttQTZJM2Rn?oc=5",
-          "source": "Moneycontrol.com",
-          "published": "2023-09-06 07:00 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-06T17:40:39+00:00",
+        "fetched_at": "2026-11-07T16:37:29+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -265,7 +265,7 @@
           "title": "Ashapuri Gold Ornament gets NSE listing approval for Oct 12 trading - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
           "source": "scanx.trade",
-          "published": "2026-10-08 07:00 UTC"
+          "published": "2026-10-09 07:00 UTC"
         },
         {
           "title": "NSE to list shares of Ashapuri Gold Ornament, Belding India and Triveni Power Transmission from October 12 - Traders Union",
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-06T17:40:39+00:00",
+        "fetched_at": "2026-11-07T16:37:30+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
