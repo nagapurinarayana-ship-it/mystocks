@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T16:37:30+00:00",
+  "generated_at": "2026-11-08T16:47:00+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -15,25 +15,24 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.82,
-        "previous_close": 6.95,
-        "change_pct": -1.8705035971222972,
-        "market_cap": 2686324480.0,
-        "trailing_pe": 10.8253975,
-        "price_to_book": 1.2785902,
+        "price": 7.08,
+        "previous_close": 6.82,
+        "change_pct": 3.8123167155425186,
+        "market_cap": 2788735744.0,
+        "trailing_pe": 11.238095,
+        "price_to_book": 1.327334,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
-        "free_cash_flow": -141830368.0,
+        "free_cash_flow": -144150368.0,
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-07T16:37:28+00:00",
+        "fetched_at": "2026-11-08T16:46:57+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.51,
         7.63,
         7.79,
         7.68,
@@ -122,7 +121,8 @@
         6.44,
         6.86,
         6.95,
-        6.82
+        6.82,
+        7.08
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -165,22 +165,10 @@
       ],
       "news": [
         {
-          "title": "Nila Infrastructures Reports FY26 Audited Results; Profit Rises to ₹2,699.11 Lakh - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPVTBfY3Fld1lheTF5dm5UN1dWVmJ3QWVrNDV5VlFyUW0ybnE0ZnpudG9oT0owNmNtZ0xkZlVPQklGS3AzSVNXXzlQSUVuTFJIZHpTMWlMQ2w4UlNlUEljNVlpcXcwU05kM2loM0ZhS0JQQXRSTjJDbmRQZG5CTDVjQVhaSkRFd0N2TTBzYzlHenJYTWRZUTFxX2pEX2ZmNVVfRGRDQ3NqYllBMFVZSmc2WWdKU3gwOWdwTjRpT09OQk1xeTNHbk5HN2QzRU5OUU5WMkZzLVRKRGFienBsMGlfc003ODhQRGpoNnozeQ?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-05-04 07:00 UTC"
-        },
-        {
           "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
           "source": "Univest",
           "published": "2026-07-01 07:00 UTC"
-        },
-        {
-          "title": "Nila Infrastructures Share Price Today - Nila Infrastructures Ltd. Stock Price Live NSE/BSE - HDFC Sky",
-          "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1EMlU2aWFnVzRQU1YtX2FUVVZqX1lnU2R6U1dRQWF6MkRpYkJ6Szd4amVCUzZLc09LWXV1eVk2SmNJOUZsU25YX3VnRlU1ZExYM3o4a3dPVXBueGpzZ28yZA?oc=5",
-          "source": "HDFC Sky",
-          "published": "2025-08-17 21:31 UTC"
         },
         {
           "title": "Nila Infrastructures Ltd. Share Price Today | Nila Infras Live NSE/BSE - Value Research",
@@ -193,6 +181,18 @@
           "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQMjJaU2djZXNVdWxxYkdPUW56WDhhdHZ5N3FhckVIcE5WNC0tWExTcUgzbEhvSUN0RmJOeFowMkVTZ3VLNWdsZjExSlE0QjlDdVVKcHlSWHVIdHV4OUJtZms3Mm5jVWVKLS01bmRfakdYR2tVX3k3dF82ZGd0bWRsa3pMLVlJYlJiOGlfVUJMUk5IWU0?oc=5",
           "source": "Business Today",
           "published": "2023-01-31 09:45 UTC"
+        },
+        {
+          "title": "Nila Infrastructures Jumps 9.18% on ₹105 Cr Slum Redevelopment Deal - HDFC Sky",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNcjJXcjFKdnEzMEQyNEd5RklBaDhpeEVoQW9oYy1Gb185TW00alVsNDNOTWg2bkQ4MW5rcWRrMDNjZTFzX0I1aXQ0cGxvVW9FWGxoYTloZnpmQXBEc0NRcldhZmtKVzU5Z2E2OUdQSFVoZUVRb0ZEdHpicWZIbFRDRzRMOG9aTG5vWTNFVllUY2lLeDAxUkYwTkFVMVAzVzFSSWc?oc=5",
+          "source": "HDFC Sky",
+          "published": "2025-10-08 07:00 UTC"
+        },
+        {
+          "title": "NILAINFRA Stock Price and Chart — NSE:NILAINFRA - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5fZElJWlplWmp0dGhmMDFaZFc5eFBMdEQ2YUEzMEtuT1hXb0tLMHhpXzFNT2NXaWo3aUlUdXMxSF9xdC1aa0FXWEVzaGo5cUxEUjdOT3dGYlVpdU5XX0dr?oc=5",
+          "source": "TradingView",
+          "published": "2017-07-21 08:50 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-07T16:37:29+00:00",
+        "fetched_at": "2026-11-08T16:46:58+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -297,12 +297,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.8,
-        "previous_close": 6.85,
-        "change_pct": -0.7299270072992692,
-        "market_cap": 1833154688.0,
-        "trailing_pe": 10.625001,
-        "price_to_book": 0.7844947,
+        "price": 6.94,
+        "previous_close": 6.8,
+        "change_pct": 2.0588235294117796,
+        "market_cap": 1870896128.0,
+        "trailing_pe": 10.84375,
+        "price_to_book": 0.80064607,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-07T16:37:30+00:00",
+        "fetched_at": "2026-11-08T16:46:59+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -370,7 +370,8 @@
         6.67,
         6.84,
         6.85,
-        6.8
+        6.8,
+        6.94
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -411,16 +412,16 @@
           "published": "2026-10-30 09:59 UTC"
         },
         {
-          "title": "Madhav Infra starts e-voting for ₹34 crore preferential allotment - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNeFNPRWZnRW5CYm5nbnNNc1NJbkQ3WDdMMGJSZ2pyRXhWbXRtZ2ExcXh0eE1tY3JCbTRqN2w0RlRsVm96bmNyYmxvNzg1Ukx5TkIzOHN4V1J3ZExuZmszdnM0X3dLSnJnNXAtOEIwcXlDRF92TjhYQW43NVl6Uk5DbzNpbXdhTWxLdXlLS1NOR1Aza3JxXzNBamRfeVMxaHBCS1Vod0VJOEJ2Y3NSSndHZlZ4LTNEZEZrUnRoZg?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-10-14 07:00 UTC"
-        },
-        {
           "title": "MADHAVIPL Stock Price and Chart — NSE:MADHAVIPL - TradingView",
           "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBQeUdXMnJ3dUxtNFhxc0FDWEZrRTV1eXVzajZMTmFKMzIzOFdMRnp4TV9pQkZDd1dkSGs5dy1TTmFfbWRDSEc0ODhvb1FweWdyT1NrRE92cjhuZTc0S1Rn?oc=5",
           "source": "TradingView",
           "published": "2026-04-20 05:28 UTC"
+        },
+        {
+          "title": "Madhav Infra Projects promoters execute inter-se share gift - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOekhkSlpydmZyU0ZqRTdBektHRWNHbkFPMXVYT2ZLQlR3T1JKQXJmSGhHZ2ZLVkpKV080X2R5UDh2eDZmT2tEb2FQVXJXTUo2N3hqS29ZU0N3alhqZ0ViSXo5TGstaXNPTENNRjRZcXM2RTE5M0JTQUlqR3IycUJsaHBteXlxOVpzRWpYbXR5UFFMeUcxZmt2aS1nYWpxTXUyVkZBYV9CZ1V2UV9vVzNMZmxFemgzejg?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-08-05 07:00 UTC"
         },
         {
           "title": "Madhav Infra Projects Ltd Share Price Today NSE/BSE Charts - Alice Blue",
