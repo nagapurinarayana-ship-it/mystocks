@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T16:47:00+00:00",
+  "generated_at": "2026-11-09T21:05:13+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -15,12 +15,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.08,
+        "price": 6.88,
         "previous_close": 6.82,
-        "change_pct": 3.8123167155425186,
-        "market_cap": 2788735744.0,
-        "trailing_pe": 11.238095,
-        "price_to_book": 1.327334,
+        "change_pct": 0.8797653958944274,
+        "market_cap": 2709957888.0,
+        "trailing_pe": 11.278688,
+        "price_to_book": 1.2898388,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-08T16:46:57+00:00",
+        "fetched_at": "2026-11-09T21:05:11+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -122,7 +122,7 @@
         6.86,
         6.95,
         6.82,
-        7.08
+        6.88
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-08T16:46:58+00:00",
+        "fetched_at": "2026-11-09T21:05:12+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -256,16 +256,16 @@
       "live_flags": [],
       "news": [
         {
+          "title": "Ashapuri Gold Ornament gets NSE listing approval for Oct 12 trading - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
+          "source": "scanx.trade",
+          "published": "2026-10-08 07:00 UTC"
+        },
+        {
           "title": "AGOL Share Price Today - Ashapuri Gold Ornament Stock Analysis - Equitypandit",
           "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5TYkZfT3hvbU9fRnlva1ZtZVFmRm9qTW5ZR3RNUFRIdVlWZER3Q0ptajJRUnp4a2Q3SEczUkxRTzJQTi1iTEpXaC1JbGNnY1U0aFk0em5Xa3Y?oc=5",
           "source": "Equitypandit",
           "published": "2026-10-13 01:07 UTC"
-        },
-        {
-          "title": "Ashapuri Gold Ornament gets NSE listing approval for Oct 12 trading - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-10-09 07:00 UTC"
         },
         {
           "title": "NSE to list shares of Ashapuri Gold Ornament, Belding India and Triveni Power Transmission from October 12 - Traders Union",
@@ -297,12 +297,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.94,
+        "price": 6.87,
         "previous_close": 6.8,
-        "change_pct": 2.0588235294117796,
-        "market_cap": 1870896128.0,
-        "trailing_pe": 10.84375,
-        "price_to_book": 0.80064607,
+        "change_pct": 1.0294117647058787,
+        "market_cap": 1852025344.0,
+        "trailing_pe": 10.904762,
+        "price_to_book": 0.79257035,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-08T16:46:59+00:00",
+        "fetched_at": "2026-11-09T21:05:13+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -371,7 +371,7 @@
         6.84,
         6.85,
         6.8,
-        6.94
+        6.87
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -418,12 +418,6 @@
           "published": "2026-04-20 05:28 UTC"
         },
         {
-          "title": "Madhav Infra Projects promoters execute inter-se share gift - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOekhkSlpydmZyU0ZqRTdBektHRWNHbkFPMXVYT2ZLQlR3T1JKQXJmSGhHZ2ZLVkpKV080X2R5UDh2eDZmT2tEb2FQVXJXTUo2N3hqS29ZU0N3alhqZ0ViSXo5TGstaXNPTENNRjRZcXM2RTE5M0JTQUlqR3IycUJsaHBteXlxOVpzRWpYbXR5UFFMeUcxZmt2aS1nYWpxTXUyVkZBYV9CZ1V2UV9vVzNMZmxFemgzejg?oc=5",
-          "source": "scanx.trade",
-          "published": "2026-08-05 07:00 UTC"
-        },
-        {
           "title": "Madhav Infra Projects Ltd Share Price Today NSE/BSE Charts - Alice Blue",
           "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE91QnozWHFiT0tHZERaS1U5ZzZRd2RaRjhGVVR6TWg0UTZTZDA3TTBDeEk5dnFHNUlGZ1F4WWVYeEQ4QTRFb0tYX3V0Q2NXQ2ZsRkNWa1ZCcjlvRTczNVhZckVqWXJucm9zQ2k5QVUyR3Q3RXg5T2lRMnJsUQ?oc=5",
           "source": "Alice Blue",
@@ -434,6 +428,12 @@
           "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNOXJKRV93SHRyMEN6UjNQYzR1Q3VhMzZ0WlB6cmNheE5mc1ViYkx0S0xqdUJyaG44LUZyZXJ0d3lyWF9Dc2M2RDRlR1BlWHpMT2NBNGFESno2bEIyWlNzcDFjejBpZW9SSS1VTkxjM0lRM1F6a3JRcGM1M3dFMWNaMV8tQTVDVzlseHdCMlhSWnp5dw?oc=5",
           "source": "Univest",
           "published": "2026-08-26 07:00 UTC"
+        },
+        {
+          "title": "Madhav Infra Projects gains on acquiring 100% stake in MSK Projects (I) - Business Standard",
+          "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOc1p1WjdmeGxYVmJSdVcwSEtOaWdrV3BSVXVtdGQzNVhoS2VDQzZyTEpvUGpoVVdDNGFNMmpvbll3RnRmUGVSMURvNF9lVnBqZ0w2dlJ6ZXk2WUVUNU1BX1pWbXpKTVlRUW1ial9qdzVId3BVel9aajRfaC1raE5kSk5HajZIb1ROUHhpRnEtNmJ1a25yYmNEV2Nsa0s1ekR4ankyVllLZ3dabjUxLURncmV1aGJWcHlKOWotT3AwZWhXb3p4TVJEUG8xQlB6TGplaW5CazFoLVJVTlFlak1XWUZadTjSAeoBQVVfeXFMT0o2M095WDFXNDhpUEd2Qmp4THVnMURoQ1pzX01hSWphUkRuc3A1UGFMRTVYWmRXRi1pT1F4SzFUaFhJZnpiblFhOTBXbG5NYmxMREZSRjc3WGN2d1JEU0tGRkVmR0RQWEd1aTdha2UySlNlTUI3d0ZJdFFJb2I4dngyWjlTMW5tYkJiSlRCQ0ZrZDVERktTcmZzdEVsbDNvTzVCVmdqT0thRUFhTjdLZmw2N0lvTnhLZDhOUXJ3bGp4U2N1R2w2ZVZWa0ptam45bk5jVEo1SEJRMUpvZzZ3a1Itd1k3VFJmLXJn?oc=5",
+          "source": "Business Standard",
+          "published": "2025-04-11 07:00 UTC"
         }
       ]
     }
