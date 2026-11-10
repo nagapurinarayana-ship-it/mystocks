@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T21:05:13+00:00",
+  "generated_at": "2026-11-10T18:15:05+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -19,7 +19,7 @@
         "previous_close": 6.82,
         "change_pct": 0.8797653958944274,
         "market_cap": 2709957888.0,
-        "trailing_pe": 11.278688,
+        "trailing_pe": 10.920635,
         "price_to_book": 1.2898388,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-09T21:05:11+00:00",
+        "fetched_at": "2026-11-10T18:15:02+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -183,16 +183,16 @@
           "published": "2023-01-31 09:45 UTC"
         },
         {
-          "title": "Nila Infrastructures Jumps 9.18% on ₹105 Cr Slum Redevelopment Deal - HDFC Sky",
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNcjJXcjFKdnEzMEQyNEd5RklBaDhpeEVoQW9oYy1Gb185TW00alVsNDNOTWg2bkQ4MW5rcWRrMDNjZTFzX0I1aXQ0cGxvVW9FWGxoYTloZnpmQXBEc0NRcldhZmtKVzU5Z2E2OUdQSFVoZUVRb0ZEdHpicWZIbFRDRzRMOG9aTG5vWTNFVllUY2lLeDAxUkYwTkFVMVAzVzFSSWc?oc=5",
-          "source": "HDFC Sky",
-          "published": "2025-10-08 07:00 UTC"
-        },
-        {
           "title": "NILAINFRA Stock Price and Chart — NSE:NILAINFRA - TradingView",
           "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5fZElJWlplWmp0dGhmMDFaZFc5eFBMdEQ2YUEzMEtuT1hXb0tLMHhpXzFNT2NXaWo3aUlUdXMxSF9xdC1aa0FXWEVzaGo5cUxEUjdOT3dGYlVpdU5XX0dr?oc=5",
           "source": "TradingView",
           "published": "2017-07-21 08:50 UTC"
+        },
+        {
+          "title": "Nila Infrastructures Jumps 9.18% on ₹105 Cr Slum Redevelopment Deal - HDFC Sky",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNcjJXcjFKdnEzMEQyNEd5RklBaDhpeEVoQW9oYy1Gb185TW00alVsNDNOTWg2bkQ4MW5rcWRrMDNjZTFzX0I1aXQ0cGxvVW9FWGxoYTloZnpmQXBEc0NRcldhZmtKVzU5Z2E2OUdQSFVoZUVRb0ZEdHpicWZIbFRDRzRMOG9aTG5vWTNFVllUY2lLeDAxUkYwTkFVMVAzVzFSSWc?oc=5",
+          "source": "HDFC Sky",
+          "published": "2025-10-08 07:00 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-09T21:05:12+00:00",
+        "fetched_at": "2026-11-10T18:15:03+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -301,7 +301,7 @@
         "previous_close": 6.8,
         "change_pct": 1.0294117647058787,
         "market_cap": 1852025344.0,
-        "trailing_pe": 10.904762,
+        "trailing_pe": 10.734375,
         "price_to_book": 0.79257035,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-09T21:05:13+00:00",
+        "fetched_at": "2026-11-10T18:15:04+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
