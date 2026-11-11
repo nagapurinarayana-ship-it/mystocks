@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-10T15:43:54+05:30",
-  "for_date": "2026-11-11",
+  "generated_at": "2026-11-11T15:13:26+05:30",
+  "for_date": "2026-11-12",
   "market": "NSE India",
   "strategy": "Daily-candle momentum/trend setup; intended holding window up to 3 sessions",
   "target_pct": 0.02,
@@ -9,14 +9,14 @@
   "universe_size": 25,
   "market_regime": {
     "available": true,
-    "positive": false,
-    "close": 25044.65,
-    "sma20": 23242.75,
-    "sma50": 23264.76,
-    "label": "Cautious"
+    "positive": true,
+    "close": 25110.5,
+    "sma20": 23380.1,
+    "sma50": 23285.15,
+    "label": "Positive"
   },
   "disclaimer": "Research signal only, not a guaranteed return. Skip the trade when opening conditions invalidate the setup.",
   "status": "NO_TRADE",
-  "reason": "Nifty trend gate is not positive, so the system is not forcing a long trade for this session.",
+  "reason": "No liquid stock passed all signal, history, confidence and expected-value filters.",
   "pick": null
 }
