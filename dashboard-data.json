@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T18:15:05+00:00",
+  "generated_at": "2026-11-11T18:02:24+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -15,12 +15,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.88,
-        "previous_close": 6.82,
-        "change_pct": 0.8797653958944274,
-        "market_cap": 2709957888.0,
-        "trailing_pe": 10.920635,
-        "price_to_book": 1.2898388,
+        "price": 7.01,
+        "previous_close": 6.88,
+        "change_pct": 1.8895348837209225,
+        "market_cap": 2761163520.0,
+        "trailing_pe": 9.223684,
+        "price_to_book": 1.3142108,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,12 +28,11 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-10T18:15:02+00:00",
+        "fetched_at": "2026-11-11T18:02:21+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.63,
         7.79,
         7.68,
         7.55,
@@ -122,7 +121,8 @@
         6.86,
         6.95,
         6.82,
-        6.88
+        6.88,
+        7.01
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -177,22 +177,22 @@
           "published": "2022-03-25 09:18 UTC"
         },
         {
-          "title": "Nila Infrastructures Ltd Share Price Today,, NILAINFRA Share Price NSE, BSE - Business Today",
-          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQMjJaU2djZXNVdWxxYkdPUW56WDhhdHZ5N3FhckVIcE5WNC0tWExTcUgzbEhvSUN0RmJOeFowMkVTZ3VLNWdsZjExSlE0QjlDdVVKcHlSWHVIdHV4OUJtZms3Mm5jVWVKLS01bmRfakdYR2tVX3k3dF82ZGd0bWRsa3pMLVlJYlJiOGlfVUJMUk5IWU0?oc=5",
-          "source": "Business Today",
-          "published": "2023-01-31 09:45 UTC"
-        },
-        {
           "title": "NILAINFRA Stock Price and Chart — NSE:NILAINFRA - TradingView",
           "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5fZElJWlplWmp0dGhmMDFaZFc5eFBMdEQ2YUEzMEtuT1hXb0tLMHhpXzFNT2NXaWo3aUlUdXMxSF9xdC1aa0FXWEVzaGo5cUxEUjdOT3dGYlVpdU5XX0dr?oc=5",
           "source": "TradingView",
           "published": "2017-07-21 08:50 UTC"
         },
         {
-          "title": "Nila Infrastructures Jumps 9.18% on ₹105 Cr Slum Redevelopment Deal - HDFC Sky",
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNcjJXcjFKdnEzMEQyNEd5RklBaDhpeEVoQW9oYy1Gb185TW00alVsNDNOTWg2bkQ4MW5rcWRrMDNjZTFzX0I1aXQ0cGxvVW9FWGxoYTloZnpmQXBEc0NRcldhZmtKVzU5Z2E2OUdQSFVoZUVRb0ZEdHpicWZIbFRDRzRMOG9aTG5vWTNFVllUY2lLeDAxUkYwTkFVMVAzVzFSSWc?oc=5",
-          "source": "HDFC Sky",
-          "published": "2025-10-08 07:00 UTC"
+          "title": "Nila Infrastructures Ltd Share Price Today,, NILAINFRA Share Price NSE, BSE - Business Today",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQMjJaU2djZXNVdWxxYkdPUW56WDhhdHZ5N3FhckVIcE5WNC0tWExTcUgzbEhvSUN0RmJOeFowMkVTZ3VLNWdsZjExSlE0QjlDdVVKcHlSWHVIdHV4OUJtZms3Mm5jVWVKLS01bmRfakdYR2tVX3k3dF82ZGd0bWRsa3pMLVlJYlJiOGlfVUJMUk5IWU0?oc=5",
+          "source": "Business Today",
+          "published": "2023-01-31 09:45 UTC"
+        },
+        {
+          "title": "Nila Infrastructures (NSEI:NILAINFRA) - Stock Analysis - Simply Wall St",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPeGJQeUNnNElZdUtaTjlmN2dyZzJtTFAxV29Fc1NHWHpNTWdVMWhORlA0cV93VmwyWlJxdnJvRHNMRGRaZzlxblU5UlRSR29hdXJjNmJSSDV3OUFnQVcwWEt3dUx3czBldTY2bEYxNUZyNm9kSVhqRzFLMHVhdUF5VG0zd2piTjg3bms2cVM4VzU?oc=5",
+          "source": "Simply Wall St",
+          "published": "2019-10-23 07:29 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-10T18:15:03+00:00",
+        "fetched_at": "2026-11-11T18:02:22+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -297,12 +297,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.87,
-        "previous_close": 6.8,
-        "change_pct": 1.0294117647058787,
-        "market_cap": 1852025344.0,
-        "trailing_pe": 10.734375,
-        "price_to_book": 0.79257035,
+        "price": 6.82,
+        "previous_close": 6.87,
+        "change_pct": -0.727802037845704,
+        "market_cap": 1838546304.0,
+        "trailing_pe": 10.656251,
+        "price_to_book": 0.78680205,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-10T18:15:04+00:00",
+        "fetched_at": "2026-11-11T18:02:24+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -371,7 +371,8 @@
         6.84,
         6.85,
         6.8,
-        6.87
+        6.87,
+        6.82
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -406,12 +407,6 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
-          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
-          "source": "CNBC TV18",
-          "published": "2026-10-30 09:59 UTC"
-        },
-        {
           "title": "MADHAVIPL Stock Price and Chart — NSE:MADHAVIPL - TradingView",
           "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBQeUdXMnJ3dUxtNFhxc0FDWEZrRTV1eXVzajZMTmFKMzIzOFdMRnp4TV9pQkZDd1dkSGs5dy1TTmFfbWRDSEc0ODhvb1FweWdyT1NrRE92cjhuZTc0S1Rn?oc=5",
           "source": "TradingView",
@@ -424,16 +419,22 @@
           "published": "2026-09-05 04:14 UTC"
         },
         {
+          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
+          "source": "CNBC TV18",
+          "published": "2026-01-03 15:50 UTC"
+        },
+        {
           "title": "Madhav Infra Projects Share Price update after 13.57% gain - Univest",
           "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNOXJKRV93SHRyMEN6UjNQYzR1Q3VhMzZ0WlB6cmNheE5mc1ViYkx0S0xqdUJyaG44LUZyZXJ0d3lyWF9Dc2M2RDRlR1BlWHpMT2NBNGFESno2bEIyWlNzcDFjejBpZW9SSS1VTkxjM0lRM1F6a3JRcGM1M3dFMWNaMV8tQTVDVzlseHdCMlhSWnp5dw?oc=5",
           "source": "Univest",
           "published": "2026-08-26 07:00 UTC"
         },
         {
-          "title": "Madhav Infra Projects gains on acquiring 100% stake in MSK Projects (I) - Business Standard",
-          "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOc1p1WjdmeGxYVmJSdVcwSEtOaWdrV3BSVXVtdGQzNVhoS2VDQzZyTEpvUGpoVVdDNGFNMmpvbll3RnRmUGVSMURvNF9lVnBqZ0w2dlJ6ZXk2WUVUNU1BX1pWbXpKTVlRUW1ial9qdzVId3BVel9aajRfaC1raE5kSk5HajZIb1ROUHhpRnEtNmJ1a25yYmNEV2Nsa0s1ekR4ankyVllLZ3dabjUxLURncmV1aGJWcHlKOWotT3AwZWhXb3p4TVJEUG8xQlB6TGplaW5CazFoLVJVTlFlak1XWUZadTjSAeoBQVVfeXFMT0o2M095WDFXNDhpUEd2Qmp4THVnMURoQ1pzX01hSWphUkRuc3A1UGFMRTVYWmRXRi1pT1F4SzFUaFhJZnpiblFhOTBXbG5NYmxMREZSRjc3WGN2d1JEU0tGRkVmR0RQWEd1aTdha2UySlNlTUI3d0ZJdFFJb2I4dngyWjlTMW5tYkJiSlRCQ0ZrZDVERktTcmZzdEVsbDNvTzVCVmdqT0thRUFhTjdLZmw2N0lvTnhLZDhOUXJ3bGp4U2N1R2w2ZVZWa0ptam45bk5jVEo1SEJRMUpvZzZ3a1Itd1k3VFJmLXJn?oc=5",
-          "source": "Business Standard",
-          "published": "2025-04-11 07:00 UTC"
+          "title": "Madhav Infra Projects Ltd. Share Price Today | Madhav Infra Live NSE/BSE - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNRHVEQUVWVG9zWmNjWUJUdjJldTNhazFNemJkdW84ZkIxQkstMmxKT2QyTFRaZWtHbl9WZUo4WW5LZG5wQ2QtX0p2amhMVUVCRU12TVVaQXRPVWhlcEFtNjBiXy1VaVlZUnFHWVhXWG03MGtRd1ktSkhJY0dVYS1YRXpn?oc=5",
+          "source": "Value Research",
+          "published": "2022-03-25 08:42 UTC"
         }
       ]
     }
