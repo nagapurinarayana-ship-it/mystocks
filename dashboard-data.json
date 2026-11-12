@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T18:02:24+00:00",
+  "generated_at": "2026-11-12T18:35:37+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -18,9 +18,9 @@
         "price": 7.01,
         "previous_close": 6.88,
         "change_pct": 1.8895348837209225,
-        "market_cap": 2761163520.0,
-        "trailing_pe": 9.223684,
-        "price_to_book": 1.3142108,
+        "market_cap": 2757224448.0,
+        "trailing_pe": 9.210526,
+        "price_to_book": 1.312336,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-11T18:02:21+00:00",
+        "fetched_at": "2026-11-12T18:35:36+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -177,12 +177,6 @@
           "published": "2022-03-25 09:18 UTC"
         },
         {
-          "title": "NILAINFRA Stock Price and Chart — NSE:NILAINFRA - TradingView",
-          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5fZElJWlplWmp0dGhmMDFaZFc5eFBMdEQ2YUEzMEtuT1hXb0tLMHhpXzFNT2NXaWo3aUlUdXMxSF9xdC1aa0FXWEVzaGo5cUxEUjdOT3dGYlVpdU5XX0dr?oc=5",
-          "source": "TradingView",
-          "published": "2017-07-21 08:50 UTC"
-        },
-        {
           "title": "Nila Infrastructures Ltd Share Price Today,, NILAINFRA Share Price NSE, BSE - Business Today",
           "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQMjJaU2djZXNVdWxxYkdPUW56WDhhdHZ5N3FhckVIcE5WNC0tWExTcUgzbEhvSUN0RmJOeFowMkVTZ3VLNWdsZjExSlE0QjlDdVVKcHlSWHVIdHV4OUJtZms3Mm5jVWVKLS01bmRfakdYR2tVX3k3dF82ZGd0bWRsa3pMLVlJYlJiOGlfVUJMUk5IWU0?oc=5",
           "source": "Business Today",
@@ -193,6 +187,12 @@
           "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPeGJQeUNnNElZdUtaTjlmN2dyZzJtTFAxV29Fc1NHWHpNTWdVMWhORlA0cV93VmwyWlJxdnJvRHNMRGRaZzlxblU5UlRSR29hdXJjNmJSSDV3OUFnQVcwWEt3dUx3czBldTY2bEYxNUZyNm9kSVhqRzFLMHVhdUF5VG0zd2piTjg3bms2cVM4VzU?oc=5",
           "source": "Simply Wall St",
           "published": "2019-10-23 07:29 UTC"
+        },
+        {
+          "title": "Nila Infrastructures Ltd bags construction contract of Rs. 462.1 million from Dholera Industrial City Development Limited - EquityBulls",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOXzNMOGlrTm5LMjNIbnRFZjNfcTlrbmNNQ1doN3JqdU5EZTBSMlVaaGxtRTRzbWFyZWZzUXVsWTRaS2UteW9pWE5wRDM5OGZIWnhzT1F6cUY2RTZPN0pDY0JzVVI4SEdUVFozaGY1aGZ0SUIwaF9KWXpSQzhOZndoazFIRWdBUU1VNVBuZ1h6VVlWNEpjQm1La3FXYVBwLTkyOWsxOHFtNXJBVWVSM1UwWjVYS1JRbUZqUXlDTg?oc=5",
+          "source": "EquityBulls",
+          "published": "2019-09-13 07:00 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-11T18:02:22+00:00",
+        "fetched_at": "2026-11-12T18:35:36+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -262,16 +262,16 @@
           "published": "2026-10-08 07:00 UTC"
         },
         {
-          "title": "AGOL Share Price Today - Ashapuri Gold Ornament Stock Analysis - Equitypandit",
-          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5TYkZfT3hvbU9fRnlva1ZtZVFmRm9qTW5ZR3RNUFRIdVlWZER3Q0ptajJRUnp4a2Q3SEczUkxRTzJQTi1iTEpXaC1JbGNnY1U0aFk0em5Xa3Y?oc=5",
-          "source": "Equitypandit",
-          "published": "2026-10-13 01:07 UTC"
-        },
-        {
           "title": "NSE to list shares of Ashapuri Gold Ornament, Belding India and Triveni Power Transmission from October 12 - Traders Union",
           "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZ2QtTFAzU2hBY2hQX1JNM2dsSnhrbVZwakFNdEtSRThFeU10dDljQ0tSRzZmZlFhR2hnMWRUaTF4RFlRcEg4bUxPSUhLT3NkeVRYeEFiQzRaUk5zcUlUYjgwQ0x6em9fSE9POEVzMHEtSGpiZXI5OGgyUC12QUQ0ME8zWk80TXdmTFRlem13N3NmZmRqNXFoTXFodHNIRkNibEE?oc=5",
           "source": "Traders Union",
           "published": "2026-10-08 07:00 UTC"
+        },
+        {
+          "title": "AGOL Share Price Today - Ashapuri Gold Ornament Stock Analysis - Equitypandit",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5TYkZfT3hvbU9fRnlva1ZtZVFmRm9qTW5ZR3RNUFRIdVlWZER3Q0ptajJRUnp4a2Q3SEczUkxRTzJQTi1iTEpXaC1JbGNnY1U0aFk0em5Xa3Y?oc=5",
+          "source": "Equitypandit",
+          "published": "2026-10-13 01:07 UTC"
         },
         {
           "title": "Ashapuri Gold Ornament Share Price Rise in Jewellery Sector - Univest",
@@ -300,9 +300,9 @@
         "price": 6.82,
         "previous_close": 6.87,
         "change_pct": -0.727802037845704,
-        "market_cap": 1838546304.0,
-        "trailing_pe": 10.656251,
-        "price_to_book": 0.78680205,
+        "market_cap": 1868200192.0,
+        "trailing_pe": 10.828125,
+        "price_to_book": 0.79949236,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-11T18:02:24+00:00",
+        "fetched_at": "2026-11-12T18:35:37+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -419,12 +419,6 @@
           "published": "2026-09-05 04:14 UTC"
         },
         {
-          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
-          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
-          "source": "CNBC TV18",
-          "published": "2026-01-03 15:50 UTC"
-        },
-        {
           "title": "Madhav Infra Projects Share Price update after 13.57% gain - Univest",
           "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNOXJKRV93SHRyMEN6UjNQYzR1Q3VhMzZ0WlB6cmNheE5mc1ViYkx0S0xqdUJyaG44LUZyZXJ0d3lyWF9Dc2M2RDRlR1BlWHpMT2NBNGFESno2bEIyWlNzcDFjejBpZW9SSS1VTkxjM0lRM1F6a3JRcGM1M3dFMWNaMV8tQTVDVzlseHdCMlhSWnp5dw?oc=5",
           "source": "Univest",
@@ -435,6 +429,12 @@
           "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNRHVEQUVWVG9zWmNjWUJUdjJldTNhazFNemJkdW84ZkIxQkstMmxKT2QyTFRaZWtHbl9WZUo4WW5LZG5wQ2QtX0p2amhMVUVCRU12TVVaQXRPVWhlcEFtNjBiXy1VaVlZUnFHWVhXWG03MGtRd1ktSkhJY0dVYS1YRXpn?oc=5",
           "source": "Value Research",
           "published": "2022-03-25 08:42 UTC"
+        },
+        {
+          "title": "Madhav Infra Projects acquires 100% stake in MSK Projects (I) - Business Standard",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOczFBU2FZUERJWHVSbFFSZ0cyV0toQlQwLTV3b1ZuZU5JYXltN2pwSVBUN1pDc2dWZG5PdEZWLU5ndFZjMDRSeTBBY1pLeW9MeUtTRkRaUzdoa2YzV1F3VlFxYVRaTjdFUTFMd1JzWHpCYlZnV2ZxZVRCT2lKWWRPMjdmSHNGOVBIRXdNc1hsWDVxYlJ2RFY4U0hjQXEzQ1JNYmFzOGdiMUxVeFMtUkE2Z0Zqb2FKNWtIczNBNFZVcjVPVExzVTVJUGFJR19rNHdqSFVqOHRlRdIB3AFBVV95cUxPWWFfVURPN2FRaEl4elA0MVN3MGlBajhkUTlBWTZaWl9zWDV6dTNoTHlDdUdQeXpQRVl4V1BfVDVzUE02U0RZM3pYcjkzU0dyekJIakN5YXlONktFRmljenhoYloybmNjNFZEYnJVT3oxUXFIZkQzVmdJQ2UxQU1BMEI4blJxMmM0UE1NYUxkRU5tTG5TazBuYno3aHBGaHJHdWVOeV9MUktoRzNiNEdlTF9ib0cxd3lMM2tBdzB3X29nZTFqdEo0UFV1NzdUMUNmSkd0ekJXSW1FRXhx?oc=5",
+          "source": "Business Standard",
+          "published": "2025-04-10 07:00 UTC"
         }
       ]
     }
