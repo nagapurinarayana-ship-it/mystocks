@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T18:35:37+00:00",
+  "generated_at": "2026-11-13T18:03:28+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -15,12 +15,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 7.01,
-        "previous_close": 6.88,
-        "change_pct": 1.8895348837209225,
-        "market_cap": 2757224448.0,
-        "trailing_pe": 9.210526,
-        "price_to_book": 1.312336,
+        "price": 6.92,
+        "previous_close": 7.0,
+        "change_pct": -1.1428571428571455,
+        "market_cap": 2725713408.0,
+        "trailing_pe": 9.105264,
+        "price_to_book": 1.2973378,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,13 +28,11 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-12T18:35:36+00:00",
+        "fetched_at": "2026-11-13T18:03:26+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.79,
-        7.68,
         7.55,
         7.24,
         7.29,
@@ -122,7 +120,9 @@
         6.95,
         6.82,
         6.88,
-        7.01
+        7.01,
+        7.0,
+        6.92
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -189,10 +189,10 @@
           "published": "2019-10-23 07:29 UTC"
         },
         {
-          "title": "Nila Infrastructures Ltd bags construction contract of Rs. 462.1 million from Dholera Industrial City Development Limited - EquityBulls",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOXzNMOGlrTm5LMjNIbnRFZjNfcTlrbmNNQ1doN3JqdU5EZTBSMlVaaGxtRTRzbWFyZWZzUXVsWTRaS2UteW9pWE5wRDM5OGZIWnhzT1F6cUY2RTZPN0pDY0JzVVI4SEdUVFozaGY1aGZ0SUIwaF9KWXpSQzhOZndoazFIRWdBUU1VNVBuZ1h6VVlWNEpjQm1La3FXYVBwLTkyOWsxOHFtNXJBVWVSM1UwWjVYS1JRbUZqUXlDTg?oc=5",
+          "title": "Nila Infrastructures Ltd allots 496500 shares - EquityBulls",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNOWlGOW00c2JtbU9vS19ZWmc3eFMyMm5vLWdhMUhHSkVfVExYM0VqT1RqNHVyRmlmYjFIOGE0MUU0ZGZ0WHF4MDU5aDU3QlR2RS0ta1hPckExdkxnaC1FZVhIU0YwdzkzOVQ5TUZyYnpYNmw0b2hHWlRiVWduX19Pbkl5dVpTT09kOEZxSXpB?oc=5",
           "source": "EquityBulls",
-          "published": "2019-09-13 07:00 UTC"
+          "published": "2017-09-15 07:00 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-12T18:35:36+00:00",
+        "fetched_at": "2026-11-13T18:03:27+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -297,12 +297,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.82,
-        "previous_close": 6.87,
-        "change_pct": -0.727802037845704,
-        "market_cap": 1868200192.0,
-        "trailing_pe": 10.828125,
-        "price_to_book": 0.79949236,
+        "price": 6.86,
+        "previous_close": 6.93,
+        "change_pct": -1.0101010101010055,
+        "market_cap": 1849329536.0,
+        "trailing_pe": 10.71875,
+        "price_to_book": 0.7914167,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-12T18:35:37+00:00",
+        "fetched_at": "2026-11-13T18:03:28+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -372,7 +372,9 @@
         6.85,
         6.8,
         6.87,
-        6.82
+        6.82,
+        6.93,
+        6.86
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -425,16 +427,16 @@
           "published": "2026-08-26 07:00 UTC"
         },
         {
-          "title": "Madhav Infra Projects Ltd. Share Price Today | Madhav Infra Live NSE/BSE - Value Research",
-          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNRHVEQUVWVG9zWmNjWUJUdjJldTNhazFNemJkdW84ZkIxQkstMmxKT2QyTFRaZWtHbl9WZUo4WW5LZG5wQ2QtX0p2amhMVUVCRU12TVVaQXRPVWhlcEFtNjBiXy1VaVlZUnFHWVhXWG03MGtRd1ktSkhJY0dVYS1YRXpn?oc=5",
-          "source": "Value Research",
-          "published": "2022-03-25 08:42 UTC"
-        },
-        {
           "title": "Madhav Infra Projects acquires 100% stake in MSK Projects (I) - Business Standard",
           "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOczFBU2FZUERJWHVSbFFSZ0cyV0toQlQwLTV3b1ZuZU5JYXltN2pwSVBUN1pDc2dWZG5PdEZWLU5ndFZjMDRSeTBBY1pLeW9MeUtTRkRaUzdoa2YzV1F3VlFxYVRaTjdFUTFMd1JzWHpCYlZnV2ZxZVRCT2lKWWRPMjdmSHNGOVBIRXdNc1hsWDVxYlJ2RFY4U0hjQXEzQ1JNYmFzOGdiMUxVeFMtUkE2Z0Zqb2FKNWtIczNBNFZVcjVPVExzVTVJUGFJR19rNHdqSFVqOHRlRdIB3AFBVV95cUxPWWFfVURPN2FRaEl4elA0MVN3MGlBajhkUTlBWTZaWl9zWDV6dTNoTHlDdUdQeXpQRVl4V1BfVDVzUE02U0RZM3pYcjkzU0dyekJIakN5YXlONktFRmljenhoYloybmNjNFZEYnJVT3oxUXFIZkQzVmdJQ2UxQU1BMEI4blJxMmM0UE1NYUxkRU5tTG5TazBuYno3aHBGaHJHdWVOeV9MUktoRzNiNEdlTF9ib0cxd3lMM2tBdzB3X29nZTFqdEo0UFV1NzdUMUNmSkd0ekJXSW1FRXhx?oc=5",
           "source": "Business Standard",
           "published": "2025-04-10 07:00 UTC"
+        },
+        {
+          "title": "Madhav Infra Projects Ltd receives LOAs from MPUVNL - EquityBulls",
+          "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPei1JVkQ1VnljR01LOFU2Ui0yTWFLdjRkZm91RXdnNTluSjNfcUlIWDkxNFJ3dnJQNTlwUUtybDMwdEsxa0wwcG5DMWFxenczOFhxWVBrd2wtMjRwUUJxT184cmZPM3pxcF9GVmpvMHJURmdPZ0ZhUTl6cEtLT3hFM2k4UkNSX2VhWFFTcy1LTFNRUmM4aEE?oc=5",
+          "source": "EquityBulls",
+          "published": "2025-12-29 08:00 UTC"
         }
       ]
     }
