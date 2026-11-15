@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T16:43:28+00:00",
+  "generated_at": "2026-11-15T17:24:06+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-14T16:43:25+00:00",
+        "fetched_at": "2026-11-15T17:24:03+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -183,16 +183,16 @@
           "published": "2019-05-22 07:00 UTC"
         },
         {
-          "title": "Nila Infrastructures Ltd bags construction contract of Rs. 462.1 million from Dholera Industrial City Development Limited - EquityBulls",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOXzNMOGlrTm5LMjNIbnRFZjNfcTlrbmNNQ1doN3JqdU5EZTBSMlVaaGxtRTRzbWFyZWZzUXVsWTRaS2UteW9pWE5wRDM5OGZIWnhzT1F6cUY2RTZPN0pDY0JzVVI4SEdUVFozaGY1aGZ0SUIwaF9KWXpSQzhOZndoazFIRWdBUU1VNVBuZ1h6VVlWNEpjQm1La3FXYVBwLTkyOWsxOHFtNXJBVWVSM1UwWjVYS1JRbUZqUXlDTg?oc=5",
-          "source": "EquityBulls",
-          "published": "2019-09-13 07:00 UTC"
-        },
-        {
           "title": "Nila Infrastructures Ltd allots 242500 Equity Shares - EquityBulls",
           "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNMjFSYU1kVUtYMURYRnhPTXFKZmxEVmdTTGxPNV9EcVdYVVBWb1ZKSnZWWDJIb0RwbWk3a3RTclNRUzdZSmhNZ3lORVNfcmVLWnNaQV9MdzNkNmU5eEtydmFhaDFoLTdIWlluNFNEeG5GVG04QlMyWGNITkh3ZDFmZHdTVFdrUGh5MERHUHVtVHFtRG9PVVBj?oc=5",
           "source": "EquityBulls",
           "published": "2016-07-24 07:00 UTC"
+        },
+        {
+          "title": "Nila Infrastructures Limited bags EPC contract worth Rs. 51.11 crores from Adani Group - EquityBulls",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPZFFqX0ZveDA5dWh4eUp6LUhVZmkzUHlqUjEzN3l5NlA1NXVYN0lIS3VLbGVqMzVubDdMYnNUOHNfdjVNS3BKU1J3RXVKcW5ydEc4YVJSQUk1RV8ybWFnSkdPV0xqRmU2SktqWDJlenEtME12a2h1QnNibS1FdWV0RmFNWWpxUDdlTzFSR0lpWFBVM1IxcjVSRzNEZy1CdzR3cVQxYzFIX3pUZVZ2RHktTHhzYlBSLUowS3RJ?oc=5",
+          "source": "EquityBulls",
+          "published": "2017-09-20 07:00 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-14T16:43:26+00:00",
+        "fetched_at": "2026-11-15T17:24:04+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -280,10 +280,10 @@
           "published": "2026-10-21 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Ltd. Share Price Today - Ashapuri Gold Ornament Ltd. Stock Price Live NSE/BSE - CNBC TV18",
-          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUFc1VWdEMFc2N0xzU1VUUHpKeDZPQlVyNDBpeTMxcjBrSDNhV3ZwZkJOSEtldG8zME1mTEZZX01mSXVTTzZkNnNoOFZVQ0hxaUZCOFJzR1hoUzJsSmxyQWRkc1JNUV9GT2J4MnV2VlRSY2lhVVpGSUx3MWtVX0FneF9lV19lN2hMSVFaa29B?oc=5",
-          "source": "CNBC TV18",
-          "published": "2026-01-18 12:32 UTC"
+          "title": "Ashapuri Gold Ornament Ltd Share Price Today NSE/BSE Charts - Alice Blue",
+          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9YRlZEYnkxRG00TXY0aWg4V3ZPZVh3Tzl6X08xX2IyeGpyMnVKdTcwNlhxRHlDelNDTldaa01rUW5uMnFqcnppWlNJZGRSd210QzVRaDJtM1pveWJXaWgyM2xBOGVHU0NxMzlsdW5Nd3U4d3ROYkZZUHF3dWw?oc=5",
+          "source": "Alice Blue",
+          "published": "2026-10-21 04:19 UTC"
         }
       ]
     },
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-14T16:43:27+00:00",
+        "fetched_at": "2026-11-15T17:24:05+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -427,16 +427,16 @@
           "published": "2026-09-05 04:14 UTC"
         },
         {
+          "title": "Madhav Infra Projects Ltd. Share Price Today | Madhav Infra Live NSE/BSE - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNRHVEQUVWVG9zWmNjWUJUdjJldTNhazFNemJkdW84ZkIxQkstMmxKT2QyTFRaZWtHbl9WZUo4WW5LZG5wQ2QtX0p2amhMVUVCRU12TVVaQXRPVWhlcEFtNjBiXy1VaVlZUnFHWVhXWG03MGtRd1ktSkhJY0dVYS1YRXpn?oc=5",
+          "source": "Value Research",
+          "published": "2022-03-25 08:42 UTC"
+        },
+        {
           "title": "Madhav Infra Projects acquires 100% stake in MSK Projects (I) - Business Standard",
           "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOczFBU2FZUERJWHVSbFFSZ0cyV0toQlQwLTV3b1ZuZU5JYXltN2pwSVBUN1pDc2dWZG5PdEZWLU5ndFZjMDRSeTBBY1pLeW9MeUtTRkRaUzdoa2YzV1F3VlFxYVRaTjdFUTFMd1JzWHpCYlZnV2ZxZVRCT2lKWWRPMjdmSHNGOVBIRXdNc1hsWDVxYlJ2RFY4U0hjQXEzQ1JNYmFzOGdiMUxVeFMtUkE2Z0Zqb2FKNWtIczNBNFZVcjVPVExzVTVJUGFJR19rNHdqSFVqOHRlRdIB3AFBVV95cUxPWWFfVURPN2FRaEl4elA0MVN3MGlBajhkUTlBWTZaWl9zWDV6dTNoTHlDdUdQeXpQRVl4V1BfVDVzUE02U0RZM3pYcjkzU0dyekJIakN5YXlONktFRmljenhoYloybmNjNFZEYnJVT3oxUXFIZkQzVmdJQ2UxQU1BMEI4blJxMmM0UE1NYUxkRU5tTG5TazBuYno3aHBGaHJHdWVOeV9MUktoRzNiNEdlTF9ib0cxd3lMM2tBdzB3X29nZTFqdEo0UFV1NzdUMUNmSkd0ekJXSW1FRXhx?oc=5",
           "source": "Business Standard",
           "published": "2025-04-10 07:00 UTC"
-        },
-        {
-          "title": "Madhav Infra Projects Ltd receives LOAs from MPUVNL - EquityBulls",
-          "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPei1JVkQ1VnljR01LOFU2Ui0yTWFLdjRkZm91RXdnNTluSjNfcUlIWDkxNFJ3dnJQNTlwUUtybDMwdEsxa0wwcG5DMWFxenczOFhxWVBrd2wtMjRwUUJxT184cmZPM3pxcF9GVmpvMHJURmdPZ0ZhUTl6cEtLT3hFM2k4UkNSX2VhWFFTcy1LTFNRUmM4aEE?oc=5",
-          "source": "EquityBulls",
-          "published": "2025-12-29 08:00 UTC"
         }
       ]
     }
