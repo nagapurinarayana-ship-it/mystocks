@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T17:24:06+00:00",
+  "generated_at": "2026-11-16T20:40:51+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -18,9 +18,9 @@
         "price": 6.92,
         "previous_close": 7.0,
         "change_pct": -1.1428571428571455,
-        "market_cap": 2729652224.0,
-        "trailing_pe": 9.118421,
-        "price_to_book": 1.2992126,
+        "market_cap": 2772979968.0,
+        "trailing_pe": 9.263158,
+        "price_to_book": 1.319835,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-15T17:24:03+00:00",
+        "fetched_at": "2026-11-16T20:40:49+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -177,22 +177,22 @@
           "published": "2022-03-25 09:18 UTC"
         },
         {
-          "title": "Nila Infrastructures Ltd board reports Q4, FY19 results - EquityBulls",
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxONTA0UEJwSFZNZUN5NzhUeXpnMF9RNi1oOGN3V0ctcnZXV21uYUxfbGdKUWJmNVQ0emFRZmw5aE94RUpKVHFRSkFGS1pjZ3Y0ekRDREwwZ3ZvUnZBM2xBRUd3dnlhWmo1bWg4QkpEZml3QkZmNUEtaEZVSlFqYVNmQXBBV1ppYnl2UUpVdEVWU0t1eDMwZ3RZZHd3?oc=5",
-          "source": "EquityBulls",
-          "published": "2019-05-22 07:00 UTC"
+          "title": "Nila Infrastructures Jumps 9.18% on ₹105 Cr Slum Redevelopment Deal - HDFC Sky",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNcjJXcjFKdnEzMEQyNEd5RklBaDhpeEVoQW9oYy1Gb185TW00alVsNDNOTWg2bkQ4MW5rcWRrMDNjZTFzX0I1aXQ0cGxvVW9FWGxoYTloZnpmQXBEc0NRcldhZmtKVzU5Z2E2OUdQSFVoZUVRb0ZEdHpicWZIbFRDRzRMOG9aTG5vWTNFVllUY2lLeDAxUkYwTkFVMVAzVzFSSWc?oc=5",
+          "source": "HDFC Sky",
+          "published": "2025-10-08 07:00 UTC"
         },
         {
-          "title": "Nila Infrastructures Ltd allots 242500 Equity Shares - EquityBulls",
-          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNMjFSYU1kVUtYMURYRnhPTXFKZmxEVmdTTGxPNV9EcVdYVVBWb1ZKSnZWWDJIb0RwbWk3a3RTclNRUzdZSmhNZ3lORVNfcmVLWnNaQV9MdzNkNmU5eEtydmFhaDFoLTdIWlluNFNEeG5GVG04QlMyWGNITkh3ZDFmZHdTVFdrUGh5MERHUHVtVHFtRG9PVVBj?oc=5",
-          "source": "EquityBulls",
-          "published": "2016-07-24 07:00 UTC"
+          "title": "Nila Infrastructures Ltd Share Price Today,, NILAINFRA Share Price NSE, BSE - Business Today",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQMjJaU2djZXNVdWxxYkdPUW56WDhhdHZ5N3FhckVIcE5WNC0tWExTcUgzbEhvSUN0RmJOeFowMkVTZ3VLNWdsZjExSlE0QjlDdVVKcHlSWHVIdHV4OUJtZms3Mm5jVWVKLS01bmRfakdYR2tVX3k3dF82ZGd0bWRsa3pMLVlJYlJiOGlfVUJMUk5IWU0?oc=5",
+          "source": "Business Today",
+          "published": "2023-01-31 09:45 UTC"
         },
         {
-          "title": "Nila Infrastructures Limited bags EPC contract worth Rs. 51.11 crores from Adani Group - EquityBulls",
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPZFFqX0ZveDA5dWh4eUp6LUhVZmkzUHlqUjEzN3l5NlA1NXVYN0lIS3VLbGVqMzVubDdMYnNUOHNfdjVNS3BKU1J3RXVKcW5ydEc4YVJSQUk1RV8ybWFnSkdPV0xqRmU2SktqWDJlenEtME12a2h1QnNibS1FdWV0RmFNWWpxUDdlTzFSR0lpWFBVM1IxcjVSRzNEZy1CdzR3cVQxYzFIX3pUZVZ2RHktTHhzYlBSLUowS3RJ?oc=5",
+          "title": "Nila Infrastructures Ltd Q3FY23 consolidated loss at Rs. 6.65 lakhs - EquityBulls",
+          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQSTJVUHZmVlEzNlZXQU1WUzRkc0lGNXE0QW04bmZFeVgxaTQ3bjAyX0xsZjRMNjhJanE0eERJeGRoZkZkUFNuZEZGS1YyVlRrazdubV9ZeGZSNm1WeUlvZVYxUEs4dWt0eXlpR05WdmEyR2xBdldWdnBEdEoyeXNRWDFaeU5rVUg0YTd6blNTYk54S3U4dkIwd0pwSnEzMkNXYUV0bU96Nzh1Zw?oc=5",
           "source": "EquityBulls",
-          "published": "2017-09-20 07:00 UTC"
+          "published": "2023-02-14 08:00 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-15T17:24:04+00:00",
+        "fetched_at": "2026-11-16T20:40:50+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -280,10 +280,10 @@
           "published": "2026-10-21 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Ltd Share Price Today NSE/BSE Charts - Alice Blue",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9YRlZEYnkxRG00TXY0aWg4V3ZPZVh3Tzl6X08xX2IyeGpyMnVKdTcwNlhxRHlDelNDTldaa01rUW5uMnFqcnppWlNJZGRSd210QzVRaDJtM1pveWJXaWgyM2xBOGVHU0NxMzlsdW5Nd3U4d3ROYkZZUHF3dWw?oc=5",
-          "source": "Alice Blue",
-          "published": "2026-10-21 04:19 UTC"
+          "title": "Ashapuri Gold Ornament Ltd. Share Price Today - Ashapuri Gold Ornament Ltd. Stock Price Live NSE/BSE - CNBC TV18",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUFc1VWdEMFc2N0xzU1VUUHpKeDZPQlVyNDBpeTMxcjBrSDNhV3ZwZkJOSEtldG8zME1mTEZZX01mSXVTTzZkNnNoOFZVQ0hxaUZCOFJzR1hoUzJsSmxyQWRkc1JNUV9GT2J4MnV2VlRSY2lhVVpGSUx3MWtVX0FneF9lV19lN2hMSVFaa29B?oc=5",
+          "source": "CNBC TV18",
+          "published": "2026-01-18 12:32 UTC"
         }
       ]
     },
@@ -300,9 +300,9 @@
         "price": 6.86,
         "previous_close": 6.93,
         "change_pct": -1.0101010101010055,
-        "market_cap": 1854721280.0,
-        "trailing_pe": 10.75,
-        "price_to_book": 0.79372406,
+        "market_cap": 1843937920.0,
+        "trailing_pe": 10.687501,
+        "price_to_book": 0.78910935,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-15T17:24:05+00:00",
+        "fetched_at": "2026-11-16T20:40:51+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -415,10 +415,10 @@
           "published": "2026-04-20 05:28 UTC"
         },
         {
-          "title": "Madhav Infra Projects standalone PAT falls 35% YoY in Q1FY26 - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNNEpqcGVTNXB1aXdINWIwb19qU3lTMFc3c2lMNjBMVnZQenc3UEFVdC02Mkhzcnh3OWI3OXMwdE5LTXdZR1YyRG40blBqUjQxMmE3V1dMM0V3d01FTkJjZThTeW8wdTdSb2o3clk2MHpzblpNT0ZoeUhrUnFiSUF5dVdrNUlMRXVZZ0IwOE55UmVndG1HbzhhZXBNVDdOZ2Y2U1BMLWtlc2ZWV25zOVFrZTB5bGtXNDV5ci1MNDJ0eC1henJFTVRxOWZTbk0?oc=5",
+          "title": "Madhav Infra Projects Submits Q4 FY26 Dematerialization Certificate to BSE - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPZmx2LWFLb091MFlFOUlnV3dubjE1cy1wOFFwQlBFM2pvcjFvdUhKVmttV1l5TTBNMFJWTDg2VXpLRVZLWEc5NVItRmNYZFNZdllxM3VqV1VzUXc0ZjE3eUdJbGtLOGRLd2FRejE3UVdUYVNYTjJpeHlYMHBBS1N0QlZkMXA3b0FpalluUGZIejRDSERkV3Bpb2hfcVdaRmMtSHVRLUpKLXFldDc5WTZXZUh0VVFrUDFrY1pzX3Z0Y3MtZzhseUM1QTVFaw?oc=5",
           "source": "scanx.trade",
-          "published": "2026-07-30 17:03 UTC"
+          "published": "2026-04-15 07:00 UTC"
         },
         {
           "title": "Madhav Infra Projects Ltd Share Price Today NSE/BSE Charts - Alice Blue",
@@ -433,10 +433,10 @@
           "published": "2022-03-25 08:42 UTC"
         },
         {
-          "title": "Madhav Infra Projects acquires 100% stake in MSK Projects (I) - Business Standard",
-          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOczFBU2FZUERJWHVSbFFSZ0cyV0toQlQwLTV3b1ZuZU5JYXltN2pwSVBUN1pDc2dWZG5PdEZWLU5ndFZjMDRSeTBBY1pLeW9MeUtTRkRaUzdoa2YzV1F3VlFxYVRaTjdFUTFMd1JzWHpCYlZnV2ZxZVRCT2lKWWRPMjdmSHNGOVBIRXdNc1hsWDVxYlJ2RFY4U0hjQXEzQ1JNYmFzOGdiMUxVeFMtUkE2Z0Zqb2FKNWtIczNBNFZVcjVPVExzVTVJUGFJR19rNHdqSFVqOHRlRdIB3AFBVV95cUxPWWFfVURPN2FRaEl4elA0MVN3MGlBajhkUTlBWTZaWl9zWDV6dTNoTHlDdUdQeXpQRVl4V1BfVDVzUE02U0RZM3pYcjkzU0dyekJIakN5YXlONktFRmljenhoYloybmNjNFZEYnJVT3oxUXFIZkQzVmdJQ2UxQU1BMEI4blJxMmM0UE1NYUxkRU5tTG5TazBuYno3aHBGaHJHdWVOeV9MUktoRzNiNEdlTF9ib0cxd3lMM2tBdzB3X29nZTFqdEo0UFV1NzdUMUNmSkd0ekJXSW1FRXhx?oc=5",
-          "source": "Business Standard",
-          "published": "2025-04-10 07:00 UTC"
+          "title": "Top 5 Undervalued Solar Stocks that are Too Cheap to Ignore Right Now - Equitymaster",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxONHVJNlJVd0pReXVnR2JLbkFYRUI0cDd4NWdVVkJNemxnQjlaSEZ5VkY5NjVvMkxrN0VZaW5mX0I4MlZHVzlnSWFFODZVYnFSNUh6VTYycGc0eFRNZWtzTmtpM0JHZmVvdzUyMVlpaTZuYmpCRUdEQzFMWkZuRnplNXUwakx2b2tHWl91N0xpWEZad2M2T3VYWEN3dEFBUGc3ZDUzZnF6ODFzT0hWUG90Qld4eUR6THlXM0J2dUZxYlZRbDFrR2g2T0R2ZVJ4Yzd1cWk3QU9Mbw?oc=5",
+          "source": "Equitymaster",
+          "published": "2025-01-15 08:00 UTC"
         }
       ]
     }
