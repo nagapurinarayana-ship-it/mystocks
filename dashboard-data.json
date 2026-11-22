@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T17:45:54+00:00",
+  "generated_at": "2026-11-22T18:02:01+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-21T17:45:52+00:00",
+        "fetched_at": "2026-11-22T18:01:59+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-21T17:45:53+00:00",
+        "fetched_at": "2026-11-22T18:02:00+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -274,16 +274,16 @@
           "published": "2026-09-10 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Lower Circuit Streak: Day 2 Price and Data - Univest",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBTX3dCSml1dEl4M2YyXzhnZzlaUFh0TGlDLU15aW9rU21FaU5rRTJLZ0hLXzVTZDQtMDlySXZfMEd5QjdjVTA3Vzdxc3RObmRPRUdCYnpXc2phcU5LcGZuc0F0ZHhNdUt3SXdjbXI4ZWdxSVJlOHdoamZB?oc=5",
-          "source": "Univest",
-          "published": "2026-10-27 07:00 UTC"
-        },
-        {
           "title": "Ashapuri Gold Ornament Ltd Share Price Today NSE/BSE Charts - Alice Blue",
           "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9YRlZEYnkxRG00TXY0aWg4V3ZPZVh3Tzl6X08xX2IyeGpyMnVKdTcwNlhxRHlDelNDTldaa01rUW5uMnFqcnppWlNJZGRSd210QzVRaDJtM1pveWJXaWgyM2xBOGVHU0NxMzlsdW5Nd3U4d3ROYkZZUHF3dWw?oc=5",
           "source": "Alice Blue",
           "published": "2026-10-21 04:19 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Lower Circuit Streak: Day 2 Price and Data - Univest",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBTX3dCSml1dEl4M2YyXzhnZzlaUFh0TGlDLU15aW9rU21FaU5rRTJLZ0hLXzVTZDQtMDlySXZfMEd5QjdjVTA3Vzdxc3RObmRPRUdCYnpXc2phcU5LcGZuc0F0ZHhNdUt3SXdjbXI4ZWdxSVJlOHdoamZB?oc=5",
+          "source": "Univest",
+          "published": "2026-10-27 07:00 UTC"
         }
       ]
     },
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.51,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-21T17:45:54+00:00",
+        "fetched_at": "2026-11-22T18:02:01+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
