@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T18:02:01+00:00",
+  "generated_at": "2026-11-23T22:13:36+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -18,9 +18,9 @@
         "price": 6.76,
         "previous_close": 6.85,
         "change_pct": -1.31386861313868,
-        "market_cap": 2631179776.0,
-        "trailing_pe": 8.789474,
-        "price_to_book": 1.2523434,
+        "market_cap": 2642996736.0,
+        "trailing_pe": 8.828947,
+        "price_to_book": 1.2579677,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-22T18:01:59+00:00",
+        "fetched_at": "2026-11-23T22:13:34+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -165,16 +165,16 @@
       ],
       "news": [
         {
+          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
+          "source": "Univest",
+          "published": "2026-11-23 13:07 UTC"
+        },
+        {
           "title": "Nila Infrastructures Limited Reports Promoter Group Share Transfer of 1.36 Crore Equity Shares - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPaHFsb3cxVnNHTVBnQXgxSjZtN05Ha2RHZG41UEszLUQwdjdoWEdJVkxwMWcyQTkyaUx6MWxGUEFnT2hjQno4WnZmdDlQaDBOMDZsWU1HYm83ZEphMEtXdDByRU9sS2tSR1lyY2xJTlZTUVU5ZGJSNnpnVjFOczhCd2Y5dXgxWDV4TlQ3Ym5Rak1LNkY3VmMzdUZLSWxhc0NSSWRRbHVZU3dOS1NHT0JqQ204VGNySU9WZ1hyLUZaOF9EOGJwZ1VnWVl0Y2syMV9NZk1QczJVcDdSRWd5b0czTl91RGxjZw?oc=5",
           "source": "scanx.trade",
           "published": "2026-03-30 07:00 UTC"
-        },
-        {
-          "title": "Nila Infrastructures Share Price Target 2026: Bull Case Rs 10.00, - Univest",
-          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE40djRDM2RSRTU5cllOM3JhSHpOMlZ6WkFuaXptcHhqbW1Rdjl6U0VRdmEzcG1lR1RiVzRMQ2g0NEtib0l6V1FOSE5uS1l5Mzc1SnRGS0hjVnpxMEZvY1Z6Y2ZrV1h4a1VFMjlieldKbDZIYk96TXNoLQ?oc=5",
-          "source": "Univest",
-          "published": "2026-07-01 07:00 UTC"
         },
         {
           "title": "Nila Infrastructures Jumps 9.18% on ₹105 Cr Slum Redevelopment Deal - HDFC Sky",
@@ -183,16 +183,16 @@
           "published": "2025-10-08 07:00 UTC"
         },
         {
-          "title": "Why Is Nila Infrastructures Share Price Falling Key Reasons 2026 - Univest",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA0S0R5TWVFU1FTTGtOaWlkY1dlRGFVcTN6TjlPellRMUo4MjZ3a3JvdXNEd2dBeHYwYUREVTFSZ0JoX1FqMHlHMlNieEVuLVpLOGFWVU9NNUtnem51UXBQRy0tdy04dlMtNXkxSzNmd3Q5eVp1RHpGbWxQWUM?oc=5",
+          "title": "Nila Infrastructures Share Price Target 2027 to 2030: Analyst Outlook - Univest",
+          "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPUnpnYWVKZk5uR3BMdHZGN3VPSzh1RWJDSVhzdDAxZFREQkxSamtha3Z5WFE2UXFDVVhsTU9Yb2I3cG1xTDIyOFMxTkZEdnUwa2xqU2RyWFhhTk9aY0FrQTFFS2JWYUdOdVZqRHpDaDY0ejVLMW1MTEw3bGFPQzRDM1QtMHhjdw?oc=5",
           "source": "Univest",
-          "published": "2026-06-17 07:00 UTC"
+          "published": "2026-08-18 07:00 UTC"
         },
         {
-          "title": "Is Nila Infrastructures the Best Stock in Its Sector? A Look at the Numbers - Univest",
-          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBTOUFaUXFNVkJxZFZXaTAtZGlnY1hleHJGMHpVV2tVQ1VDLXdtQ1BYZkNFek5MRldveGpHTWN5a2Iwa21jMlktd19MV3Nqb0hTNi1FX0ZfNmhicjBNOEY4bmdRZWQwREN1OGtR?oc=5",
-          "source": "Univest",
-          "published": "2026-10-05 07:00 UTC"
+          "title": "Best Real Estate Penny Stocks - Alice Blue",
+          "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5SZjRNUmltMF8xT2RhNkJxRlhwQWFGTS1xNmswNUZEXzd0dWFKZndGYUtmOGRVa2F3azU4NmdVRHc2MVJlbWhMdGhnZm5kd0hPRHlFaEJrQ1MzdGZ3eFdsem15dWNlbGpfMk9SOVB1Mi1zUQ?oc=5",
+          "source": "Alice Blue",
+          "published": "2025-03-25 07:00 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-22T18:02:00+00:00",
+        "fetched_at": "2026-11-23T22:13:35+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -256,15 +256,15 @@
       "live_flags": [],
       "news": [
         {
+          "title": "Ashapuri Gold Ornament Share Price Rise in Jewellery Sector - Univest",
+          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
+          "source": "Univest",
+          "published": "2026-11-20 08:00 UTC"
+        },
+        {
           "title": "Ashapuri Gold Ornament gets NSE listing approval for Oct 12 trading - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
           "source": "scanx.trade",
-          "published": "2026-10-08 07:00 UTC"
-        },
-        {
-          "title": "NSE to list shares of Ashapuri Gold Ornament, Belding India and Triveni Power Transmission from October 12 - Traders Union",
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZ2QtTFAzU2hBY2hQX1JNM2dsSnhrbVZwakFNdEtSRThFeU10dDljQ0tSRzZmZlFhR2hnMWRUaTF4RFlRcEg4bUxPSUhLT3NkeVRYeEFiQzRaUk5zcUlUYjgwQ0x6em9fSE9POEVzMHEtSGpiZXI5OGgyUC12QUQ0ME8zWk80TXdmTFRlem13N3NmZmRqNXFoTXFodHNIRkNibEE?oc=5",
-          "source": "Traders Union",
           "published": "2026-10-08 07:00 UTC"
         },
         {
@@ -280,10 +280,10 @@
           "published": "2026-10-21 04:19 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Lower Circuit Streak: Day 2 Price and Data - Univest",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBTX3dCSml1dEl4M2YyXzhnZzlaUFh0TGlDLU15aW9rU21FaU5rRTJLZ0hLXzVTZDQtMDlySXZfMEd5QjdjVTA3Vzdxc3RObmRPRUdCYnpXc2phcU5LcGZuc0F0ZHhNdUt3SXdjbXI4ZWdxSVJlOHdoamZB?oc=5",
-          "source": "Univest",
-          "published": "2026-10-27 07:00 UTC"
+          "title": "Ashapuri Gold Ornament Ltd. Share Price Today - Ashapuri Gold Ornament Ltd. Stock Price Live NSE/BSE - CNBC TV18",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUFc1VWdEMFc2N0xzU1VUUHpKeDZPQlVyNDBpeTMxcjBrSDNhV3ZwZkJOSEtldG8zME1mTEZZX01mSXVTTzZkNnNoOFZVQ0hxaUZCOFJzR1hoUzJsSmxyQWRkc1JNUV9GT2J4MnV2VlRSY2lhVVpGSUx3MWtVX0FneF9lV19lN2hMSVFaa29B?oc=5",
+          "source": "CNBC TV18",
+          "published": "2026-01-18 12:32 UTC"
         }
       ]
     },
@@ -300,17 +300,17 @@
         "price": 6.7,
         "previous_close": 6.78,
         "change_pct": -1.179941002949858,
-        "market_cap": 1792717440.0,
-        "trailing_pe": 10.390625,
-        "price_to_book": 0.7671897,
+        "market_cap": 1803500672.0,
+        "trailing_pe": 10.453125,
+        "price_to_book": 0.77180433,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
         "free_cash_flow": 570792640.0,
-        "fifty_two_week_low": 6.51,
+        "fifty_two_week_low": 6.41,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-22T18:02:01+00:00",
+        "fetched_at": "2026-11-23T22:13:36+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -426,16 +426,16 @@
           "published": "2026-04-15 07:00 UTC"
         },
         {
-          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
-          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
-          "source": "CNBC TV18",
-          "published": "2026-01-03 15:50 UTC"
-        },
-        {
           "title": "Madhav Infra Projects Ltd Share Price Today NSE/BSE Charts - Alice Blue",
           "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE91QnozWHFiT0tHZERaS1U5ZzZRd2RaRjhGVVR6TWg0UTZTZDA3TTBDeEk5dnFHNUlGZ1F4WWVYeEQ4QTRFb0tYX3V0Q2NXQ2ZsRkNWa1ZCcjlvRTczNVhZckVqWXJucm9zQ2k5QVUyR3Q3RXg5T2lRMnJsUQ?oc=5",
           "source": "Alice Blue",
           "published": "2026-09-05 04:14 UTC"
+        },
+        {
+          "title": "Madhav Infra Projects Ltd. Share Price Today - Madhav Infra Projects Ltd. Stock Price Live NSE/BSE - CNBC TV18",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbm1JdFc3WU1OWkdNdm1GM19kNWFkeFZramp6VGxNUlhTa1RYTmtyNFZhRWhCLXlURE5DQUVfMnNpNW9INmRrQnhQOHBMaTRpYlFYV2JKSGMzU1VDeVdGT2JKZjA0V2FqUE5mc3NvaWlBT1FCUGplTzNkVVJJb2haYmNYVzdpMmx0OG1nRw?oc=5",
+          "source": "CNBC TV18",
+          "published": "2026-01-03 15:50 UTC"
         },
         {
           "title": "Madhav Infra Projects Share Price update after 13.57% gain - Univest",
