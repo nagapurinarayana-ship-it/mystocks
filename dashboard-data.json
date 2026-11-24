@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T22:13:36+00:00",
+  "generated_at": "2026-11-24T20:52:48+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -15,9 +15,9 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.76,
-        "previous_close": 6.85,
-        "change_pct": -1.31386861313868,
+        "price": 6.71,
+        "previous_close": 6.76,
+        "change_pct": -0.7396449704141994,
         "market_cap": 2642996736.0,
         "trailing_pe": 8.828947,
         "price_to_book": 1.2579677,
@@ -28,12 +28,11 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-23T22:13:34+00:00",
+        "fetched_at": "2026-11-24T20:52:46+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.24,
         7.13,
         7.25,
         7.25,
@@ -122,7 +121,8 @@
         6.87,
         6.87,
         6.85,
-        6.76
+        6.76,
+        6.71
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -183,10 +183,10 @@
           "published": "2025-10-08 07:00 UTC"
         },
         {
-          "title": "Nila Infrastructures Share Price Target 2027 to 2030: Analyst Outlook - Univest",
-          "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPUnpnYWVKZk5uR3BMdHZGN3VPSzh1RWJDSVhzdDAxZFREQkxSamtha3Z5WFE2UXFDVVhsTU9Yb2I3cG1xTDIyOFMxTkZEdnUwa2xqU2RyWFhhTk9aY0FrQTFFS2JWYUdOdVZqRHpDaDY0ejVLMW1MTEw3bGFPQzRDM1QtMHhjdw?oc=5",
+          "title": "Why Is Nila Infrastructures Share Price Falling Key Reasons 2026 - Univest",
+          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA0S0R5TWVFU1FTTGtOaWlkY1dlRGFVcTN6TjlPellRMUo4MjZ3a3JvdXNEd2dBeHYwYUREVTFSZ0JoX1FqMHlHMlNieEVuLVpLOGFWVU9NNUtnem51UXBQRy0tdy04dlMtNXkxSzNmd3Q5eVp1RHpGbWxQWUM?oc=5",
           "source": "Univest",
-          "published": "2026-08-18 07:00 UTC"
+          "published": "2026-06-17 07:00 UTC"
         },
         {
           "title": "Best Real Estate Penny Stocks - Alice Blue",
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-23T22:13:35+00:00",
+        "fetched_at": "2026-11-24T20:52:47+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -274,16 +274,16 @@
           "published": "2026-09-10 07:00 UTC"
         },
         {
-          "title": "Ashapuri Gold Ornament Ltd Share Price Today NSE/BSE Charts - Alice Blue",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9YRlZEYnkxRG00TXY0aWg4V3ZPZVh3Tzl6X08xX2IyeGpyMnVKdTcwNlhxRHlDelNDTldaa01rUW5uMnFqcnppWlNJZGRSd210QzVRaDJtM1pveWJXaWgyM2xBOGVHU0NxMzlsdW5Nd3U4d3ROYkZZUHF3dWw?oc=5",
-          "source": "Alice Blue",
-          "published": "2026-10-21 04:19 UTC"
-        },
-        {
           "title": "Ashapuri Gold Ornament Ltd. Share Price Today - Ashapuri Gold Ornament Ltd. Stock Price Live NSE/BSE - CNBC TV18",
           "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUFc1VWdEMFc2N0xzU1VUUHpKeDZPQlVyNDBpeTMxcjBrSDNhV3ZwZkJOSEtldG8zME1mTEZZX01mSXVTTzZkNnNoOFZVQ0hxaUZCOFJzR1hoUzJsSmxyQWRkc1JNUV9GT2J4MnV2VlRSY2lhVVpGSUx3MWtVX0FneF9lV19lN2hMSVFaa29B?oc=5",
           "source": "CNBC TV18",
           "published": "2026-01-18 12:32 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Ltd Share Price Today NSE/BSE Charts - Alice Blue",
+          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9YRlZEYnkxRG00TXY0aWg4V3ZPZVh3Tzl6X08xX2IyeGpyMnVKdTcwNlhxRHlDelNDTldaa01rUW5uMnFqcnppWlNJZGRSd210QzVRaDJtM1pveWJXaWgyM2xBOGVHU0NxMzlsdW5Nd3U4d3ROYkZZUHF3dWw?oc=5",
+          "source": "Alice Blue",
+          "published": "2026-10-21 04:19 UTC"
         }
       ]
     },
@@ -297,11 +297,11 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.7,
-        "previous_close": 6.78,
-        "change_pct": -1.179941002949858,
+        "price": 6.69,
+        "previous_close": 6.7,
+        "change_pct": -0.14925373134327957,
         "market_cap": 1803500672.0,
-        "trailing_pe": 10.453125,
+        "trailing_pe": 10.292308,
         "price_to_book": 0.77180433,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.41,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-23T22:13:36+00:00",
+        "fetched_at": "2026-11-24T20:52:48+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -379,7 +379,8 @@
         6.8,
         6.72,
         6.78,
-        6.7
+        6.7,
+        6.69
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
@@ -420,10 +421,10 @@
           "published": "2026-04-20 05:28 UTC"
         },
         {
-          "title": "Madhav Infra Projects Submits Q4 FY26 Dematerialization Certificate to BSE - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPZmx2LWFLb091MFlFOUlnV3dubjE1cy1wOFFwQlBFM2pvcjFvdUhKVmttV1l5TTBNMFJWTDg2VXpLRVZLWEc5NVItRmNYZFNZdllxM3VqV1VzUXc0ZjE3eUdJbGtLOGRLd2FRejE3UVdUYVNYTjJpeHlYMHBBS1N0QlZkMXA3b0FpalluUGZIejRDSERkV3Bpb2hfcVdaRmMtSHVRLUpKLXFldDc5WTZXZUh0VVFrUDFrY1pzX3Z0Y3MtZzhseUM1QTVFaw?oc=5",
+          "title": "Madhav Infra Projects schedules 33rd AGM for September 30, 2026 - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOeklmNVY2ZjBfX3hFaGRteG8wclg5aVZ4ZXFHUmpXeWdnQjVvSmJXdHR3TTFXZ282cVBaX240bU5XQnRFSVZEZGxRSllyT3hCbjBVSXkxUzVZdC00eEx0bVVROGRVVU05aU91RldRcjBSWkRKbmRVMXQzZExpSE9PZmxobmRLU1JwdFl2N1JkVUJPWlFFTWR5S1RrLXVqVnBtdS1LcTZhVl9CbHRVLXpKUkhBREE3QQ?oc=5",
           "source": "scanx.trade",
-          "published": "2026-04-15 07:00 UTC"
+          "published": "2026-09-08 15:59 UTC"
         },
         {
           "title": "Madhav Infra Projects Ltd Share Price Today NSE/BSE Charts - Alice Blue",
