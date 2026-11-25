@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T20:52:48+00:00",
+  "generated_at": "2026-11-25T20:10:40+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -18,9 +18,9 @@
         "price": 6.71,
         "previous_close": 6.76,
         "change_pct": -0.7396449704141994,
-        "market_cap": 2642996736.0,
-        "trailing_pe": 8.828947,
-        "price_to_book": 1.2579677,
+        "market_cap": 2627241216.0,
+        "trailing_pe": 8.776316,
+        "price_to_book": 1.2504687,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,7 +28,7 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-24T20:52:46+00:00",
+        "fetched_at": "2026-11-25T20:10:38+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -183,16 +183,16 @@
           "published": "2025-10-08 07:00 UTC"
         },
         {
-          "title": "Why Is Nila Infrastructures Share Price Falling Key Reasons 2026 - Univest",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA0S0R5TWVFU1FTTGtOaWlkY1dlRGFVcTN6TjlPellRMUo4MjZ3a3JvdXNEd2dBeHYwYUREVTFSZ0JoX1FqMHlHMlNieEVuLVpLOGFWVU9NNUtnem51UXBQRy0tdy04dlMtNXkxSzNmd3Q5eVp1RHpGbWxQWUM?oc=5",
-          "source": "Univest",
-          "published": "2026-06-17 07:00 UTC"
+          "title": "Nila Infrastructures Ltd. Share Price Today | Nila Infras Live NSE/BSE - Value Research",
+          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1lMjlWRTJyUWhVa0Q5akVmRXAwZVFhbzg2Qkxncm9USWhwLUlJZVlKMlI0NHNyTzVWaUVlZFprdENDMUxEcmVnWmxILUNsQ01zVDFxTFVPa1dYUHVhdV9oS0RWTERISUp6dXQ1THZ0SXJvSFhBQmFEZGlIMm41VzQ?oc=5",
+          "source": "Value Research",
+          "published": "2022-03-25 09:18 UTC"
         },
         {
-          "title": "Best Real Estate Penny Stocks - Alice Blue",
-          "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5SZjRNUmltMF8xT2RhNkJxRlhwQWFGTS1xNmswNUZEXzd0dWFKZndGYUtmOGRVa2F3azU4NmdVRHc2MVJlbWhMdGhnZm5kd0hPRHlFaEJrQ1MzdGZ3eFdsem15dWNlbGpfMk9SOVB1Mi1zUQ?oc=5",
-          "source": "Alice Blue",
-          "published": "2025-03-25 07:00 UTC"
+          "title": "Nila Infrastructures locked at 20% upper circuit on order to construct residential units - Moneycontrol.com",
+          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPa1hIYzJxb0JTUS1PYXBJalNoMGducjk4cnc4cjhObUJ0TmhRVTVhU1pBbGlRSm1nRHZIeU1jeklTeWJFdU9JMjhBd1ZFRDhYSXltc3ZmcHBkQkh6Vm9LQUZpanU3cWkyMWRBZFpGV3NISGRGSTV3bFFCOUVKY09fQTR6SzNZc0FRc21XbS1WTll0VEVxUFlUanJrZFRZSmdCcEJSeERCeHNKcVpGUkJNZTNsU082RGZNT0loZXZ6Y1ptUkhoenVHbExvLUpWQWZBRDQtM2tpT2hraHl2QWFOLURkRUx2UdIB6wFBVV95cUxPM3hsOEV5aEMxd3lWUk9nOFdnZkFGc3lVUTUxc0ZXd1UtNV9pX01YV05YNkw3dU1lUnRzYmJrWDNtYlVrc2pEZHhlXzBxUU90bk1xQ3RaeGozWWRPQjBBRVVFMWJwUm04VkhhVmtmY3czSWpRZzdfeWtvNEhmc2dGOW0xelQ2Tk8tV0xvYlNucHRKYjdvdUhpTmc3bFZKbGw2YUJpa2NHRUstTnVzNDBnYVQ2UlpqM3cxMXhkYjNvcmtxZUNzQkpLLW9LWmZKbjBIN0VLN3VkY0hRc1lSUGxCcklERmttQTZJM2Rn?oc=5",
+          "source": "Moneycontrol.com",
+          "published": "2023-09-06 07:00 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-24T20:52:47+00:00",
+        "fetched_at": "2026-11-25T20:10:39+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -300,9 +300,9 @@
         "price": 6.69,
         "previous_close": 6.7,
         "change_pct": -0.14925373134327957,
-        "market_cap": 1803500672.0,
-        "trailing_pe": 10.292308,
-        "price_to_book": 0.77180433,
+        "market_cap": 1854721280.0,
+        "trailing_pe": 10.584616,
+        "price_to_book": 0.79372406,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.41,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-24T20:52:48+00:00",
+        "fetched_at": "2026-11-25T20:10:40+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
