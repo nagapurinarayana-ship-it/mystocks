@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T20:10:40+00:00",
+  "generated_at": "2026-11-26T19:49:31+00:00",
   "market_data_status": "partial-refresh",
   "available_quote_count": 2,
   "watchlist_size": 3,
@@ -15,12 +15,12 @@
       "research_score": 7.0,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.71,
-        "previous_close": 6.76,
-        "change_pct": -0.7396449704141994,
-        "market_cap": 2627241216.0,
-        "trailing_pe": 8.776316,
-        "price_to_book": 1.2504687,
+        "price": 6.67,
+        "previous_close": 6.71,
+        "change_pct": -0.5961251862891204,
+        "market_cap": 2572096768.0,
+        "trailing_pe": 8.592106,
+        "price_to_book": 1.224222,
         "return_on_equity": 0.15527001,
         "debt_to_equity_pct": 7.1,
         "operating_cash_flow": -74961000.0,
@@ -28,12 +28,11 @@
         "fifty_two_week_low": 5.81,
         "fifty_two_week_high": 10.27,
         "currency": "INR",
-        "fetched_at": "2026-11-25T20:10:38+00:00",
+        "fetched_at": "2026-11-26T19:49:29+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
       "price_history": [
-        7.13,
         7.25,
         7.25,
         7.12,
@@ -122,7 +121,8 @@
         6.87,
         6.85,
         6.76,
-        6.71
+        6.71,
+        6.67
       ],
       "thesis": [
         "Established infrastructure/EPC business with a long operating history.",
@@ -171,10 +171,10 @@
           "published": "2026-11-23 13:07 UTC"
         },
         {
-          "title": "Nila Infrastructures Limited Reports Promoter Group Share Transfer of 1.36 Crore Equity Shares - scanx.trade",
-          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPaHFsb3cxVnNHTVBnQXgxSjZtN05Ha2RHZG41UEszLUQwdjdoWEdJVkxwMWcyQTkyaUx6MWxGUEFnT2hjQno4WnZmdDlQaDBOMDZsWU1HYm83ZEphMEtXdDByRU9sS2tSR1lyY2xJTlZTUVU5ZGJSNnpnVjFOczhCd2Y5dXgxWDV4TlQ3Ym5Rak1LNkY3VmMzdUZLSWxhc0NSSWRRbHVZU3dOS1NHT0JqQ204VGNySU9WZ1hyLUZaOF9EOGJwZ1VnWVl0Y2syMV9NZk1QczJVcDdSRWd5b0czTl91RGxjZw?oc=5",
+          "title": "Nila Infrastructures Reports FY26 Audited Results; Profit Rises to ₹2,699.11 Lakh - scanx.trade",
+          "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPVTBfY3Fld1lheTF5dm5UN1dWVmJ3QWVrNDV5VlFyUW0ybnE0ZnpudG9oT0owNmNtZ0xkZlVPQklGS3AzSVNXXzlQSUVuTFJIZHpTMWlMQ2w4UlNlUEljNVlpcXcwU05kM2loM0ZhS0JQQXRSTjJDbmRQZG5CTDVjQVhaSkRFd0N2TTBzYzlHenJYTWRZUTFxX2pEX2ZmNVVfRGRDQ3NqYllBMFVZSmc2WWdKU3gwOWdwTjRpT09OQk1xeTNHbk5HN2QzRU5OUU5WMkZzLVRKRGFienBsMGlfc003ODhQRGpoNnozeQ?oc=5",
           "source": "scanx.trade",
-          "published": "2026-03-30 07:00 UTC"
+          "published": "2026-05-04 07:00 UTC"
         },
         {
           "title": "Nila Infrastructures Jumps 9.18% on ₹105 Cr Slum Redevelopment Deal - HDFC Sky",
@@ -189,10 +189,10 @@
           "published": "2022-03-25 09:18 UTC"
         },
         {
-          "title": "Nila Infrastructures locked at 20% upper circuit on order to construct residential units - Moneycontrol.com",
-          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPa1hIYzJxb0JTUS1PYXBJalNoMGducjk4cnc4cjhObUJ0TmhRVTVhU1pBbGlRSm1nRHZIeU1jeklTeWJFdU9JMjhBd1ZFRDhYSXltc3ZmcHBkQkh6Vm9LQUZpanU3cWkyMWRBZFpGV3NISGRGSTV3bFFCOUVKY09fQTR6SzNZc0FRc21XbS1WTll0VEVxUFlUanJrZFRZSmdCcEJSeERCeHNKcVpGUkJNZTNsU082RGZNT0loZXZ6Y1ptUkhoenVHbExvLUpWQWZBRDQtM2tpT2hraHl2QWFOLURkRUx2UdIB6wFBVV95cUxPM3hsOEV5aEMxd3lWUk9nOFdnZkFGc3lVUTUxc0ZXd1UtNV9pX01YV05YNkw3dU1lUnRzYmJrWDNtYlVrc2pEZHhlXzBxUU90bk1xQ3RaeGozWWRPQjBBRVVFMWJwUm04VkhhVmtmY3czSWpRZzdfeWtvNEhmc2dGOW0xelQ2Tk8tV0xvYlNucHRKYjdvdUhpTmc3bFZKbGw2YUJpa2NHRUstTnVzNDBnYVQ2UlpqM3cxMXhkYjNvcmtxZUNzQkpLLW9LWmZKbjBIN0VLN3VkY0hRc1lSUGxCcklERmttQTZJM2Rn?oc=5",
-          "source": "Moneycontrol.com",
-          "published": "2023-09-06 07:00 UTC"
+          "title": "Nila Infrastructures Ltd Share Price Today NSE/BSE Charts - Alice Blue",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBlU3FJX0NaNWtibzh5X2FpeVNaMHUxTG1OLWJEZVZSejdHREZobm90QzczcUhlMjJTSDBFMFl3YzQwUklnVExMRjN2N3N3Vnp3RFJUQlViOEU0Z2VzOW05RVlZYXVDcm5tRjJ3MlAzSjBSVjg4N1NUbHZ3?oc=5",
+          "source": "Alice Blue",
+          "published": "2026-09-07 23:02 UTC"
         }
       ]
     },
@@ -219,7 +219,7 @@
         "fifty_two_week_low": null,
         "fifty_two_week_high": null,
         "currency": "INR",
-        "fetched_at": "2026-11-25T20:10:39+00:00",
+        "fetched_at": "2026-11-26T19:49:30+00:00",
         "price_source": "Yahoo Finance quote metadata"
       },
       "price_history": [],
@@ -256,16 +256,16 @@
       "live_flags": [],
       "news": [
         {
-          "title": "Ashapuri Gold Ornament Share Price Rise in Jewellery Sector - Univest",
-          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
-          "source": "Univest",
-          "published": "2026-11-20 08:00 UTC"
-        },
-        {
           "title": "Ashapuri Gold Ornament gets NSE listing approval for Oct 12 trading - scanx.trade",
           "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQamg4NlVNdWpNT1ozWGNVV1NvY1M2bFYxMC1ESFZOZjdoa2lxQ2Q3RlhIU1dMM0VNZWxfMTc2SzcwU3R0S1k2XzRwUXA4dkVNX3h2dmFDVEw3eWFzUEZIeVR2MWMtaVNIVzFmM0VLeWpicWp1RjhHS0VHSW9EYkpfRHEtRWdxTHYzMWlNTWFhbGpCbWk0WnZlTkwzbWRpMFJydEt2UklnSmp4dy1VdnF0QW9NV0o?oc=5",
           "source": "scanx.trade",
           "published": "2026-10-08 07:00 UTC"
+        },
+        {
+          "title": "Ashapuri Gold Ornament Share Price Rise in Jewellery Sector - Univest",
+          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1RZcGQtQmdSc2ItaGZsOExMY3lTNGlyd1VHQ0Z2SXFyWmJFVXRXTlJKS0dMQTBTQ0tHcGRDcEF5amdWSTRHUkxTTVBsdDFnMFFqOWdMd2tfTU9CczRJeWZSUWo3SEx0M25DUjZVWmNYemVuMmZRcUtjOElXX1VheUxUMXJxWlM3VlBJ?oc=5",
+          "source": "Univest",
+          "published": "2026-11-20 08:00 UTC"
         },
         {
           "title": "Ashapuri Gold Ornament (AGOL) Share: A Small Jewellery Wholesaler Explained - Kalkine India",
@@ -297,12 +297,12 @@
       "research_score": 6.2,
       "review_as_of": "2026-08-31",
       "market": {
-        "price": 6.69,
-        "previous_close": 6.7,
-        "change_pct": -0.14925373134327957,
-        "market_cap": 1854721280.0,
-        "trailing_pe": 10.584616,
-        "price_to_book": 0.79372406,
+        "price": 6.88,
+        "previous_close": 6.69,
+        "change_pct": 2.84005979073243,
+        "market_cap": 1903245824.0,
+        "trailing_pe": 11.03125,
+        "price_to_book": 0.8144901,
         "return_on_equity": 0.07097,
         "debt_to_equity_pct": 76.617,
         "operating_cash_flow": 1089889024.0,
@@ -310,7 +310,7 @@
         "fifty_two_week_low": 6.41,
         "fifty_two_week_high": 8.47,
         "currency": "INR",
-        "fetched_at": "2026-11-25T20:10:40+00:00",
+        "fetched_at": "2026-11-26T19:49:31+00:00",
         "price_source": "Yahoo Finance adjusted trading history",
         "data_quality_warning": null
       },
@@ -380,7 +380,8 @@
         6.72,
         6.78,
         6.7,
-        6.69
+        6.69,
+        6.88
       ],
       "thesis": [
         "Infrastructure business with renewable/solar exposure.",
